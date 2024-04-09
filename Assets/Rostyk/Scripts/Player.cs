@@ -12,6 +12,7 @@ public class Player : Character
     // INSPECTOR
     public float JumpForce;                                // сила прыжка
     public float MaxVelocity;                              // ? ? ?
+    [SerializeField] private Camera PlayerCamera;          // игровая камера
 
     // NOT INSPECTOR                                        
     private bool isSprinting;                              // если бежит
@@ -36,7 +37,8 @@ public class Player : Character
 
     private void Update()
     {
-
+        Jump();
+        ChangeFieldOfView();
     }
 
     private void FixedUpdate()
@@ -82,6 +84,24 @@ public class Player : Character
             isSprinting = false;
             return;
         }
+    }
+
+    // Логика прыжков персонажа
+    private void Jump()
+    {
+        if (Input.GetButton("Jump") && inGround)
+        {
+            _rb.AddForce(Vector3.up * JumpForce);
+        }
+    }
+
+    // смена поля зрения при беге
+    private void ChangeFieldOfView()
+    {
+        if (isSprinting)
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 80f, 5f * Time.deltaTime);
+        else
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 60f, 5f * Time.deltaTime);
     }
     #endregion
 }
