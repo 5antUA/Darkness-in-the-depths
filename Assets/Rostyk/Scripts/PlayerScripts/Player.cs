@@ -10,6 +10,7 @@ public class Player : Character
 
     #region Monster properties
     // INSPECTOR
+    public Gamemode GameMode = Gamemode.survival;    // игровой режим
     public float JumpForce;                                // сила прыжка
     public float MaxVelocity;                              // ? ? ?
     [SerializeField] private Camera PlayerCamera;          // игровая камера
