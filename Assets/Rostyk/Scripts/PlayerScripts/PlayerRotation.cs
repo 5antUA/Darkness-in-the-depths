@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// ВЕШАТЬ СКРИП НА КАМЕРУ ИГРОКА
 public class RotateCamera : MonoBehaviour
 {
-    public float _sensitive = 100.0f;
+    public float _sensitive = 80.0f;                        // to normal - 5.0f in inspector
 
     private float rotationX;
-    [SerializeField] private Transform playerBody;
-    [SerializeField] private Camera playerCamera;
+    [SerializeField] private Transform playerBody;          // трансформ базового объекта игрока
+    [SerializeField] private Camera playerCamera;           // камера игрока
+
 
     private void Start()
     {
@@ -21,6 +24,7 @@ public class RotateCamera : MonoBehaviour
         Rotate();
     }
 
+    // Функция для вращения камеры
     private void Rotate()
     {
         float rotX = Input.GetAxis("Mouse X") * _sensitive;

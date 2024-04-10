@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 // ÎÁÙÈÉ ÊËÀÑÑ
+// ÍÅ ÂÅØÀÒÜ ÑÊÐÈÏÒ ÍÀ ÎÁÚÅÊÒÛ
 public class Character : MonoBehaviour
 {
 
@@ -17,7 +18,7 @@ public class Character : MonoBehaviour
 
     public bool isDead => MaxHealth <= 0;                      // åñëè óìåð
 
-
+    // Ôóíêöèÿ äëÿ ïîëó÷åíèÿ óðîíà
     public void TakeDamage(float damage)
     {
         this.MaxHealth -= damage;

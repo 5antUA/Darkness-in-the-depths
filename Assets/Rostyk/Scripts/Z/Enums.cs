@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// Перечисления игровых режимов
 public enum Gamemode
 {
     creative = 0,

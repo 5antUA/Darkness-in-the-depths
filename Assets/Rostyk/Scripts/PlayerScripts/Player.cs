@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// ÂÅØÀÒÜ ÑÊĞÈÏÒ ÍÀ ÁÀÇÎÂÛÉ ÎÁÚÅÊÒ ÈÃĞÎÊÀ
 public class Player : Character
 {
     [Header("\t PLAYER SPECIAL")]
@@ -20,7 +22,7 @@ public class Player : Character
     private bool inGround;                                 // åñëè íà çåìëå
 
     // COMPONENTS
-    private Rigidbody _rb;
+    private Rigidbody _rb;                                 // Rigidbody èãğîêà
     #endregion
 
 
@@ -28,9 +30,6 @@ public class Player : Character
     #region Management
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         _rb = GetComponent<Rigidbody>();
 
         inGround = true;
