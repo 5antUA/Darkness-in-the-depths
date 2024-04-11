@@ -106,4 +106,24 @@ public class Player : Character
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 60f, 5f * Time.deltaTime);
     }
     #endregion
+
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        GroundChecker(collision, false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GroundChecker(collision, true);
+    }
+
+    private void GroundChecker(Collision collision, bool inGround)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            this.inGround = inGround;
+        }
+    }
 }
