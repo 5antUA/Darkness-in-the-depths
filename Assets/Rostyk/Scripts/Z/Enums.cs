@@ -1,21 +1,25 @@
-using System.Collections;
+п»їusing System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
-// Перечисления игровых режимов
-public enum Gamemode
+namespace RostykEnums
 {
-    creative = 0,
-    survival = 1,
-    hardcore = 2,
-    infernum = 3,
-}
+    // РџРµСЂРµС‡РёСЃР»РµРЅРёСЏ РёРіСЂРѕРІС‹С… СЂРµР¶РёРјРѕРІ
+    public enum Gamemode
+    {
+        creative = 0,
+        survival = 1,
+        hardcore = 2,
+        infernum = 3,
+    }
 
-
-public enum WeaponMode
-{
-    Knife = 1,
-    Weapon = 2,
-    Grenade = 3,
+    public enum WeaponMode
+    {
+        Knife = 1,
+        Weapon = 2,
+        Grenade = 3,
+    }
 }

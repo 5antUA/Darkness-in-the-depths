@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 // беьюрэ яйпхор мю рнвйс мювюкю ксвю (днвепмхи назейр хцпнйю ShooterRay)
 public class ThrowRay : MonoBehaviour
 {
