@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 713241019}
   - component: {fileID: 713241018}
   m_Layer: 0
-  m_Name: WallTwo (1)
+  m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 781563145}
   - component: {fileID: 781563144}
   m_Layer: 0
-  m_Name: WallTwo
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,10 +577,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 713241017}
-  - {fileID: 1523998739}
   - {fileID: 1890663770}
   - {fileID: 781563143}
+  - {fileID: 1523998739}
+  - {fileID: 713241017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374207667
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 1523998741}
   - component: {fileID: 1523998740}
   m_Layer: 0
-  m_Name: WallTwo
+  m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,7 +882,7 @@ Transform:
   m_GameObject: {fileID: 1768227264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9979912, z: -0, w: -0.063352935}
-  m_LocalPosition: {x: -44.503, y: 1.48, z: 125.311}
+  m_LocalPosition: {x: -44.515, y: 1.48, z: 125.216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916e003d2a291bd488e0d0b25f334b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponMode: 1
+  WeaponMode: 2
   _startShooter: {fileID: 1875758902}
   BulletSpeed: 0
 --- !u!1 &1875758901
@@ -930,7 +930,7 @@ Transform:
   m_GameObject: {fileID: 1875758901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0.552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 1890663772}
   - component: {fileID: 1890663771}
   m_Layer: 0
-  m_Name: WallOne
+  m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
