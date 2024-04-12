@@ -865,11 +865,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 8
-  SprintSpeed: 11
+  SprintSpeed: 13
+  CrouchSpeed: 5
+  FlySpeed: 12
   MaxHealth: 100
   Damage: 20
   Armor: 0
-  GameMode: 1
+  GameMode: 0
   JumpForce: 30
   MaxVelocity: 10
   PlayerCamera: {fileID: 560322902}

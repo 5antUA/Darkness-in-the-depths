@@ -50,13 +50,24 @@ public class Player : Character
 
     private void FixedUpdate()
     {
-        Movement();
+        if (GameMode != Gamemode.creative)
+        {
+            _rigidBody.isKinematic = false;
+            _rigidBody.useGravity = true;
+            Movement();
+        }
+        else
+        {
+            _rigidBody.isKinematic = true;
+            _rigidBody.useGravity = false;
+            CreativeMovement();
+        }
     }
     #endregion
 
 
     #region Player behaviour
-    // Логика движения персонажа
+    // Логика физического движения персонажа
     private void Movement()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -102,6 +113,32 @@ public class Player : Character
             isSprint = false;
             isCrouch = false;
             return;
+        }
+    }
+
+    // Логика НЕфизического движения персонажа (CreativeMode)
+    private void CreativeMovement()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        // Проверка на полет
+        if (Input.GetKey(JumpButton))
+        {
+            Vector3 direction = new Vector3(moveX, 1, moveZ);
+            transform.Translate(direction * Time.deltaTime * CreativeSpeed);
+        }
+        // Проверка на посадку
+        else if (Input.GetKey(CrouchButton))
+        {
+            Vector3 direction = new Vector3(moveX, -1, moveZ);
+            transform.Translate(direction * Time.deltaTime * CreativeSpeed);
+        }
+        // При горизонтальном передвижении
+        else
+        {
+            Vector3 direction = new Vector3(moveX, 0, moveZ);
+            transform.Translate(direction * Time.deltaTime * CreativeSpeed, Space.Self);
         }
     }
 
