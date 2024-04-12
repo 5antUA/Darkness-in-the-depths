@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     [Space]
     public float WalkSpeed;                                    // скорость ходьбы
     public float SprintSpeed;                                  // скорость бега
+    public float CrouchSpeed;                                  // скорость медленной ходьбы
     public float MaxHealth;                                    // здоровье игрока
     public float Damage;
     public float Armor;                                        // количество брони

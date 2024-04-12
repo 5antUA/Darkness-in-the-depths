@@ -12,34 +12,39 @@ public class Player : Character
 
 
     #region Monster properties
-    // INSPECTOR
+    // VALUES
     public Gamemode GameMode = Gamemode.survival;          // игровой режим
     public float JumpForce;                                // сила прыжка
     public float MaxVelocity;                              // ? ? ?
-    [SerializeField] private Camera PlayerCamera;          // игровая камера
 
-    // NOT INSPECTOR                                        
-    private bool isSprinting;                              // если бежит
+    private bool isSprint;                                 // если бежит
+    private bool isCrouch;                                 // если медленно ходит
     private bool inGround;                                 // если на земле
 
     // COMPONENTS
+    [SerializeField] private Camera PlayerCamera;          // Camera камера
     private Rigidbody _rb;                                 // Rigidbody игрока
-    #endregion
 
+    // BUTTONS
+    private KeyCode SprintButton;
+    private KeyCode CrouchButton;
+    private KeyCode JumpButton;
+    #endregion
 
 
     #region Management
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        InitPlayerControl();
 
+        _rb = GetComponent<Rigidbody>();
         inGround = true;
     }
 
     private void Update()
     {
         Jump();
-        ChangeFieldOfView();
+        ChangeFOV();
     }
 
     private void FixedUpdate()
@@ -47,7 +52,6 @@ public class Player : Character
         Movement();
     }
     #endregion
-
 
 
     #region Movement/Rotation
@@ -62,15 +66,25 @@ public class Player : Character
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             // Проверка на бег
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical") > 0)
+            if (Input.GetKey(SprintButton) && Input.GetAxis("Vertical") > 0)
             {
                 direction = transform.TransformDirection(direction) * SprintSpeed;
-                isSprinting = true;
+                isSprint = true;
+                isCrouch = false;
             }
+            // Проверка на медленную ходьбу
+            else if (Input.GetKey(CrouchButton))
+            {
+                direction = transform.TransformDirection(direction) * CrouchSpeed;
+                isCrouch = true;
+                isSprint = false;
+            }
+            // При обычной ходьбе
             else
             {
                 direction = transform.TransformDirection(direction) * WalkSpeed;
-                isSprinting = false;
+                isSprint = false;
+                isCrouch = false;
             }
 
             // Логика движения
@@ -84,7 +98,8 @@ public class Player : Character
         }
         else
         {
-            isSprinting = false;
+            isSprint = false;
+            isCrouch = false;
             return;
         }
     }
@@ -92,24 +107,40 @@ public class Player : Character
     // Логика прыжков персонажа
     private void Jump()
     {
-        if (Input.GetButton("Jump") && inGround)
+        if (Input.GetKey(JumpButton) && inGround)
         {
             _rb.AddForce(Vector3.up * JumpForce);
         }
     }
 
-    // смена поля зрения при беге
-    private void ChangeFieldOfView()
+    // Смена поля зрения
+    private void ChangeFOV()
     {
-        if (isSprinting)
+        if (isSprint)
+        {
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 80f, 5f * Time.deltaTime);
+        }
+        else if (isCrouch)
+        {
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 45f, 5f * Time.deltaTime);
+        }
         else
+        {
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 60f, 5f * Time.deltaTime);
+        }
+    }
+
+    // Управление
+    private void InitPlayerControl()
+    {
+        SprintButton = KeyCode.LeftControl;
+        CrouchButton = KeyCode.LeftShift;
+        JumpButton = KeyCode.Space;
     }
     #endregion
 
 
-
+    #region Collision / Trigger
     private void OnCollisionExit(Collision collision)
     {
         GroundChecker(collision, false);
@@ -127,4 +158,5 @@ public class Player : Character
             this.inGround = inGround;
         }
     }
+    #endregion
 }
