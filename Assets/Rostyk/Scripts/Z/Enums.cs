@@ -11,3 +11,11 @@ public enum Gamemode
     hardcore = 2,
     infernum = 3,
 }
+
+
+public enum WeaponMode
+{
+    Knife = 1,
+    Weapon = 2,
+    Grenade = 3,
+}
