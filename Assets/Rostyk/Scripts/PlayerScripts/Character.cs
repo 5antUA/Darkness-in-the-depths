@@ -7,14 +7,13 @@ using UnityEngine;
 // НЕ ВЕШАТЬ СКРИПТ НА ОБЪЕКТЫ
 public class Character : MonoBehaviour
 {
-
     [Header("\t CHARACTER PROPERTIES")]
     [Space]
     public float WalkSpeed;                                    // скорость ходьбы
     public float SprintSpeed;                                  // скорость бега
     public float CrouchSpeed;                                  // скорость медленной ходьбы
-    public float MaxHealth;                                    // здоровье игрока
-    public float Damage;
+    public float MaxHealth;                                    // количество здоровья
+    public float Damage;                                       // количество урона
     public float Armor;                                        // количество брони
 
     public bool isDead => MaxHealth <= 0;                      // если умер

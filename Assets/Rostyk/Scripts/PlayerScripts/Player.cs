@@ -11,19 +11,19 @@ public class Player : Character
     [Space]
 
 
-    #region Monster properties
+    #region Player properties
     // VALUES
     public Gamemode GameMode = Gamemode.survival;          // игровой режим
     public float JumpForce;                                // сила прыжка
     public float MaxVelocity;                              // ? ? ?
-
     private bool isSprint;                                 // если бежит
     private bool isCrouch;                                 // если медленно ходит
     private bool inGround;                                 // если на земле
 
     // COMPONENTS
-    [SerializeField] private Camera PlayerCamera;          // Camera камера
-    private Rigidbody _rb;                                 // Rigidbody игрока
+    [SerializeField] private Camera PlayerCamera;          // Camera игрока
+    private Rigidbody _rigidBody;                          // Rigidbody игрока
+    private BoxCollider _boxCollider;                      // Box Collider игрока
 
     // BUTTONS
     private KeyCode SprintButton;
@@ -36,9 +36,10 @@ public class Player : Character
     private void Start()
     {
         InitPlayerControl();
-
-        _rb = GetComponent<Rigidbody>();
         inGround = true;
+
+        _rigidBody = GetComponent<Rigidbody>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -54,7 +55,7 @@ public class Player : Character
     #endregion
 
 
-    #region Movement/Rotation
+    #region Player behaviour
     // Логика движения персонажа
     private void Movement()
     {
@@ -88,13 +89,13 @@ public class Player : Character
             }
 
             // Логика движения
-            Vector3 velocity = _rb.velocity;
+            Vector3 velocity = _rigidBody.velocity;
             Vector3 velocityChange = (direction - velocity);
             velocityChange.x = Mathf.Clamp(velocityChange.x, -MaxVelocity, MaxVelocity);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -MaxVelocity, MaxVelocity);
             velocityChange.y = 0;
 
-            _rb.AddForce(velocityChange, ForceMode.VelocityChange);
+            _rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
         }
         else
         {
@@ -109,7 +110,7 @@ public class Player : Character
     {
         if (Input.GetKey(JumpButton) && inGround)
         {
-            _rb.AddForce(Vector3.up * JumpForce);
+            _rigidBody.AddForce(Vector3.up * JumpForce);
         }
     }
 
