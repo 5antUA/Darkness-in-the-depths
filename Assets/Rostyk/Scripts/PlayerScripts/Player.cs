@@ -25,7 +25,7 @@ public class Player : Character
     private Rigidbody _rigidBody;                          // Rigidbody игрока
     private BoxCollider _boxCollider;                      // Box Collider игрока
 
-    // BUTTONS
+    // KEYS CONTROL
     private KeyCode SprintButton;
     private KeyCode CrouchButton;
     private KeyCode JumpButton;

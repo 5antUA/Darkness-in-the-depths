@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// ¬≈ÿ¿“‹ — –»œ Õ¿ Œ¡⁄≈ “ PlayerUI
 public class PlayerCanvas : MonoBehaviour
 {
     private Player MyPlayer;
@@ -16,6 +16,11 @@ public class PlayerCanvas : MonoBehaviour
     }
 
     void Update()
+    {
+        UpdatePlayerInfo();
+    }
+
+    private void UpdatePlayerInfo()
     {
         PlayerInfo.text =
             $"Health : {MyPlayer.Health}\n" +
