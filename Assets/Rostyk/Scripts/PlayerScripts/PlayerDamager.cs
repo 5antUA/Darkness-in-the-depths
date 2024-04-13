@@ -13,12 +13,14 @@ public class PlayerDamager : MonoBehaviour
 
     [Space]
     [SerializeField] private Transform _startShooter;           // точка начала выброса луча
+    private Player MyPlayer;                                    // скрипт Player
     public float BulletSpeed;                                   // скорость пули
 
 
     private void Start()
     {
-        PlayerDamage = this.GetComponent<Player>().Damage;
+        MyPlayer = this.GetComponent<Player>();
+        PlayerDamage = MyPlayer.Damage;
         HitDistance = GetRayDistance();
     }
 
@@ -43,16 +45,8 @@ public class PlayerDamager : MonoBehaviour
         // если попал
         if (enemy != null)
         {
-            if (HitTag == "Head")
-            {
-                enemy.TakeDamage(PlayerDamage * 2);
-                Debug.Log(PlayerDamage * 2);
-            }
-            else if (HitTag == "Body")
-            {
-                enemy.TakeDamage(PlayerDamage);
-                Debug.Log(PlayerDamage);
-            }
+            enemy.TakeDamage(PlayerDamage);
+            Debug.Log(PlayerDamage);
 
             if (enemy.isDead)
             {
