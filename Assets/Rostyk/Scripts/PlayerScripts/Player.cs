@@ -108,6 +108,7 @@ public class Player : Character
 
             _rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
         }
+        // Если персонаж стоит
         else
         {
             isSprint = false;
