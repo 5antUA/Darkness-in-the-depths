@@ -6,16 +6,18 @@ using UnityEngine.UI;
 [System.Obsolete]
 public class PlayerCanvas : MonoBehaviour
 {
-    [SerializeField] private Text PlayerInfo;
+    public Text PlayerInfo;
     [SerializeField] private GameObject inventory;
 
     private Player MyPlayer;
     private PlayerDamager PlayerDmgr;
-    private bool inventoryEnabled = false;
+
+    public bool InventoryEnabled { get; set; }
 
     void Start()
     {
         inventory.active = false;
+        InventoryEnabled = false;
 
         MyPlayer = GetComponentInParent<Player>();
         PlayerDmgr = GetComponentInParent<PlayerDamager>();
@@ -42,10 +44,10 @@ public class PlayerCanvas : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (inventoryEnabled == false)
+            if (InventoryEnabled == false)
             {
                 inventory.active = true;
-                inventoryEnabled = true;
+                InventoryEnabled = true;
                 PlayerInfo.enabled = false;
 
                 GetComponentInParent<RotateCamera>().enabled = false;
@@ -55,7 +57,7 @@ public class PlayerCanvas : MonoBehaviour
             else
             {
                 inventory.active = false;
-                inventoryEnabled = false;
+                InventoryEnabled = false;
                 PlayerInfo.enabled = true;
 
                 GetComponentInParent<RotateCamera>().enabled = true;
