@@ -13,7 +13,7 @@ public class PlayerDamager : MonoBehaviour
 
     [Space]
     [SerializeField] private Transform _startShooter;           // точка начала выброса луча
-    private Player MyPlayer;                                    // скрипт Player
+    private Player MyPlayer;                                    // скрипт this.Player
     public float BulletSpeed;                                   // скорость пули
 
 

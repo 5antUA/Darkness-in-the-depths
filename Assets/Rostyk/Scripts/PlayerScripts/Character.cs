@@ -14,11 +14,11 @@ public class Character : MonoBehaviour
     public float CrouchSpeed;                                  // скорость медленной ходьбы
     public float CreativeSpeed;                                // скорость полета (режим креатива)
 
-    public float Health;                                    // количество здоровь€
+    public float Health;                                       // количество здоровь€
     public float Damage;                                       // количество урона
     public float Armor;                                        // количество брони
 
-    public bool isDead => Health <= 0;                      // если умер
+    public bool isDead => Health <= 0;                         // если умер
 
     // ‘ункци€ дл€ получени€ урона
     public void TakeDamage(float damage)

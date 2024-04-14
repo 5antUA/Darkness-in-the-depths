@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 
 // ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
-public class PlayerCanvas : MonoBehaviour
+public class CanvasManager : MonoBehaviour
 {
-    public Text PlayerInfo;
-    protected Player MyPlayer;
-    private PlayerDamager PlayerDmgr;
+    public Text PlayerInfo;                     // информация об игроке (Text UI)
+    private Player MyPlayer;                    // скрипт this.Player
+    private PlayerDamager PlayerDmgr;           // скрипт this.PlayerDamager
 
 
     private void Start()
@@ -20,6 +20,8 @@ public class PlayerCanvas : MonoBehaviour
     {
         if (PlayerInfo != null)
             UpdatePlayerInfo();
+
+        GetComponent<InventoryManager>().InventoryControl();
     }
 
     // Обновление данных игрока

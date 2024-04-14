@@ -4,18 +4,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
-public class SettingsButtons : InventoryManager
+public class SettingsButtons : MonoBehaviour
 {
-    [SerializeField] private Button ExitButton;
-    [SerializeField] private Button CreativeModeButton;
-    [SerializeField] private Button SurvivalModeButton;
+    [SerializeField] private Player MyPlayer;                   // скрипт this.PlayerRotation
+    [SerializeField] private Button ExitButton;                 // кнопка выхода
+    [SerializeField] private Button CreativeModeButton;         // кнопка перехода в CreativeMode
+    [SerializeField] private Button SurvivalModeButton;         // кнопка перехода в SurvivalMode
 
 
     // Функция для выхода из инвентаря по нажатию кнопки
-    public void DoExit()
+    public void Exit()
     {
-        OpenInventory();
+        GetComponentInParent<InventoryManager>().CloseInventory();
     }
 
     // Функция для активации режима креатива по нажатию кнопки

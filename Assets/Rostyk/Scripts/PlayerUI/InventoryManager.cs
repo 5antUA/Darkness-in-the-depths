@@ -7,47 +7,36 @@ using UnityEngine.UI;
 // ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private GameObject InventoryUI;
-    protected PlayerRotation PlayerCamera;
-    protected Player MyPlayer;
-    protected Text PlayerInfo;
+    [SerializeField] private GameObject InventoryUI;            // inventoryUI (player object)
+    private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
+    private Text PlayerInfo;                                    // информация об игроке (Text UI)
 
-    protected bool InventoryEnabled { get; set; }
+    private bool InventoryEnabled { get; set; }                 // свойство, показывающее открыт ли инвентарь
 
 
     private void Start()
     {
-        MyPlayer = GetComponentInParent<Player>();
-        PlayerInfo = GetComponentInChildren<Text>();
         PlayerCamera = GetComponentInParent<PlayerRotation>();
+        PlayerInfo = GetComponentInChildren<Text>();
 
         InventoryUI.SetActive(false);
         InventoryEnabled = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-            Debug.Log("pressed E");
-
-        InventoryControl();
-    }
-
+    // Контроль инвентаря
     public void InventoryControl()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && InventoryEnabled == false)
         {
-            if (InventoryEnabled == false)
-            {
-                OpenInventory();
-            }
-            else if (InventoryEnabled == true)
-            {
-                CloseInventory();
-            }
+            OpenInventory();
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && InventoryEnabled == true)
+        {
+            CloseInventory();
         }
     }
 
+    // Открыть инвентарь
     public void OpenInventory()
     {
         InventoryUI.SetActive(true);
@@ -59,6 +48,7 @@ public class InventoryManager : MonoBehaviour
         Cursor.visible = true;
     }
 
+    // Закрыть инвентарь
     public void CloseInventory()
     {
         InventoryUI.SetActive(false);

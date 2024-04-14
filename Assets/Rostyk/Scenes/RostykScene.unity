@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc87de703120fae49baa0030ee207759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryUI: {fileID: 66596055}
+  MyPlayer: {fileID: 1768227267}
   ExitButton: {fileID: 1784966037}
   CreativeModeButton: {fileID: 674038422}
   SurvivalModeButton: {fileID: 1019767571}
@@ -608,9 +608,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560322904}
+  - component: {fileID: 560322905}
   - component: {fileID: 560322902}
   - component: {fileID: 560322903}
-  - component: {fileID: 560322905}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -1829,7 +1829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450140167}
-  - component: {fileID: 1450140171}
+  - component: {fileID: 1450140173}
   - component: {fileID: 1450140172}
   - component: {fileID: 1450140170}
   - component: {fileID: 1450140169}
@@ -1926,19 +1926,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1450140171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450140166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ece8b9084fb93ca4fa651cbd8508b183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerInfo: {fileID: 53236810}
 --- !u!114 &1450140172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1952,6 +1939,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryUI: {fileID: 66596055}
+--- !u!114 &1450140173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450140166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a505348c6056d47b4f110fea05ff16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerInfo: {fileID: 53236810}
 --- !u!1 &1467983777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2226,6 @@ GameObject:
   - component: {fileID: 1768227269}
   - component: {fileID: 1768227266}
   - component: {fileID: 1768227265}
-  - component: {fileID: 1768227270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2338,19 +2337,6 @@ MonoBehaviour:
   WeaponMode: 2
   _startShooter: {fileID: 1875758902}
   BulletSpeed: 0
---- !u!114 &1768227270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768227264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3bb94b4baf36d4b8c576c29a319477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InventoryUI: {fileID: 66596055}
 --- !u!1 &1784966035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,7 +2422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 485089893}
         m_TargetAssemblyTypeName: SettingsButtons, Assembly-CSharp
-        m_MethodName: DoExit
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
