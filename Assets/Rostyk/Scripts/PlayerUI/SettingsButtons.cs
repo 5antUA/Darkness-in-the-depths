@@ -1,36 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-[System.Obsolete]
-public class SettingsButtons : MonoBehaviour
+// ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
+public class SettingsButtons : InventoryManager
 {
     [SerializeField] private Button ExitButton;
     [SerializeField] private Button CreativeModeButton;
     [SerializeField] private Button SurvivalModeButton;
-    [SerializeField] private GameObject InventoryUI;
-    [SerializeField] private PlayerCanvas Canvas;
 
-    [SerializeField] private Player MyPlayer;
 
+    // Функция для выхода из инвентаря по нажатию кнопки
     public void DoExit()
     {
-        InventoryUI.active = false;
-        Canvas.InventoryEnabled = false;
-        Canvas.PlayerInfo.enabled = true;
-
-        GetComponentInParent<RotateCamera>().enabled = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        OpenInventory();
     }
 
+    // Функция для активации режима креатива по нажатию кнопки
     public void ApplyCreativeMode()
     {
         MyPlayer.GameMode = RostykEnums.Gamemode.creative;
     }
 
+    // Функция для активации режима выживания по нажатию кнопки
     public void ApplySurvivalMode()
     {
         MyPlayer.GameMode = RostykEnums.Gamemode.survival;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 // ¬≈ÿ¿“‹ — –»œ Õ¿  ¿Ã≈–” »√–Œ ¿
-public class RotateCamera : MonoBehaviour
+public class PlayerRotation : MonoBehaviour
 {
     public float _sensitive = 80.0f;                        // to normal - 5.0f in inspector
     private float rotationX;                                // ? ? ?
