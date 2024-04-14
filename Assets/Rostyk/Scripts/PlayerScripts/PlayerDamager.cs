@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Threading;
 using UnityEngine;
-using RostykEnums;
-using System.Runtime.InteropServices.WindowsRuntime; // custom namespace
+using RostykEnums; // custom namespace
 
 
 // СКРИПТ ВЕШАТЬ НА ИГРОКА
