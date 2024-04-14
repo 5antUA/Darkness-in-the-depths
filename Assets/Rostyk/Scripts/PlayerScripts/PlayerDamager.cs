@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Threading;
 using UnityEngine;
-using RostykEnums; // custom namespace
+using RostykEnums;
+using System.Runtime.InteropServices.WindowsRuntime; // custom namespace
 
 
 // СКРИПТ ВЕШАТЬ НА ИГРОКА
@@ -40,9 +41,9 @@ public class PlayerDamager : MonoBehaviour
     // Логика стрельбы во врага
     private void Shooting()
     {
-        Monster enemy = GetEnemy(out string HitTag);
+        Monster enemy = GetEnemy();
 
-        // если попал
+        // если попал во врага
         if (enemy != null)
         {
             enemy.TakeDamage(PlayerDamage);
@@ -53,26 +54,24 @@ public class PlayerDamager : MonoBehaviour
                 Destroy(enemy.gameObject);
             }
         }
-        // если не попал
+        // если не попал во врага
         else
         {
-            // Debug.Log("EBLAN, YOU MISSED!");
+            Debug.Log("EBLAN, YOU MISSED!");
         }
     }
 
     // Поиск врага лучем
-    private Monster GetEnemy(out string ColliderTag)
+    private Monster GetEnemy()
     {
         RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(HitDistance);
 
         if (hit.collider != null)
         {
-            ColliderTag = hit.collider.tag;
             return hit.collider.GetComponentInParent<Monster>();
         }
         else
         {
-            ColliderTag = string.Empty;
             return null;
         }
     }
