@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using RostykEnums; // custom namespace
 
+
+// ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
 public class TabButtonsManager : MonoBehaviour
 {
-    [SerializeField] private Button TabDevButton;               // кнопка для открытия вкладки разработчика
     [SerializeField] private Button TabInventoryButton;         // кнопка для открытия вкладки инвентаря
     [SerializeField] private Button TabNotesButton;             // кнопка для открытия вкладки записок
     [SerializeField] private Button TabMapButton;               // кнопка для открытия вкладки карты
     [SerializeField] private Button TabSettingsButton;          // кнопка для открытия вкладки настроек
+    [SerializeField] private Button TabDevButton;               // кнопка для открытия вкладки разработчика
 
     [SerializeField] private Transform TabsUI;                  // список (массив) объектов UI из вкладки Tabs
     private Tab MyTab;                                          // выбраная вкладка сейчас

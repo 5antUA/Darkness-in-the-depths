@@ -5,20 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-// ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
+// ВЕШАТЬ СКРИПТ НА ОБЪЕКТ TabDevUI/Buttons
 public class TabDevButtons : MonoBehaviour
 {
     [SerializeField] private Player MyPlayer;                   // скрипт this.PlayerRotation
-    [SerializeField] private Button ExitButton;                 // кнопка выхода
     [SerializeField] private Button CreativeModeButton;         // кнопка перехода в CreativeMode
     [SerializeField] private Button SurvivalModeButton;         // кнопка перехода в SurvivalMode
+    [SerializeField] private Button HardcoreModeButton;         // кнопка перехода в SurvivalMode
+    [SerializeField] private Button InfernumModeButton;         // кнопка перехода в SurvivalMode
 
-
-    // Функция для выхода из инвентаря (метод нажатия кнопки)
-    public void Exit()
-    {
-        GetComponentInParent<InventoryManager>().CloseInventory();
-    }
 
     // Функция для активации режима креатива (метод нажатия кнопки)
     public void ApplyCreativeMode()
@@ -30,5 +25,17 @@ public class TabDevButtons : MonoBehaviour
     public void ApplySurvivalMode()
     {
         MyPlayer.GameMode = RostykEnums.Gamemode.survival;
+    }
+
+    // Функция для активации режима хардкор (метод нажатия кнопки)
+    public void ApplyHardcoreMode()
+    {
+        MyPlayer.GameMode = RostykEnums.Gamemode.hardcore;
+    }
+
+    // Функция для активации режима инфернум (метод нажатия кнопки)
+    public void ApplyInfetnumMode()
+    {
+        MyPlayer.GameMode = RostykEnums.Gamemode.infernum;
     }
 }
