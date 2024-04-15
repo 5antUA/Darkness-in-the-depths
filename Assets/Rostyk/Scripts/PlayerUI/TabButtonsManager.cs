@@ -29,38 +29,45 @@ public class TabButtonsManager : MonoBehaviour
     }
 
 
+    // активация вкладки инвентаря (метод нажатия кнопки)
     public void ActiveTabInventory()
     {
-        TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);
-        TabsUI.GetChild(0).gameObject.SetActive(true);
+        ActiveTab(0);
         MyTab = Tab.Inventory;
     }
 
+    // активация вкладки записок (метод нажатия кнопки)
     public void ActiveTabNotes()
     {
-        TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);
-        TabsUI.GetChild(1).gameObject.SetActive(true);
+        ActiveTab(1);
         MyTab = Tab.Notes;
     }
 
+    // активация вкладки карты (метод нажатия кнопки)
     public void ActiveTabMap()
     {
-        TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);
-        TabsUI.GetChild(2).gameObject.SetActive(true);
+        ActiveTab(2);
         MyTab = Tab.Map;
     }
 
+    // активация вкладки настроек (метод нажатия кнопки)
     public void ActiveTabSettings()
     {
-        TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);
-        TabsUI.GetChild(3).gameObject.SetActive(true);
+        ActiveTab(3);
         MyTab = Tab.Settings;
     }
 
+    // активация вкладки разработчика (метод нажатия кнопки)
     public void ActiveTabDev()
     {
-        TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);
-        TabsUI.GetChild(4).gameObject.SetActive(true);
+        ActiveTab(4);
         MyTab = Tab.Dev;
+    }
+
+    // активация вкладки
+    private void ActiveTab(int index)
+    {
+        TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);
+        TabsUI.GetChild(index).gameObject.SetActive(true);
     }
 }

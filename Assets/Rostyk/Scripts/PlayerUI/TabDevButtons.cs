@@ -14,19 +14,19 @@ public class TabDevButtons : MonoBehaviour
     [SerializeField] private Button SurvivalModeButton;         // кнопка перехода в SurvivalMode
 
 
-    // Функция для выхода из инвентаря по нажатию кнопки
+    // Функция для выхода из инвентаря (метод нажатия кнопки)
     public void Exit()
     {
         GetComponentInParent<InventoryManager>().CloseInventory();
     }
 
-    // Функция для активации режима креатива по нажатию кнопки
+    // Функция для активации режима креатива (метод нажатия кнопки)
     public void ApplyCreativeMode()
     {
         MyPlayer.GameMode = RostykEnums.Gamemode.creative;
     }
 
-    // Функция для активации режима выживания по нажатию кнопки
+    // Функция для активации режима выживания (метод нажатия кнопки)
     public void ApplySurvivalMode()
     {
         MyPlayer.GameMode = RostykEnums.Gamemode.survival;
