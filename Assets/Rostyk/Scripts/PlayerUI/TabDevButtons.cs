@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
-public class SettingsButtons : MonoBehaviour
+public class TabDevButtons : MonoBehaviour
 {
     [SerializeField] private Player MyPlayer;                   // скрипт this.PlayerRotation
     [SerializeField] private Button ExitButton;                 // кнопка выхода
