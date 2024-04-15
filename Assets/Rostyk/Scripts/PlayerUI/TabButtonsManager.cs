@@ -20,12 +20,15 @@ public class TabButtonsManager : MonoBehaviour
 
     private void Start()
     {
-        // в начале игры выбраная владка - инвертарь
-        MyTab = Tab.Inventory;
+        // в начале игры выбрана данная вкладка
+        MyTab = Tab.Dev;
 
         // через цикл деактивируем елементы UI из остальных вкладок
-        for (int i = 1; i < TabsUI.childCount; i++)
+        for (int i = 0; i < TabsUI.childCount; i++)
         {
+            if ((int)MyTab == i)
+                continue;
+
             TabsUI.GetChild(i).gameObject.SetActive(false);
         }
     }

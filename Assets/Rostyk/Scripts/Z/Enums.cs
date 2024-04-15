@@ -23,6 +23,7 @@ namespace RostykEnums
         Grenade = 3,
     }
 
+    // Перечисления вкладок меню
     public enum Tab
     {
         Inventory = 0,
