@@ -265,7 +265,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448392475751638160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -956,7 +956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5999704927683934806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8892534956034654439}
+        m_TargetAssemblyTypeName: TabButtonsManager, Assembly-CSharp
+        m_MethodName: ActiveTabDev
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2832756543196952394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1089,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 848470409572559219}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8892534956034654439}
+        m_TargetAssemblyTypeName: TabButtonsManager, Assembly-CSharp
+        m_MethodName: ActiveTabInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3448684846559043782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1222,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5060850469421302487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8892534956034654439}
+        m_TargetAssemblyTypeName: TabButtonsManager, Assembly-CSharp
+        m_MethodName: ActiveTabNotes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4157482075256957896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,11 +1374,7 @@ MonoBehaviour:
   TabNotesButton: {fileID: 4424240640954202663}
   TabMapButton: {fileID: 7856583340872105591}
   TabSettingsButton: {fileID: 8172905346907057701}
-  TabDevUI: {fileID: 448392475751638160}
-  TabInventoryUI: {fileID: 1660225951449329234}
-  TabNoteUI: {fileID: 7270619790847192029}
-  TabMapUI: {fileID: 6855923155122776115}
-  TabSettingsUI: {fileID: 4325944024181348073}
+  TabsUI: {fileID: 5545384987261498388}
 --- !u!1 &4325944024181348073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1852,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4144084713494804107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8892534956034654439}
+        m_TargetAssemblyTypeName: TabButtonsManager, Assembly-CSharp
+        m_MethodName: ActiveTabMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5746897569477364829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,7 +2828,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8851363975237267908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8892534956034654439}
+        m_TargetAssemblyTypeName: TabButtonsManager, Assembly-CSharp
+        m_MethodName: ActiveTabSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8475075291670653585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,11 +3002,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6517334847983973324}
   - {fileID: 5707579697309477724}
   - {fileID: 5667135254740447742}
   - {fileID: 8005916472324234433}
   - {fileID: 3889170366994332221}
+  - {fileID: 6517334847983973324}
   m_Father: {fileID: 4448735994188754371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

@@ -22,4 +22,13 @@ namespace RostykEnums
         Weapon = 2,
         Grenade = 3,
     }
+
+    public enum Tab
+    {
+        Inventory = 0,
+        Notes = 1,
+        Map = 2,
+        Settings = 3,
+        Dev = 4
+    }
 }
