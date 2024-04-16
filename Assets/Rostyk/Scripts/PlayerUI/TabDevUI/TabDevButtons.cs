@@ -8,7 +8,7 @@ using UnityEngine.UI;
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ TabDevUI/Buttons
 public class TabDevButtons : MonoBehaviour
 {
-    [SerializeField] private Player MyPlayer;                   // скрипт this.PlayerRotation
+    [SerializeField] private Player MyPlayer;                   // скрипт this.Player
     [SerializeField] private Button CreativeModeButton;         // кнопка перехода в CreativeMode
     [SerializeField] private Button SurvivalModeButton;         // кнопка перехода в SurvivalMode
     [SerializeField] private Button HardcoreModeButton;         // кнопка перехода в SurvivalMode

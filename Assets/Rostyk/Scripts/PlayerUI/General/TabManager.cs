@@ -6,7 +6,7 @@ using RostykEnums; // custom namespace
 
 
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
-public class TabButtonsManager : MonoBehaviour
+public class TabManager : MonoBehaviour
 {
     [SerializeField] private Button TabInventoryButton;         // кнопка для открытия вкладки инвентаря
     [SerializeField] private Button TabNotesButton;             // кнопка для открытия вкладки записок

@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 
 // ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
-public class InventoryManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject InventoryUI;            // inventoryUI (player object)
+    public GameObject MenuUI;                                   // MenuUI
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
     private Text PlayerInfo;                                    // информация об игроке (Text UI)
 
-    private bool InventoryEnabled { get; set; }                 // свойство, показывающее открыт ли инвентарь
+    private bool MenuEnabled { get; set; }                      // свойство, показывающее открыто ли меню
 
 
     private void Start()
@@ -19,28 +19,34 @@ public class InventoryManager : MonoBehaviour
         PlayerCamera = GetComponentInParent<PlayerRotation>();
         PlayerInfo = GetComponentInChildren<Text>();
 
-        InventoryUI.SetActive(false);
-        InventoryEnabled = false;
+        MenuUI.SetActive(false);
+        MenuEnabled = false;
     }
 
-    // Контроль инвентаря
-    public void InventoryControl()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && InventoryEnabled == false)
+        MenuControl();
+    }
+
+
+    // Контроль меню
+    public void MenuControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && MenuEnabled == false)
         {
-            OpenInventory();
+            OpenMenu();
         }
-        else if (Input.GetKeyDown(KeyCode.Tab) && InventoryEnabled == true)
+        else if (Input.GetKeyDown(KeyCode.Tab) && MenuEnabled == true)
         {
-            CloseInventory();
+            CloseMenu();
         }
     }
 
-    // Открыть инвентарь
-    public void OpenInventory()
+    // Открыть меню
+    public void OpenMenu()
     {
-        InventoryUI.SetActive(true);
-        InventoryEnabled = true;
+        MenuUI.SetActive(true);
+        MenuEnabled = true;
         PlayerInfo.enabled = false;
 
         PlayerCamera.enabled = false;
@@ -48,11 +54,11 @@ public class InventoryManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-    // Закрыть инвентарь
-    public void CloseInventory()
+    // Закрыть меню
+    public void CloseMenu()
     {
-        InventoryUI.SetActive(false);
-        InventoryEnabled = false;
+        MenuUI.SetActive(false);
+        MenuEnabled = false;
         PlayerInfo.enabled = true;
 
         PlayerCamera.enabled = true;

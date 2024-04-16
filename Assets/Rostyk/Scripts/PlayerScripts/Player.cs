@@ -36,10 +36,10 @@ public class Player : Character
     private void Start()
     {
         InitPlayerControl();
-        inGround = true;
+        inGround = false;
 
-        _rigidBody = GetComponent<Rigidbody>();
-        _boxCollider = GetComponent<BoxCollider>();
+        _rigidBody = this.GetComponent<Rigidbody>();
+        _boxCollider = this.GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -127,19 +127,19 @@ public class Player : Character
         if (Input.GetKey(JumpButton))
         {
             Vector3 direction = new Vector3(moveX, 1, moveZ);
-            transform.Translate(direction * Time.deltaTime * CreativeSpeed);
+            transform.Translate(direction * Time.deltaTime * FlySpeed);
         }
         // Проверка на посадку
         else if (Input.GetKey(CrouchButton))
         {
             Vector3 direction = new Vector3(moveX, -1, moveZ);
-            transform.Translate(direction * Time.deltaTime * CreativeSpeed);
+            transform.Translate(direction * Time.deltaTime * FlySpeed);
         }
         // При горизонтальном передвижении
         else
         {
             Vector3 direction = new Vector3(moveX, 0, moveZ);
-            transform.Translate(direction * Time.deltaTime * CreativeSpeed, Space.Self);
+            transform.Translate(direction * Time.deltaTime * FlySpeed, Space.Self);
         }
     }
 

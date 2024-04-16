@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     public float WalkSpeed;                                    // скорость ходьбы
     public float SprintSpeed;                                  // скорость бега
     public float CrouchSpeed;                                  // скорость медленной ходьбы
-    public float CreativeSpeed;                                // скорость полета (режим креатива)
+    public float FlySpeed;                                     // скорость полета (режим креатива)
 
     public float Health;                                       // количество здоровья
     public float Damage;                                       // количество урона
