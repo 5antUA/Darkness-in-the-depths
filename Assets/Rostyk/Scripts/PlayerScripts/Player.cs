@@ -22,6 +22,7 @@ public class Player : Character
 
     // COMPONENTS
     [SerializeField] private Camera PlayerCamera;          // Camera игрока
+    [SerializeField] private Light PlayerLight;            // Player flashlight
     private Rigidbody _rigidBody;                          // Rigidbody игрока
     private BoxCollider _boxCollider;                      // Box Collider игрока
 
@@ -29,6 +30,7 @@ public class Player : Character
     private KeyCode SprintButton;
     private KeyCode CrouchButton;
     private KeyCode JumpButton;
+    private KeyCode SwitchLightButton;
     #endregion
 
 
@@ -37,6 +39,7 @@ public class Player : Character
     {
         InitPlayerControl();
         inGround = false;
+        PlayerLight.enabled = false;
 
         _rigidBody = this.GetComponent<Rigidbody>();
         _boxCollider = this.GetComponent<BoxCollider>();
@@ -46,6 +49,7 @@ public class Player : Character
     {
         Jump();
         ChangeFOV();
+        SwitchLight();
     }
 
     private void FixedUpdate()
@@ -169,12 +173,26 @@ public class Player : Character
         }
     }
 
+    //  
+    private void SwitchLight()
+    {
+        if (Input.GetKeyDown(SwitchLightButton) && PlayerLight.enabled == false)
+        {
+            PlayerLight.enabled = true;
+        }
+        else if (Input.GetKeyDown(SwitchLightButton) && PlayerLight.enabled == true)
+        {
+            PlayerLight.enabled = false;
+        }
+    }
+
     // Управление
     private void InitPlayerControl()
     {
         SprintButton = KeyCode.LeftControl;
         CrouchButton = KeyCode.LeftShift;
         JumpButton = KeyCode.Space;
+        SwitchLightButton = KeyCode.F;
     }
     #endregion
 
