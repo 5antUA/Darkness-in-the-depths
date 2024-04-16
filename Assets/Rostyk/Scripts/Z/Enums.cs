@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RostykEnums
 {
-    // Перечисления игровых режимов
+    // Перечисление игровых режимов
     public enum Gamemode
     {
         creative = 0,
@@ -23,7 +23,7 @@ namespace RostykEnums
         Grenade = 3,
     }
 
-    // Перечисления вкладок меню
+    // Перечисление вкладок меню
     public enum Tab
     {
         Inventory = 0,

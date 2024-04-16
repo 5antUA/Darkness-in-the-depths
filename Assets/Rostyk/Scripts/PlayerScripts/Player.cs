@@ -13,7 +13,7 @@ public class Player : Character
 
     #region Player properties
     // VALUES
-    public Gamemode GameMode = Gamemode.survival;          // игровой режим
+    public Gamemode GameMode;                              // игровой режим
     public float JumpForce;                                // сила прыжка
     public float MaxVelocity;                              // ? ? ?
     private bool isSprint;                                 // если бежит
@@ -40,6 +40,7 @@ public class Player : Character
         InitPlayerControl();
         inGround = false;
         PlayerLight.enabled = false;
+        GameMode = Gamemode.survival;
 
         _rigidBody = this.GetComponent<Rigidbody>();
         _boxCollider = this.GetComponent<BoxCollider>();
@@ -117,7 +118,6 @@ public class Player : Character
         {
             isSprint = false;
             isCrouch = false;
-            return;
         }
     }
 
@@ -173,7 +173,7 @@ public class Player : Character
         }
     }
 
-    //  
+    // Включение или выключение фонарика
     private void SwitchLight()
     {
         if (Input.GetKeyDown(SwitchLightButton) && PlayerLight.enabled == false)

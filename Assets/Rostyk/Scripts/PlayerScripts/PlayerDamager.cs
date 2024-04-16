@@ -92,14 +92,14 @@ public class PlayerDamager : MonoBehaviour
     // Weapon controller
     private void WeaponController()
     {
-        ReorderWeaponModeButton();
-        ReorderWeaponModeScroll();
+        ChangeWeaponModeButton();
+        ChangeWeaponModeScroll();
 
         HitDistance = GetRayDistance();
     }
 
     // Сменить режим оружия по нажатию кнопки
-    private void ReorderWeaponModeButton()
+    private void ChangeWeaponModeButton()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             WeaponMode = WeaponMode.Knife;
@@ -112,7 +112,7 @@ public class PlayerDamager : MonoBehaviour
     }
 
     // Сменить режим оружия по скролу колесика мыши
-    private void ReorderWeaponModeScroll()
+    private void ChangeWeaponModeScroll()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
