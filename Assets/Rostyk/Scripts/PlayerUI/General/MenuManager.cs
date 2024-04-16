@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
         {
             OpenMenu();
         }
-        else if (Input.GetKeyDown(KeyCode.Tab) && MenuEnabled == true)
+        else if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape)) && MenuEnabled == true)
         {
             CloseMenu();
         }

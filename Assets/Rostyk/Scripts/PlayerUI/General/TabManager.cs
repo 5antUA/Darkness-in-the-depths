@@ -8,12 +8,6 @@ using RostykEnums; // custom namespace
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ Buttons
 public class TabManager : MonoBehaviour
 {
-    [SerializeField] private Button TabInventoryButton;         // кнопка для открытия вкладки инвентаря
-    [SerializeField] private Button TabNotesButton;             // кнопка для открытия вкладки записок
-    [SerializeField] private Button TabMapButton;               // кнопка для открытия вкладки карты
-    [SerializeField] private Button TabSettingsButton;          // кнопка для открытия вкладки настроек
-    [SerializeField] private Button TabDevButton;               // кнопка для открытия вкладки разработчика
-
     [SerializeField] private Transform TabsUI;                  // список (массив) объектов UI из вкладки Tabs
     private Tab MyTab;                                          // выбраная вкладка сейчас
 
@@ -34,42 +28,42 @@ public class TabManager : MonoBehaviour
     }
 
 
-    // активация вкладки инвентаря (метод нажатия кнопки)
+    // Активация вкладки инвентаря (метод нажатия кнопки)
     public void ActiveTabInventory()
     {
         ActiveTab(0);
         MyTab = Tab.Inventory;
     }
 
-    // активация вкладки записок (метод нажатия кнопки)
+    // Активация вкладки записок (метод нажатия кнопки)
     public void ActiveTabNotes()
     {
         ActiveTab(1);
         MyTab = Tab.Notes;
     }
 
-    // активация вкладки карты (метод нажатия кнопки)
+    // Активация вкладки карты (метод нажатия кнопки)
     public void ActiveTabMap()
     {
         ActiveTab(2);
         MyTab = Tab.Map;
     }
 
-    // активация вкладки настроек (метод нажатия кнопки)
+    // Активация вкладки настроек (метод нажатия кнопки)
     public void ActiveTabSettings()
     {
         ActiveTab(3);
         MyTab = Tab.Settings;
     }
 
-    // активация вкладки разработчика (метод нажатия кнопки)
+    // Активация вкладки разработчика (метод нажатия кнопки)
     public void ActiveTabDev()
     {
         ActiveTab(4);
         MyTab = Tab.Dev;
     }
 
-    // активация вкладки
+    // Активация вкладки
     private void ActiveTab(int index)
     {
         TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);

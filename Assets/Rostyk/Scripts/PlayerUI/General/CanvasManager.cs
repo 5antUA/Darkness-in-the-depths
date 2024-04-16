@@ -53,6 +53,7 @@ public class CanvasManager : MonoBehaviour
             $"Health : {MyPlayer.Health}\n" +
             $"Gamemode : {MyPlayer.GameMode}\n" +
             $"WeaponMode : {PlayerDmgr.WeaponMode} \n" +
-            $"Weapon : - ";
+            $"Weapon : - \n\n" +
+            $"Press TAB to open menu";
     }
 }

@@ -7,7 +7,7 @@ using RostykEnums; // custom namespace
 // СКРИПТ ВЕШАТЬ НА ИГРОКА
 public class PlayerDamager : MonoBehaviour
 {
-    public WeaponMode WeaponMode = WeaponMode.Knife;            // какой тип оружия держит персонаж сейчас
+    public WeaponMode WeaponMode;                               // какой тип оружия держит персонаж сейчас
     private float PlayerDamage;                                 // урон, расчитаный по формуле (ориг.Damage в Character)
     private float HitDistance;                                  // дальность удара или стрельбы
 
@@ -20,7 +20,9 @@ public class PlayerDamager : MonoBehaviour
     private void Start()
     {
         MyPlayer = this.GetComponent<Player>();
+
         PlayerDamage = MyPlayer.Damage;
+        WeaponMode = WeaponMode.Weapon;
         HitDistance = GetRayDistance();
     }
 
@@ -138,9 +140,6 @@ public class PlayerDamager : MonoBehaviour
 
         else if (WeaponMode == WeaponMode.Weapon)
             return 100f;
-
-        else if (WeaponMode == WeaponMode.Grenade)
-            return 0;
 
         else
             return 0;

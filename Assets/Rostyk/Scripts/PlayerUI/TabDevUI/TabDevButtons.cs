@@ -9,10 +9,6 @@ using UnityEngine.UI;
 public class TabDevButtons : MonoBehaviour
 {
     [SerializeField] private Player MyPlayer;                   // скрипт this.Player
-    [SerializeField] private Button CreativeModeButton;         // кнопка перехода в CreativeMode
-    [SerializeField] private Button SurvivalModeButton;         // кнопка перехода в SurvivalMode
-    [SerializeField] private Button HardcoreModeButton;         // кнопка перехода в SurvivalMode
-    [SerializeField] private Button InfernumModeButton;         // кнопка перехода в SurvivalMode
 
 
     // Функция для активации режима креатива (метод нажатия кнопки)
