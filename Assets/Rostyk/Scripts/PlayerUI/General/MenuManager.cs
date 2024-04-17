@@ -26,7 +26,6 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         MenuControl();
-        Debug.Log("Menu is opened!");
     }
 
 

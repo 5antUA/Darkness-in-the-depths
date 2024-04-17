@@ -2227,11 +2227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff4b4aee40bb794b8d88a8f4c252bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TabInventoryButton: {fileID: 3218390456916973044}
-  TabNotesButton: {fileID: 4424240640954202663}
-  TabMapButton: {fileID: 7856583340872105591}
-  TabSettingsButton: {fileID: 8172905346907057701}
-  TabDevButton: {fileID: 1808181765198744530}
   TabsUI: {fileID: 5545384987261498388}
 --- !u!1 &4325944024181348073
 GameObject:
@@ -3230,10 +3225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyPlayer: {fileID: 1084217368650117011}
-  CreativeModeButton: {fileID: 3417294524634722914}
-  SurvivalModeButton: {fileID: 8961435097607872681}
-  HardcoreModeButton: {fileID: 4396479252133839732}
-  InfernumModeButton: {fileID: 6445469632620251186}
 --- !u!1 &5866353798078331061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3886,6 +3877,7 @@ MonoBehaviour:
   Damage: 20
   Armor: 0
   GameMode: 1
+  CrouchHeight: 1.1
   JumpForce: 30
   MaxVelocity: 10
   PlayerCamera: {fileID: 8148715249111008570}
@@ -3925,7 +3917,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.8439618
+  m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.42198092, z: 0}
 --- !u!54 &7621554909464080353
