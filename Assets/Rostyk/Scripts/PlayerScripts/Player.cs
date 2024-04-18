@@ -48,7 +48,7 @@ public class Player : Character
 
     private void Update()
     {
-        _Controller.Move(_velocity * Time.deltaTime * WalkSpeed);
+        Movement();
         Jump();
         Crouch();
         ChangeFOV();
@@ -57,7 +57,7 @@ public class Player : Character
 
     private void FixedUpdate()
     {
-        Movement();
+        CalculateVelocity();
     }
     #endregion
 
@@ -65,6 +65,12 @@ public class Player : Character
     #region Player behaviour
     // Логика физического движения персонажа
     private void Movement()
+    {
+        _Controller.Move(_velocity * Time.deltaTime * WalkSpeed);
+    }
+
+    //
+    private void CalculateVelocity()
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
@@ -127,6 +133,7 @@ public class Player : Character
         }
         else
         {
+            //_Controller.height = Mathf.Lerp(_Controller.height, 1.8f, 6f * Time.deltaTime);
             _Controller.height = 1.8f;
             isCrouch = false;
         }

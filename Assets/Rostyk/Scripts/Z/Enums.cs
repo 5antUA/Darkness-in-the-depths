@@ -16,11 +16,37 @@ namespace RostykEnums
         infernum = 3,
     }
 
+    // 
     public enum WeaponMode
     {
         Knife = 1,
         Weapon = 2,
         Grenade = 3,
+    }
+
+    // 100% будет
+    public enum Knife
+    {
+        Hand = 0,
+        Hammer = 1,
+        Sword = 2,
+        Blades = 3
+    }
+
+    // 100% будет
+    public enum Weapon
+    {
+        Gun = 0,
+        DoubleGun = 1,
+        Shotgun = 2
+    }
+
+    // под вопросом
+    public enum Grenade
+    {
+        Grenade = 0,
+        Molotov = 1,
+        Flashbang = 2
     }
 
     // Перечисление вкладок меню

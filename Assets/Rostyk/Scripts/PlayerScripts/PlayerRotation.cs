@@ -21,7 +21,7 @@ public class PlayerRotation : MonoBehaviour
         playerCamera = this.GetComponent<Camera>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         Rotate();
     }
