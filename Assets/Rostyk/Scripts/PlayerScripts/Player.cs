@@ -16,16 +16,16 @@ public class Player : Character
     public Gamemode GameMode;                              // игровой режим
     public float CrouchHeight;                             // Высота прыседания
     public float JumpForce;                                // сила прыжка
-    public float MaxVelocity;                              // ? ? ?
+
     private bool isSprint;                                 // если бежит
     private bool isCrouch;                                 // если медленно ходит
-    private bool inGround;                                 // если на земле
+    private float _gravity = -9.81f;                       // ускорение свободного падения g
+    private Vector3 _velocity;                             // направление игрока
 
     // COMPONENTS
     [SerializeField] private Camera PlayerCamera;          // Camera игрока
     [SerializeField] private Light PlayerLight;            // Player flashlight
-    private Rigidbody _rigidBody;                          // Rigidbody игрока
-    private CapsuleCollider _capsuleCollider;              // Capsule collider игрока
+    private CharacterController _Controller;
 
     // KEYS CONTROL
     private KeyCode SprintButton;
@@ -39,33 +39,25 @@ public class Player : Character
     private void Start()
     {
         InitPlayerControl();
-        inGround = false;
         isCrouch = false;
         PlayerLight.enabled = false;
         GameMode = Gamemode.survival;
 
-        _rigidBody = this.GetComponent<Rigidbody>();
-        _capsuleCollider = this.GetComponent<CapsuleCollider>();
+        _Controller = this.GetComponent<CharacterController>();
     }
 
     private void Update()
     {
+        _Controller.Move(_velocity * Time.deltaTime * WalkSpeed);
+        Jump();
+        Crouch();
         ChangeFOV();
         SwitchLight();
     }
 
     private void FixedUpdate()
     {
-        if (GameMode != Gamemode.creative)
-        {
-            Movement();
-            Crouch();
-            Jump();
-        }
-        else
-        {
-            CreativeMovement();
-        }
+        Movement();
     }
     #endregion
 
@@ -74,57 +66,33 @@ public class Player : Character
     // Логика физического движения персонажа
     private void Movement()
     {
-        _rigidBody.isKinematic = false;
-        _rigidBody.useGravity = true;
-
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(moveX, 0, moveZ);
+        Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        // Проверка на ходьбу
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (Input.GetKey(SprintButton) && Input.GetAxis("Vertical") > 0)
         {
-            // Проверка на бег
-            if (Input.GetKey(SprintButton) && Input.GetAxis("Vertical") > 0 && !isCrouch)
-            {
-                direction = transform.TransformDirection(direction) * SprintSpeed;
-                isSprint = true;
-            }
-            // Проверка на медленную ходьбу
-            else if (isCrouch)
-            {
-                direction = transform.TransformDirection(direction) * CrouchSpeed;
-                isSprint = false;
-            }
-            // При обычной ходьбе
-            else
-            {
-                direction = transform.TransformDirection(direction) * WalkSpeed;
-                isSprint = false;
-            }
-
-            // Логика движения
-            Vector3 velocity = _rigidBody.velocity;
-            Vector3 velocityChange = direction - velocity;
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -MaxVelocity, MaxVelocity);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -MaxVelocity, MaxVelocity);
-            velocityChange.y = 0;
-
-            _rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+            _direction *= SprintSpeed;
+            isSprint = true;
         }
-        // Если персонаж стоит
-        else
+        else if (Input.GetKey(CrouchButton))
         {
+            _direction *= CrouchSpeed;
             isSprint = false;
         }
+        else
+        {
+            _direction *= WalkSpeed;
+            isSprint = false;
+        }
+        Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
+            new Vector3(_direction.x, 0, _direction.z);
+        _velocity = new Vector3(move.x, _velocity.y, move.z);
     }
 
     // Логика НЕфизического движения персонажа (CreativeMode)
     private void CreativeMovement()
     {
-        _rigidBody.isKinematic = true;
-        _rigidBody.useGravity = false;
-
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
@@ -153,12 +121,13 @@ public class Player : Character
     {
         if (Input.GetKey(CrouchButton))
         {
-            _capsuleCollider.height = Mathf.Lerp(_capsuleCollider.height, CrouchHeight, 6f * Time.deltaTime);
+            _Controller.height = Mathf.Lerp(_Controller.height, CrouchHeight, 6f * Time.deltaTime);
+            //_Controller.height = CrouchHeight;
             isCrouch = true;
         }
         else
         {
-            _capsuleCollider.height = Mathf.Lerp(_capsuleCollider.height, 1.8f, 6f * Time.deltaTime);
+            _Controller.height = 1.8f;
             isCrouch = false;
         }
     }
@@ -166,9 +135,13 @@ public class Player : Character
     // Логика прыжков персонажа
     private void Jump()
     {
-        if (Input.GetKey(JumpButton) && inGround)
+        if (_Controller.isGrounded)
         {
-            _rigidBody.AddForce(Vector3.up * JumpForce);
+            _velocity.y = Input.GetKeyDown(KeyCode.Space) ? JumpForce : -0.1f;
+        }
+        else if (!_Controller.isGrounded)
+        {
+            _velocity.y += _gravity * Time.deltaTime;
         }
     }
 
@@ -178,6 +151,10 @@ public class Player : Character
         if (isSprint)
         {
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 80f, 5f * Time.deltaTime);
+        }
+        else if (isCrouch)
+        {
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 45f, 5f * Time.deltaTime);
         }
         else
         {
@@ -205,27 +182,6 @@ public class Player : Character
         CrouchButton = KeyCode.LeftShift;
         JumpButton = KeyCode.Space;
         SwitchLightButton = KeyCode.F;
-    }
-    #endregion
-
-
-    #region Collision / Trigger
-    private void OnCollisionExit(Collision collision)
-    {
-        GroundChecker(collision, false);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        GroundChecker(collision, true);
-    }
-
-    private void GroundChecker(Collision collision, bool inGround)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            this.inGround = inGround;
-        }
     }
     #endregion
 }

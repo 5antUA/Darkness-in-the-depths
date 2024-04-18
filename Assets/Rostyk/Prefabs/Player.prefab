@@ -851,7 +851,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sensitive: 5
   playerBody: {fileID: 3940456784698177369}
-  playerCamera: {fileID: 8148715249111008570}
 --- !u!20 &8148715249111008570
 Camera:
   m_ObjectHideFlags: 0
@@ -3831,10 +3830,9 @@ GameObject:
   - component: {fileID: 3940456784698177369}
   - component: {fileID: 1084217368650117011}
   - component: {fileID: 95988931871553184}
-  - component: {fileID: 1911384900914786500}
-  - component: {fileID: 7621554909464080353}
+  - component: {fileID: 262761856411084777}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3869,17 +3867,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb62481094cd19347a59f6accb2f638c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 8
-  SprintSpeed: 13
-  CrouchSpeed: 5
+  WalkSpeed: 3
+  SprintSpeed: 6
+  CrouchSpeed: 2
   FlySpeed: 15
   Health: 100
   Damage: 20
   Armor: 0
   GameMode: 1
-  CrouchHeight: 1.1
-  JumpForce: 30
-  MaxVelocity: 10
+  CrouchHeight: 0.9
+  JumpForce: 3
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
 --- !u!114 &95988931871553184
@@ -3897,8 +3894,8 @@ MonoBehaviour:
   WeaponMode: 2
   _startShooter: {fileID: 5803398655189418271}
   BulletSpeed: 0
---- !u!136 &1911384900914786500
-CapsuleCollider:
+--- !u!143 &262761856411084777
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3915,38 +3912,14 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  serializedVersion: 3
   m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.42198092, z: 0}
---- !u!54 &7621554909464080353
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6689362665969325309}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6855923155122776115
 GameObject:
   m_ObjectHideFlags: 0

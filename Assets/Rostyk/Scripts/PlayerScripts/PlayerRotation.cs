@@ -10,19 +10,22 @@ public class PlayerRotation : MonoBehaviour
     private float rotationX;                                // ? ? ?
 
     [SerializeField] private Transform playerBody;          // трансформ базового объекта игрока
-    [SerializeField] private Camera playerCamera;           // камера игрока
+    private Camera playerCamera;                            // камера игрока
 
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        playerCamera = this.GetComponent<Camera>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Rotate();
     }
+
 
     // Функция для вращения камеры
     private void Rotate()
@@ -34,6 +37,7 @@ public class PlayerRotation : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -80f, 80f);
 
         transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+        //Vector3.Lerp();
         playerBody.Rotate(Vector3.up * rotX);
     }
 }
