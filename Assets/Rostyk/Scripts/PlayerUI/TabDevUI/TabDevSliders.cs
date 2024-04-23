@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class TabDevSliders : MonoBehaviour
 {
     private Player MyPlayer;                                    // скрипт this.Player
-    [SerializeField] private Slider SliderFlySpeed;             // слайдер для смены скорости полета
     [SerializeField] private Slider SliderWalkSpeed;            // слайдер для смены скорости ходьбы
     [SerializeField] private Slider SliderJumpForce;            // слайдер для смены силы прыжка
 
@@ -17,15 +16,8 @@ public class TabDevSliders : MonoBehaviour
     {
         MyPlayer = this.GetComponentInParent<Player>();
 
-        SliderFlySpeed.value = MyPlayer.FlySpeed;
         SliderWalkSpeed.value = MyPlayer.WalkSpeed;
         SliderJumpForce.value = MyPlayer.JumpForce;
-    }
-
-    // Смена скорости полета
-    public void ChangeFlySpeed()
-    {
-        MyPlayer.FlySpeed = SliderFlySpeed.value;
     }
 
     // Смена скорости ходьбы

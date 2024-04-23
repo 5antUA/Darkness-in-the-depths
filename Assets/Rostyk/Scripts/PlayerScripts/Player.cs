@@ -63,13 +63,13 @@ public class Player : Character
 
 
     #region Player behaviour
-    // Логика физического движения персонажа
+    // Передвижение игрока
     private void Movement()
     {
         _Controller.Move(_velocity * Time.deltaTime * WalkSpeed);
     }
 
-    //
+    // Логика физического движения персонажа
     private void CalculateVelocity()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -96,32 +96,6 @@ public class Player : Character
         _velocity = new Vector3(move.x, _velocity.y, move.z);
     }
 
-    // Логика НЕфизического движения персонажа (CreativeMode)
-    private void CreativeMovement()
-    {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        // Проверка на полет
-        if (Input.GetKey(JumpButton))
-        {
-            Vector3 direction = new Vector3(moveX, 1, moveZ);
-            transform.Translate(direction * Time.deltaTime * FlySpeed);
-        }
-        // Проверка на посадку
-        else if (Input.GetKey(CrouchButton))
-        {
-            Vector3 direction = new Vector3(moveX, -1, moveZ);
-            transform.Translate(direction * Time.deltaTime * FlySpeed);
-        }
-        // При горизонтальном передвижении
-        else
-        {
-            Vector3 direction = new Vector3(moveX, 0, moveZ);
-            transform.Translate(direction * Time.deltaTime * FlySpeed, Space.Self);
-        }
-    }
-
     // Логика приседания
     private void Crouch()
     {
@@ -142,7 +116,7 @@ public class Player : Character
     {
         if (_Controller.isGrounded)
         {
-            _velocity.y = Input.GetKeyDown(KeyCode.Space) ? JumpForce : -0.1f;
+            _velocity.y = Input.GetKeyDown(JumpButton) ? JumpForce : -0.1f;
         }
         else if (!_Controller.isGrounded)
         {

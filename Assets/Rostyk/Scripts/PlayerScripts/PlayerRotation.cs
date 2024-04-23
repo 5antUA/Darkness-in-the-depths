@@ -37,7 +37,6 @@ public class PlayerRotation : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -80f, 80f);
 
         transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
-        //Vector3.Lerp();
         playerBody.Rotate(Vector3.up * rotX);
     }
 }
