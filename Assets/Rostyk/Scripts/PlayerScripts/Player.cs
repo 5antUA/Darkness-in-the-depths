@@ -25,7 +25,8 @@ public class Player : Character
     // COMPONENTS
     [SerializeField] private Camera PlayerCamera;          // Camera игрока
     [SerializeField] private Light PlayerLight;            // Player flashlight
-    private CharacterController _Controller;
+    private CharacterController _controller;
+    private Transform _playerTransform;
 
     // KEYS CONTROL
     private KeyCode SprintButton;
@@ -43,7 +44,8 @@ public class Player : Character
         PlayerLight.enabled = false;
         GameMode = Gamemode.survival;
 
-        _Controller = this.GetComponent<CharacterController>();
+        _controller = this.GetComponent<CharacterController>();
+        _playerTransform = this.GetComponent<Transform>();
     }
 
     private void Update()
@@ -66,7 +68,7 @@ public class Player : Character
     // Передвижение игрока
     private void Movement()
     {
-        _Controller.Move(_velocity * Time.deltaTime * WalkSpeed);
+        _controller.Move(_velocity * Time.deltaTime * WalkSpeed);
     }
 
     // Логика физического движения персонажа
@@ -101,12 +103,12 @@ public class Player : Character
     {
         if (Input.GetKey(CrouchButton))
         {
-            _Controller.height = Mathf.Lerp(_Controller.height, CrouchHeight, 6f * Time.deltaTime);
+            _controller.height = Mathf.Lerp(_controller.height, CrouchHeight, 6f * Time.deltaTime);
             isCrouch = true;
         }
         else
         {
-            _Controller.height = 1.8f;
+            _controller.height = 1.8f;
             isCrouch = false;
         }
     }
@@ -114,11 +116,11 @@ public class Player : Character
     // Логика прыжков персонажа
     private void Jump()
     {
-        if (_Controller.isGrounded)
+        if (_controller.isGrounded)
         {
             _velocity.y = Input.GetKeyDown(JumpButton) ? JumpForce : -0.1f;
         }
-        else if (!_Controller.isGrounded)
+        else if (!_controller.isGrounded)
         {
             _velocity.y += _gravity * Time.deltaTime;
         }
