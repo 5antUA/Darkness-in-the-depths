@@ -76,7 +76,7 @@ public class Player : Character
         float moveZ = Input.GetAxis("Vertical");
         Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        if (Input.GetKey(SprintButton) && Input.GetAxis("Vertical") > 0)
+        if (Input.GetKey(SprintButton) && Input.GetAxis("Vertical") > 0 && !isCrouch)
         {
             _direction *= SprintSpeed;
             isSprint = true;
@@ -128,12 +128,10 @@ public class Player : Character
         if (Input.GetKey(CrouchButton))
         {
             _Controller.height = Mathf.Lerp(_Controller.height, CrouchHeight, 6f * Time.deltaTime);
-            //_Controller.height = CrouchHeight;
             isCrouch = true;
         }
         else
         {
-            //_Controller.height = Mathf.Lerp(_Controller.height, 1.8f, 6f * Time.deltaTime);
             _Controller.height = 1.8f;
             isCrouch = false;
         }
