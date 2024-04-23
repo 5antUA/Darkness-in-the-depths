@@ -160,10 +160,12 @@ public class Player : Character
     // ”правление
     private void InitPlayerControl()
     {
-        SprintButton = KeyCode.LeftControl;
-        CrouchButton = KeyCode.LeftShift;
-        JumpButton = KeyCode.Space;
-        SwitchLightButton = KeyCode.F;
+        var data = SaveManager.Load<SavedData.InputData>(SavedData.InputData.KEY);
+
+        SprintButton = data.RunButton;
+        CrouchButton = data.CrouchButton;
+        JumpButton = data.JumpButton;
+        SwitchLightButton = data.FlashlightButton;
     }
     #endregion
 }

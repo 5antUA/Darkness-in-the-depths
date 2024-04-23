@@ -5,14 +5,14 @@ namespace SavedData
     [System.Serializable]
     public class InputData
     {
-        public const string KEY_InputData = "KeyInputData";
+        public const string KEY = "KeyInputData";
 
-        KeyCode CrouchButton;
-        KeyCode RunButton;
-        KeyCode JumpButton;
-        KeyCode InventoryButton;
-        KeyCode InfoButton;
-        KeyCode FlashlightButton;
+        public KeyCode CrouchButton;
+        public KeyCode RunButton;
+        public KeyCode JumpButton;
+        public KeyCode InventoryButton;
+        public KeyCode InfoButton;
+        public KeyCode FlashlightButton;
 
         public InputData()
         {

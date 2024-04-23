@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Background.SetActive(true);
         SettingsTab.SetActive(false);
         DevelopersTab.SetActive(false);
     }

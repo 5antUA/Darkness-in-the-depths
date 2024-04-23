@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -55,5 +56,10 @@ public class CanvasManager : MonoBehaviour
             $"WeaponMode : {PlayerDmgr.WeaponMode} \n" +
             $"Weapon : - \n\n" +
             $"Press TAB to open menu";
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Main menu");
     }
 }
