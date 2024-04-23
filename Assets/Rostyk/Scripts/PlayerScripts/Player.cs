@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RostykEnums; // custom namespace
+using RostykEnums;
+using TMPro; // custom namespace
 
 
 // беьюрэ яйпхор мю аюгнбши назейр хцпнйю
