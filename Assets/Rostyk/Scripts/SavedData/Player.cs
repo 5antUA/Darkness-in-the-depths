@@ -6,6 +6,9 @@ namespace SavedData
     [Serializable]
     public class Player
     {
-        public GameObject _player;
+        public const string KEY = "PlayerKEY";
+        public Vector3 _player;
+
+        
     }
 }

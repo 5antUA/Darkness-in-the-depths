@@ -27,7 +27,6 @@ public class Player : Character
     [SerializeField] private Camera PlayerCamera;          // Camera игрока
     [SerializeField] private Light PlayerLight;            // Player flashlight
     private CharacterController _controller;
-    private Transform _playerTransform;
 
     // KEYS CONTROL
     private KeyCode SprintButton;
@@ -46,7 +45,6 @@ public class Player : Character
         GameMode = Gamemode.survival;
 
         _controller = this.GetComponent<CharacterController>();
-        _playerTransform = this.GetComponent<Transform>();
     }
 
     private void Update()
