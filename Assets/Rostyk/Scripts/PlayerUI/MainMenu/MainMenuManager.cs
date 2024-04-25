@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ContinueButton()
     {
+
         SceneManager.LoadScene("RostykScene");
     }
 

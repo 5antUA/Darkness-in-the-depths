@@ -9,6 +9,5 @@ namespace SavedData
         public const string KEY = "PlayerKEY";
         public Vector3 _player;
 
-        
     }
 }

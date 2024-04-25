@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public static class SaveManager
+public static class SaveToJson
 {
     public static void Save<Type>(string key, Type data)
     {

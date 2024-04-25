@@ -1,25 +1,50 @@
+using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class Saver : MonoBehaviour
 {
     private const string key = "PlayerKEY";
+    private IStorageService storage = new SaveToFile();
+    SavedData.Player NewData;
 
-    void Awake()
+    private void Start()
     {
-        var newData = SaveManager.Load<Vector3>(key);
-        this.gameObject.transform.position = newData;
-        Debug.Log("Awake");
+        var cor = LoadGame();
+        StartCoroutine(cor);
+
+        Debug.Log($"{transform.position}");
+    }
+
+    IEnumerator LoadGame()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        Debug.Log("3 sec.....");
+        storage.Load<SavedData.Player>(key, data =>
+        {
+            gameObject.transform.position = data._player;
+            Debug.Log($"Load data {data._player}");
+        });
     }
 
     void Update()
     {
-        var newData = this.gameObject.transform.position;
-        SaveManager.Save(key, newData);
-
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SaveManager.Delete(key);
-            Debug.Log("Delete data");
+            var newData = new SavedData.Player() { _player = transform.position };
+            storage.Save(key, newData);
+
+            Debug.Log("Save data");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            storage.Load<SavedData.Player>(key, data =>
+            {
+                gameObject.transform.position = data._player;
+                Debug.Log($"Load data {data._player}");
+            });
         }
     }
 }
