@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+// 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Background;
-    [SerializeField] private GameObject SettingsTab;
-    [SerializeField] private GameObject DevelopersTab;
+    [SerializeField] private GameObject Background;         // второй background в главном меню
+    [SerializeField] private GameObject SettingsTab;        // подменю настроек
+    [SerializeField] private GameObject DevelopersTab;      // подменю со списком разработчиков игры
+
 
     private void Start()
     {
@@ -14,24 +17,34 @@ public class MainMenuManager : MonoBehaviour
         DevelopersTab.SetActive(false);
     }
 
+
+    // Переход в игровую сцену, продолжение игры (метод нажатия кнопки)
     public void ContinueButton()
     {
-
         SceneManager.LoadScene("RostykScene");
     }
 
+    // Переход в игровую сцену, новая игра (метод нажатия кнопки)
+    public void NewGameButton()
+    {
+        return; // не готово
+    }
+
+    // Переход в меню настроек (метод нажатия кнопки)
     public void SettingsButton()
     {
         Background.SetActive(false);
         SettingsTab.SetActive(true);
     }
 
+    // Переход в меню со списком разработчиков (метод нажатия кнопки)
     public void DevelopersButton()
     {
         Background.SetActive(false);
         DevelopersTab.SetActive(true);
     }
 
+    // Выход в главное меню (метод нажатия кнопки)
     public void BackMenu()
     {
         Background.SetActive(true);
@@ -39,6 +52,7 @@ public class MainMenuManager : MonoBehaviour
         DevelopersTab.SetActive(false);
     }
 
+    // Выход из игры (метод нажатия кнопки)
     public void ExitButton()
     {
         Application.Quit();

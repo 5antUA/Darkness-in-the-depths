@@ -1,12 +1,14 @@
 ﻿using RostykEnums;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SavedData
 {
+    // Класс для хранения данных об игроке
     [System.Serializable]
     public class PlayerData
     {
+        private const string KEY = "PlayerPropertiesData";
+
         public int Health;
         public int Armor;
         public Gamemode Gamemode;

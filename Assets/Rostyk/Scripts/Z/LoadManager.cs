@@ -1,5 +1,7 @@
+using System.Collections;
 using System.IO;
 using UnityEngine;
+
 
 // ¬≈ÿ¿“‹ — –»œ“ Õ¿ Œ¡⁄≈ “ EntryPoint
 public class LoadManager : MonoBehaviour
@@ -11,9 +13,13 @@ public class LoadManager : MonoBehaviour
     [SerializeField] private GameObject player;
     private Vector3 defaultPlayerPosition = new Vector3(-42, 1, 125);
 
+    [SerializeField] private GameObject LoadingScreen;
 
-    private void Start()
+
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f);
+
         try
         {
             LoadGame();
@@ -24,6 +30,8 @@ public class LoadManager : MonoBehaviour
             SaveGame(true);
             LoadGame();
         }
+
+        LoadingScreen.SetActive(false);
     }
 
     private void Update()
@@ -45,9 +53,8 @@ public class LoadManager : MonoBehaviour
 
     private void LoadGame()
     {
-        storage.Load<Vector3>(key, data =>
-        {
-            currentPlayer = Instantiate(player, data, Quaternion.identity);
-        });
+        Vector3 data = new Vector3();
+        storage.Load<Vector3>(key, newData => data = newData);
+        currentPlayer = Instantiate(player, data, Quaternion.identity);
     }
 }

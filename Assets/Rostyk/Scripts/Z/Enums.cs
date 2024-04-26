@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace RostykEnums
+﻿namespace RostykEnums
 {
     // Перечисление игровых режимов
     public enum Gamemode
@@ -16,7 +9,7 @@ namespace RostykEnums
         infernum = 3,
     }
 
-    // 
+    // Перечисление режима оружия
     public enum WeaponMode
     {
         Knife = 1,
@@ -24,7 +17,7 @@ namespace RostykEnums
         Grenade = 3,
     }
 
-    // 100% будет
+    // Перечисление оружий ближнего боя
     public enum Knife
     {
         Hand = 0,
@@ -33,7 +26,7 @@ namespace RostykEnums
         Blades = 3
     }
 
-    // 100% будет
+    // Перечисление оружий дальнего боя
     public enum Weapon
     {
         Gun = 0,
@@ -41,7 +34,7 @@ namespace RostykEnums
         Shotgun = 2
     }
 
-    // под вопросом
+    // Перечисление гранат
     public enum Grenade
     {
         Grenade = 0,

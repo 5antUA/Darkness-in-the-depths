@@ -2,6 +2,8 @@
 using System.IO;
 using UnityEngine;
 
+// Класс для сохранения любых данных в файл по пути:
+// (C:\Users\user\AppData\LocalLow\DefaultCompany\Darkness in the depths\ + [KEY])
 public class SavingToFile : IStorageService
 {
     // сохранение данных

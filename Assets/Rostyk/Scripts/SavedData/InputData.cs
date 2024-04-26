@@ -2,6 +2,7 @@
 
 namespace SavedData
 {
+    // Класс для хранения KeyCodes
     [System.Serializable]
     public class InputData
     {

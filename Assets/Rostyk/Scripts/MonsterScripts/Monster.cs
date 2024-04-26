@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-
-// Empty class
+﻿// Empty class
 public class Monster : Character
 {
 
