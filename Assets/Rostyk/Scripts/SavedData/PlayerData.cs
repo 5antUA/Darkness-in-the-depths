@@ -1,4 +1,5 @@
 ﻿using RostykEnums;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SavedData
@@ -9,6 +10,6 @@ namespace SavedData
         public int Health;
         public int Armor;
         public Gamemode Gamemode;
-        public Transform playerTransform;
+        public Vector3 playerTransform;
     }
 }

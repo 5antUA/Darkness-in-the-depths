@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SavedData
 {
-    [Serializable]
+    [System.Serializable]
     public class Player
     {
         public const string KEY = "PlayerKEY";

@@ -33,7 +33,7 @@ public class SaveToFile : IStorageService
         }
     }
 
-    // построение пути загрузки или считки по ключу
+    // построение пути
     private string GetBuildPath(string key)
     {
         return Path.Combine(Application.persistentDataPath, key);

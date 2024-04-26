@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RostykEnums;
-using TMPro; // custom namespace
+using System.IO; // custom namespace
 
 
 // ВЕШАТЬ СКРИПТ НА БАЗОВЫЙ ОБЪЕКТ ИГРОКА
@@ -13,9 +13,11 @@ public class Player : Character
 
 
     #region Player properties
-    // VALUES
-    private const string key = "PlayerKEY";
+    // STORAGE SERVICE
+    private const string key = SavedData.InputData.KEY;    // ключ сохранения управления игроком
+    private SaveToFile storage = new SaveToFile();         // доступ к методам сохранения и загрузки
 
+    // VALUES
     public Gamemode GameMode;                              // игровой режим
     public float CrouchHeight;                             // Высота прыседания
     public float JumpForce;                                // сила прыжка
@@ -41,9 +43,9 @@ public class Player : Character
     #region Management
     private void Start()
     {
-        _controller = this.GetComponent<CharacterController>();
-
         InitPlayerControl();
+
+        _controller = this.GetComponent<CharacterController>();
         isCrouch = false;
         PlayerLight.enabled = false;
         GameMode = Gamemode.survival;
@@ -161,12 +163,21 @@ public class Player : Character
     // Управление
     private void InitPlayerControl()
     {
-        var data = SaveToJson.Load<SavedData.InputData>(SavedData.InputData.KEY);
-
-        SprintButton = data.RunButton;
-        CrouchButton = data.CrouchButton;
-        JumpButton = data.JumpButton;
-        SwitchLightButton = data.FlashlightButton;
+        try
+        {
+            storage.Load<SavedData.InputData>(key, data =>
+            {
+                SprintButton = data.RunButton;
+                CrouchButton = data.CrouchButton;
+                JumpButton = data.JumpButton;
+                SwitchLightButton = data.FlashlightButton;
+            });
+        }
+        catch (FileNotFoundException)
+        {
+            storage.Save(key, new SavedData.InputData());
+            InitPlayerControl();
+        }
     }
     #endregion
 }
