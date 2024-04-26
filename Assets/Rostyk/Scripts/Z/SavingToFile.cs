@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class SaveToFile : IStorageService
+public class SavingToFile : IStorageService
 {
     // сохранение данных
     public void Save(string key, object data, Action<bool> callback = null)

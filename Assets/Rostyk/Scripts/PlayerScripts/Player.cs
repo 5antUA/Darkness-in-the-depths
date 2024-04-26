@@ -13,23 +13,23 @@ public class Player : Character
 
 
     #region Player properties
-    // STORAGE SERVICE
-    private const string key = SavedData.InputData.KEY;    // ключ сохранения управления игроком
-    private SaveToFile storage = new SaveToFile();         // доступ к методам сохранения и загрузки
+    // STORAGE SERVICES
+    private const string key = SavedData.InputData.KEY;         // ключ сохранения InputData
+    private SavingToFile storage = new SavingToFile();          // доступ к методам сохранения и загрузки
 
     // VALUES
-    public Gamemode GameMode;                              // игровой режим
-    public float CrouchHeight;                             // Высота прыседания
-    public float JumpForce;                                // сила прыжка
+    public Gamemode GameMode;                                   // игровой режим
+    public float CrouchHeight;                                  // Высота прыседания
+    public float JumpForce;                                     // сила прыжка
 
-    private bool isSprint;                                 // если бежит
-    private bool isCrouch;                                 // если медленно ходит
-    private float _gravity = -9.81f;                       // ускорение свободного падения g
-    private Vector3 _velocity;                             // направление игрока
+    private bool isSprint;                                      // если бежит
+    private bool isCrouch;                                      // если медленно ходит
+    private float _gravity = -9.81f;                            // ускорение свободного падения g
+    private Vector3 _velocity;                                  // направление игрока
 
     // COMPONENTS
-    [SerializeField] private Camera PlayerCamera;          // Camera игрока
-    [SerializeField] private Light PlayerLight;            // Player flashlight
+    [SerializeField] private Camera PlayerCamera;               // Camera игрока
+    [SerializeField] private Light PlayerLight;                 // Player flashlight
     private CharacterController _controller;
 
     // KEYS CONTROL
