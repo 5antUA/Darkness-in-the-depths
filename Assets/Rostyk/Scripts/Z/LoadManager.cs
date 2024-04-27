@@ -7,7 +7,6 @@ using UnityEngine;
 public class LoadManager : MonoBehaviour
 {
     private const string PlayerDataKey = "PlayerKEY";
-    private SavingToFile storage = new SavingToFile();
 
     private GameObject currentPlayer;
     [SerializeField] private GameObject player;
@@ -49,7 +48,7 @@ public class LoadManager : MonoBehaviour
                 playerRotation = playerProp.transform.rotation
             };
         }
-        storage.Save(PlayerDataKey, data);
+        StorageService.Save(PlayerDataKey, data);
     }
 
     private void LoadGame()
@@ -57,8 +56,7 @@ public class LoadManager : MonoBehaviour
         // пытаемся загрузить данные из файла
         try
         {
-            SavedData.PlayerData data = new SavedData.PlayerData();
-            storage.Load<SavedData.PlayerData>(PlayerDataKey, newData => data = newData);
+            var data = StorageService.Load<SavedData.PlayerData>(PlayerDataKey);
 
             currentPlayer = Instantiate(player, data.playerPosition, data.playerRotation);
             currentPlayer.GetComponent<Player>().Health = data.Health;

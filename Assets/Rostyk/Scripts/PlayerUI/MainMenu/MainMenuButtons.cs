@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-// 
-public class MainMenuManager : MonoBehaviour
+// ВЕШАТЬ НА КАНВАС В ГЛАВНОМ МЕНЮ
+public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject Background;         // второй background в главном меню
     [SerializeField] private GameObject SettingsTab;        // подменю настроек

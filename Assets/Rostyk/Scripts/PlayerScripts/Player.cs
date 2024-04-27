@@ -12,8 +12,7 @@ public class Player : Character
     
     #region Player properties
     // STORAGE SERVICES
-    private string InputDataKey;                                // ключ сохранения InputData
-    private SavingToFile storage;                               // доступ к методам сохранения и загрузки
+    private SavedData.InputData InputData;
 
     // VALUES
     public Gamemode GameMode;                                   // игровой режим
@@ -29,21 +28,14 @@ public class Player : Character
     [SerializeField] private Camera PlayerCamera;               // Camera игрока
     [SerializeField] private Light PlayerLight;                 // Player flashlight
     private CharacterController _controller;
-
-    // KEYS CONTROL
-    private KeyCode SprintButton;
-    private KeyCode CrouchButton;
-    private KeyCode JumpButton;
-    private KeyCode SwitchLightButton;
     #endregion
 
 
     #region Management
     private void Awake()
     {
-        InputDataKey = SavedData.InputData.KEY;
-        storage = new SavingToFile();
-        InitPlayerControl();
+        InputData = new SavedData.InputData();
+        InputData = InputData.Load();
     }
 
     private void Start()
@@ -83,12 +75,12 @@ public class Player : Character
         float moveZ = Input.GetAxis("Vertical");
         Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        if (Input.GetKey(SprintButton) && Input.GetAxis("Vertical") > 0 && !isCrouch)
+        if (Input.GetKey(InputData.RunButton) && Input.GetAxis("Vertical") > 0 && !isCrouch)
         {
             _direction *= SprintSpeed;
             isSprint = true;
         }
-        else if (Input.GetKey(CrouchButton))
+        else if (Input.GetKey(InputData.CrouchButton))
         {
             _direction *= CrouchSpeed;
             isSprint = false;
@@ -106,7 +98,7 @@ public class Player : Character
     // Логика приседания
     private void Crouch()
     {
-        if (Input.GetKey(CrouchButton))
+        if (Input.GetKey(InputData.CrouchButton))
         {
             _controller.height = Mathf.Lerp(_controller.height, CrouchHeight, 6f * Time.deltaTime);
             isCrouch = true;
@@ -123,7 +115,7 @@ public class Player : Character
     {
         if (_controller.isGrounded)
         {
-            _velocity.y = Input.GetKeyDown(JumpButton) ? JumpForce : -0.1f;
+            _velocity.y = Input.GetKeyDown(InputData.JumpButton) ? JumpForce : -0.1f;
         }
         else if (!_controller.isGrounded)
         {
@@ -151,33 +143,13 @@ public class Player : Character
     // Включение или выключение фонарика
     private void SwitchLight()
     {
-        if (Input.GetKeyDown(SwitchLightButton) && PlayerLight.enabled == false)
+        if (Input.GetKeyDown(InputData.SwitchLightButton) && PlayerLight.enabled == false)
         {
             PlayerLight.enabled = true;
         }
-        else if (Input.GetKeyDown(SwitchLightButton) && PlayerLight.enabled == true)
+        else if (Input.GetKeyDown(InputData.SwitchLightButton) && PlayerLight.enabled == true)
         {
             PlayerLight.enabled = false;
-        }
-    }
-
-    // Управление
-    private void InitPlayerControl()
-    {
-        try
-        {
-            storage.Load<SavedData.InputData>(InputDataKey, data =>
-            {
-                SprintButton = data.RunButton;
-                CrouchButton = data.CrouchButton;
-                JumpButton = data.JumpButton;
-                SwitchLightButton = data.FlashlightButton;
-            });
-        }
-        catch (FileNotFoundException)
-        {
-            storage.Save(InputDataKey, new SavedData.InputData());
-            InitPlayerControl();
         }
     }
     #endregion

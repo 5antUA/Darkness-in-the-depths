@@ -2,12 +2,12 @@
 using System.IO;
 using UnityEngine;
 
-// Класс для сохранения любых данных в файл по пути:
+// Класс для сохранения и загрузки любых данных по пути:
 // (C:\Users\user\AppData\LocalLow\DefaultCompany\Darkness in the depths\ + [KEY])
-public class SavingToFile : IStorageService
+public static class StorageService
 {
     // сохранение данных
-    public void Save(string key, object data, Action<bool> callback = null)
+    public static void Save(string key, object data)
     {
         string path = GetBuildPath(key);
         string jsonData = JsonUtility.ToJson(data);
@@ -16,12 +16,10 @@ public class SavingToFile : IStorageService
         {
             fileStream.Write(jsonData);
         }
-
-        callback?.Invoke(true);
     }
 
     // загрузка данных
-    public void Load<T>(string key, Action<T> callback)
+    public static T Load<T>(string key)
     {
         string path = GetBuildPath(key);
         string jsonData;
@@ -31,12 +29,12 @@ public class SavingToFile : IStorageService
             jsonData = fileStream.ReadToEnd();
             var data = JsonUtility.FromJson<T>(jsonData);
 
-            callback.Invoke(data);
+            return data;
         }
     }
 
     // построение пути
-    private string GetBuildPath(string key)
+    private static string GetBuildPath(string key)
     {
         return Path.Combine(Application.persistentDataPath, key);
     }

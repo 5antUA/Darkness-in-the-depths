@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 namespace SavedData
 {
@@ -6,14 +7,14 @@ namespace SavedData
     [System.Serializable]
     public class InputData
     {
-        public const string KEY = "KeyInputData";
+        private const string KEY = "KeyInputData";
 
         public KeyCode CrouchButton;
         public KeyCode RunButton;
         public KeyCode JumpButton;
         public KeyCode InventoryButton;
         public KeyCode InfoButton;
-        public KeyCode FlashlightButton;
+        public KeyCode SwitchLightButton;
 
         public InputData()
         {
@@ -22,7 +23,26 @@ namespace SavedData
             JumpButton = KeyCode.Space;
             InventoryButton = KeyCode.Tab;
             InfoButton = KeyCode.Q;
-            FlashlightButton = KeyCode.F;
+            SwitchLightButton = KeyCode.F;
+        }
+
+        public void Save()
+        {
+            StorageService.Save(KEY, this);
+        }
+
+        public InputData Load()
+        {
+            try
+            {
+                var data = StorageService.Load<InputData>(KEY);
+                return data;
+            }
+            catch (FileNotFoundException)
+            {
+                Save();
+                return this;
+            }
         }
     }
 }
