@@ -9,6 +9,9 @@ public class Tttt : MonoBehaviour
     
     private int c = 123;
 
+    private Player _player;
+    public int BigInt = 100000;
+
     private int GetInt()
     {
         return 5;
