@@ -12,8 +12,8 @@ public class Player : Character
 
     #region Player properties
     // STORAGE SERVICES
-    private const string key = SavedData.InputData.KEY;         // ключ сохранения InputData
-    private SavingToFile storage = new SavingToFile();          // доступ к методам сохранения и загрузки
+    private string InputDataKey;                                // ключ сохранения InputData
+    private SavingToFile storage;                               // доступ к методам сохранения и загрузки
 
     // VALUES
     public Gamemode GameMode;                                   // игровой режим
@@ -39,15 +39,18 @@ public class Player : Character
 
 
     #region Management
+    private void Awake()
+    {
+        InputDataKey = SavedData.InputData.KEY;
+        storage = new SavingToFile();
+        InitPlayerControl();
+    }
+
     private void Start()
     {
-        InitPlayerControl();
-
         _controller = this.GetComponent<CharacterController>();
         isCrouch = false;
         PlayerLight.enabled = false;
-        GameMode = Gamemode.survival;
-
     }
 
     private void Update()
@@ -163,7 +166,7 @@ public class Player : Character
     {
         try
         {
-            storage.Load<SavedData.InputData>(key, data =>
+            storage.Load<SavedData.InputData>(InputDataKey, data =>
             {
                 SprintButton = data.RunButton;
                 CrouchButton = data.CrouchButton;
@@ -173,7 +176,7 @@ public class Player : Character
         }
         catch (FileNotFoundException)
         {
-            storage.Save(key, new SavedData.InputData());
+            storage.Save(InputDataKey, new SavedData.InputData());
             InitPlayerControl();
         }
     }

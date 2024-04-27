@@ -9,10 +9,11 @@ namespace SavedData
     {
         private const string KEY = "PlayerPropertiesData";
 
-        public int Health;
-        public int Armor;
+        public float Health;
+        public float Armor;
         public Gamemode Gamemode;
         public Vector3 playerPosition;
+        public Quaternion playerRotation;
 
         public PlayerData()
         {
@@ -20,6 +21,7 @@ namespace SavedData
             Armor = 0;
             Gamemode = Gamemode.survival;
             playerPosition = new Vector3(-42, 1, 125);
+            playerRotation = Quaternion.identity;
         }
     }
 }

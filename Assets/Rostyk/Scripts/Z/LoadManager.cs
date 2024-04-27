@@ -6,13 +6,11 @@ using UnityEngine;
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ EntryPoint
 public class LoadManager : MonoBehaviour
 {
-    private const string key = "PlayerKEY";
+    private const string PlayerDataKey = "PlayerKEY";
     private SavingToFile storage = new SavingToFile();
 
     private GameObject currentPlayer;
     [SerializeField] private GameObject player;
-    private Vector3 defaultPlayerPosition = new Vector3(-42, 1, 125);
-
     [SerializeField] private GameObject LoadingScreen;
 
 
@@ -20,17 +18,7 @@ public class LoadManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        try
-        {
-            LoadGame();
-        }
-        catch (FileNotFoundException)
-        {
-            Debug.Log("Force save game");
-            SaveGame(true);
-            LoadGame();
-        }
-
+        LoadGame();
         LoadingScreen.SetActive(false);
     }
 
@@ -44,17 +32,45 @@ public class LoadManager : MonoBehaviour
 
     private void SaveGame(bool defaultParameters = false)
     {
-        Vector3 playerPos = defaultParameters ?
-            defaultPlayerPosition :
-            currentPlayer.transform.position;
-
-        storage.Save(key, playerPos);
+        SavedData.PlayerData data;
+        if (defaultParameters)
+        {
+            data = new SavedData.PlayerData();
+        }
+        else
+        {
+            Player playerProp = currentPlayer.GetComponent<Player>();
+            data = new SavedData.PlayerData()
+            {
+                Health = playerProp.Health,
+                Armor = playerProp.Armor,
+                Gamemode = playerProp.GameMode,
+                playerPosition = playerProp.transform.position,
+                playerRotation = playerProp.transform.rotation
+            };
+        }
+        storage.Save(PlayerDataKey, data);
     }
 
     private void LoadGame()
     {
-        Vector3 data = new Vector3();
-        storage.Load<Vector3>(key, newData => data = newData);
-        currentPlayer = Instantiate(player, data, Quaternion.identity);
+        // пытаемся загрузить данные из файла
+        try
+        {
+            SavedData.PlayerData data = new SavedData.PlayerData();
+            storage.Load<SavedData.PlayerData>(PlayerDataKey, newData => data = newData);
+
+            currentPlayer = Instantiate(player, data.playerPosition, data.playerRotation);
+            currentPlayer.GetComponent<Player>().Health = data.Health;
+            currentPlayer.GetComponent<Player>().Armor = data.Armor;
+            currentPlayer.GetComponent<Player>().GameMode = data.Gamemode;
+        }
+        // если файла не существует или не было найдено
+        catch (FileNotFoundException)
+        {
+            Debug.Log("Force save game");
+            SaveGame(true);
+            LoadGame();
+        }
     }
 }
