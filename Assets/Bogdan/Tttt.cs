@@ -11,6 +11,12 @@ public class Tttt : MonoBehaviour
 
     private Player _player;
     public int BigInt = 100000;
+    private int c = 123421;
+    // Start is called before the first frame update
+    void Start()
+    {
+        //fksdjfksld
+    }
 
     private int GetInt()
     {
