@@ -9,7 +9,7 @@ public class Player : Character
     [Header("\t PLAYER SPECIAL")]
     [Space]
 
-
+    
     #region Player properties
     // STORAGE SERVICES
     private string InputDataKey;                                // ключ сохранения InputData
