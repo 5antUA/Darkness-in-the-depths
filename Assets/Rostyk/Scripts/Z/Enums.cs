@@ -43,12 +43,20 @@
     }
 
     // Перечисление вкладок меню
-    public enum Tab
+    public enum TabMenu
     {
         Inventory = 0,
         Notes = 1,
         Map = 2,
         Settings = 3,
         Dev = 4
+    }
+
+    public enum TabMainMenu
+    {
+        Control = 0,
+        Graphics = 1,
+        Language = 2,
+        Secret = 3
     }
 }

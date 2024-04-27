@@ -6,13 +6,13 @@ using RostykEnums; // custom namespace
 public class TabManager : MonoBehaviour
 {
     [SerializeField] private Transform TabsUI;                  // список (массив) объектов UI из вкладки Tabs
-    private Tab MyTab;                                          // выбраная вкладка сейчас
+    private TabMenu MyTab;                                          // выбраная вкладка сейчас
 
 
     private void Start()
     {
         // в начале игры выбрана данная вкладка
-        MyTab = Tab.Dev;
+        MyTab = TabMenu.Dev;
 
         // через цикл деактивируем елементы UI из остальных вкладок
         for (int i = 0; i < TabsUI.childCount; i++)
@@ -29,35 +29,35 @@ public class TabManager : MonoBehaviour
     public void ActiveTabInventory()
     {
         ActiveTab(0);
-        MyTab = Tab.Inventory;
+        MyTab = TabMenu.Inventory;
     }
 
     // Активация вкладки записок (метод нажатия кнопки)
     public void ActiveTabNotes()
     {
         ActiveTab(1);
-        MyTab = Tab.Notes;
+        MyTab = TabMenu.Notes;
     }
 
     // Активация вкладки карты (метод нажатия кнопки)
     public void ActiveTabMap()
     {
         ActiveTab(2);
-        MyTab = Tab.Map;
+        MyTab = TabMenu.Map;
     }
 
     // Активация вкладки настроек (метод нажатия кнопки)
     public void ActiveTabSettings()
     {
         ActiveTab(3);
-        MyTab = Tab.Settings;
+        MyTab = TabMenu.Settings;
     }
 
     // Активация вкладки разработчика (метод нажатия кнопки)
     public void ActiveTabDev()
     {
         ActiveTab(4);
-        MyTab = Tab.Dev;
+        MyTab = TabMenu.Dev;
     }
 
     // Активация вкладки
