@@ -6,6 +6,8 @@ public class Tttt : MonoBehaviour
 {
     private int a = 10;
 
+
+    private int c = 123;
     // Start is called before the first frame update
     void Start()
     {
