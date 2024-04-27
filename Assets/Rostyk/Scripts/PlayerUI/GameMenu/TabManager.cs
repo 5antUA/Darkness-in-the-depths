@@ -6,13 +6,13 @@ using RostykEnums; // custom namespace
 public class TabManager : MonoBehaviour
 {
     [SerializeField] private Transform TabsUI;                  // список (массив) объектов UI из вкладки Tabs
-    private TabMenu MyTab;                                          // выбраная вкладка сейчас
+    private TabMenu MyTab;                                      // выбраная вкладка сейчас
 
 
     private void Start()
     {
         // в начале игры выбрана данная вкладка
-        MyTab = TabMenu.Dev;
+        MyTab = TabMenu.Inventory;
 
         // через цикл деактивируем елементы UI из остальных вкладок
         for (int i = 0; i < TabsUI.childCount; i++)

@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-// ¬≈ÿ¿“‹ Õ¿ SettingsTab/Buttons
+// ¬≈ÿ¿“‹ Õ¿ TabsUI/ControlUI
 public class SettingsControlButtons : MonoBehaviour
 {
     // STORAGE SERVICES
-    SavedData.InputData InputData;
+    InputData InputData;
 
     // OTHER
     [SerializeField] private Text text;

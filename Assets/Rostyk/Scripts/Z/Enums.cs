@@ -52,6 +52,7 @@
         Dev = 4
     }
 
+    // Вкладки настроек в главном меню
     public enum TabMainMenu
     {
         Control = 0,
