@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tttt : MonoBehaviour
 {
-    // Rostyk
+    private int a = 10;
 
     // Start is called before the first frame update
     void Start()
