@@ -6,12 +6,19 @@ using UnityEngine.UI;
 // ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
 public class CanvasManager : MonoBehaviour
 {
+    private SavedData.InputData InputData;
+
     public Text PlayerInfo;                                    // информация об игроке (Text UI)
     public GameObject MenuUI;                                  // MenuUI
     private Player MyPlayer;                                   // скрипт this.Player
     private PlayerDamager PlayerDmgr;                          // скрипт this.PlayerDamager
 
 
+    private void Awake()
+    {
+        InputData = new SavedData.InputData();
+        InputData = InputData.Load();
+    }
     private void Start()
     {
         MyPlayer = GetComponentInParent<Player>();
@@ -30,11 +37,11 @@ public class CanvasManager : MonoBehaviour
     // Скрыть или показать данные об игроке
     private void EnablePlayerInfo()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && PlayerInfo.enabled == true)
+        if (Input.GetKeyDown(InputData.InfoButton) && PlayerInfo.enabled == true)
         {
             PlayerInfo.enabled = false;
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && PlayerInfo.enabled == false)
+        else if (Input.GetKeyDown(InputData.InfoButton) && PlayerInfo.enabled == false)
         {
             if (MenuUI.activeInHierarchy)
             {

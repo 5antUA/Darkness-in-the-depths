@@ -5,13 +5,19 @@ using UnityEngine.UI;
 // ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
 public class MenuManager : MonoBehaviour
 {
+    private SavedData.InputData InputData;
+
     public GameObject MenuUI;                                   // MenuUI
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
     private Text PlayerInfo;                                    // информация об игроке (Text UI)
 
     private bool MenuEnabled { get; set; }                      // свойство, показывающее открыто ли меню
 
-
+    private void Awake()
+    {
+        InputData = new SavedData.InputData();
+        InputData = InputData.Load();
+    }
     private void Start()
     {
         PlayerCamera = GetComponentInParent<PlayerRotation>();
@@ -30,11 +36,11 @@ public class MenuManager : MonoBehaviour
     // Контроль меню
     public void MenuControl()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && MenuEnabled == false)
+        if (Input.GetKeyDown(InputData.InventoryButton) && MenuEnabled == false)
         {
             OpenMenu();
         }
-        else if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape)) && MenuEnabled == true)
+        else if ((Input.GetKeyDown(InputData.InventoryButton) || Input.GetKeyDown(KeyCode.Escape)) && MenuEnabled == true)
         {
             CloseMenu();
         }
