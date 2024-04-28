@@ -37,11 +37,11 @@ public class CanvasManager : MonoBehaviour
     // Скрыть или показать данные об игроке
     private void EnablePlayerInfo()
     {
-        if (Input.GetKeyDown(InputData.InfoButton) && PlayerInfo.enabled == true)
+        if (Input.GetKeyDown(InputData.Info) && PlayerInfo.enabled == true)
         {
             PlayerInfo.enabled = false;
         }
-        else if (Input.GetKeyDown(InputData.InfoButton) && PlayerInfo.enabled == false)
+        else if (Input.GetKeyDown(InputData.Info) && PlayerInfo.enabled == false)
         {
             if (MenuUI.activeInHierarchy)
             {

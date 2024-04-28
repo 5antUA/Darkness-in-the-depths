@@ -75,12 +75,12 @@ public class Player : Character
         float moveZ = Input.GetAxis("Vertical");
         Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        if (Input.GetKey(InputData.RunButton) && Input.GetAxis("Vertical") > 0 && !isCrouch)
+        if (Input.GetKey(InputData.Run) && Input.GetAxis("Vertical") > 0 && !isCrouch)
         {
             _direction *= SprintSpeed;
             isSprint = true;
         }
-        else if (Input.GetKey(InputData.CrouchButton))
+        else if (Input.GetKey(InputData.Crouch))
         {
             _direction *= CrouchSpeed;
             isSprint = false;
@@ -98,7 +98,7 @@ public class Player : Character
     // Логика приседания
     private void Crouch()
     {
-        if (Input.GetKey(InputData.CrouchButton))
+        if (Input.GetKey(InputData.Crouch))
         {
             _controller.height = Mathf.Lerp(_controller.height, CrouchHeight, 6f * Time.deltaTime);
             isCrouch = true;
@@ -115,7 +115,7 @@ public class Player : Character
     {
         if (_controller.isGrounded)
         {
-            _velocity.y = Input.GetKeyDown(InputData.JumpButton) ? JumpForce : -0.1f;
+            _velocity.y = Input.GetKeyDown(InputData.Jump) ? JumpForce : -0.1f;
         }
         else if (!_controller.isGrounded)
         {
@@ -143,11 +143,11 @@ public class Player : Character
     // Включение или выключение фонарика
     private void SwitchLight()
     {
-        if (Input.GetKeyDown(InputData.SwitchLightButton) && PlayerLight.enabled == false)
+        if (Input.GetKeyDown(InputData.SwitchLight) && PlayerLight.enabled == false)
         {
             PlayerLight.enabled = true;
         }
-        else if (Input.GetKeyDown(InputData.SwitchLightButton) && PlayerLight.enabled == true)
+        else if (Input.GetKeyDown(InputData.SwitchLight) && PlayerLight.enabled == true)
         {
             PlayerLight.enabled = false;
         }

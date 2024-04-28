@@ -1,9 +1,7 @@
 using SavedData;
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 // ВЕШАТЬ НА TabsUI/ControlUI
@@ -24,12 +22,13 @@ public class ControlButtons : MonoBehaviour
     }
 
 
+    #region Buttons
     // Смена кнопки для приседания (метод нажатия кнопки)
     public void ChangeCrouchButton()
     {
         void _func()
         {
-            InputData.RunButton = currentKey;
+            InputData.Run = currentKey;
             InputData.Save();
         }
 
@@ -41,7 +40,7 @@ public class ControlButtons : MonoBehaviour
     {
         void _func()
         {
-            InputData.RunButton = currentKey;
+            InputData.Run = currentKey;
             InputData.Save();
         }
 
@@ -53,7 +52,7 @@ public class ControlButtons : MonoBehaviour
     {
         void _func()
         {
-            InputData.JumpButton = currentKey;
+            InputData.Jump = currentKey;
             InputData.Save();
         }
 
@@ -65,7 +64,7 @@ public class ControlButtons : MonoBehaviour
     {
         void _func()
         {
-            InputData.InventoryButton = currentKey;
+            InputData.Inventory = currentKey;
             InputData.Save();
         }
 
@@ -77,7 +76,7 @@ public class ControlButtons : MonoBehaviour
     {
         void _func()
         {
-            InputData.InfoButton = currentKey;
+            InputData.Info = currentKey;
             InputData.Save();
         }
 
@@ -89,7 +88,31 @@ public class ControlButtons : MonoBehaviour
     {
         void _func()
         {
-            InputData.SwitchLightButton = currentKey;
+            InputData.SwitchLight = currentKey;
+            InputData.Save();
+        }
+
+        StartCoroutine(ReadInput(_func));
+    }
+
+    // Смена кнопки для стрельбы (метод нажатия кнопки)
+    public void ChangeShootButton()
+    {
+        void _func()
+        {
+            InputData.Shoot = currentKey;
+            InputData.Save();
+        }
+
+        StartCoroutine(ReadInput(_func));
+    }
+
+    // Смена кнопки взаимодействия (метод нажатия кнопки)
+    public void ChangeInteractButton()
+    {
+        void _func()
+        {
+            InputData.Interact = currentKey;
             InputData.Save();
         }
 
@@ -102,6 +125,7 @@ public class ControlButtons : MonoBehaviour
         InputData = new InputData();
         InputData.Save();
     }
+    #endregion
 
 
     // Корутина. Работает, пока не нажмется кнопка в меню настроек управления

@@ -36,11 +36,11 @@ public class MenuManager : MonoBehaviour
     // Контроль меню
     public void MenuControl()
     {
-        if (Input.GetKeyDown(InputData.InventoryButton) && MenuEnabled == false)
+        if (Input.GetKeyDown(InputData.Inventory) && MenuEnabled == false)
         {
             OpenMenu();
         }
-        else if ((Input.GetKeyDown(InputData.InventoryButton) || Input.GetKeyDown(KeyCode.Escape)) && MenuEnabled == true)
+        else if ((Input.GetKeyDown(InputData.Inventory) || Input.GetKeyDown(KeyCode.Escape)) && MenuEnabled == true)
         {
             CloseMenu();
         }

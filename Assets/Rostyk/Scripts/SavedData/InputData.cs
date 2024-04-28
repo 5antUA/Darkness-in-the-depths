@@ -9,21 +9,25 @@ namespace SavedData
     {
         private const string KEY = "KeyInputData";
 
-        public KeyCode CrouchButton;
-        public KeyCode RunButton;
-        public KeyCode JumpButton;
-        public KeyCode InventoryButton;
-        public KeyCode InfoButton;
-        public KeyCode SwitchLightButton;
+        public KeyCode Crouch;              // клавиша приседания
+        public KeyCode Run;                 // клавиша бега
+        public KeyCode Jump;                // клавиша прыжка
+        public KeyCode Inventory;           // клавиша инвентаря
+        public KeyCode Info;                // клавиша UI
+        public KeyCode SwitchLight;         // клавиша фонарика
+        public KeyCode Shoot;               // клавиша стрельбы
+        public KeyCode Interact;            // клавиша взаимодействия
 
         public InputData()
         {
-            CrouchButton = KeyCode.LeftShift;
-            RunButton = KeyCode.LeftControl;
-            JumpButton = KeyCode.Space;
-            InventoryButton = KeyCode.Tab;
-            InfoButton = KeyCode.Q;
-            SwitchLightButton = KeyCode.F;
+            Crouch = KeyCode.LeftShift;
+            Run = KeyCode.LeftControl;
+            Jump = KeyCode.Space;
+            Inventory = KeyCode.Tab;
+            Info = KeyCode.Q;
+            SwitchLight = KeyCode.F;
+            Shoot = KeyCode.Mouse0;
+            Interact = KeyCode.Mouse1;
         }
 
         public void Save()
