@@ -9,7 +9,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private GameObject Background;         // второй background в главном меню
     [SerializeField] private GameObject SettingsTab;        // подменю настроек
     [SerializeField] private GameObject DevelopersTab;      // подменю со списком разработчиков игры
-
+    [SerializeField] private Texture2D CursorSprite;
 
     private void Start()
     {

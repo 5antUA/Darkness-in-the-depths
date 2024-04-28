@@ -63,7 +63,7 @@ public class LoadManager : MonoBehaviour
             currentPlayer.GetComponent<Player>().Armor = data.Armor;
             currentPlayer.GetComponent<Player>().GameMode = data.Gamemode;
         }
-        // если файла не существует или не было найдено
+        // если файла не существует или не было найдено, то записываем данные по умолчанию
         catch (FileNotFoundException)
         {
             Debug.Log("Force save game");
