@@ -8,8 +8,8 @@ public class LoadManager : MonoBehaviour
 {
     private SavedData.PlayerData PlayerData;
 
-    private GameObject currentPlayer;
-    [SerializeField] private GameObject player;
+    private GameObject NewPlayer;
+    [SerializeField] private GameObject PrefabPlayer;
     [SerializeField] private GameObject LoadingScreen;
 
 
@@ -33,7 +33,7 @@ public class LoadManager : MonoBehaviour
 
     private void SaveGame()
     {
-        Player player = currentPlayer.GetComponent<Player>();
+        Player player = NewPlayer.GetComponent<Player>();
 
         PlayerData = new SavedData.PlayerData()
         {
@@ -49,6 +49,6 @@ public class LoadManager : MonoBehaviour
 
     private void LoadGame()
     {
-        currentPlayer = Instantiate(player, PlayerData.position, PlayerData.rotation);
+        NewPlayer = Instantiate(PrefabPlayer, PlayerData.position, PlayerData.rotation);
     }
 }

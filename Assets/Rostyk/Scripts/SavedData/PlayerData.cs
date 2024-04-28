@@ -25,6 +25,8 @@ namespace SavedData
             rotation = Quaternion.identity;
         }
 
+
+        #region Management
         public void Save()
         {
             StorageService.Save(KEY, this);
@@ -43,5 +45,6 @@ namespace SavedData
                 return this;
             }
         }
+        #endregion
     }
 }
