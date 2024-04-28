@@ -21,7 +21,7 @@ namespace SavedData
             Health = 100;
             Armor = 0;
             Gamemode = Gamemode.survival;
-            position = new Vector3(-42, 1, 125);
+            position = new Vector3();
             rotation = Quaternion.identity;
         }
 
