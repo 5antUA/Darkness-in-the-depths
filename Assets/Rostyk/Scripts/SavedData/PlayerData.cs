@@ -1,4 +1,5 @@
 ﻿using RostykEnums;
+using System.IO;
 using UnityEngine;
 
 namespace SavedData
@@ -12,16 +13,35 @@ namespace SavedData
         public float Health;
         public float Armor;
         public Gamemode Gamemode;
-        public Vector3 playerPosition;
-        public Quaternion playerRotation;
+        public Vector3 position;
+        public Quaternion rotation;
 
         public PlayerData()
         {
             Health = 100;
             Armor = 0;
             Gamemode = Gamemode.survival;
-            playerPosition = new Vector3(-42, 1, 125);
-            playerRotation = Quaternion.identity;
+            position = new Vector3(-42, 1, 125);
+            rotation = Quaternion.identity;
+        }
+
+        public void Save()
+        {
+            StorageService.Save(KEY, this);
+        }
+
+        public PlayerData Load()
+        {
+            try
+            {
+                var newData = StorageService.Load<PlayerData>(KEY);
+                return newData;
+            }
+            catch (FileNotFoundException)
+            {
+                Save();
+                return this;
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ EntryPoint
 public class LoadManager : MonoBehaviour
 {
-    private const string PlayerDataKey = "PlayerKEY";
+    private SavedData.PlayerData PlayerData;
 
     private GameObject currentPlayer;
     [SerializeField] private GameObject player;
@@ -15,6 +15,8 @@ public class LoadManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        PlayerData = new SavedData.PlayerData();
+        PlayerData = PlayerData.Load();
         yield return new WaitForSeconds(1f);
 
         LoadGame();
@@ -29,46 +31,24 @@ public class LoadManager : MonoBehaviour
         }
     }
 
-    private void SaveGame(bool defaultParameters = false)
+    private void SaveGame()
     {
-        SavedData.PlayerData data;
-        if (defaultParameters)
+        Player player = currentPlayer.GetComponent<Player>();
+
+        PlayerData = new SavedData.PlayerData()
         {
-            data = new SavedData.PlayerData();
-        }
-        else
-        {
-            Player playerProp = currentPlayer.GetComponent<Player>();
-            data = new SavedData.PlayerData()
-            {
-                Health = playerProp.Health,
-                Armor = playerProp.Armor,
-                Gamemode = playerProp.GameMode,
-                playerPosition = playerProp.transform.position,
-                playerRotation = playerProp.transform.rotation
-            };
-        }
-        StorageService.Save(PlayerDataKey, data);
+            Health = player.Health,
+            Armor = player.Armor,
+            Gamemode = player.GameMode,
+            position = player.transform.position,
+            rotation = player.transform.rotation
+        };
+
+        PlayerData.Save();
     }
 
     private void LoadGame()
     {
-        // пытаемся загрузить данные из файла
-        try
-        {
-            var data = StorageService.Load<SavedData.PlayerData>(PlayerDataKey);
-
-            currentPlayer = Instantiate(player, data.playerPosition, data.playerRotation);
-            currentPlayer.GetComponent<Player>().Health = data.Health;
-            currentPlayer.GetComponent<Player>().Armor = data.Armor;
-            currentPlayer.GetComponent<Player>().GameMode = data.Gamemode;
-        }
-        // если файла не существует или не было найдено, то записываем данные по умолчанию
-        catch (FileNotFoundException)
-        {
-            Debug.Log("Force save game");
-            SaveGame(true);
-            LoadGame();
-        }
+        currentPlayer = Instantiate(player, PlayerData.position, PlayerData.rotation);
     }
 }
