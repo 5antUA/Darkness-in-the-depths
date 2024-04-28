@@ -25,42 +25,42 @@ public class TabManager : MonoBehaviour
     }
 
 
-    // Активация вкладки инвентаря (метод нажатия кнопки)
+    // Открытие вкладки инвентаря (метод нажатия кнопки)
     public void ActiveTabInventory()
     {
         ActiveTab(0);
         MyTab = TabMenu.Inventory;
     }
 
-    // Активация вкладки записок (метод нажатия кнопки)
+    // Открытие вкладки записок (метод нажатия кнопки)
     public void ActiveTabNotes()
     {
         ActiveTab(1);
         MyTab = TabMenu.Notes;
     }
 
-    // Активация вкладки карты (метод нажатия кнопки)
+    // Открытие вкладки карты (метод нажатия кнопки)
     public void ActiveTabMap()
     {
         ActiveTab(2);
         MyTab = TabMenu.Map;
     }
 
-    // Активация вкладки настроек (метод нажатия кнопки)
+    // Открытие вкладки настроек (метод нажатия кнопки)
     public void ActiveTabSettings()
     {
         ActiveTab(3);
         MyTab = TabMenu.Settings;
     }
 
-    // Активация вкладки разработчика (метод нажатия кнопки)
+    // Открытие вкладки разработчика (метод нажатия кнопки)
     public void ActiveTabDev()
     {
         ActiveTab(4);
         MyTab = TabMenu.Dev;
     }
 
-    // Активация вкладки
+    // Открытие вкладки (общий метод)
     private void ActiveTab(int index)
     {
         TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);

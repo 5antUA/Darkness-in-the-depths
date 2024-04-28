@@ -5,7 +5,7 @@ using RostykEnums;
 // ВЕШАТЬ НА SettingsButtons
 public class SettingsButtons : MonoBehaviour
 {
-    [SerializeField] private Transform TabsUI;
+    [SerializeField] private Transform TabsUI;          // список (массив) объектов UI
     [SerializeField] private Secret SecretScript;       // получать с лого игры
     private TabMainMenu MyTab;
 
@@ -24,21 +24,21 @@ public class SettingsButtons : MonoBehaviour
     }
 
 
-    // 
+    // Открытие меню настроек управления (метод нажатия кнопки)
     public void OpenControlTab()
     {
         ActiveTab(0);
         MyTab = TabMainMenu.Control;
     }
 
-    // 
+    // Открытие меню настроек графики (метод нажатия кнопки)
     public void OpenGraphicsTab()
     {
         ActiveTab(1);
         MyTab = TabMainMenu.Graphics;
     }
 
-    // 
+    // Открытие меню смены языка (метод нажатия кнопки)
     public void OpenLanguageTab()
     {
         ActiveTab(2);
@@ -55,7 +55,7 @@ public class SettingsButtons : MonoBehaviour
         }
     }
 
-    // Активация вкладки
+    // Активация меню (общий метод)
     private void ActiveTab(int index)
     {
         TabsUI.GetChild((int)MyTab).gameObject.SetActive(false);

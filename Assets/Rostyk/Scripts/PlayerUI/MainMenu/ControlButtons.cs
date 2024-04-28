@@ -13,9 +13,9 @@ public class ControlButtons : MonoBehaviour
     InputData InputData;
 
     // OTHER
-    private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
-    private delegate void LocalFunction();
-    private KeyCode currentKey;
+    private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));      // Масив всех KeyCode
+    private delegate void LocalFunction();                                  // общий делегат
+    private KeyCode currentKey;                                             // шаблонная кнопка
 
     private void Start()
     {
@@ -23,7 +23,8 @@ public class ControlButtons : MonoBehaviour
         InputData = InputData.Load();
     }
 
-    // 
+
+    // Смена кнопки для приседания (метод нажатия кнопки)
     public void ChangeCrouchButton()
     {
         void _func()
@@ -35,7 +36,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // 
+    // Смена кнопки для бега (метод нажатия кнопки)
     public void ChangeRunButton()
     {
         void _func()
@@ -47,7 +48,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // 
+    // Смена кнопки для прыжков (метод нажатия кнопки)
     public void ChangeJumpButton()
     {
         void _func()
@@ -59,7 +60,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // 
+    // Смена кнопки для открытия инвентаря (метод нажатия кнопки)
     public void ChangeInventoryButton()
     {
         void _func()
@@ -71,7 +72,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // 
+    // Смена кнопки для скрытия UI (метод нажатия кнопки)
     public void ChangeInfoButton()
     {
         void _func()
@@ -83,7 +84,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // 
+    // Смена кнопки для фонарика (метод нажатия кнопки)
     public void ChangeSwitchButton()
     {
         void _func()
@@ -95,14 +96,15 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    //
+    // Сброс данных InputData (метод нажатия кнопки)
     public void ToDefaultSettingsButton()
     {
         InputData = new InputData();
         InputData.Save();
     }
 
-    // 
+
+    // Корутина. Работает, пока не нажмется кнопка в меню настроек управления
     private IEnumerator ReadInput(LocalFunction function)
     {
         while (true)
