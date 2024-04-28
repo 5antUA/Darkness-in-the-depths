@@ -8,7 +8,7 @@ namespace SavedData
     [System.Serializable]
     public class PlayerData
     {
-        private const string KEY = "PlayerPropertiesData";
+        private const string KEY = "PlayerData";
 
         public float Health;
         public float Armor;

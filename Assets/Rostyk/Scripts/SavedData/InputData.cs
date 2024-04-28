@@ -7,7 +7,7 @@ namespace SavedData
     [System.Serializable]
     public class InputData
     {
-        private const string KEY = "KeyInputData";
+        private const string KEY = "InputData";
 
         public KeyCode Crouch;              // клавиша приседания
         public KeyCode Run;                 // клавиша бега
