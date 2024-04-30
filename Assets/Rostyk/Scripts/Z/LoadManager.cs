@@ -11,12 +11,14 @@ public class LoadManager : MonoBehaviour
     private GameObject NewPlayer;
     [SerializeField] private GameObject PrefabPlayer;
     [SerializeField] private GameObject LoadingScreen;
+    [SerializeField] private Vector3 DefaultPlayerPos;
 
 
     private IEnumerator Start()
     {
-        PlayerData = new SavedData.PlayerData();
+        PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
         PlayerData = PlayerData.Load();
+
         yield return new WaitForSeconds(1f);
 
         LoadGame();

@@ -16,12 +16,12 @@ namespace SavedData
         public Vector3 position;
         public Quaternion rotation;
 
-        public PlayerData()
+        public PlayerData(Vector3 DefaultPos = new())
         {
             Health = 100;
             Armor = 0;
             Gamemode = Gamemode.survival;
-            position = new Vector3();
+            position = DefaultPos;
             rotation = Quaternion.identity;
         }
 

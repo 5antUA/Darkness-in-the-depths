@@ -595,7 +595,7 @@ Transform:
   m_GameObject: {fileID: 1259819506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.15, y: 1.8, z: 114.14}
+  m_LocalPosition: {x: -38.15, y: 1.8, z: 114.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1045,13 +1045,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1626062014967000494, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+      propertyPath: DefaultPlayerPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626062014967000494, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+      propertyPath: DefaultPlayerPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626062014967000494, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+      propertyPath: DefaultPlayerPos.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841329760719962567, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 6811966195364087445}
+    - target: {fileID: 1841329760719962567, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2630126070209897007, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_Name
       value: EntryPoint
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.201134
+      value: 27.9
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1094,6 +1114,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+--- !u!20 &6811966195364087445 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1597437975398880962, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+  m_PrefabInstance: {fileID: 6811966195364087444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
