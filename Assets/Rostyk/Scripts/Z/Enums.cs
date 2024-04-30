@@ -51,13 +51,4 @@
         Settings = 3,
         Dev = 4
     }
-
-    // Вкладки настроек в главном меню
-    public enum TabMainMenu
-    {
-        Control = 0,
-        Graphics = 1,
-        Language = 2,
-        Secret = 3
-    }
 }

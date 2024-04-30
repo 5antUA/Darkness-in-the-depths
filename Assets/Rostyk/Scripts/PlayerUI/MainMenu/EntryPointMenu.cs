@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class EntryPoint : MonoBehaviour
+public class EntryPointMenu : MonoBehaviour
 {
     [SerializeField] private GameObject MainUI;
     [SerializeField] private GameObject SettingsUI;

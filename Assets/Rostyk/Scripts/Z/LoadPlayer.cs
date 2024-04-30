@@ -1,10 +1,9 @@
 using System.Collections;
-using System.IO;
 using UnityEngine;
 
 
 // беьюрэ яйпхор мю назейр EntryPoint
-public class LoadManager : MonoBehaviour
+public class LoadPlayer : MonoBehaviour
 {
     private SavedData.PlayerData PlayerData;
 
