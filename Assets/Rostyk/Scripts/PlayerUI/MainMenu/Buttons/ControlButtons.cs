@@ -2,33 +2,37 @@ using SavedData;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 // ВЕШАТЬ НА TabsUI/ControlUI
 public class ControlButtons : MonoBehaviour
 {
     // STORAGE SERVICES
-    InputData InputData;
+    protected InputData InputData;
 
     // OTHER
-    private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));      // Масив всех KeyCode
-    private delegate void LocalFunction();                                  // общий делегат
-    private KeyCode currentKey;                                             // шаблонная кнопка
+    [SerializeField] private Text[] buttons;
+    protected readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));      // Масив всех KeyCode
+    protected delegate void LocalFunction();                                  // общий делегат
+    protected KeyCode currentKey;                                             // шаблонная кнопка
 
     private void Start()
     {
         InputData = new InputData();
         InputData = InputData.Load();
+
+        InitButtonsInfo();
     }
 
 
     #region Buttons
     // Смена кнопки для приседания (метод нажатия кнопки)
-    public void ChangeCrouchButton()
+    public void ChangeCrouch()
     {
         void _func()
         {
-            InputData.Run = currentKey;
+            InputData.Crouch = currentKey;
             InputData.Save();
         }
 
@@ -36,7 +40,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки для бега (метод нажатия кнопки)
-    public void ChangeRunButton()
+    public void ChangeRun()
     {
         void _func()
         {
@@ -48,7 +52,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки для прыжков (метод нажатия кнопки)
-    public void ChangeJumpButton()
+    public void ChangeJump()
     {
         void _func()
         {
@@ -60,7 +64,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки для открытия инвентаря (метод нажатия кнопки)
-    public void ChangeInventoryButton()
+    public void ChangeInventory()
     {
         void _func()
         {
@@ -72,7 +76,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки для скрытия UI (метод нажатия кнопки)
-    public void ChangeInfoButton()
+    public void ChangeInfo()
     {
         void _func()
         {
@@ -84,7 +88,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки для фонарика (метод нажатия кнопки)
-    public void ChangeSwitchButton()
+    public void ChangeSwitch()
     {
         void _func()
         {
@@ -96,7 +100,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки для стрельбы (метод нажатия кнопки)
-    public void ChangeShootButton()
+    public void ChangeShoot()
     {
         void _func()
         {
@@ -108,7 +112,7 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Смена кнопки взаимодействия (метод нажатия кнопки)
-    public void ChangeInteractButton()
+    public void ChangeInteract()
     {
         void _func()
         {
@@ -120,16 +124,19 @@ public class ControlButtons : MonoBehaviour
     }
 
     // Сброс данных InputData (метод нажатия кнопки)
-    public void ToDefaultSettingsButton()
+    public void ResetSettings()
     {
         InputData = new InputData();
         InputData.Save();
+
+        InitButtonsInfo();
     }
     #endregion
 
 
+    #region Services
     // Корутина. Работает, пока не нажмется кнопка в меню настроек управления
-    private IEnumerator ReadInput(LocalFunction function)
+    protected IEnumerator ReadInput(LocalFunction function)
     {
         while (true)
         {
@@ -143,10 +150,25 @@ public class ControlButtons : MonoBehaviour
                     {
                         currentKey = newKey;
                         function();
+                        InitButtonsInfo();
+
                         yield break;
                     }
                 }
             }
         }
     }
+
+    private void InitButtonsInfo()
+    {
+        buttons[0].text = InputData.Crouch.ToString();
+        buttons[1].text = InputData.Run.ToString();
+        buttons[2].text = InputData.Jump.ToString();
+        buttons[3].text = InputData.Inventory.ToString();
+        buttons[4].text = InputData.Info.ToString();
+        buttons[5].text = InputData.SwitchLight.ToString();
+        buttons[6].text = InputData.Shoot.ToString();
+        buttons[7].text = InputData.Interact.ToString();
+    }
+    #endregion
 }
