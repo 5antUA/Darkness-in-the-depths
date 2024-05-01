@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PointerClick : MonoBehaviour
 {
-    [SerializeField] private AudioSource myFX;
-    [SerializeField] private AudioClip myClip;
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioClip _AudioClip;
 
-    public void OnPointerClick()
+    public void AudioPlay()
     {
-        myFX.PlayOneShot(myClip);
+        _AudioSource.PlayOneShot(_AudioClip);
     }
 }
