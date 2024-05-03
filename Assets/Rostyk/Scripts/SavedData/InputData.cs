@@ -17,6 +17,7 @@ namespace SavedData
         public KeyCode SwitchLight;         // клавиша фонарика
         public KeyCode Shoot;               // клавиша стрельбы
         public KeyCode Interact;            // клавиша взаимодействия
+        public KeyCode Reload;              // клавиша перезарядки
 
         public InputData()
         {
@@ -28,6 +29,7 @@ namespace SavedData
             SwitchLight = KeyCode.F;
             Shoot = KeyCode.Mouse0;
             Interact = KeyCode.Mouse1;
+            Reload = KeyCode.R;
         }
 
 

@@ -123,6 +123,18 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
+    // Смена кнопки для скрытия UI (метод нажатия кнопки)
+    public void ChangeReload()
+    {
+        void _func()
+        {
+            InputData.Reload = currentKey;
+            InputData.Save();
+        }
+
+        StartCoroutine(ReadInput(_func));
+    }
+
     // Сброс данных InputData (метод нажатия кнопки)
     public void ResetSettings()
     {
@@ -169,6 +181,7 @@ public class ControlButtons : MonoBehaviour
         buttons[5].text = InputData.SwitchLight.ToString();
         buttons[6].text = InputData.Shoot.ToString();
         buttons[7].text = InputData.Interact.ToString();
+        buttons[8].text = InputData.Reload.ToString();
     }
     #endregion
 }

@@ -13,13 +13,16 @@ public class LoadPlayer : MonoBehaviour
     [SerializeField] private Vector3 DefaultPlayerPos;
 
 
+    // Асинхронный метод старт для загрузки данных на сцене
     private IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f);
+
+        // init player data
         PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
         PlayerData = PlayerData.Load();
 
-        yield return new WaitForSeconds(1f);
-
+        // disable loading screen
         LoadGame();
         LoadingScreen.SetActive(false);
     }

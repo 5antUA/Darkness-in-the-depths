@@ -52,7 +52,7 @@ public class PlayerDamager : MonoBehaviour
             enemy.TakeDamage(PlayerDamage);
             Debug.Log(PlayerDamage);
 
-            if (enemy.isDead)
+            if (enemy.IsDead)
             {
                 Destroy(enemy.gameObject);
             }

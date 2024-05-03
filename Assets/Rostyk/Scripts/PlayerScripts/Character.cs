@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 
 // ОБЩИЙ КЛАСС
@@ -15,7 +16,7 @@ public class Character : MonoBehaviour
     public float Damage;                                       // количество урона
     public float Armor;                                        // количество брони
 
-    public bool isDead => Health <= 0;                         // если умер
+    public bool IsDead => Health <= 0;                         // если умер
 
     // Функция для получения урона
     public void TakeDamage(float damage)
