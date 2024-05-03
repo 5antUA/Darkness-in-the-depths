@@ -104,7 +104,7 @@ public class Player : Character
         }
         else
         {
-            _controller.height = 1.8f;
+            _controller.height = 1.6f;
             isCrouch = false;
         }
     }
