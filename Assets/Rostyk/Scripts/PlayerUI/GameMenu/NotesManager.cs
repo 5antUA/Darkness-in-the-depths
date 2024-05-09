@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NotesManager : MonoBehaviour
 {
-    [SerializeField] private Transform Tabs;
     private SavedData.NotesData NotesData;
+
+    [SerializeField] private Transform Notes;
+    [SerializeField] private Transform Titles;
+
 
     private void Start()
     {
@@ -18,14 +19,19 @@ public class NotesManager : MonoBehaviour
 
     private void DeactivateTabs()
     {
-        for (int i = 0; i < Tabs.childCount; i++)
+        for (int i = 0; i < Notes.childCount; i++)
         {
-            Tabs.GetChild(i).GetComponent<Text>().text =
+            Notes.GetChild(i).GetComponent<Text>().text =
                 NotesData.isActivated[i] ?
                 NotesData.Notes[i] :
                 "? ? ?";
 
-            Tabs.GetChild(i).gameObject.SetActive(false);
+            Titles.GetChild(i).GetComponent<Text>().text =
+                NotesData.isActivated[i] ?
+                NotesData.Titles[i] :
+                "? ? ?";
+
+            Notes.GetChild(i).gameObject.SetActive(false);
         }
     }
 }

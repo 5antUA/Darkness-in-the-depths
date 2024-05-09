@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class NotesButtons : MonoBehaviour
 {
-    [SerializeField] private GameObject Tab;
-    [SerializeField] private Transform Tabs;
+    [SerializeField] private GameObject SelfNote;
+    [SerializeField] private Transform AllNotes;
 
     public void AcrivateButton()
     {
         DeactivateTabs();
-        Tab.SetActive(true);
+        SelfNote.SetActive(true);
     }
 
     private void DeactivateTabs()
     {
-        for (int i = 0; i < Tabs.childCount; i++)
+        for (int i = 0; i < AllNotes.childCount; i++)
         {
-            Tabs.GetChild(i).gameObject.SetActive(false);
+            AllNotes.GetChild(i).gameObject.SetActive(false);
         }
     }
 }

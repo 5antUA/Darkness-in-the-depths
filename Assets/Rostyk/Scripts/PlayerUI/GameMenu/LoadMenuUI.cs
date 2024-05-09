@@ -5,7 +5,7 @@ using UnityEngine;
 // Загрузчик MenuUI
 public class LoadMenuUI : MonoBehaviour
 {
-    [SerializeField] private Transform TabsUI;                  // список (массив) объектов UI из вкладки Tabs
+    [SerializeField] private Transform TabsUI;                  // список (массив) объектов UI из вкладки AllTabs
     private TabMenu MyTab;                                      // выбраная вкладка сейчас
 
 

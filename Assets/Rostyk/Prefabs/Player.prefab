@@ -303,7 +303,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -325,9 +325,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3673233656046554064}
   - component: {fileID: 5467108089393314235}
+  - component: {fileID: 1213831013141986211}
   - component: {fileID: 2153576845628044892}
   - component: {fileID: 1425541183983683524}
-  - component: {fileID: 5983646488737125024}
   m_Layer: 0
   m_Name: Buttons3
   m_TagString: Untagged
@@ -362,6 +362,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141006828580400881}
   m_CullTransparentMesh: 1
+--- !u!114 &1213831013141986211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141006828580400881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 2232087584948036457}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &2153576845628044892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,10 +397,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -406,7 +420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5983646488737125024}
+      - m_Target: {fileID: 1213831013141986211}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -452,20 +466,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &5983646488737125024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141006828580400881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 2232087584948036457}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &211433001579616849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1781,7 +1781,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2014,7 +2014,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2165,7 +2165,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2386,9 +2386,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8934308071535620339}
   - component: {fileID: 668300814453344641}
+  - component: {fileID: 6527713354149517013}
   - component: {fileID: 6609307957993281469}
   - component: {fileID: 5505412443297246206}
-  - component: {fileID: 5650970885667177719}
   m_Layer: 0
   m_Name: Buttons0
   m_TagString: Untagged
@@ -2423,6 +2423,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2601127035411894138}
   m_CullTransparentMesh: 1
+--- !u!114 &6527713354149517013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601127035411894138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 3937289063577333657}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &6609307957993281469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2444,10 +2458,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2467,7 +2481,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5650970885667177719}
+      - m_Target: {fileID: 6527713354149517013}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -2513,20 +2527,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &5650970885667177719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2601127035411894138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 3937289063577333657}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &2776912263939113660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,7 +2742,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2914,7 +2914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748291037536903421}
-  - component: {fileID: 6858659448985661831}
+  - component: {fileID: 3884489656448290682}
   m_Layer: 0
   m_Name: NotesButtons
   m_TagString: Untagged
@@ -2949,7 +2949,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6858659448985661831
+--- !u!114 &3884489656448290682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2961,7 +2961,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfff24251b3dfaf4387a6df47ab7a7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tabs: {fileID: 7522823783200399145}
+  Notes: {fileID: 7522823783200399145}
+  Titles: {fileID: 748291037536903421}
 --- !u!1 &3234287723221143041
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,9 +3016,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5766287070198896730}
   - component: {fileID: 1095756435952782098}
+  - component: {fileID: 3679251765376892425}
   - component: {fileID: 4221664595882439253}
   - component: {fileID: 1023319581348617651}
-  - component: {fileID: 8663727390454797888}
   m_Layer: 0
   m_Name: Buttons6
   m_TagString: Untagged
@@ -3052,6 +3053,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3257743099300691012}
   m_CullTransparentMesh: 1
+--- !u!114 &3679251765376892425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257743099300691012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 2348243238307493838}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &4221664595882439253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,10 +3088,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3096,7 +3111,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8663727390454797888}
+      - m_Target: {fileID: 3679251765376892425}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -3142,20 +3157,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &8663727390454797888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3257743099300691012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 2348243238307493838}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &3415592330160347201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,7 +3444,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3916,9 +3917,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2765146406198249148}
   - component: {fileID: 4180445839491170980}
+  - component: {fileID: 316227100505924223}
   - component: {fileID: 5302479897185459767}
   - component: {fileID: 5309655696215023754}
-  - component: {fileID: 695374703933935825}
   m_Layer: 0
   m_Name: Buttons7
   m_TagString: Untagged
@@ -3953,6 +3954,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4687908477493043522}
   m_CullTransparentMesh: 1
+--- !u!114 &316227100505924223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687908477493043522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 2855321966591228096}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &5302479897185459767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3974,10 +3989,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3997,7 +4012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 695374703933935825}
+      - m_Target: {fileID: 316227100505924223}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -4043,20 +4058,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &695374703933935825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687908477493043522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 2855321966591228096}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &4806233640553003952
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,7 +4125,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 22
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -4457,7 +4458,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -4512,9 +4513,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2795715321289627485}
   - component: {fileID: 3311922031546948048}
+  - component: {fileID: 6090657473146665352}
   - component: {fileID: 1382276441266575134}
   - component: {fileID: 1729472869522957152}
-  - component: {fileID: 6377065686592284528}
   m_Layer: 0
   m_Name: Buttons2
   m_TagString: Untagged
@@ -4549,6 +4550,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5452605700820845407}
   m_CullTransparentMesh: 1
+--- !u!114 &6090657473146665352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452605700820845407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 110886646925062796}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &1382276441266575134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4570,10 +4585,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4593,7 +4608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6377065686592284528}
+      - m_Target: {fileID: 6090657473146665352}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -4639,20 +4654,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &6377065686592284528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5452605700820845407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 110886646925062796}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &5479462320884688409
 GameObject:
   m_ObjectHideFlags: 0
@@ -5679,9 +5680,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1019672196001165524}
   - component: {fileID: 1368527336315871668}
+  - component: {fileID: 325791646328727664}
   - component: {fileID: 2939501058401638974}
   - component: {fileID: 1119169949625277991}
-  - component: {fileID: 4436047539732429063}
   m_Layer: 0
   m_Name: Buttons1
   m_TagString: Untagged
@@ -5716,6 +5717,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6651655066439614145}
   m_CullTransparentMesh: 1
+--- !u!114 &325791646328727664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651655066439614145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 4806233640553003952}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &2939501058401638974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,10 +5752,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5760,7 +5775,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4436047539732429063}
+      - m_Target: {fileID: 325791646328727664}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -5806,20 +5821,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &4436047539732429063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6651655066439614145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 4806233640553003952}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &6689362665969325309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6411,9 +6412,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5557377133095439566}
   - component: {fileID: 6015987551273698326}
+  - component: {fileID: 8479045138507979237}
   - component: {fileID: 8490374326717157951}
   - component: {fileID: 7021743817568624896}
-  - component: {fileID: 8787576485459249128}
   m_Layer: 0
   m_Name: Buttons4
   m_TagString: Untagged
@@ -6448,6 +6449,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7618663592838163921}
   m_CullTransparentMesh: 1
+--- !u!114 &8479045138507979237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618663592838163921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 689507763732304896}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &8490374326717157951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6469,10 +6484,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6492,7 +6507,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8787576485459249128}
+      - m_Target: {fileID: 8479045138507979237}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -6538,20 +6553,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &8787576485459249128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7618663592838163921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 689507763732304896}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &7858971983610770280
 GameObject:
   m_ObjectHideFlags: 0
@@ -6988,9 +6989,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5191347037243606912}
   - component: {fileID: 8781060223247750466}
+  - component: {fileID: 8676685001166194820}
   - component: {fileID: 3391810868997530342}
   - component: {fileID: 6490871009750150734}
-  - component: {fileID: 5053502443440970308}
   m_Layer: 0
   m_Name: Buttons5
   m_TagString: Untagged
@@ -7025,6 +7026,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8553026933959394093}
   m_CullTransparentMesh: 1
+--- !u!114 &8676685001166194820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553026933959394093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfNote: {fileID: 1911530995179636378}
+  AllNotes: {fileID: 7522823783200399145}
 --- !u!114 &3391810868997530342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7046,10 +7061,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_HighlightedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_PressedColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.4509804, g: 0.09803922, b: 0.09803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7069,7 +7084,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5053502443440970308}
+      - m_Target: {fileID: 8676685001166194820}
         m_TargetAssemblyTypeName: NotesButtons, Assembly-CSharp
         m_MethodName: AcrivateButton
         m_Mode: 1
@@ -7115,20 +7130,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '? ? ?'
---- !u!114 &5053502443440970308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553026933959394093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5010ca32088eb5a4baab1e41ac00b2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tab: {fileID: 1911530995179636378}
-  Tabs: {fileID: 7522823783200399145}
 --- !u!1 &8967317519988716961
 GameObject:
   m_ObjectHideFlags: 0
