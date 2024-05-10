@@ -14,10 +14,10 @@ public class NotesManager : MonoBehaviour
         NotesData = new SavedData.NotesData();
         NotesData = NotesData.Load();
 
-        DeactivateTabs();
+        DeactivateNotes();
     }
 
-    private void DeactivateTabs()
+    private void DeactivateNotes()
     {
         for (int i = 0; i < Notes.childCount; i++)
         {
