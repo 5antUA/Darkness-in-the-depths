@@ -1,6 +1,7 @@
 using UnityEngine;
 
 
+// беьюрэ яйпхо мю йюфдсч ймнойс бн бйкюдйе гюохянй
 public class NotesButtons : MonoBehaviour
 {
     [SerializeField] private GameObject SelfNote;

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 
+// беьюрэ яйпхо мю назейр TabsUI/MapUI/Buttons
 public class MapManager : MonoBehaviour
 {
     [SerializeField] private Transform Floors;
