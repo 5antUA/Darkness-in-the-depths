@@ -6,18 +6,24 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     private SavedData.InputData InputData;
+    private SavedData.InterfaceData InterfaceData;
 
     public GameObject MenuUI;                                   // MenuUI
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
     private Text PlayerInfo;                                    // информация об игроке (Text UI)
+
 
     private bool MenuEnabled { get; set; }                      // свойство, показывающее открыто ли меню
 
     private void Awake()
     {
         InputData = new SavedData.InputData();
+        InterfaceData = new SavedData.InterfaceData();
+
         InputData = InputData.Load();
+        InterfaceData = InterfaceData.Load();
     }
+
     private void Start()
     {
         PlayerCamera = GetComponentInParent<PlayerRotation>();

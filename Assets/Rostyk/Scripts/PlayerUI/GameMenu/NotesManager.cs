@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// беьюрэ яйпхо мю назейр TabsUI/TabNotesUI/Buttons
 public class NotesManager : MonoBehaviour
 {
     private SavedData.NotesData NotesData;

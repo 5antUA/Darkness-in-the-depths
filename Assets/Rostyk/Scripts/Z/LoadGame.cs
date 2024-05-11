@@ -3,10 +3,12 @@ using UnityEngine;
 
 
 // ¬≈ÿ¿“‹ — –»œ“ Õ¿ Œ¡⁄≈ “ EntryPoint
-public class LoadPlayer : MonoBehaviour
+public class LoadGame : MonoBehaviour
 {
     private SavedData.PlayerData PlayerData;
 
+    [Header("\t Player Data")]
+    [Space]
     private GameObject NewPlayer;
     [SerializeField] private GameObject PrefabPlayer;
     [SerializeField] private GameObject LoadingScreen;
@@ -23,7 +25,8 @@ public class LoadPlayer : MonoBehaviour
         PlayerData = PlayerData.Load();
 
         // disable loading screen
-        LoadGame();
+        LoadPlayerData();
+
         LoadingScreen.SetActive(false);
     }
 
@@ -51,8 +54,9 @@ public class LoadPlayer : MonoBehaviour
         PlayerData.Save();
     }
 
-    private void LoadGame()
+    private void LoadPlayerData()
     {
         NewPlayer = Instantiate(PrefabPlayer, PlayerData.position, PlayerData.rotation);
+
     }
 }
