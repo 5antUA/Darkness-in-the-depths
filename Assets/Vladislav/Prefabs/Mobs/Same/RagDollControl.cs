@@ -2,46 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RagDollControl : MonoBehaviour
+namespace mobs
 {
-    public Animator animation;
-    public Rigidbody[] ALLrigidbodys;
-
-    private void Awake()
+    public class RagDollControl : MonoBehaviour
     {
-        for (int i = 0; i < ALLrigidbodys.Length; i++) {
-            ALLrigidbodys[i].isKinematic = true;
-        }
-    }
+        public Animator animation;
+        public Rigidbody[] ALLrigidbodys;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        private void Awake()
         {
-            makephicik();
-        }
-    }
-
-    public void makephicik() {
-        if (animation.enabled == false)
-        {
-            animation.enabled = true;
             for (int i = 0; i < ALLrigidbodys.Length; i++)
             {
                 ALLrigidbodys[i].isKinematic = true;
             }
-
         }
-        else
+
+        // Update is called once per frame
+        void Update()
         {
-            animation.enabled = false;
-            for (int i = 0; i < ALLrigidbodys.Length; i++)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                ALLrigidbodys[i].isKinematic = false;
-                ALLrigidbodys[i].mass = 1;
+                makephicik();
             }
         }
 
+        public void makephicik()
+        {
+            if (animation.enabled == false)
+            {
+                animation.enabled = true;
+                for (int i = 0; i < ALLrigidbodys.Length; i++)
+                {
+                    ALLrigidbodys[i].isKinematic = true;
+                }
+
+            }
+            else
+            {
+                animation.enabled = false;
+                for (int i = 0; i < ALLrigidbodys.Length; i++)
+                {
+                    ALLrigidbodys[i].isKinematic = false;
+                    ALLrigidbodys[i].mass = 1;
+                }
+            }
+
+        }
     }
 }

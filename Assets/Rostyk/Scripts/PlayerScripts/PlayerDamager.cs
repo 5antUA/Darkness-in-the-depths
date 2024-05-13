@@ -5,6 +5,7 @@ using RostykEnums; // custom namespace
 // СКРИПТ ВЕШАТЬ НА ИГРОКА
 public class PlayerDamager : MonoBehaviour
 {
+
     private SavedData.InputData InputData;
 
     public WeaponMode WeaponMode;                               // какой тип оружия держит персонаж сейчас
@@ -14,7 +15,6 @@ public class PlayerDamager : MonoBehaviour
     [Space]
     [SerializeField] private Transform _startShooter;           // точка начала выброса луча
     private Player MyPlayer;                                    // скрипт this.Player
-
 
     private void Start()
     {
@@ -39,8 +39,8 @@ public class PlayerDamager : MonoBehaviour
         WeaponController();
     }
 
-
     #region Shooting
+
     // Логика стрельбы во врага
     private void Shooting()
     {
@@ -52,10 +52,7 @@ public class PlayerDamager : MonoBehaviour
             enemy.TakeDamage(PlayerDamage);
             Debug.Log(PlayerDamage);
 
-            if (enemy.IsDead)
-            {
-                Destroy(enemy.gameObject);
-            }
+            
         }
         // если не попал во врага
         else

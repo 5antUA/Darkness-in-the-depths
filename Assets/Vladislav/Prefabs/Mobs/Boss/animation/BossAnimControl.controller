@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walck_speed: 4
-  attackDistanse: 6.5
+  attackDistanse: 2
 --- !u!1107 &-8466174832020217977
 AnimatorStateMachine:
   serializedVersion: 6
@@ -55,27 +55,27 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1989316729704952913}
-    m_Position: {x: 990, y: 780, z: 0}
+    m_Position: {x: -230, y: -290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5877073792484829693}
-    m_Position: {x: 990, y: 880, z: 0}
+    m_Position: {x: -230, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4569563294223949118}
-    m_Position: {x: 1270, y: 780, z: 0}
+    m_Position: {x: 50, y: -290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8737089140257169273}
-    m_Position: {x: 990, y: 680, z: 0}
+    m_Position: {x: -230, y: -390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3287898518061121246}
-    m_Position: {x: 990, y: 590, z: 0}
+    m_Position: {x: -230, y: -480, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 790, y: 920, z: 0}
-  m_EntryPosition: {x: 790, y: 780, z: 0}
-  m_ExitPosition: {x: 800, y: 840, z: 0}
+  m_AnyStatePosition: {x: -430, y: -150, z: 0}
+  m_EntryPosition: {x: -430, y: -290, z: 0}
+  m_ExitPosition: {x: -420, y: -230, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -1989316729704952913}
 --- !u!1102 &-4569563294223949118
