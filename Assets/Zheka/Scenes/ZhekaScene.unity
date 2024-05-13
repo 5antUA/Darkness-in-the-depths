@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.4502014, g: 0.49780548, b: 0.5623138, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.45020187, g: 0.49780637, b: 0.5623149, a: 1}
+>>>>>>> RostykBranch/PlayerDev
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4033,6 +4037,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7819521, y: 0.21448626, z: 0.00050068385}
   m_Center: {x: -0.002923889, y: 0.060783457, z: -0.02230586}
+<<<<<<< HEAD
 --- !u!1001 &1334277887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4110,6 +4115,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+=======
+>>>>>>> RostykBranch/PlayerDev
 --- !u!1 &1445173818
 GameObject:
   m_ObjectHideFlags: 0
@@ -6851,6 +6858,82 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1565331751}
   m_SourcePrefab: {fileID: 100100000, guid: 1ffb39aebf824424c8be76f2c04caced, type: 3}
+<<<<<<< HEAD
+=======
+--- !u!1001 &2110168361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 902840096208516339, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206132699972785792, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.982209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.800806
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.06335652
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.99799097
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 187.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874821879665580378, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689362665969325309, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626128784416656938, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+>>>>>>> RostykBranch/PlayerDev
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6876,4 +6959,8 @@ SceneRoots:
   - {fileID: 2027056793}
   - {fileID: 980179068}
   - {fileID: 52790578}
+<<<<<<< HEAD
   - {fileID: 1334277887}
+=======
+  - {fileID: 2110168361}
+>>>>>>> RostykBranch/PlayerDev
