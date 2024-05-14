@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace mobs
 {
@@ -10,28 +7,22 @@ namespace mobs
     {
         public float CorutineTime = 1;
         public float attackDistanse = 10;
-        private GameObject mob;
-        private GameObject player;
-        private float distance;
-        private void Awake()
+        protected GameObject mob;
+        protected GameObject player;
+        protected float distance;
+        protected void Awake()
         {
             mob = gameObject;
             player = GameObject.FindWithTag("Player");
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            distance = Vector3.Distance(mob.transform.position, player.transform.position);
-            if (distance < attackDistanse)
-            {
-                StartCoroutine(routine: AttackControll());
-                mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
-                Debug.Log("weeee");
-            }
+            Attack();
         }
 
-        private IEnumerator AttackControll()
+        protected IEnumerator AttackControll()
         {
             yield return new WaitForSeconds(CorutineTime);
             while (distance < attackDistanse)
@@ -40,6 +31,17 @@ namespace mobs
                 yield return new WaitForSeconds(CorutineTime);
             }
             mob.GetComponent<Animator>().SetBool("Attack", false);
+        }
+
+        private void Attack()
+        {
+            distance = Vector3.Distance(mob.transform.position, player.transform.position);
+            if (distance < attackDistanse)
+            {
+                StartCoroutine(routine: AttackControll());
+                mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
+                Debug.Log("weeee");
+            }
         }
     }
 }

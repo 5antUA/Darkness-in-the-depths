@@ -1,10 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
-namespace mobs {
-
-    
+namespace mobs
+{
     public class SpawnSimpleMob : MonoBehaviour
     {
 
@@ -15,8 +13,7 @@ namespace mobs {
         public GameObject mobs;
         public Transform[] spawnpoints;
 
-        private bool IsContinueCoroutine = false;
-        private const int MaxMobsValue = 6;
+        private bool IsContinueCoroutine = true;
 
         private GameObject boss;
         private ParticleSystem[] firePoints;
@@ -29,14 +26,20 @@ namespace mobs {
                 firePoints[i] = spawnpoints[i].GetChild(0).gameObject.GetComponent<ParticleSystem>();
         }
 
+        private void Update()
+        {
+            if (IsContinueCoroutine == false && MonsterCounter <= 3)
+                boss.GetComponent<Animator>().SetBool("Following", true);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
 
             if (other.gameObject.CompareTag("Player"))
             {
                 boss = bossPlase.getBoss();
-                print("player in trigger");
                 IsContinueCoroutine = true;
+                print("player in trigger");
                 boss.GetComponent<Animator>().SetBool("Following", false);
                 StartCoroutine(routine: AnimationSpawnStart());
             }
@@ -48,10 +51,10 @@ namespace mobs {
             if (other.gameObject.CompareTag("Player"))
             {
                 IsContinueCoroutine = false;
-                boss.GetComponent<Animator>().SetBool("Following", true);
                 print("stop");
             }
         }
+
         private IEnumerator AnimationSpawnStart()
         {
             while (IsContinueCoroutine)
@@ -59,13 +62,12 @@ namespace mobs {
                 yield return new WaitForSeconds(CorutineTime);
                 if (IsContinueCoroutine && MonsterCounter <= 3)
                 {
-                    print("we thare");
+                    MonsterCounter += 3;
                     boss.GetComponent<Animator>().SetTrigger("SpawnAtack");
-                    print("SpawnAtack");
                     yield return new WaitForSeconds(1f);
                     FireAktive();
                     yield return new WaitForSeconds(1.5f);
-                    MonsterCounter += 3;
+                    print("SpawnAtack");
                     for (int i = 0; i < spawnpoints.Length; i++)
                     {
                         Instantiate(mobs, spawnpoints[i].position, Quaternion.identity);

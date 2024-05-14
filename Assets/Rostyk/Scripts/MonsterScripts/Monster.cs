@@ -1,24 +1,21 @@
 ﻿using mobs;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 // Empty class
 public class Monster : Character
 {
-
     public Animator animation;
     public Rigidbody[] ALLrigidbodys;
 
-    private void Awake()
+    protected void Awake()
     {
         for (int i = 0; i < ALLrigidbodys.Length; i++)
         {
             ALLrigidbodys[i].isKinematic = true;
         }
-    }
-    private void Start()
-    {
-        Debug.Log("Monster has been spawnted");
     }
 
     private void Update()
@@ -38,13 +35,16 @@ public class Monster : Character
             Destroy(gameObject, 5);
         }
     }
-    public void makephicik()
+    protected void makephicik()
     {
         animation.enabled = false;
         for (int i = 0; i < ALLrigidbodys.Length; i++)
         {
             ALLrigidbodys[i].isKinematic = false;
+            ALLrigidbodys[i].mass = 1;
         }
+        Destroy(GetComponent<NavMeshAgent>());
+        Destroy(gameObject.GetComponent<AttackControl>());
     }
 }
 
