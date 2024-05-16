@@ -40,7 +40,6 @@ namespace mobs
             {
                 StartCoroutine(routine: AttackControll());
                 mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
-                Debug.Log("weeee");
             }
         }
     }

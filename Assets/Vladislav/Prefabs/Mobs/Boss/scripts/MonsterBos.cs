@@ -9,10 +9,8 @@ public class MonsterBoss : Monster
     private void Update()
     {
         if (SpawnSinplemob == null)
-            SpawnSinplemob = GameObject.FindWithTag("S");
+            SpawnSinplemob = GameObject.FindWithTag("SpawnSimpleMob");      //для знищення трігеру
         OnMonsterDeath();
-
-
     }
     private void OnDestroy()
     {
@@ -20,7 +18,7 @@ public class MonsterBoss : Monster
     }
     private void OnMonsterDeath()
     {
-        if (IsDead)
+        if (IsDead && !deathchaker)
         {
             makephicik();
             Destroy(SpawnSinplemob);

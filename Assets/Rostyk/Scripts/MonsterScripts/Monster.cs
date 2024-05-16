@@ -1,5 +1,4 @@
 ﻿using mobs;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +8,7 @@ public class Monster : Character
 {
     public Animator animation;
     public Rigidbody[] ALLrigidbodys;
+    protected bool deathchaker = false;
 
     protected void Awake()
     {
@@ -29,10 +29,11 @@ public class Monster : Character
     }
     private void OnMonsterDeath()
     {
-        if (IsDead)
+        if (IsDead && !deathchaker)
         {
             makephicik();
             Destroy(gameObject, 5);
+            deathchaker = true;
         }
     }
     protected void makephicik()
@@ -45,6 +46,8 @@ public class Monster : Character
         }
         Destroy(GetComponent<NavMeshAgent>());
         Destroy(gameObject.GetComponent<AttackControl>());
+
     }
 }
+
 

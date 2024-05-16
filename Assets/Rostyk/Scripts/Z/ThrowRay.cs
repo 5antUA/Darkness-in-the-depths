@@ -9,6 +9,7 @@ public class ThrowRay : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
         Physics.Raycast(ray, out RaycastHit hit, distance);
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
 
         return hit;
     }
