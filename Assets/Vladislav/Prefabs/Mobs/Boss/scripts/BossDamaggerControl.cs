@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossDamaggerControl : MobDamager
 {
-    public float corutineTime=0.5f;
+    public float corutineTime = 0.5f;
     private void Update()
     {
         if (animator.GetBool("Attack") == true)
@@ -34,9 +33,10 @@ public class BossDamaggerControl : MobDamager
         }
     }
 
-    private IEnumerator PushTime(Player enemy) {
+    private IEnumerator PushTime(Player enemy)
+    {
         yield return new WaitForSeconds(corutineTime);
         enemy.GetComponent<CharacterController>().
-                Move(new Vector3(enemy.transform.position.x, enemy.transform.position.y + 3, enemy.transform.position.z - 5) * Time.deltaTime * 7);
+                Move(new Vector3(enemy.transform.localPosition.x , enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z ) * Time.deltaTime);
     }
 }

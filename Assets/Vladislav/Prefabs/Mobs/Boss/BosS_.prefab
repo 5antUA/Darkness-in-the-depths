@@ -122,13 +122,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8810289633896156277}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.061579585, y: 0.061579604, z: 0.7044203, w: 0.7044203}
-  m_LocalPosition: {x: -0.077, y: 0.495, z: 0.4}
+  m_LocalRotation: {x: 0.0150339, y: 0.015033915, z: 0.70694697, w: 0.70694697}
+  m_LocalPosition: {x: 0.013, y: 0.495, z: 0.222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3555417004776356600}
-  m_LocalEulerAnglesHint: {x: 0, y: 9.992, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 2.437, z: 90}
 --- !u!114 &5902622672183184483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startShooter: {fileID: 2923332627275708321}
+  corutineTime: 0.5
 --- !u!1 &5473589859356012820 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -203856693384778745, guid: 154ef0ee2806f994cba0578b9223f5fb, type: 3}
