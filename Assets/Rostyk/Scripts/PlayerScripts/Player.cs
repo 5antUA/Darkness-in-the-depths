@@ -18,10 +18,12 @@ public class Player : Character
     public float CrouchHeight;                                  // Высота прыседания
     public float JumpForce;                                     // сила прыжка
 
-    private bool isSprint;                                      // если бежит
-    private bool isCrouch;                                      // если медленно ходит
     private float _gravity = -9.81f;                            // ускорение свободного падения g
     private Vector3 _velocity;                                  // направление игрока
+
+    public bool isSprint { get; private set; }                  // если бежит
+    public bool isCrouch { get; private set; }                  // если медленно ходит
+    public bool isStopped { get; private set; }
 
     // COMPONENTS
     [SerializeField] private Camera PlayerCamera;               // Camera игрока
@@ -40,7 +42,10 @@ public class Player : Character
     private void Start()
     {
         _controller = this.GetComponent<CharacterController>();
+
+        isSprint = false;
         isCrouch = false;
+        isStopped = true;
         PlayerLight.enabled = false;
     }
 
@@ -74,24 +79,36 @@ public class Player : Character
         float moveZ = Input.GetAxis("Vertical");
         Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        if (Input.GetKey(InputData.Run) && Input.GetAxis("Vertical") > 0 && !isCrouch)
+        if (moveX != 0 || moveZ != 0)
         {
-            _direction *= SprintSpeed;
-            isSprint = true;
-        }
-        else if (Input.GetKey(InputData.Crouch))
-        {
-            _direction *= CrouchSpeed;
-            isSprint = false;
+            if (moveX != 0 || moveZ != 0)
+            {
+
+            }
+            if (Input.GetKey(InputData.Run) && Input.GetAxis("Vertical") > 0 && !isCrouch)
+            {
+                _direction *= SprintSpeed;
+                isSprint = true;
+            }
+            else if (Input.GetKey(InputData.Crouch))
+            {
+                _direction *= CrouchSpeed;
+                isSprint = false;
+            }
+            else
+            {
+                _direction *= WalkSpeed;
+                isSprint = false;
+            }
+            Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
+                new Vector3(_direction.x, 0, _direction.z);
+            _velocity = new Vector3(move.x, _velocity.y, move.z);
+            isStopped = false;
         }
         else
         {
-            _direction *= WalkSpeed;
-            isSprint = false;
+            isStopped = true;
         }
-        Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
-            new Vector3(_direction.x, 0, _direction.z);
-        _velocity = new Vector3(move.x, _velocity.y, move.z);
     }
 
     // Логика приседания
