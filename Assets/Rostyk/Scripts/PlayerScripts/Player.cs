@@ -8,7 +8,7 @@ public class Player : Character
     [Header("\t PLAYER SPECIAL")]
     [Space]
 
-    
+
     #region Player properties
     // STORAGE SERVICES
     private SavedData.InputData InputData;
@@ -18,18 +18,11 @@ public class Player : Character
     public float CrouchHeight;                                  // Высота прыседания
     public float JumpForce;                                     // сила прыжка
 
-<<<<<<< HEAD
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
     private float defoltFOV;
-=======
->>>>>>> RostykBranch/PlayerDev
     private float _gravity = -9.81f;                            // ускорение свободного падения g
     private Vector3 _velocity;                                  // направление игрока
-
-    public bool isSprint { get; private set; }                  // если бежит
-    public bool isCrouch { get; private set; }                  // если медленно ходит
-    public bool isStopped { get; private set; }
 
     // COMPONENTS
     [SerializeField] private Camera PlayerCamera;               // Camera игрока
@@ -48,10 +41,7 @@ public class Player : Character
     private void Start()
     {
         _controller = this.GetComponent<CharacterController>();
-
-        isSprint = false;
         isCrouch = false;
-        isStopped = true;
         PlayerLight.enabled = false;
         defoltFOV = PlayerCamera.fieldOfView;
     }
@@ -86,36 +76,24 @@ public class Player : Character
         float moveZ = Input.GetAxis("Vertical");
         Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        if (moveX != 0 || moveZ != 0)
+        if (Input.GetKey(InputData.Run) && Input.GetAxis("Vertical") > 0 && !isCrouch)
         {
-            if (moveX != 0 || moveZ != 0)
-            {
-
-            }
-            if (Input.GetKey(InputData.Run) && Input.GetAxis("Vertical") > 0 && !isCrouch)
-            {
-                _direction *= SprintSpeed;
-                isSprint = true;
-            }
-            else if (Input.GetKey(InputData.Crouch))
-            {
-                _direction *= CrouchSpeed;
-                isSprint = false;
-            }
-            else
-            {
-                _direction *= WalkSpeed;
-                isSprint = false;
-            }
-            Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
-                new Vector3(_direction.x, 0, _direction.z);
-            _velocity = new Vector3(move.x, _velocity.y, move.z);
-            isStopped = false;
+            _direction *= SprintSpeed;
+            isSprint = true;
+        }
+        else if (Input.GetKey(InputData.Crouch))
+        {
+            _direction *= CrouchSpeed;
+            isSprint = false;
         }
         else
         {
-            isStopped = true;
+            _direction *= WalkSpeed;
+            isSprint = false;
         }
+        Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
+            new Vector3(_direction.x, 0, _direction.z);
+        _velocity = new Vector3(move.x, _velocity.y, move.z);
     }
 
     // Логика приседания
@@ -151,18 +129,17 @@ public class Player : Character
     {
         if (isSprint)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV+25, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV + 25, 5f * Time.deltaTime);
         }
         else if (isCrouch)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV-15, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV - 15, 5f * Time.deltaTime);
         }
         else
         {
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV, 5f * Time.deltaTime);
         }
     }
-
     // Включение или выключение фонарика
     private void SwitchLight()
     {
