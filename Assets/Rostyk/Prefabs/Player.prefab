@@ -2406,9 +2406,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748291037536903421}
-  - component: {fileID: 3884489656448290682}
   m_Layer: 0
-  m_Name: ButtonsK
+  m_Name: Buttons
   m_TagString: PlayerTitlesArray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2441,20 +2440,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3884489656448290682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3157061341527068886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfff24251b3dfaf4387a6df47ab7a7e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Notes: {fileID: 7522823783200399145}
-  Titles: {fileID: 748291037536903421}
 --- !u!1 &3234287723221143041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7522823783200399145}
   m_Layer: 0
-  m_Name: TextK
+  m_Name: Texts
   m_TagString: PlayerNotesArray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5072,6 +5057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5667135254740447742}
+  - component: {fileID: 6050279933560995075}
   m_Layer: 0
   m_Name: TabNotesUI
   m_TagString: Untagged
@@ -5092,8 +5078,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5310647401703985105}
-  - {fileID: 748291037536903421}
   - {fileID: 7522823783200399145}
+  - {fileID: 748291037536903421}
   m_Father: {fileID: 5545384987261498388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5101,6 +5087,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6050279933560995075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270619790847192029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfff24251b3dfaf4387a6df47ab7a7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Texts: {fileID: 7522823783200399145}
+  Buttons: {fileID: 748291037536903421}
 --- !u!1 &7359611273240090799
 GameObject:
   m_ObjectHideFlags: 0

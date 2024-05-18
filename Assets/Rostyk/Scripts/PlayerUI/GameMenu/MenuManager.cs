@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
     private Text PlayerInfo;                                    // информация об игроке (Text UI)
 
 
-    private bool MenuEnabled { get; set; }                      // свойство, показывающее открыто ли меню
+    public static bool MenuEnabled { get; private set; }                      // свойство, показывающее открыто ли меню
 
     private void Awake()
     {

@@ -4,25 +4,15 @@ using UnityEngine.UI;
 
 public class NewNoteTrigger : MonoBehaviour
 {
-    SavedData.NotesData data = new SavedData.NotesData();
-    private Transform Titles;
-    private Transform Notes;
+    SavedData.NotesData data;
 
-    private Text titleText;
-    private Text noteText;
-
-    [Range(0, 8)]
+    [Range(0, 7)]
     public int NoteNumber;
 
 
-    private void Awake()
+    private void Start()
     {
-        Titles = GameObject.FindGameObjectWithTag("PlayerTitlesArray").transform;
-        Notes = GameObject.FindGameObjectWithTag("PlayerNotesArray").transform;
-
-        titleText = Titles.GetChild(NoteNumber).GetComponent<Text>();
-        noteText = Notes.GetChild(NoteNumber).GetComponent<Text>();
-
+        data = new SavedData.NotesData();
         data = data.Load();
     }
 
@@ -31,9 +21,6 @@ public class NewNoteTrigger : MonoBehaviour
         EventManager.ShowNotification();
         if (other.gameObject.CompareTag("Player"))
         {
-            noteText.text = data.Notes[NoteNumber];
-            titleText.text = data.Titles[NoteNumber];
-
             data.isActivated[NoteNumber] = true;
             data.Save();
 

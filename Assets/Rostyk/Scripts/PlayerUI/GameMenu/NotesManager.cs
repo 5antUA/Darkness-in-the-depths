@@ -7,8 +7,11 @@ public class NotesManager : MonoBehaviour
 {
     private SavedData.NotesData NotesData;
 
-    [SerializeField] private Transform Notes;
-    [SerializeField] private Transform Titles;
+    [SerializeField] private Transform Texts;
+    [SerializeField] private Transform Buttons;
+
+    private Text[] Titles;
+    private Text[] Notes;
 
 
     private void Start()
@@ -16,24 +19,48 @@ public class NotesManager : MonoBehaviour
         NotesData = new SavedData.NotesData();
         NotesData = NotesData.Load();
 
-        DeactivateNotes();
+        InitializeTexts();
+        UpdateDataUI(true);
     }
 
-    private void DeactivateNotes()
+    private void Update()
     {
-        for (int i = 0; i < Notes.childCount; i++)
+        if (MenuManager.MenuEnabled)
         {
-            Notes.GetChild(i).GetComponent<Text>().text =
+            UpdateDataUI();
+        }
+    }
+
+
+    private void InitializeTexts()
+    {
+        Titles = new Text[Texts.childCount];
+        Notes = new Text[Buttons.childCount];
+
+        for (int i = 0; i < Texts.childCount; i++)
+        {
+            Titles[i] = Texts.GetChild(i).GetComponent<Text>();
+            Notes[i] = Buttons.GetChild(i).GetComponent<Text>();
+        }
+    }
+
+    private void UpdateDataUI(bool disableTexts = false)
+    {
+        NotesData = NotesData.Load();
+        for (int i = 0; i < Buttons.childCount; i++)
+        {
+            Titles[i].text =
                 NotesData.isActivated[i] ?
                 NotesData.Notes[i] :
                 "? ? ?";
 
-            Titles.GetChild(i).GetComponent<Text>().text =
+            Notes[i].text =
                 NotesData.isActivated[i] ?
                 NotesData.Titles[i] :
                 "? ? ?";
 
-            Notes.GetChild(i).gameObject.SetActive(false);
+            if (disableTexts)
+                Texts.GetChild(i).gameObject.SetActive(false);
         }
     }
 }
