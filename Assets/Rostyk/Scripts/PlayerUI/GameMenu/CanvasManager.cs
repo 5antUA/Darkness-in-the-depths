@@ -1,3 +1,7 @@
+using SavedData;
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +16,6 @@ public class CanvasManager : MonoBehaviour
     public GameObject MenuUI;                                  // MenuUI
     private Player MyPlayer;                                   // скрипт this.Player
     private PlayerDamager PlayerDmgr;                          // скрипт this.PlayerDamager
-
 
     private void Awake()
     {
