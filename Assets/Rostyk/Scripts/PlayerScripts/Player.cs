@@ -8,7 +8,7 @@ public class Player : Character
     [Header("\t PLAYER SPECIAL")]
     [Space]
 
-    
+
     #region Player properties
     // STORAGE SERVICES
     private SavedData.InputData InputData;
@@ -129,18 +129,17 @@ public class Player : Character
     {
         if (isSprint)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV+25, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV + 25, 5f * Time.deltaTime);
         }
         else if (isCrouch)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV-15, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV - 15, 5f * Time.deltaTime);
         }
         else
         {
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV, 5f * Time.deltaTime);
         }
     }
-
     // Включение или выключение фонарика
     private void SwitchLight()
     {
