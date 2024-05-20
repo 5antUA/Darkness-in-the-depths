@@ -7,7 +7,7 @@ public class FadeNoteNotification : FadeBase
     private void Start()
     {
         FadedImage = this.GetComponent<Image>();
-        EventManager.ShowNotificationEvent += RunFadeEffect;
+        EventManager.ShowNoteNotificationEvent += RunFadeEffect;
 
         ImageColor = FadedImage.color;
         FadedImage.color = SetAlpha(0f);
@@ -16,6 +16,6 @@ public class FadeNoteNotification : FadeBase
     private void RunFadeEffect()
     {
         StartCoroutine(FadeInCoroutine());
-        EventManager.ShowNotificationEvent -= RunFadeEffect;
+        EventManager.ShowNoteNotificationEvent -= RunFadeEffect;
     }
 }

@@ -3,13 +3,13 @@
 
 public class EventManager
 {
-    public static event Action ShowNotificationEvent;
+    public static event Action ShowNoteNotificationEvent;
     public static event Action ShowDamageScreenEvent;
 
 
-    public static void ShowNotification()
+    public static void ShowNoteNotification()
     {
-        ShowNotificationEvent?.Invoke();
+        ShowNoteNotificationEvent?.Invoke();
     }
 
     public static void ShowDamageScreen()

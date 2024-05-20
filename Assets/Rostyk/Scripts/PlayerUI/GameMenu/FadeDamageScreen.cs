@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeDamageScreen : FadeBase
@@ -16,6 +14,10 @@ public class FadeDamageScreen : FadeBase
     private void RunFadeEffect()
     {
         StartCoroutine(FadeInCoroutine());
+    }
+
+    private void OnDisable()
+    {
         EventManager.ShowDamageScreenEvent -= RunFadeEffect;
     }
 }
