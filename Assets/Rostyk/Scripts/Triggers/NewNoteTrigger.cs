@@ -18,9 +18,9 @@ public class NewNoteTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EventManager.ShowNotification();
         if (other.gameObject.CompareTag("Player"))
         {
+            EventManager.ShowNotification();
             data.isActivated[NoteNumber] = true;
             data.Save();
 

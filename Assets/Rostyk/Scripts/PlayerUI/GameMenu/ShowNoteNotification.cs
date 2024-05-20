@@ -9,7 +9,7 @@ public class ShowNoteNotification : MonoBehaviour
     private Image ImageNotification;
     private Color ImageColor;
 
-    void Start()
+    private void Start()
     {
         ImageNotification = this.GetComponent<Image>();
         EventManager.ShowNotificationEvent += ShowThis;
@@ -29,6 +29,7 @@ public class ShowNoteNotification : MonoBehaviour
     private void ShowThis()
     {
         StartCoroutine(CoroutineNote());
+        EventManager.ShowNotificationEvent -= ShowThis;
     }
 
 
