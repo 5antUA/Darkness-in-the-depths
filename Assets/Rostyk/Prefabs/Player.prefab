@@ -1345,6 +1345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3762793d1cfbfb46a863a5167961da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalAlpha: 1
+  startTime: 0.02
+  betweenTime: 2
+  endTime: 0.05
 --- !u!1 &1538018965833878777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,6 +4514,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e607ebdb3091954dbbab48248ad0716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalAlpha: 0.5
+  startTime: 0
+  betweenTime: 0
+  endTime: 0.01
 --- !u!1 &5823255450409323426
 GameObject:
   m_ObjectHideFlags: 0

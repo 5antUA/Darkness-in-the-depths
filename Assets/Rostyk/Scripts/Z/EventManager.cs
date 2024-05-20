@@ -4,7 +4,7 @@
 public class EventManager
 {
     public static event Action ShowNotificationEvent;
-    public static event Action ShowPlayerRedScreenEvent;
+    public static event Action ShowDamageScreenEvent;
 
 
     public static void ShowNotification()
@@ -12,8 +12,8 @@ public class EventManager
         ShowNotificationEvent?.Invoke();
     }
 
-    public static void ShowPlayerRedScreen()
+    public static void ShowDamageScreen()
     {
-        ShowPlayerRedScreenEvent?.Invoke();
+        ShowDamageScreenEvent?.Invoke();
     }
 }

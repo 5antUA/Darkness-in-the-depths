@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class NewNoteTrigger : MonoBehaviour
@@ -21,6 +20,7 @@ public class NewNoteTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             EventManager.ShowNotification();
+            EventManager.ShowDamageScreen();
             data.isActivated[NoteNumber] = true;
             data.Save();
 
