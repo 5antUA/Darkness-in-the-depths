@@ -9,6 +9,7 @@ public class NotesManager : MonoBehaviour
 
     [SerializeField] private Transform Texts;
     [SerializeField] private Transform Buttons;
+    [SerializeField] private GameObject MenuUI;
 
     private Text[] Titles;
     private Text[] Notes;
@@ -25,7 +26,7 @@ public class NotesManager : MonoBehaviour
 
     private void Update()
     {
-        if (MenuManager.MenuEnabled)
+        if (MenuUI.activeInHierarchy)
         {
             UpdateDataUI();
         }
