@@ -6,11 +6,12 @@ using UnityEngine;
 public class LoadGame : MonoBehaviour
 {
     private SavedData.PlayerData PlayerData;
+    private SavedData.CharacterData CharacterData;
 
     [Header("\t Player Data")]
     [Space]
     private GameObject NewPlayer;
-    [SerializeField] private GameObject PrefabPlayer;
+    [SerializeField] private GameObject[] PrefabsPlayer;
     [SerializeField] private GameObject LoadingScreen;
     [SerializeField] private Vector3 DefaultPlayerPos;
 
@@ -23,6 +24,8 @@ public class LoadGame : MonoBehaviour
         // init player data
         PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
         PlayerData = PlayerData.Load();
+        CharacterData = new SavedData.CharacterData();
+        CharacterData = CharacterData.Load();
 
         // disable loading screen
         LoadPlayerData();
@@ -56,7 +59,13 @@ public class LoadGame : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        NewPlayer = Instantiate(PrefabPlayer, PlayerData.position, PlayerData.rotation);
-
+        for (int i = 0; i < CharacterData.character.Length; i++)
+        {
+            if (CharacterData.character[i])
+            {
+                NewPlayer = Instantiate(PrefabsPlayer[0], PlayerData.position, PlayerData.rotation);
+                break;
+            }
+        }
     }
 }

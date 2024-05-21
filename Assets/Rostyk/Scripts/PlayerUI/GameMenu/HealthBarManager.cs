@@ -14,6 +14,7 @@ public class HealthBarManager : MonoBehaviour
 
     public GameObject HealthBar;
     public Image AmountHealthImage;
+    public float maxPlayerHealth;
 
     [Space]
     public Text PlayerInfo;                                    // информация об игроке (Text UI)
@@ -42,7 +43,7 @@ public class HealthBarManager : MonoBehaviour
     private void UpdatePlayerInfo()
     {
         int healthInfo = (int)MyPlayer.Health;
-        AmountHealthImage.fillAmount = MyPlayer.Health / 100f;
+        AmountHealthImage.fillAmount = MyPlayer.Health / maxPlayerHealth;
 
         if (MyPlayer.IsDead)
             healthInfo = 0;
