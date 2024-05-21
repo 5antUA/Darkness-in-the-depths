@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.4502014, g: 0.49780548, b: 0.5623138, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.45020187, g: 0.49780637, b: 0.5623149, a: 1}
+>>>>>>> RostykBranch/PlayerDev
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5708,7 +5712,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7819521, y: 0.21448626, z: 0.00050068385}
   m_Center: {x: -0.002923889, y: 0.060783457, z: -0.02230586}
+<<<<<<< HEAD
 --- !u!1001 &1302055450
+=======
+<<<<<<< HEAD
+--- !u!1001 &1334277887
+>>>>>>> origin/main
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5776,6 +5785,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: 0bfc9750af2434643a03793e6a858815, type: 3}
 --- !u!1001 &1302794387
 PrefabInstance:
@@ -6349,6 +6359,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9da2d305e11614a85774a9b3320bd7, type: 3}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+=======
+>>>>>>> RostykBranch/PlayerDev
+>>>>>>> origin/main
 --- !u!1 &1445173818
 GameObject:
   m_ObjectHideFlags: 0
@@ -11584,10 +11599,21 @@ PrefabInstance:
       addedObject: {fileID: 1271473768}
     - targetCorrespondingSourceObject: {fileID: 6905317142073826885, guid: 9ec866dc91aa8eb4ca0bb457c5c2e746, type: 3}
       insertIndex: -1
+<<<<<<< HEAD
       addedObject: {fileID: 575537824}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec866dc91aa8eb4ca0bb457c5c2e746, type: 3}
 --- !u!1001 &9123042102947233610
+=======
+      addedObject: {fileID: 1565331749}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ffb39aebf824424c8be76f2c04caced, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565331751}
+  m_SourcePrefab: {fileID: 100100000, guid: 1ffb39aebf824424c8be76f2c04caced, type: 3}
+<<<<<<< HEAD
+=======
+--- !u!1001 &2110168361
+>>>>>>> origin/main
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11595,6 +11621,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: 103467121600397683, guid: f278c4b994aedf74fa0329dfe241bcd3, type: 3}
       propertyPath: m_Name
       value: "\u0430\u0443\u0434\u0438\u0442\u043E\u0440\u0438\u044F(1)"
@@ -11637,13 +11664,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 730786418181069769, guid: f278c4b994aedf74fa0329dfe241bcd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+=======
+    - target: {fileID: 902840096208516339, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206132699972785792, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.982209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.800806
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.06335652
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.99799097
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 187.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940456784698177369, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874821879665580378, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689362665969325309, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626128784416656938, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+      propertyPath: m_AnchorMax.y
+>>>>>>> origin/main
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: f278c4b994aedf74fa0329dfe241bcd3, type: 3}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 5dbe30a1f129b2d4abc28e5c905c61e7, type: 3}
+>>>>>>> RostykBranch/PlayerDev
+>>>>>>> origin/main
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11659,6 +11751,24 @@ SceneRoots:
   - {fileID: 7129443848615226266}
   - {fileID: 8612558929828701053}
   - {fileID: 1887571528}
+<<<<<<< HEAD
   - {fileID: 2141422843}
   - {fileID: 159518507}
   - {fileID: 901540549}
+=======
+  - {fileID: 1794000754}
+  - {fileID: 490588508}
+  - {fileID: 1544506362}
+  - {fileID: 625581436}
+  - {fileID: 443394336}
+  - {fileID: 1239482957}
+  - {fileID: 1742388447}
+  - {fileID: 2027056793}
+  - {fileID: 980179068}
+  - {fileID: 52790578}
+<<<<<<< HEAD
+  - {fileID: 1334277887}
+=======
+  - {fileID: 2110168361}
+>>>>>>> RostykBranch/PlayerDev
+>>>>>>> origin/main

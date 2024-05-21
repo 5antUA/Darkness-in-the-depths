@@ -8,7 +8,7 @@ public class Player : Character
     [Header("\t PLAYER SPECIAL")]
     [Space]
 
-    
+
     #region Player properties
     // STORAGE SERVICES
     private SavedData.InputData InputData;
@@ -20,6 +20,7 @@ public class Player : Character
 
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
+    private float defoltFOV;
     private float _gravity = -9.81f;                            // ускорение свободного падени€ g
     private Vector3 _velocity;                                  // направление игрока
 
@@ -42,6 +43,7 @@ public class Player : Character
         _controller = this.GetComponent<CharacterController>();
         isCrouch = false;
         PlayerLight.enabled = false;
+        defoltFOV = PlayerCamera.fieldOfView;
     }
 
     private void Update()
@@ -127,18 +129,17 @@ public class Player : Character
     {
         if (isSprint)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 80f, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV + 25, 5f * Time.deltaTime);
         }
         else if (isCrouch)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 45f, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV - 15, 5f * Time.deltaTime);
         }
         else
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, 60f, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV, 5f * Time.deltaTime);
         }
     }
-
     // ¬ключение или выключение фонарика
     private void SwitchLight()
     {
