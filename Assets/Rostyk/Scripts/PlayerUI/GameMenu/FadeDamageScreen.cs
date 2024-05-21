@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 
+
 public class FadeDamageScreen : FadeBase
 {
     private void Start()
