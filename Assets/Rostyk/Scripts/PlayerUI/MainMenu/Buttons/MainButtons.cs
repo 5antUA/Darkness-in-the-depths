@@ -16,7 +16,12 @@ public class MainButtons : MonoBehaviour
 
     public void NewGame()
     {
-        return;
+        SavedData.PlayerData playerData = new SavedData.PlayerData();
+        SavedData.NotesData notesData = new SavedData.NotesData();
+        playerData.Save();
+        notesData.Save();
+
+        SceneManager.LoadScene("RostykScene");
     }
 
     public void OpenSettings()
