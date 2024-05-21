@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -8,12 +9,10 @@ public class MenuManager : MonoBehaviour
     private SavedData.InputData InputData;
     private SavedData.InterfaceData InterfaceData;
 
-    public GameObject MenuUI;                                   // MenuUI
+    public GameObject MenuUI;                                   // Menu UI
+    public GameObject HealthBar;                                // HealthBar UI
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
-    private Text PlayerInfo;                                    // информация об игроке (Text UI)
 
-
-    private bool MenuEnabled { get; set; }                      // свойство, показывающее открыто ли меню
 
     private void Awake()
     {
@@ -27,10 +26,8 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         PlayerCamera = GetComponentInParent<PlayerRotation>();
-        PlayerInfo = GetComponentInChildren<Text>();
 
         MenuUI.SetActive(false);
-        MenuEnabled = false;
     }
 
     private void Update()
@@ -42,11 +39,11 @@ public class MenuManager : MonoBehaviour
     // Контроль меню
     public void MenuControl()
     {
-        if (Input.GetKeyDown(InputData.Inventory) && MenuEnabled == false)
+        if (Input.GetKeyDown(InputData.Inventory) && !MenuUI.activeInHierarchy)
         {
             OpenMenu();
         }
-        else if ((Input.GetKeyDown(InputData.Inventory) || Input.GetKeyDown(KeyCode.Escape)) && MenuEnabled == true)
+        else if (Input.GetKeyDown(InputData.Inventory) && MenuUI.activeInHierarchy)
         {
             CloseMenu();
         }
@@ -56,8 +53,7 @@ public class MenuManager : MonoBehaviour
     public void OpenMenu()
     {
         MenuUI.SetActive(true);
-        MenuEnabled = true;
-        PlayerInfo.enabled = false;
+        HealthBar.SetActive(false);
 
         PlayerCamera.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -68,11 +64,15 @@ public class MenuManager : MonoBehaviour
     public void CloseMenu()
     {
         MenuUI.SetActive(false);
-        MenuEnabled = false;
-        PlayerInfo.enabled = true;
+        HealthBar.SetActive(true);
 
         PlayerCamera.enabled = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+    }
+
+    public void ToMainMenuButton()
+    {
+        SceneManager.LoadScene("Main menu");
     }
 }

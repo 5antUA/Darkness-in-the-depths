@@ -13,7 +13,6 @@ namespace SavedData
         public KeyCode Run;                 // клавиша бега
         public KeyCode Jump;                // клавиша прыжка
         public KeyCode Inventory;           // клавиша инвентаря
-        public KeyCode Info;                // клавиша UI
         public KeyCode SwitchLight;         // клавиша фонарика
         public KeyCode Shoot;               // клавиша стрельбы
         public KeyCode Interact;            // клавиша взаимодействия
@@ -25,7 +24,6 @@ namespace SavedData
             Run = KeyCode.LeftControl;
             Jump = KeyCode.Space;
             Inventory = KeyCode.Tab;
-            Info = KeyCode.Q;
             SwitchLight = KeyCode.F;
             Shoot = KeyCode.Mouse0;
             Interact = KeyCode.Mouse1;

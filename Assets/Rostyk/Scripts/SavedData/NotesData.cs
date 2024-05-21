@@ -2,7 +2,7 @@
 
 namespace SavedData
 {
-    // Класс для хранения Notes
+    // Класс для хранения Buttons
     [System.Serializable]
     public class NotesData
     {

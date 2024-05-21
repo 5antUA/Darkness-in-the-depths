@@ -75,18 +75,6 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для скрытия UI (метод нажатия кнопки)
-    public void ChangeInfo()
-    {
-        void _func()
-        {
-            InputData.Info = currentKey;
-            InputData.Save();
-        }
-
-        StartCoroutine(ReadInput(_func));
-    }
-
     // Смена кнопки для фонарика (метод нажатия кнопки)
     public void ChangeSwitch()
     {
@@ -177,11 +165,10 @@ public class ControlButtons : MonoBehaviour
         buttons[1].text = InputData.Run.ToString();
         buttons[2].text = InputData.Jump.ToString();
         buttons[3].text = InputData.Inventory.ToString();
-        buttons[4].text = InputData.Info.ToString();
-        buttons[5].text = InputData.SwitchLight.ToString();
-        buttons[6].text = InputData.Shoot.ToString();
-        buttons[7].text = InputData.Interact.ToString();
-        buttons[8].text = InputData.Reload.ToString();
+        buttons[4].text = InputData.SwitchLight.ToString();
+        buttons[5].text = InputData.Shoot.ToString();
+        buttons[6].text = InputData.Interact.ToString();
+        buttons[7].text = InputData.Reload.ToString();
     }
     #endregion
 }
