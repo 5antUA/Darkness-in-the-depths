@@ -4,10 +4,14 @@ using UnityEngine.AI;
 
 // ОБЩИЙ КЛАСС
 // НЕ ВЕШАТЬ СКРИПТ НА ОБЪЕКТЫ
+[System.Serializable]
 public class Character : MonoBehaviour
 {
     [Header("\t CHARACTER PROPERTIES")]
     [Space]
+
+    [HideInInspector]
+    public float MaxCharacterHealth;                           // максимальное количество здоровья персонажа  
     public float Health;                                       // количество здоровья
     public float Damage;                                       // количество урона
     public float Armor;                                        // количество брони
@@ -18,9 +22,6 @@ public class Character : MonoBehaviour
 
 
     public bool IsDead => Health <= 0;                         // если умер
-
-
-    public Character() { }
 
 
     // Функция для получения урона
