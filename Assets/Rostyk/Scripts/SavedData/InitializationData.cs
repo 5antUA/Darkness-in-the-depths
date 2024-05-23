@@ -11,8 +11,8 @@ namespace SavedData
         private const string KEY = "InitializationData";
 
         public bool isContinueGame;
-        public Characters PlayingCharacter;
-        public Charactersd CurrentCharacter;
+        public Characters Character;
+        public PlayingCharacter CurrentCharacter;
 
 
         public InitializationData()
@@ -43,7 +43,7 @@ namespace SavedData
 
         #region Characters
         // Слабый, но быстрый
-        private Charactersd RadchenkoChar = new Charactersd()
+        public readonly PlayingCharacter RadchenkoChar = new PlayingCharacter()
         {
             MaxCharacterHealth = 75,
             Health = 75,
@@ -55,7 +55,7 @@ namespace SavedData
         };
 
         // Золотая средина
-        private Charactersd KovalevChar = new Charactersd()
+        public readonly PlayingCharacter KovalevChar = new PlayingCharacter()
         {
             MaxCharacterHealth = 100,
             Health = 100,
@@ -66,7 +66,7 @@ namespace SavedData
         };
 
         // Сильный, но медленный
-        private Charactersd ValentinChar = new Charactersd()
+        public readonly PlayingCharacter ValentinChar = new PlayingCharacter()
         {
             MaxCharacterHealth = 150,
             Health = 150,
@@ -78,30 +78,19 @@ namespace SavedData
         #endregion
 
         [System.Serializable]
-        public class Charactersd
+        public class PlayingCharacter
         {
             [Header("\t CHARACTER PROPERTIES")]
             [Space]
 
-            [HideInInspector]
-            public float MaxCharacterHealth;                           // максимальное количество здоровья персонажа  
-            public float Health;                                       // количество здоровья
-            public float Damage;                                       // количество урона
-            public float Armor;                                        // количество брони
+            public float MaxCharacterHealth;  
+            public float Health;
+            public float Damage;
+            public float Armor;
 
-            public float WalkSpeed;                                    // скорость ходьбы
-            public float SprintSpeed;                                  // скорость бега
-            public float CrouchSpeed;                                  // скорость медленной ходьбы
-
-
-            public bool IsDead => Health <= 0;                         // если умер
-
-
-            // Функция для получения урона
-            public void TakeDamage(float damage)
-            {
-                this.Health -= damage;
-            }
+            public float WalkSpeed;
+            public float SprintSpeed;
+            public float CrouchSpeed;
         }
     }
 }
