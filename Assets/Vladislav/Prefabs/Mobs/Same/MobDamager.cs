@@ -49,8 +49,7 @@ public class MobDamager : MonoBehaviour
     // Поиск врага лучем
     protected Player GetEnemy()
     {
-        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(3);
-
+        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(5);
 
         if (hit.collider != null)
         {
