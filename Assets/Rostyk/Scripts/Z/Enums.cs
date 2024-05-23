@@ -50,4 +50,12 @@
         Map = 2,
         Settings = 3,
     }
+
+    // Перечисление игровых персонажей
+    public enum Characters
+    {
+        Radchenko = 0,
+        Kovalev = 1,
+        Valentin = 2,
+    }
 }
