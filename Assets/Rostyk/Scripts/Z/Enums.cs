@@ -1,14 +1,5 @@
 ﻿namespace RostykEnums
 {
-    // Перечисление игровых режимов
-    public enum Gamemode
-    {
-        creative = 0,
-        survival = 1,
-        hardcore = 2,
-        infernum = 3,
-    }
-
     // Перечисление режима оружия
     public enum WeaponMode
     {
@@ -49,5 +40,13 @@
         Notes = 1,
         Map = 2,
         Settings = 3,
+    }
+
+    // Перечисление игровых персонажей
+    public enum Characters
+    {
+        Radchenko = 0,
+        Kovalev = 1,
+        Valentin = 2,
     }
 }

@@ -1,19 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ EntryPoint
 public class LoadGame : MonoBehaviour
 {
+    private SavedData.InitializationData InitializationData;
     private SavedData.PlayerData PlayerData;
-    private SavedData.CharacterData CharacterData;
+    private SavedData.NotesData NotesData;
 
     [Header("\t Player Data")]
     [Space]
     private GameObject NewPlayer;
-    [SerializeField] private GameObject[] PrefabsPlayer;
+    private Player PlayerProperties;
+    [SerializeField] private GameObject PrefabPlayer;
     [SerializeField] private GameObject LoadingScreen;
-    [SerializeField] private Vector3 DefaultPlayerPos;
+
+    private Vector3 DefaultPlayerPos;
+    
 
 
     // Асинхронный метод старт для загрузки данных на сцене
@@ -21,14 +26,21 @@ public class LoadGame : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        DefaultPlayerPos = this.transform.position;
+
         // init player data
-        PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
-        PlayerData = PlayerData.Load();
-        CharacterData = new SavedData.CharacterData();
-        CharacterData = CharacterData.Load();
+        InitData();
+        if (!InitializationData.isContinueGame)
+        {
+            PlayerData.position = DefaultPlayerPos;
+            InitializationData.isContinueGame = true;
+            InitializationData.Save();
+            PlayerData.Save();
+        }
 
         // disable loading screen
         LoadPlayerData();
+        SetCharacter();
 
         LoadingScreen.SetActive(false);
     }
@@ -41,15 +53,23 @@ public class LoadGame : MonoBehaviour
         }
     }
 
+    private void InitData()
+    {
+        InitializationData = new SavedData.InitializationData();
+        PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
+        NotesData = new SavedData.NotesData();
+
+        InitializationData = InitializationData.Load();
+        PlayerData = PlayerData.Load();
+        NotesData = NotesData.Load();
+    }
+
     private void SaveGame()
     {
         Player player = NewPlayer.GetComponent<Player>();
 
         PlayerData = new SavedData.PlayerData()
         {
-            Health = player.Health,
-            Armor = player.Armor,
-            Gamemode = player.GameMode,
             position = player.transform.position,
             rotation = player.transform.rotation
         };
@@ -59,13 +79,33 @@ public class LoadGame : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        for (int i = 0; i < CharacterData.character.Length; i++)
+        NewPlayer = Instantiate(PrefabPlayer, PlayerData.position, PlayerData.rotation);
+
+    }
+
+    private void SetCharacter()
+    {
+        if (InitializationData.Character == RostykEnums.Characters.Kovalev)
         {
-            if (CharacterData.character[i])
-            {
-                NewPlayer = Instantiate(PrefabsPlayer[0], PlayerData.position, PlayerData.rotation);
-                break;
-            }
+            InitializationData.CurrentCharacter = InitializationData.KovalevChar;
+
         }
+        else if (InitializationData.Character == RostykEnums.Characters.Radchenko)
+        {
+            InitializationData.CurrentCharacter = InitializationData.RadchenkoChar;
+        }
+        else if (InitializationData.Character == RostykEnums.Characters.Valentin)
+        {
+            InitializationData.CurrentCharacter = InitializationData.ValentinChar;
+        }
+
+        PlayerProperties = NewPlayer.GetComponent<Player>();
+
+        PlayerProperties.MaxCharacterHealth = InitializationData.CurrentCharacter.MaxCharacterHealth;
+        PlayerProperties.Health = InitializationData.CurrentCharacter.Health;
+        PlayerProperties.Damage = InitializationData.CurrentCharacter.Damage;
+        PlayerProperties.WalkSpeed = InitializationData.CurrentCharacter.WalkSpeed;
+        PlayerProperties.SprintSpeed = InitializationData.CurrentCharacter.SprintSpeed;
+        PlayerProperties.CrouchSpeed = InitializationData.CurrentCharacter.CrouchSpeed;
     }
 }

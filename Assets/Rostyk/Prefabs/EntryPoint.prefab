@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabPlayer: {fileID: 6689362665969325309, guid: 0ff68430060d0b143a7509c22e5c42c2, type: 3}
   LoadingScreen: {fileID: 5422509603468652719}
-  DefaultPlayerPos: {x: 0, y: 0, z: 0}
+  DefaultPlayerPos: {x: -50.201134, y: 5.1262527, z: 124.239235}
 --- !u!1 &3784320410397996748
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7400402439568275166}
   - component: {fileID: 6748813733300480314}
-  - component: {fileID: 6519802849120203519}
   - component: {fileID: 1619179973549027276}
   m_Layer: 0
   m_Name: LoadingScreens
@@ -174,24 +173,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3784320410397996748}
   m_CullTransparentMesh: 1
---- !u!114 &6519802849120203519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3784320410397996748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e788952d84734f419641df82a1bc1c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadingScreens:
-  - {fileID: 2800000, guid: 5933cad524d1cfb4ebedb9ba25f1a693, type: 3}
-  - {fileID: 2800000, guid: 93bb1870488a5374b8795321dcc0dab1, type: 3}
-  - {fileID: 2800000, guid: cfd3958a0dc783741864e243bceb2889, type: 3}
-  - {fileID: 2800000, guid: 3140c0a60ea90c242a75ceb8c6c187a7, type: 3}
-  - {fileID: 2800000, guid: 75c848b0f4861c9498bf9646323f2f37, type: 3}
 --- !u!114 &1619179973549027276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 3e0ca2e5c044c1147b0eaf2460b390bf, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

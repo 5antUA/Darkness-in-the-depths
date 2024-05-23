@@ -14,7 +14,6 @@ public class Player : Character
     private SavedData.InputData InputData;
 
     // VALUES
-    public Gamemode GameMode;                                   // игровой режим
     public float CrouchHeight;                                  // Высота прыседания
     public float JumpForce;                                     // сила прыжка
 

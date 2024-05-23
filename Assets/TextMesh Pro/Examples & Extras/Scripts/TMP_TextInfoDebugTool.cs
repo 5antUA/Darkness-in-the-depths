@@ -320,7 +320,7 @@ namespace TMPro.Examples
                         }
                     }
 
-                    // Last Character of Word
+                    // Last PlayingCharacter of Word
                     if (isBeginRegion && j == wInfo.characterCount - 1)
                     {
                         isBeginRegion = false;
@@ -426,7 +426,7 @@ namespace TMPro.Examples
                         }
                     }
 
-                    // Last Character of Link
+                    // Last PlayingCharacter of Link
                     if (isBeginRegion && j == linkInfo.linkTextLength - 1)
                     {
                         isBeginRegion = false;

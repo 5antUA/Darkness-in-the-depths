@@ -18,4 +18,9 @@ public class FadeNoteNotification : FadeBase
         StartCoroutine(FadeInCoroutine());
         EventManager.ShowNoteNotificationEvent -= RunFadeEffect;
     }
+
+    private void OnDisable()
+    {
+        EventManager.ShowNoteNotificationEvent -= RunFadeEffect;
+    }
 }
