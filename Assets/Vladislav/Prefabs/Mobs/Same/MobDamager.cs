@@ -39,11 +39,6 @@ public class MobDamager : MonoBehaviour
 
 
         }
-        // если не попал во врага
-        else
-        {
-            // Debug.Log("EBLAN, YOU MISSED!");
-        }
     }
 
     // ѕоиск врага лучем

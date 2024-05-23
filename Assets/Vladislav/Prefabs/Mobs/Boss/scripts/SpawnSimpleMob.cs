@@ -66,6 +66,7 @@ namespace mobs
                     boss.GetComponent<Animator>().SetTrigger("SpawnAtack");
                     yield return new WaitForSeconds(1f);
                     FireAktive();
+                    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip, volumeScale:4);
                     yield return new WaitForSeconds(1.5f);
                     print("SpawnAtack");
                     for (int i = 0; i < spawnpoints.Length; i++)

@@ -2,7 +2,6 @@ using mobs;
 using Unity.VisualScripting;
 using UnityEngine;
 
-// Empty class
 public class MonsterBoss : Monster
 {
     private GameObject SpawnSinplemob;

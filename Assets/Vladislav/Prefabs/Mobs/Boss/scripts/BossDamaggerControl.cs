@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class BossDamaggerControl : MobDamager
 {
-    public float corutineTime = 0.5f;
+    public float corutineTime = 0.3f;
     private bool attacking = false;
     private void Update()
     {
-        if (animator.GetBool("Attack") == true && attacking == false)
+        if (animator.GetBool("Attack") == true)
         {
-            attacking = true;
             Hitting();
             Debug.Log(monsterDamage);
 
@@ -20,8 +19,10 @@ public class BossDamaggerControl : MobDamager
         Player enemy = GetEnemy();
 
         // если попал во врага
-        if (enemy != null)
+        if (enemy != null && attacking == false)
         {
+            EventManager.ShowDamageScreen();
+            attacking = true;
             enemy.TakeDamage(monsterDamage);
             StartCoroutine(PushTime(enemy));
         }
@@ -31,8 +32,9 @@ public class BossDamaggerControl : MobDamager
     {
         yield return new WaitForSeconds(corutineTime);
         enemy.GetComponent<CharacterController>().
-                Move(new Vector3(enemy.transform.localPosition.x , enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z ) * Time.deltaTime);
+                Move(new Vector3(enemy.transform.localPosition.x-50 , enemy.transform.localPosition.y + 100, enemy.transform.localPosition.z-25) * Time.deltaTime);
+        Debug.Log("attacking-false");
+        
         attacking = false;
-        EventManager.ShowDamageScreen();
     }
 }
