@@ -40,6 +40,10 @@ namespace SavedData
             }
         }
 
+        public Character GetCharacterProperties()
+        {
+            return new Character();
+        }
 
         #region Characters
         // Слабый, но быстрый
