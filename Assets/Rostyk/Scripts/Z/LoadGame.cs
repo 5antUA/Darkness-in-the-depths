@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ EntryPoint
@@ -15,13 +16,17 @@ public class LoadGame : MonoBehaviour
     private Player PlayerProperties;
     [SerializeField] private GameObject PrefabPlayer;
     [SerializeField] private GameObject LoadingScreen;
-    [SerializeField] private Vector3 DefaultPlayerPos;
+
+    private Vector3 DefaultPlayerPos;
+    
 
 
     // Асинхронный метод старт для загрузки данных на сцене
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(1f);
+
+        DefaultPlayerPos = this.transform.position;
 
         // init player data
         InitData();
@@ -83,6 +88,7 @@ public class LoadGame : MonoBehaviour
         if (InitializationData.Character == RostykEnums.Characters.Kovalev)
         {
             InitializationData.CurrentCharacter = InitializationData.KovalevChar;
+
         }
         else if (InitializationData.Character == RostykEnums.Characters.Radchenko)
         {
