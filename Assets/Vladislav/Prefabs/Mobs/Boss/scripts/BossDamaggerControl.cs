@@ -4,10 +4,12 @@ using UnityEngine;
 public class BossDamaggerControl : MobDamager
 {
     public float corutineTime = 0.5f;
+    private bool attacking = false;
     private void Update()
     {
-        if (animator.GetBool("Attack") == true)
+        if (animator.GetBool("Attack") == true && attacking == false)
         {
+            attacking = true;
             Hitting();
             Debug.Log(monsterDamage);
 
@@ -22,14 +24,6 @@ public class BossDamaggerControl : MobDamager
         {
             enemy.TakeDamage(monsterDamage);
             StartCoroutine(PushTime(enemy));
-            Debug.Log(monsterDamage);
-
-
-        }
-        // если не попал во врага
-        else
-        {
-            // Debug.Log("EBLAN, YOU MISSED!");
         }
     }
 
@@ -38,5 +32,7 @@ public class BossDamaggerControl : MobDamager
         yield return new WaitForSeconds(corutineTime);
         enemy.GetComponent<CharacterController>().
                 Move(new Vector3(enemy.transform.localPosition.x , enemy.transform.localPosition.y + 2, enemy.transform.localPosition.z ) * Time.deltaTime);
+        attacking = false;
+        EventManager.ShowDamageScreen();
     }
 }
