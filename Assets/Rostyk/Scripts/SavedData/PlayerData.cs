@@ -1,5 +1,4 @@
-﻿using RostykEnums;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
 namespace SavedData
@@ -10,17 +9,11 @@ namespace SavedData
     {
         private const string KEY = "PlayerData";
 
-        public float Health;
-        public float Armor;
-        public Gamemode Gamemode;
         public Vector3 position;
         public Quaternion rotation;
 
         public PlayerData(Vector3 DefaultPos = new())
         {
-            Health = 100;
-            Armor = 0;
-            Gamemode = Gamemode.survival;
             position = DefaultPos;
             rotation = Quaternion.identity;
         }

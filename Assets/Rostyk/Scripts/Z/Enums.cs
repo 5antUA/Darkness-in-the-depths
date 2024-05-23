@@ -1,14 +1,5 @@
 ﻿namespace RostykEnums
 {
-    // Перечисление игровых режимов
-    public enum Gamemode
-    {
-        creative = 0,
-        survival = 1,
-        hardcore = 2,
-        infernum = 3,
-    }
-
     // Перечисление режима оружия
     public enum WeaponMode
     {

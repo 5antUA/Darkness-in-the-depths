@@ -5,8 +5,9 @@ using UnityEngine;
 // ¬≈ÿ¿“‹ — –»œ“ Õ¿ Œ¡⁄≈ “ EntryPoint
 public class LoadGame : MonoBehaviour
 {
-    private SavedData.PlayerData PlayerData;
     private SavedData.InitializationData InitializationData;
+    private SavedData.PlayerData PlayerData;
+    private SavedData.NotesData NotesData;
 
     [Header("\t Player Data")]
     [Space]
@@ -23,10 +24,14 @@ public class LoadGame : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // init player data
-        PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
-        PlayerData = PlayerData.Load();
-        InitializationData = new SavedData.InitializationData();
-        InitializationData = InitializationData.Load();
+        InitData();
+        if (!InitializationData.isContinueGame)
+        {
+            PlayerData.position = DefaultPlayerPos;
+            InitializationData.isContinueGame = true;
+            InitializationData.Save();
+            PlayerData.Save();
+        }
 
         // disable loading screen
         LoadPlayerData();
@@ -43,15 +48,23 @@ public class LoadGame : MonoBehaviour
         }
     }
 
+    private void InitData()
+    {
+        InitializationData = new SavedData.InitializationData();
+        PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
+        NotesData = new SavedData.NotesData();
+
+        InitializationData = InitializationData.Load();
+        PlayerData = PlayerData.Load();
+        NotesData = NotesData.Load();
+    }
+
     private void SaveGame()
     {
         Player player = NewPlayer.GetComponent<Player>();
 
         PlayerData = new SavedData.PlayerData()
         {
-            Health = player.Health,
-            Armor = player.Armor,
-            Gamemode = player.GameMode,
             position = player.transform.position,
             rotation = player.transform.rotation
         };
