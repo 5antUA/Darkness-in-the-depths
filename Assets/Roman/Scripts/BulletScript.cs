@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public float bulletLife = 2;
     private SavedData.CharacterData characterData;
     private float characterDamage;
+
+    public float bulletLife = 2;
+
 
     private void Awake()
     {
         characterData = new SavedData.CharacterData();
         characterData = characterData.Load();
-
         characterDamage = characterData.Property.Damage;
 
         Destroy(gameObject, bulletLife);
@@ -26,9 +25,9 @@ public class BulletScript : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(20 * characterDamage);
-                Debug.Log("Enemy health: " + enemy.Health);
+
                 if (enemy.IsDead)
-                    Debug.Log("Dead");
+                    Destroy(collision.gameObject);
             }
         }
     }

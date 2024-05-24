@@ -89,18 +89,20 @@ public class LoadGame : MonoBehaviour
 
     private void DefineCharacter()
     {
-        if (CharacterData.Character == Characters.Kovalev)
+        switch (CharacterData.Character)
         {
-            CharacterData.Property = CharacterData.KovalevProperty;
+            case Characters.Kovalev:
+                CharacterData.Property = CharacterData.KovalevProperty;
+                break;
+            case Characters.Radchenko:
+                CharacterData.Property = CharacterData.RadchenkoProperty;
+                break;
+            case Characters.Valentin:
+                CharacterData.Property = CharacterData.ValentinProperty;
+                break;
         }
-        else if (CharacterData.Character == Characters.Radchenko)
-        {
-            CharacterData.Property = CharacterData.RadchenkoProperty;
-        }
-        else if (CharacterData.Character == Characters.Valentin)
-        {
-            CharacterData.Property = CharacterData.ValentinProperty;
-        }
+
+        CharacterData.Save();
     }
 
     private void LoadPlayerProperties()
