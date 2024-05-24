@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace SavedData
 {
-    // Класс для хранения данных об игроке
+    // Класс для хранения transform игрока
     [System.Serializable]
-    public class PlayerData
+    public class PlayerPositionData
     {
-        private const string KEY = "PlayerData";
+        private const string KEY = "PlayerPositionData";
 
         public Vector3 position;
         public Quaternion rotation;
 
-        public PlayerData(Vector3 DefaultPos = new())
+        public PlayerPositionData(Vector3 DefaultPos = new())
         {
             position = DefaultPos;
             rotation = Quaternion.identity;
@@ -25,11 +25,11 @@ namespace SavedData
             StorageService.Save(KEY, this);
         }
 
-        public PlayerData Load()
+        public PlayerPositionData Load()
         {
             try
             {
-                var newData = StorageService.Load<PlayerData>(KEY);
+                var newData = StorageService.Load<PlayerPositionData>(KEY);
                 return newData;
             }
             catch (FileNotFoundException)

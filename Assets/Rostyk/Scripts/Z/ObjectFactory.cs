@@ -37,7 +37,7 @@ public class ObjectFactory : MonoBehaviour
         }
     }
 
-    //private void SaveGame()
+    //private void SavePlayerPosition()
     //{
     //    for (int i = 0; i < InstatiateObjects.Count; i++)
     //    {

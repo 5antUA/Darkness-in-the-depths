@@ -10,7 +10,7 @@ using UnityEngine.UI;
 // ¬≈ÿ¿“‹ — –»œ Õ¿ Œ¡⁄≈ “ PlayerUI
 public class HealthBarManager : MonoBehaviour
 {
-    private SavedData.InitializationData InitializationData;
+    private SavedData.CharacterData InitializationData;
     private SavedData.InputData InputData;
 
     public GameObject HealthBar;
@@ -32,7 +32,7 @@ public class HealthBarManager : MonoBehaviour
 
     private void Awake()
     {
-        InitializationData = new SavedData.InitializationData();
+        InitializationData = new SavedData.CharacterData();
         InputData = new SavedData.InputData();
         InitializationData = InitializationData.Load();
         InputData = InputData.Load();

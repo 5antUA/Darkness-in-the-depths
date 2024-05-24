@@ -1,24 +1,22 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using RostykEnums;
 
 
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ EntryPoint
 public class LoadGame : MonoBehaviour
 {
-    private SavedData.InitializationData InitializationData;
-    private SavedData.PlayerData PlayerData;
+    private SavedData.CharacterData CharacterData;
+    private SavedData.PlayerPositionData PlayerPositionData;
     private SavedData.NotesData NotesData;
 
-    [Header("\t Player Data")]
-    [Space]
-    private GameObject NewPlayer;
+    private GameObject PlayerClone;
     private Player PlayerProperties;
-    [SerializeField] private GameObject PrefabPlayer;
-    [SerializeField] private GameObject LoadingScreen;
+    private Vector3 DefaultPlayerPosition;
 
-    private Vector3 DefaultPlayerPos;
-    
+    [SerializeField] private GameObject PlayerPrefab;
+    [SerializeField] private GameObject LoadingScreen;
 
 
     // Асинхронный метод старт для загрузки данных на сцене
@@ -26,21 +24,15 @@ public class LoadGame : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        DefaultPlayerPos = this.transform.position;
+        DefaultPlayerPosition = this.transform.position;
 
         // init player data
         InitData();
-        if (!InitializationData.isContinueGame)
-        {
-            PlayerData.position = DefaultPlayerPos;
-            InitializationData.isContinueGame = true;
-            InitializationData.Save();
-            PlayerData.Save();
-        }
+        InNewGame();
 
-        LoadPlayerData();
-        SetCharacter();
-        SetCharacterProperties();
+        LoadPlayerPosition();
+        DefineCharacter();
+        LoadPlayerProperties();
 
         LoadingScreen.SetActive(false);
     }
@@ -49,65 +41,87 @@ public class LoadGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SaveGame();
+            SavePlayerPosition();
+            SavePlayerProperties();
+        }
+    }
+
+
+    private void InNewGame()
+    {
+        // если начата новая игра
+        if (!CharacterData.isContinueGame)
+        {
+            PlayerPositionData.position = DefaultPlayerPosition;
+            CharacterData.isContinueGame = true;
+            CharacterData.Save();
+            PlayerPositionData.Save();
         }
     }
 
     private void InitData()
     {
-        InitializationData = new SavedData.InitializationData();
-        PlayerData = new SavedData.PlayerData(DefaultPlayerPos);
+        CharacterData = new SavedData.CharacterData();
+        PlayerPositionData = new SavedData.PlayerPositionData(DefaultPlayerPosition);
         NotesData = new SavedData.NotesData();
 
-        InitializationData = InitializationData.Load();
-        PlayerData = PlayerData.Load();
+        CharacterData = CharacterData.Load();
+        PlayerPositionData = PlayerPositionData.Load();
         NotesData = NotesData.Load();
     }
 
-    private void SaveGame()
+    private void SavePlayerPosition()
     {
-        Player player = NewPlayer.GetComponent<Player>();
-
-        PlayerData = new SavedData.PlayerData()
+        PlayerPositionData = new SavedData.PlayerPositionData()
         {
-            position = player.transform.position,
-            rotation = player.transform.rotation
+            position = PlayerProperties.transform.position,
+            rotation = PlayerProperties.transform.rotation
         };
 
-        PlayerData.Save();
+        PlayerPositionData.Save();
     }
 
-    private void LoadPlayerData()
+    private void LoadPlayerPosition()
     {
-        NewPlayer = Instantiate(PrefabPlayer, PlayerData.position, PlayerData.rotation);
+        PlayerClone = Instantiate(PlayerPrefab, PlayerPositionData.position, PlayerPositionData.rotation);
+        PlayerProperties = PlayerClone.GetComponent<Player>();
     }
 
-    private void SetCharacter()
+    private void DefineCharacter()
     {
-        if (InitializationData.Character == RostykEnums.Characters.Kovalev)
+        if (CharacterData.Character == Characters.Kovalev)
         {
-            InitializationData.CurrentCharacter = InitializationData.KovalevChar;
-
+            CharacterData.Property = CharacterData.KovalevProperty;
         }
-        else if (InitializationData.Character == RostykEnums.Characters.Radchenko)
+        else if (CharacterData.Character == Characters.Radchenko)
         {
-            InitializationData.CurrentCharacter = InitializationData.RadchenkoChar;
+            CharacterData.Property = CharacterData.RadchenkoProperty;
         }
-        else if (InitializationData.Character == RostykEnums.Characters.Valentin)
+        else if (CharacterData.Character == Characters.Valentin)
         {
-            InitializationData.CurrentCharacter = InitializationData.ValentinChar;
+            CharacterData.Property = CharacterData.ValentinProperty;
         }
     }
 
-    private void SetCharacterProperties()
+    private void LoadPlayerProperties()
     {
-        PlayerProperties = NewPlayer.GetComponent<Player>();
+        PlayerProperties.MaxCharacterHealth = CharacterData.Property.MaxCharacterHealth;
+        PlayerProperties.Health = CharacterData.Property.Health;
+        PlayerProperties.Damage = CharacterData.Property.Damage;
+        PlayerProperties.WalkSpeed = CharacterData.Property.WalkSpeed;
+        PlayerProperties.SprintSpeed = CharacterData.Property.SprintSpeed;
+        PlayerProperties.CrouchSpeed = CharacterData.Property.CrouchSpeed;
+    }
 
-        PlayerProperties.MaxCharacterHealth = InitializationData.CurrentCharacter.MaxCharacterHealth;
-        PlayerProperties.Health = InitializationData.CurrentCharacter.Health;
-        PlayerProperties.Damage = InitializationData.CurrentCharacter.Damage;
-        PlayerProperties.WalkSpeed = InitializationData.CurrentCharacter.WalkSpeed;
-        PlayerProperties.SprintSpeed = InitializationData.CurrentCharacter.SprintSpeed;
-        PlayerProperties.CrouchSpeed = InitializationData.CurrentCharacter.CrouchSpeed;
+    private void SavePlayerProperties()
+    {
+        CharacterData.Property.MaxCharacterHealth = PlayerProperties.MaxCharacterHealth;
+        CharacterData.Property.Health = PlayerProperties.Health;
+        CharacterData.Property.Damage = PlayerProperties.Damage;
+        CharacterData.Property.WalkSpeed = PlayerProperties.WalkSpeed;
+        CharacterData.Property.SprintSpeed = PlayerProperties.SprintSpeed;
+        CharacterData.Property.CrouchSpeed = PlayerProperties.CrouchSpeed;
+
+        CharacterData.Save();
     }
 }

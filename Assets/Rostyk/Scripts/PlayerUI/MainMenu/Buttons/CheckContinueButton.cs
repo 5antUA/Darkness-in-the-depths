@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class CheckContinueButton : MonoBehaviour
 {
-    SavedData.InitializationData initializationData;
+    SavedData.CharacterData initializationData;
     private Button theButton;
 
     private void Start()
     {
-        initializationData = new SavedData.InitializationData();
+        initializationData = new SavedData.CharacterData();
         initializationData = initializationData.Load();
 
         theButton = this.GetComponent<Button>();
