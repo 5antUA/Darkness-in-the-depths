@@ -37,11 +37,7 @@ public class ObjectFactory : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    //private void SavePlayerPosition()
-=======
     //private void SaveGame()
->>>>>>> 3d946fd (Начало создания фабрики объектов (сохранения и загрузка))
     //{
     //    for (int i = 0; i < InstatiateObjects.Count; i++)
     //    {
