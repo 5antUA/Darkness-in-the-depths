@@ -2525,7 +2525,7 @@ GameObject:
   - component: {fileID: 1453770011269154983}
   - component: {fileID: 5443649855995379944}
   m_Layer: 0
-  m_Name: hpBarBackgroundRed
+  m_Name: BackgroundBarImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3438,7 +3438,7 @@ GameObject:
   - component: {fileID: 6868432788245327056}
   - component: {fileID: 749462455566819474}
   m_Layer: 0
-  m_Name: AmountHealthImage
+  m_Name: HealthBarImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4856,7 +4856,7 @@ GameObject:
   - component: {fileID: 4043493755819310823}
   - component: {fileID: 3085497281209433564}
   m_Layer: 0
-  m_Name: hpBarBackgroundBlack
+  m_Name: StrokeBarImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6221,11 +6221,14 @@ MonoBehaviour:
   HealthBar: {fileID: 8134789328192554517}
   PlayerInfo: {fileID: 6464086841100792213}
   MenuUI: {fileID: 5068044394997456047}
-  AmountHealthImage: {fileID: 749462455566819474}
+  PlayerInfoText: {fileID: 6464086841100792213}
+  StrokeBarImage: {fileID: 3085497281209433564}
+  HealthBarImage: {fileID: 749462455566819474}
   PlayerIcon: {fileID: 2047853835048436455}
-  KovalevIcon: {fileID: 21300000, guid: 137981f9f322e214f9a27e819e466490, type: 3}
-  RadchenkoIcon: {fileID: 21300000, guid: 4c984f51b7449634b923b9a0b8f6df36, type: 3}
-  ValentinIcon: {fileID: 21300000, guid: 8a0927018eff58c49a39de845f9ba301, type: 3}
+  KovalevIcon: {fileID: 21300000, guid: f0dbfd13b2ce2db4bb68a79b86e71037, type: 3}
+  ValentinIcon: {fileID: 21300000, guid: 5d8ff8eaa0bd47a458a3184f0c06e545, type: 3}
+  RomarioIcon: {fileID: 21300000, guid: 00bcfaef60cdac74c81af38f84af796a, type: 3}
+  PaniniIcon: {fileID: 21300000, guid: 7265db6ec6676f5468ba65197c3dbb8e, type: 3}
 --- !u!1 &8266322279075186913
 GameObject:
   m_ObjectHideFlags: 0
