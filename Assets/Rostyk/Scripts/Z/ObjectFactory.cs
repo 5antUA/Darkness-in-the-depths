@@ -6,47 +6,67 @@ public class ObjectFactory : MonoBehaviour
 {
     private SavedData.ObjectFactoryData ObjectFactoryData;
 
-    public List<GameObject> InstatiateObjects = new List<GameObject>();
+    public List<GameObject> PrefabObjects = new List<GameObject>();
+    private List<GameObject> CloneObjects = new List<GameObject>();
 
 
     private void Start()
     {
         ObjectFactoryData = new SavedData.ObjectFactoryData();
-        ObjectFactoryData = ObjectFactoryData.Load(InstatiateObjects);
+        ObjectFactoryData = ObjectFactoryData.Load(PrefabObjects);
+
+        LoadGame();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            LoadGame();
+            LoadGame(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveGame();
         }
     }
 
-    private void LoadGame()
+
+    private void DestroyCloneObjects()
     {
-        for (int i = 0; i < InstatiateObjects.Count; i++)
+        foreach (var obj in CloneObjects)
         {
-            if (InstatiateObjects[i] == null)
+            Destroy(obj);
+        }
+    }
+
+    private void LoadGame(bool gameReload = false)
+    {
+        if (gameReload)
+        {
+            DestroyCloneObjects();
+            CloneObjects = new List<GameObject>();
+        }
+
+        for (int i = 0; i < PrefabObjects.Count; i++)
+        {
+            if (PrefabObjects[i] == null)
                 continue;
 
             var pos = ObjectFactoryData.EnemiesList[i].position;
             var rot = ObjectFactoryData.EnemiesList[i].rotation;
 
-            Instantiate(InstatiateObjects[i], pos, rot);
+            CloneObjects.Add(Instantiate(PrefabObjects[i], pos, rot));
         }
     }
 
-    //private void SaveGame()
-    //{
-    //    for (int i = 0; i < InstatiateObjects.Count; i++)
-    //    {
+    private void SaveGame()
+    {
+        for (int i = 0; i < PrefabObjects.Count; i++)
+        {
+            Vector3 pos = CloneObjects[i].transform.position;
+            Quaternion rot = CloneObjects[i].transform.rotation;
 
-
-    //        var pos = ObjectFactoryData.EnemiesList[i].position;
-    //        var rot = ObjectFactoryData.EnemiesList[i].rotation;
-
-    //        Instantiate(InstatiateObjects[i], pos, rot);
-    //    }
-    //}
+            ObjectFactoryData.EnemiesList[i] = new SavedData.EnemyData(pos, rot);
+        }
+    }
 }
