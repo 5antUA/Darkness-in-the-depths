@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9093281948852279185
+--- !u!1 &5726363537656063040
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6495654272177762633}
-  - component: {fileID: 6104631286585243542}
-  - component: {fileID: 5397994733901175473}
+  - component: {fileID: 5616085339221928826}
+  - component: {fileID: 6261713656347927260}
+  - component: {fileID: 3807024708304333014}
   m_Layer: 0
   m_Name: NoteTrigger
   m_TagString: Untagged
@@ -18,41 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6495654272177762633
+--- !u!4 &5616085339221928826
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9093281948852279185}
+  m_GameObject: {fileID: 5726363537656063040}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.62, y: 1.603, z: 100.232}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -50.18, y: 2.09, z: 100.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6104631286585243542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9093281948852279185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c5eb706b8ef9b4699795ec63c3d311, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NoteNumber: 0
---- !u!65 &5397994733901175473
+--- !u!65 &6261713656347927260
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9093281948852279185}
+  m_GameObject: {fileID: 5726363537656063040}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -65,23 +52,18 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD:Assets/Rostyk/Prefabs/NoteTrigger.prefab
-  m_Size: {x: 2.7633438, y: 1, z: 2.6588058}
-  m_Center: {x: 0.42271423, y: 0, z: 0.4937935}
-=======
-  m_Size: {x: 3.739109, y: 2.443487, z: 5.0064507}
-  m_Center: {x: -1.3695545, y: 0.72174346, z: 2.0032253}
---- !u!114 &4516064504018969753
+  m_Size: {x: 3.0143356, y: 1, z: 3.6939087}
+  m_Center: {x: 0.02684021, y: 0, z: -0.25598145}
+--- !u!114 &3807024708304333014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6715007503310070321}
+  m_GameObject: {fileID: 5726363537656063040}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2c5eb706b8ef9b4699795ec63c3d311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoteNumber: 1
->>>>>>> 3d946fd (Начало создания фабрики объектов (сохранения и загрузка)):Assets/Rostyk/Prefabs/NoteTrigger0.prefab
+  NoteNumber: 0
