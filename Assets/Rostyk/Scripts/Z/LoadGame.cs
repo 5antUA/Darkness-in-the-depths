@@ -38,9 +38,9 @@ public class LoadGame : MonoBehaviour
             PlayerData.Save();
         }
 
-        // disable loading screen
         LoadPlayerData();
         SetCharacter();
+        SetCharacterProperties();
 
         LoadingScreen.SetActive(false);
     }
@@ -80,7 +80,6 @@ public class LoadGame : MonoBehaviour
     private void LoadPlayerData()
     {
         NewPlayer = Instantiate(PrefabPlayer, PlayerData.position, PlayerData.rotation);
-
     }
 
     private void SetCharacter()
@@ -98,7 +97,10 @@ public class LoadGame : MonoBehaviour
         {
             InitializationData.CurrentCharacter = InitializationData.ValentinChar;
         }
+    }
 
+    private void SetCharacterProperties()
+    {
         PlayerProperties = NewPlayer.GetComponent<Player>();
 
         PlayerProperties.MaxCharacterHealth = InitializationData.CurrentCharacter.MaxCharacterHealth;
