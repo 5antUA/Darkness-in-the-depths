@@ -16,7 +16,6 @@ namespace mobs
             player = GameObject.FindWithTag("Player");
         }
 
-        // Update is called once per frame
         private void Update()
         {
             Attack();
