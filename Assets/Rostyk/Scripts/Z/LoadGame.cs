@@ -91,14 +91,17 @@ public class LoadGame : MonoBehaviour
     {
         switch (CharacterData.Character)
         {
+            case Characters.Valentin:
+                CharacterData.Property = CharacterData.ValentinProperty;
+                break;
             case Characters.Kovalev:
                 CharacterData.Property = CharacterData.KovalevProperty;
                 break;
-            case Characters.Radchenko:
-                CharacterData.Property = CharacterData.RadchenkoProperty;
+            case Characters.Romario:
+                CharacterData.Property = CharacterData.RomarioProperty;
                 break;
-            case Characters.Valentin:
-                CharacterData.Property = CharacterData.ValentinProperty;
+            case Characters.Panini:
+                CharacterData.Property = CharacterData.PaniniProperty;
                 break;
         }
 

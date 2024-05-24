@@ -1,64 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
+    private SavedData.WeaponData EnabledWeaponData;
     [SerializeField] private int weaponSwitch = 0;
+    public bool isActiveAll;
+
 
     void Start()
     {
+        EnabledWeaponData = new SavedData.WeaponData();
+        EnabledWeaponData = EnabledWeaponData.Load();
+
         SelectWeapon();
     }
+
     void Update()
     {
+        KeysWeaponSwitch();
+        EnabledWeaponData = EnabledWeaponData.Load();
+
         int currentWeapon = weaponSwitch;
-
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-            if (weaponSwitch >= transform.childCount - 1)
-            {
-                weaponSwitch = 0;
-            }
-            else
-            {
-                weaponSwitch++;
-            }
-        }
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            if (weaponSwitch <= 0)
-            {
-                weaponSwitch = transform.childCount - 1;
-            }
-            else
-            {
-                weaponSwitch--;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            weaponSwitch = 0;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
-        {
-            weaponSwitch = 1;
-        }
-
         if (currentWeapon == weaponSwitch)
         {
             SelectWeapon();
         }
+    }
 
+
+    private void KeysWeaponSwitch()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (EnabledWeaponData.Weapons[0])
+                weaponSwitch = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
+        {
+            if (EnabledWeaponData.Weapons[1])
+               weaponSwitch = 1;
+        }
     }
 
     private void SelectWeapon()
     {
         int i = 0;
-        foreach (Transform weapon in transform)
+        foreach (Transform weapon in this.transform)
         {
             if (i == weaponSwitch)
                 weapon.gameObject.SetActive(true);

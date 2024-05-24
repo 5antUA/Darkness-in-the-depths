@@ -45,7 +45,7 @@ namespace SavedData
 
         #region Characters
         // Слабый, но быстрый
-        public Properties RadchenkoProperty = new Properties()
+        public Properties KovalevProperty = new Properties()
         {
             MaxCharacterHealth = 75,
             Health = 75,
@@ -57,7 +57,7 @@ namespace SavedData
         };
 
         // Золотая средина
-        public Properties KovalevProperty = new Properties()
+        public Properties ValentinProperty = new Properties()
         {
             MaxCharacterHealth = 100,
             Health = 100,
@@ -68,11 +68,22 @@ namespace SavedData
         };
 
         // Сильный, но медленный
-        public Properties ValentinProperty = new Properties()
+        public Properties RomarioProperty = new Properties()
         {
             MaxCharacterHealth = 150,
             Health = 150,
             Damage = 1.5f,
+            WalkSpeed = 3,
+            SprintSpeed = 4,
+            CrouchSpeed = 2
+        };
+
+        // Сборник всех слабых сторон
+        public Properties PaniniProperty = new Properties()
+        {
+            MaxCharacterHealth = 75,
+            Health = 75,
+            Damage = 0.7f,
             WalkSpeed = 3,
             SprintSpeed = 4,
             CrouchSpeed = 2

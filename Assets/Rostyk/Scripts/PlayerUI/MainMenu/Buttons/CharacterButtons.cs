@@ -14,20 +14,25 @@ public class CharacterButtons : MonoBehaviour
     }
 
 
+    public void SetCharacterValentinButton()
+    {
+        character = RostykEnums.Characters.Valentin;
+    }
+
+
     public void SetCharacterKovalButton()
     {
         character = RostykEnums.Characters.Kovalev;
     }
 
-
-    public void SetCharacterRadchenkoButton()
+    public void SetCharacterRomarioButton()
     {
-        character = RostykEnums.Characters.Radchenko;
+        character = RostykEnums.Characters.Romario;
     }
 
-    public void SetCharacterValentinButton()
+    public void SetCharacterPaniniButton()
     {
-        character = RostykEnums.Characters.Valentin;
+        character = RostykEnums.Characters.Panini;
     }
 
     public void ApplyCharacterButton()

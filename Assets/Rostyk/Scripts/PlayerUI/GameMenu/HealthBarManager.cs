@@ -22,12 +22,15 @@ public class HealthBarManager : MonoBehaviour
 
     [Header("\t Initialition data")]
     [Space]
-    [SerializeField] private Image AmountHealthImage;
+    [SerializeField] private Text PlayerInfoText;
+    [SerializeField] private Image StrokeBarImage;
+    [SerializeField] private Image HealthBarImage;
     [SerializeField] private Image PlayerIcon;
 
     [SerializeField] private Sprite KovalevIcon;
-    [SerializeField] private Sprite RadchenkoIcon;
     [SerializeField] private Sprite ValentinIcon;
+    [SerializeField] private Sprite RomarioIcon;
+    [SerializeField] private Sprite PaniniIcon;
 
 
     private void Awake()
@@ -54,7 +57,7 @@ public class HealthBarManager : MonoBehaviour
     private void UpdatePlayerInfo()
     {
         int healthInfo = (int)MyPlayer.Health;
-        AmountHealthImage.fillAmount = MyPlayer.Health / MyPlayer.MaxCharacterHealth;
+        HealthBarImage.fillAmount = MyPlayer.Health / MyPlayer.MaxCharacterHealth;
 
         if (MyPlayer.IsDead)
             healthInfo = 0;
@@ -65,23 +68,41 @@ public class HealthBarManager : MonoBehaviour
 
     private void InitData()
     {
-        if (InitializationData.Character == RostykEnums.Characters.Kovalev)
-        {
-            PlayerIcon.sprite = KovalevIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#0B8C00", out Color newColor);
-            AmountHealthImage.color = newColor;
-        }
-        else if (InitializationData.Character == RostykEnums.Characters.Radchenko)
-        {
-            PlayerIcon.sprite = RadchenkoIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#00A8FF", out Color newColor);
-            AmountHealthImage.color = newColor;
-        }
-        else if (InitializationData.Character == RostykEnums.Characters.Valentin)
+        if (InitializationData.Character == RostykEnums.Characters.Valentin)
         {
             PlayerIcon.sprite = ValentinIcon;
+            UnityEngine.ColorUtility.TryParseHtmlString("#0B8C00", out Color newColor);
+            HealthBarImage.color = newColor;
+
+            StrokeBarImage.color = Color.black;
+            PlayerInfo.color = Color.black;
+        }
+        else if (InitializationData.Character == RostykEnums.Characters.Kovalev)
+        {
+            PlayerIcon.sprite = KovalevIcon;
+            UnityEngine.ColorUtility.TryParseHtmlString("#007BFF", out Color newColor);
+            HealthBarImage.color = newColor;
+
+            StrokeBarImage.color = Color.black;
+            PlayerInfo.color = Color.black;
+        }
+        else if (InitializationData.Character == RostykEnums.Characters.Romario)
+        {
+            PlayerIcon.sprite = RomarioIcon;
+            UnityEngine.ColorUtility.TryParseHtmlString("#FF0500", out Color newColor);
+            HealthBarImage.color = newColor;
+
+            StrokeBarImage.color = Color.black;
+            PlayerInfo.color = Color.black;
+        }
+        else if (InitializationData.Character == RostykEnums.Characters.Panini)
+        {
+            PlayerIcon.sprite = PaniniIcon;
             UnityEngine.ColorUtility.TryParseHtmlString("#BC2900", out Color newColor);
-            AmountHealthImage.color = newColor;
+            HealthBarImage.color = Color.black;
+
+            StrokeBarImage.color = Color.white;
+            PlayerInfo.color = Color.white;
         }
     }
 }
