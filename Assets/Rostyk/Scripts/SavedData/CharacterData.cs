@@ -1,36 +1,37 @@
 ﻿using RostykEnums;
 using System.IO;
-using UnityEngine;
 
 
 namespace SavedData
 {
+    // Класс для хранения характеристик игрока
     [System.Serializable]
-    public class InitializationData
+    public class CharacterData
     {
-        private const string KEY = "InitializationData";
+        private const string KEY = "CharacterData";
 
         public bool isContinueGame;
         public Characters Character;
-        public PlayingCharacter CurrentCharacter;
+        public Properties Property;
 
-
-        public InitializationData()
+        public CharacterData()
         {
             isContinueGame = false;
-            CurrentCharacter = null;
+            Property = null;
         }
 
+
+        #region Management
         public void Save()
         {
             StorageService.Save(KEY, this);
         }
 
-        public InitializationData Load()
+        public CharacterData Load()
         {
             try
             {
-                var newData = StorageService.Load<InitializationData>(KEY);
+                var newData = StorageService.Load<CharacterData>(KEY);
                 return newData;
             }
             catch (FileNotFoundException)
@@ -39,15 +40,12 @@ namespace SavedData
                 return this;
             }
         }
+        #endregion
 
-        public Character GetCharacterProperties()
-        {
-            return new Character();
-        }
 
         #region Characters
         // Слабый, но быстрый
-        public readonly PlayingCharacter RadchenkoChar = new PlayingCharacter()
+        public Properties RadchenkoProperty = new Properties()
         {
             MaxCharacterHealth = 75,
             Health = 75,
@@ -59,7 +57,7 @@ namespace SavedData
         };
 
         // Золотая средина
-        public readonly PlayingCharacter KovalevChar = new PlayingCharacter()
+        public Properties KovalevProperty = new Properties()
         {
             MaxCharacterHealth = 100,
             Health = 100,
@@ -70,7 +68,7 @@ namespace SavedData
         };
 
         // Сильный, но медленный
-        public readonly PlayingCharacter ValentinChar = new PlayingCharacter()
+        public Properties ValentinProperty = new Properties()
         {
             MaxCharacterHealth = 150,
             Health = 150,
@@ -80,21 +78,18 @@ namespace SavedData
             CrouchSpeed = 2
         };
         #endregion
+    }
 
-        [System.Serializable]
-        public class PlayingCharacter
-        {
-            [Header("\t CHARACTER PROPERTIES")]
-            [Space]
+    [System.Serializable]
+    public class Properties
+    {
+        public float MaxCharacterHealth;
+        public float Health;
+        public float Damage;
+        public float Armor;
 
-            public float MaxCharacterHealth;  
-            public float Health;
-            public float Damage;
-            public float Armor;
-
-            public float WalkSpeed;
-            public float SprintSpeed;
-            public float CrouchSpeed;
-        }
+        public float WalkSpeed;
+        public float SprintSpeed;
+        public float CrouchSpeed;
     }
 }

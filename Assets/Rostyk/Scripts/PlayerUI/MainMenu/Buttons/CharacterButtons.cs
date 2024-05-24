@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class CharacterButtons : MonoBehaviour
 {
-    private InitializationData InitializationData;
+    private CharacterData InitializationData;
     private RostykEnums.Characters character;
 
 
     void Start()
     {
-        InitializationData = new InitializationData();
+        InitializationData = new CharacterData();
     }
 
 

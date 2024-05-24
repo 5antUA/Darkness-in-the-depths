@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 // ¬≈ÿ¿“‹ Õ¿  ¿Õ¬¿— ¬ √À¿¬ÕŒÃ Ã≈Õﬁ
 public class MainButtons : MonoBehaviour
 {
-    SavedData.InitializationData InitializationData;
+    SavedData.CharacterData InitializationData;
     
     [SerializeField] private GameObject MainUI;
     [SerializeField] private GameObject SettingsUI;
@@ -13,7 +13,7 @@ public class MainButtons : MonoBehaviour
 
     private void Start()
     {
-        InitializationData = new SavedData.InitializationData();
+        InitializationData = new SavedData.CharacterData();
         InitializationData = InitializationData.Load();
     }
 
@@ -24,7 +24,7 @@ public class MainButtons : MonoBehaviour
 
     public void NewGame()
     {
-        SavedData.PlayerData playerData = new SavedData.PlayerData();
+        SavedData.PlayerPositionData playerData = new SavedData.PlayerPositionData();
         SavedData.NotesData notesData = new SavedData.NotesData();
         InitializationData.isContinueGame = true;
         

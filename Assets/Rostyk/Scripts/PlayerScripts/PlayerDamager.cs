@@ -9,7 +9,7 @@ public class PlayerDamager : MonoBehaviour
     private SavedData.InputData InputData;
 
     public WeaponMode WeaponMode;                               // какой тип оружия держит персонаж сейчас
-    private float PlayerDamage;                                 // урон, расчитаный по формуле (ориг.Damage в PlayingCharacter)
+    private float PlayerDamage;                                 // урон, расчитаный по формуле (ориг.Damage в Properties)
     private float HitDistance;                                  // дальность удара или стрельбы
 
     [Space]

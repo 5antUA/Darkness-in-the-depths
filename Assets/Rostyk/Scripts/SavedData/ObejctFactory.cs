@@ -44,7 +44,7 @@ namespace SavedData
     }
 
     [System.Serializable]
-    public struct EnemyData
+    public class EnemyData
     {
         public Vector3 position;
         public Quaternion rotation;
