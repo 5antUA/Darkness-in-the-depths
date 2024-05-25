@@ -1,3 +1,4 @@
+using RostykEnums;
 using SavedData;
 using System;
 using System.Collections;
@@ -10,20 +11,21 @@ using UnityEngine.UI;
 // ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
 public class HealthBarManager : MonoBehaviour
 {
-    private SavedData.CharacterData InitializationData;
+    private SavedData.CharacterData CharacterData;
     private SavedData.InputData InputData;
 
     public GameObject HealthBar;
 
     [Space]
-    public Text PlayerInfo;                                    // информация об игроке (Text UI)
     public GameObject MenuUI;                                  // MenuUI
     private Player MyPlayer;                                   // скрипт this.Player
 
     [Header("\t Initialition data")]
     [Space]
     [SerializeField] private Text PlayerInfoText;
+    [SerializeField] private Text PlayerName;
     [SerializeField] private Image StrokeBarImage;
+    [SerializeField] private Image BackgroundBarImage;
     [SerializeField] private Image HealthBarImage;
     [SerializeField] private Image PlayerIcon;
 
@@ -35,15 +37,16 @@ public class HealthBarManager : MonoBehaviour
 
     private void Awake()
     {
-        InitializationData = new SavedData.CharacterData();
+        CharacterData = new SavedData.CharacterData();
         InputData = new SavedData.InputData();
-        InitializationData = InitializationData.Load();
+        CharacterData = CharacterData.Load();
         InputData = InputData.Load();
     }
     private void Start()
     {
         MyPlayer = GetComponentInParent<Player>();
         InitData();
+        DefinePlayerName();
     }
 
     private void Update()
@@ -62,47 +65,69 @@ public class HealthBarManager : MonoBehaviour
         if (MyPlayer.IsDead)
             healthInfo = 0;
 
-        PlayerInfo.text =
+        PlayerInfoText.text =
             $"Health : {healthInfo}\n";
+    }
+
+    private void DefinePlayerName()
+    {
+        switch (CharacterData.Character)
+        {
+            case Characters.Valentin:
+                PlayerName.text = "Валентин";
+                break;
+            case Characters.Kovalev:
+                PlayerName.text = "Влад Ковальов";
+                break;
+            case Characters.Romario:
+                PlayerName.text = "Ромаріо Десантес";
+                break;
+            case Characters.Panini:
+                PlayerName.text = "Містер Бігуді";
+                break;
+        }
     }
 
     private void InitData()
     {
-        if (InitializationData.Character == RostykEnums.Characters.Valentin)
+        if (CharacterData.Character == RostykEnums.Characters.Valentin)
         {
             PlayerIcon.sprite = ValentinIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#0B8C00", out Color newColor);
-            HealthBarImage.color = newColor;
+            UnityEngine.ColorUtility.TryParseHtmlString("#0B8C00", out Color newHealthBarColor);
+            UnityEngine.ColorUtility.TryParseHtmlString("#595959", out Color newBackgroundBarColor);
+            HealthBarImage.color = newHealthBarColor;
 
             StrokeBarImage.color = Color.black;
-            PlayerInfo.color = Color.black;
+            BackgroundBarImage.color = newBackgroundBarColor;
         }
-        else if (InitializationData.Character == RostykEnums.Characters.Kovalev)
+        else if (CharacterData.Character == RostykEnums.Characters.Kovalev)
         {
             PlayerIcon.sprite = KovalevIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#007BFF", out Color newColor);
-            HealthBarImage.color = newColor;
+            UnityEngine.ColorUtility.TryParseHtmlString("#007BFF", out Color newHealthBarColor);
+            UnityEngine.ColorUtility.TryParseHtmlString("#595959", out Color newBackgroundBarColor);
+            HealthBarImage.color = newHealthBarColor;
 
             StrokeBarImage.color = Color.black;
-            PlayerInfo.color = Color.black;
+            BackgroundBarImage.color = newBackgroundBarColor;
         }
-        else if (InitializationData.Character == RostykEnums.Characters.Romario)
+        else if (CharacterData.Character == RostykEnums.Characters.Romario)
         {
             PlayerIcon.sprite = RomarioIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#FF0500", out Color newColor);
-            HealthBarImage.color = newColor;
+            UnityEngine.ColorUtility.TryParseHtmlString("#B00000", out Color newHealthBarColor);
+            UnityEngine.ColorUtility.TryParseHtmlString("#787878", out Color newBackgroundBarColor);
+            HealthBarImage.color = newHealthBarColor;
 
             StrokeBarImage.color = Color.black;
-            PlayerInfo.color = Color.black;
+            BackgroundBarImage.color = newBackgroundBarColor;
         }
-        else if (InitializationData.Character == RostykEnums.Characters.Panini)
+        else if (CharacterData.Character == RostykEnums.Characters.Panini)
         {
             PlayerIcon.sprite = PaniniIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#BC2900", out Color newColor);
             HealthBarImage.color = Color.black;
+            UnityEngine.ColorUtility.TryParseHtmlString("#959595", out Color newBackgroundBarColor);
 
             StrokeBarImage.color = Color.white;
-            PlayerInfo.color = Color.white;
+            BackgroundBarImage.color = newBackgroundBarColor;
         }
     }
 }
