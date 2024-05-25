@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,9 @@ namespace mobs
     {
         private GameObject player;
         private NavMeshAgent agent;
+
+        private Sounds sounds;
+
         public float walck_speed = 3.5f;
         public float attackDistanse = 4f;
         private void Awake()
@@ -18,11 +22,16 @@ namespace mobs
             agent = animator.gameObject.GetComponent<NavMeshAgent>();
             agent.speed = walck_speed;
             agent.stoppingDistance = attackDistanse;
+            sounds = animator.GetComponent<Sounds>(); 
         }
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             agent.SetDestination(player.transform.position);
+
+            if (!sounds.isplaying)
+                sounds.PlaySound(sounds.sounds[2],p1:0.9f,p2:1.1f,volume:3);
+
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
