@@ -45,8 +45,9 @@
     // Перечисление игровых персонажей
     public enum Characters
     {
-        Radchenko = 0,
-        Kovalev = 1,
-        Valentin = 2,
+        Kovalev = 0,
+        Valentin = 1,
+        Romario = 2,
+        Panini = 3
     }
 }
