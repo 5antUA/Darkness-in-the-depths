@@ -93,40 +93,22 @@ public class HealthBarManager : MonoBehaviour
         if (CharacterData.Character == RostykEnums.Characters.Valentin)
         {
             PlayerIcon.sprite = ValentinIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#0B8C00", out Color newHealthBarColor);
-            UnityEngine.ColorUtility.TryParseHtmlString("#595959", out Color newBackgroundBarColor);
-            HealthBarImage.color = newHealthBarColor;
-
-            StrokeBarImage.color = Color.black;
-            BackgroundBarImage.color = newBackgroundBarColor;
         }
         else if (CharacterData.Character == RostykEnums.Characters.Kovalev)
         {
             PlayerIcon.sprite = KovalevIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#007BFF", out Color newHealthBarColor);
-            UnityEngine.ColorUtility.TryParseHtmlString("#595959", out Color newBackgroundBarColor);
-            HealthBarImage.color = newHealthBarColor;
-
-            StrokeBarImage.color = Color.black;
-            BackgroundBarImage.color = newBackgroundBarColor;
         }
         else if (CharacterData.Character == RostykEnums.Characters.Romario)
         {
             PlayerIcon.sprite = RomarioIcon;
-            UnityEngine.ColorUtility.TryParseHtmlString("#B00000", out Color newHealthBarColor);
-            UnityEngine.ColorUtility.TryParseHtmlString("#787878", out Color newBackgroundBarColor);
-            HealthBarImage.color = newHealthBarColor;
-
-            StrokeBarImage.color = Color.black;
-            BackgroundBarImage.color = newBackgroundBarColor;
         }
         else if (CharacterData.Character == RostykEnums.Characters.Panini)
         {
-            PlayerIcon.sprite = PaniniIcon;
-            HealthBarImage.color = Color.black;
-            UnityEngine.ColorUtility.TryParseHtmlString("#959595", out Color newBackgroundBarColor);
+            UnityEngine.ColorUtility.TryParseHtmlString("#BEBEBE", out Color newBackgroundBarColor);
+            UnityEngine.ColorUtility.TryParseHtmlString("#676767", out Color newHealthBarColor);
 
-            StrokeBarImage.color = Color.white;
+            PlayerIcon.sprite = PaniniIcon;
+            HealthBarImage.color = newHealthBarColor;
             BackgroundBarImage.color = newBackgroundBarColor;
         }
     }
