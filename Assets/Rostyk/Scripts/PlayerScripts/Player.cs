@@ -19,7 +19,6 @@ public class Player : Character
     public float JumpForce;                                     // сила прыжка
     public int LockOpeningTime;                                 // время взлома замков
 
-    [SerializeField] private bool NotPenetrate = false;
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
     private float defoltFOV;
@@ -56,7 +55,7 @@ public class Player : Character
         ChangeFOV();
         SwitchLight();
 
-        if (this.IsDead && !NotPenetrate)
+        if (this.IsDead)
             SceneManager.LoadScene("DeathScreen");
     }
 
