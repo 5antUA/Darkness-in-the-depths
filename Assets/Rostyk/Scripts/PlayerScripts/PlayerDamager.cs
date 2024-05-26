@@ -28,38 +28,37 @@ public class PlayerDamager : MonoBehaviour
         HitDistance = GetRayDistance();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(InputData.Shoot))
-        {
-            GetHitInfo();
-            Shooting();
-        }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(InputData.Shoot))
+    //    {
+    //        Shooting();
+    //    }
 
-        WeaponController();
-    }
+    //    WeaponController();
+    //}
 
     #region Shooting
 
-    // Логика стрельбы во врага
-    private void Shooting()
-    {
-        Monster enemy = GetEnemy();
+    //// Логика стрельбы во врага
+    //private void Shooting()
+    //{
+    //    Monster enemy = GetEnemy();
 
-        // если попал во врага
-        if (enemy != null)
-        {
-            enemy.TakeDamage(PlayerDamage);
-            Debug.Log(PlayerDamage);
+    //    // если попал во врага
+    //    if (enemy != null)
+    //    {
+    //        enemy.TakeDamage(PlayerDamage);
+    //        Debug.Log(PlayerDamage);
 
             
-        }
-        // если не попал во врага
-        else
-        {
-            // Debug.Log("EBLAN, YOU MISSED!");
-        }
-    }
+    //    }
+    //    // если не попал во врага
+    //    else
+    //    {
+    //        // Debug.Log("EBLAN, YOU MISSED!");
+    //    }
+    //}
 
     // Поиск врага лучем
     private Monster GetEnemy()
@@ -73,17 +72,6 @@ public class PlayerDamager : MonoBehaviour
         else
         {
             return null;
-        }
-    }
-
-    // Бросок луча и вывод инфо о hit
-    private void GetHitInfo()
-    {
-        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(HitDistance);
-
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.collider.name);
         }
     }
     #endregion

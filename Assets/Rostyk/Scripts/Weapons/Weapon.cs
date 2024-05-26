@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
 
-public abstract class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    protected float Damage;
-    protected float BulletSpeed;
-    protected int Ammo;
+    [Space]
+    [Header("\t ABSTRACT PROPERTIES")]
+    [HideInInspector] public bool isReload;
+    [HideInInspector] public int counterOfBullets;
+    public int MaxBullets;
+    public float shootForce;
+    public float spread;
+
     protected int MagazineCapacity;
     protected int TotalAmmo;
-    protected float Spread;
-    protected float ShootCooldown;
-    protected float ReloadTime;
-
-
-    protected abstract void Shoot();
-    protected virtual void Reload() { }
+    protected int ShootCooldown;
+    protected int ReloadTime;
 }

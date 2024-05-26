@@ -6,14 +6,11 @@ public class Gun : Weapon
 
     public Gun()
     {
-        Damage = 30;
-        BulletSpeed = 30;
-        Ammo = 30;
+        counterOfBullets = 30;
         MagazineCapacity = 30;
         TotalAmmo = 120;
-        Spread = 1;
-        ShootCooldown = 1f;
-        ReloadTime = 3.5f;
+        ShootCooldown = 1;
+        ReloadTime = 3;
     }
 
 
@@ -28,9 +25,9 @@ public class Gun : Weapon
         Reload();
     }
 
-    protected override void Reload()
+    protected void Reload()
     {
-        if (Ammo == 30 || TotalAmmo == 0)
+        if (counterOfBullets == 30 || TotalAmmo == 0)
         {
             return;
         }
@@ -38,24 +35,18 @@ public class Gun : Weapon
         if (Input.GetKeyDown(InputData.Reload))
         {
             // количество нужных патронов для перезарядки
-            int patrons = MagazineCapacity - Ammo;
+            int patrons = MagazineCapacity - counterOfBullets;
 
             if (patrons > TotalAmmo)
             {
-                Ammo += TotalAmmo;
+                counterOfBullets += TotalAmmo;
                 TotalAmmo = 0;
             }
             else if (patrons <= TotalAmmo)
             {
-                Ammo = 30;
+                counterOfBullets = 30;
                 TotalAmmo -= patrons;
             }
         }
-    }
-
-
-    protected override void Shoot()
-    {
-        return;
     }
 }

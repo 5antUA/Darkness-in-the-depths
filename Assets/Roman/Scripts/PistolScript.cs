@@ -1,93 +1,144 @@
 using System.Collections;
-using System.Threading;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PistolScript : MonoBehaviour
+public class PistolScript : Weapon
 {
+    private SavedData.InputData InputData;
+
+    [Space]
+    [Header("\t PISTOL PROPERTIES")]
     public GameObject bullet;
     public Camera mainCamera;
     public Transform spawnBullet;
-    private int counterOfBullets = 7;
     public GameObject Pistol;
 
-    public float shootForce;
-    public float spread;
-
-    private bool coolDown = true;
+    private bool coolDown;
     private Coroutine coolDownCoroutine;
 
-    private bool reload = true;
     private Coroutine reloadCoroutine;
-    public AudioClip reloadSound;
+    public AudioClip reloadAudioClip;
+
+    private AudioSource fireAudioSource;
+    public AudioClip fireAudioClip;
 
     public ParticleSystem muzzleFlash;
-    
-    private AudioSource audio;
-    public AudioClip fireSound;
-
-    private Animator anim;
-    [HideInInspector]public bool isReload = false;
+    private Animator PistolAnimator;
 
 
     private void Start()
     {
-        audio = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
-        
+        InputData = new SavedData.InputData();
+        InputData = InputData.Load();
+
+        fireAudioSource = GetComponent<AudioSource>();
+        PistolAnimator = GetComponent<Animator>();
+
+        counterOfBullets = MaxBullets;
+        coolDown = true;
+        isReload = false;
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-            Pistol.GetComponent<Animator>().SetBool("isWalk", true);
-        else
-            Pistol.GetComponent<Animator>().SetBool("isWalk", false);
+        PlayWalkAnimation();
+        Shoot();
+        Reload();
+    }
 
-        if (Input.GetMouseButtonDown(0))
+    private void OnDisable()
+    {
+        if (coolDownCoroutine != null)
+        {
+            StopCoroutine(coolDownCoroutine);
+            coolDown = true;
+        }
+
+        if (reloadCoroutine != null)
+        {
+            StopCoroutine(reloadCoroutine);
+        }
+    }
+
+
+    #region Shoot management
+    private void PlayWalkAnimation()
+    {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            PistolAnimator.SetBool("isWalk", true);
+        else
+            PistolAnimator.SetBool("isWalk", false);
+    }
+
+    private void Shoot()
+    {
+        if (Input.GetKeyDown(InputData.Shoot))
         {
             if (coolDown && !isReload)
             {
-                Shoot();
+                ShootLogic();
 
-                anim.SetTrigger("Fire");
-                audio.PlayOneShot(fireSound);
-
+                PistolAnimator.SetTrigger("Fire");
+                fireAudioSource.PlayOneShot(fireAudioClip);
                 muzzleFlash.Play();
 
                 counterOfBullets--;
-                coolDownCoroutine = StartCoroutine(Coolldown());
+                coolDownCoroutine = StartCoroutine(CooldownCoroutine());
             }
         }
-        
-        if (counterOfBullets == 0)
+    }
+
+    private void Reload()
+    {
+        if (counterOfBullets == 0 && !isReload)
         {
-            reloadCoroutine = StartCoroutine(Reload());
+            reloadCoroutine = StartCoroutine(ReloadCoroutine());
 
-            anim.SetTrigger("Reload");
-
+            PistolAnimator.SetTrigger("Reload");
             Invoke("SoundOfReload", 0.6f);
 
             Debug.Log("reload");
-            counterOfBullets = 7;
             coolDown = false;
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !isReload)
         {
-            reloadCoroutine = StartCoroutine(Reload());
+            reloadCoroutine = StartCoroutine(ReloadCoroutine());
 
-            anim.SetTrigger("Reload");
-
+            PistolAnimator.SetTrigger("Reload");
             SoundOfReload();
 
             Debug.Log("reload");
-            counterOfBullets = 7;
             coolDown = false;
         }
     }
 
-    private void Shoot()
+    private void SoundOfReload()
+    {
+        fireAudioSource.PlayOneShot(reloadAudioClip);
+    }
+    #endregion
+
+
+    #region Coroutines
+    private IEnumerator CooldownCoroutine()
+    {
+        coolDown = false;
+        yield return new WaitForSeconds(1f);
+        coolDown = true;
+    }
+
+    private IEnumerator ReloadCoroutine()
+    {
+        isReload = true;
+        yield return new WaitForSeconds(3f);
+        counterOfBullets = MaxBullets; // counterOfBullets = 7;
+        isReload = false;
+        coolDown = true;
+    }
+    #endregion
+
+
+    private void ShootLogic()
     {
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -110,40 +161,5 @@ public class PistolScript : MonoBehaviour
         currentBullet.transform.forward = dirWithSpread.normalized;
 
         currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
-    }
-
-    private IEnumerator Coolldown()
-    {
-        coolDown = false;
-        yield return new WaitForSeconds(1f);
-        coolDown = true;
-    }
-
-    private IEnumerator Reload()
-    {
-        isReload = true;
-        yield return new WaitForSeconds(3f);
-        isReload = false;
-        coolDown = true;
-    }
-
-    private void SoundOfReload()
-    {
-        audio.PlayOneShot(reloadSound);
-    }
-
-    private void OnDisable()
-    {
-        if (coolDownCoroutine != null)
-        {
-            StopCoroutine(coolDownCoroutine);
-            coolDown = true;
-        }
-
-        if (reloadCoroutine != null)
-        {
-            StopCoroutine(reloadCoroutine);
-            reload = true;
-        }
     }
 }

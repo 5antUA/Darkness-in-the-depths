@@ -1,4 +1,4 @@
-using RostykEnums;
+п»їusing RostykEnums;
 using SavedData;
 using System;
 using System.Collections;
@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-// ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
+// Р’Р•РЁРђРўР¬ РЎРљР РРџ РќРђ РћР‘РЄР•РљРў PlayerUI
 public class HealthBarManager : MonoBehaviour
 {
     private SavedData.CharacterData CharacterData;
@@ -18,12 +18,14 @@ public class HealthBarManager : MonoBehaviour
 
     [Space]
     public GameObject MenuUI;                                  // MenuUI
-    private Player MyPlayer;                                   // скрипт this.Player
+    private Player MyPlayer;                                   // СЃРєСЂРёРїС‚ this.Player
+    [SerializeField] private PistolScript PistolScript;
 
     [Header("\t Initialition data")]
     [Space]
     [SerializeField] private Text PlayerInfoText;
     [SerializeField] private Text PlayerName;
+    [SerializeField] private Text PlayerAmmo;
     [SerializeField] private Image StrokeBarImage;
     [SerializeField] private Image BackgroundBarImage;
     [SerializeField] private Image HealthBarImage;
@@ -56,7 +58,7 @@ public class HealthBarManager : MonoBehaviour
     }
 
 
-    // Обновление данных игрока
+    // РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РёРіСЂРѕРєР°
     private void UpdatePlayerInfo()
     {
         int healthInfo = (int)MyPlayer.Health;
@@ -67,6 +69,9 @@ public class HealthBarManager : MonoBehaviour
 
         PlayerInfoText.text =
             $"Health : {healthInfo}\n";
+
+        PlayerAmmo.text =
+            $"{PistolScript.counterOfBullets} / в€ћ";
     }
 
     private void DefinePlayerName()
@@ -74,16 +79,16 @@ public class HealthBarManager : MonoBehaviour
         switch (CharacterData.Character)
         {
             case Characters.Valentin:
-                PlayerName.text = "Валентин";
+                PlayerName.text = "Р’Р°Р»РµРЅС‚РёРЅ";
                 break;
             case Characters.Kovalev:
-                PlayerName.text = "Владіслейв";
+                PlayerName.text = "Р’Р»Р°РґС–СЃР»РµР№РІ";
                 break;
             case Characters.Romario:
-                PlayerName.text = "Ромаріо Десантес";
+                PlayerName.text = "Р РѕРјР°СЂС–Рѕ Р”РµСЃР°РЅС‚РµСЃ";
                 break;
             case Characters.Panini:
-                PlayerName.text = "Містер Бігуді";
+                PlayerName.text = "РњС–СЃС‚РµСЂ Р‘С–РіСѓРґС–";
                 break;
         }
     }
