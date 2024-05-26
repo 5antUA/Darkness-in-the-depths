@@ -77,7 +77,7 @@ public class HealthBarManager : MonoBehaviour
                 PlayerName.text = "Валентин";
                 break;
             case Characters.Kovalev:
-                PlayerName.text = "Влад Ковальов";
+                PlayerName.text = "Владіслейв";
                 break;
             case Characters.Romario:
                 PlayerName.text = "Ромаріо Десантес";
