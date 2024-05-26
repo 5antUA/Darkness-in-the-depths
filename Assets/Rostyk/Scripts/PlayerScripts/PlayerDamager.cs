@@ -41,24 +41,24 @@ public class PlayerDamager : MonoBehaviour
     #region Shooting
 
     //// Логика стрельбы во врага
-    //private void Shooting()
-    //{
-    //    Monster enemy = GetEnemy();
+    private void Shooting()
+    {
+        Monster enemy = GetEnemy();
 
-    //    // если попал во врага
-    //    if (enemy != null)
-    //    {
-    //        enemy.TakeDamage(PlayerDamage);
-    //        Debug.Log(PlayerDamage);
+        // если попал во врага
+        if (enemy != null)
+        {
+            enemy.TakeDamage(PlayerDamage);
+            Debug.Log(PlayerDamage);
 
-            
-    //    }
-    //    // если не попал во врага
-    //    else
-    //    {
-    //        // Debug.Log("EBLAN, YOU MISSED!");
-    //    }
-    //}
+
+        }
+        // если не попал во врага
+        else
+        {
+            // Debug.Log("EBLAN, YOU MISSED!");
+        }
+    }
 
     // Поиск врага лучем
     private Monster GetEnemy()

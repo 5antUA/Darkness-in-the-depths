@@ -18,6 +18,7 @@ public class Player : Character
     public float CrouchHeight;                                  // Высота прыседания
     public float JumpForce;                                     // сила прыжка
     public int LockOpeningTime;                                 // время взлома замков
+    public bool isNotPenetation = false;
 
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
@@ -55,7 +56,7 @@ public class Player : Character
         ChangeFOV();
         SwitchLight();
 
-        if (this.IsDead)
+        if (this.IsDead && !isNotPenetation)
             SceneManager.LoadScene("DeathScreen");
     }
 
