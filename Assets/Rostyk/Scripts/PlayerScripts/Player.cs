@@ -1,5 +1,6 @@
 using UnityEngine;
 using RostykEnums;
+using UnityEngine.SceneManagement;
 
 
 // ВЕШАТЬ СКРИПТ НА БАЗОВЫЙ ОБЪЕКТ ИГРОКА
@@ -16,6 +17,7 @@ public class Player : Character
     // VALUES
     public float CrouchHeight;                                  // Высота прыседания
     public float JumpForce;                                     // сила прыжка
+    public int LockOpeningTime;                                 // время взлома замков
 
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
@@ -52,6 +54,9 @@ public class Player : Character
         Crouch();
         ChangeFOV();
         SwitchLight();
+
+        if (this.IsDead)
+            SceneManager.LoadScene("DeathScreen");
     }
 
     private void FixedUpdate()

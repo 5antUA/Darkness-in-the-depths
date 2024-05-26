@@ -52,8 +52,8 @@ namespace SavedData
             Damage = 0.7f,
             WalkSpeed = 5,
             SprintSpeed = 7,
-            CrouchSpeed = 4
-
+            CrouchSpeed = 4,
+            LockOpeningTime = 3
         };
 
         // Золотая средина
@@ -64,7 +64,8 @@ namespace SavedData
             Damage = 1,
             WalkSpeed = 4,
             SprintSpeed = 5,
-            CrouchSpeed = 3
+            CrouchSpeed = 3,
+            LockOpeningTime = 3
         };
 
         // Сильный, но медленный
@@ -75,7 +76,8 @@ namespace SavedData
             Damage = 1.5f,
             WalkSpeed = 3,
             SprintSpeed = 4,
-            CrouchSpeed = 2
+            CrouchSpeed = 2,
+            LockOpeningTime = 3
         };
 
         // Сборник всех слабых сторон
@@ -86,7 +88,8 @@ namespace SavedData
             Damage = 0.7f,
             WalkSpeed = 3,
             SprintSpeed = 4,
-            CrouchSpeed = 2
+            CrouchSpeed = 2,
+            LockOpeningTime = 1
         };
         #endregion
     }
@@ -102,5 +105,7 @@ namespace SavedData
         public float WalkSpeed;
         public float SprintSpeed;
         public float CrouchSpeed;
+
+        public int LockOpeningTime;
     }
 }

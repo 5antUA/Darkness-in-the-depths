@@ -1282,7 +1282,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -4557,7 +4557,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1393419413075388320}
   - component: {fileID: 5315081188817371667}
-  - component: {fileID: 5318161713040033377}
   - component: {fileID: 4971895465677811285}
   - component: {fileID: 8302787342823266313}
   - component: {fileID: 359093634269509512}
@@ -4605,20 +4604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuUI: {fileID: 5068044394997456047}
+  DeathMenu: {fileID: 0}
   HealthBar: {fileID: 8134789328192554517}
---- !u!114 &5318161713040033377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5375024756968656829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b46f71714436d840ab176e47ad77f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TabsUI: {fileID: 5545384987261498388}
 --- !u!114 &4971895465677811285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5721,6 +5708,7 @@ MonoBehaviour:
   CrouchSpeed: 2
   CrouchHeight: 0.9
   JumpForce: 3
+  LockOpeningTime: 0
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
 --- !u!114 &95988931871553184
@@ -5778,7 +5766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8005916472324234433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5896,7 +5884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5667135254740447742
 RectTransform:
   m_ObjectHideFlags: 0
