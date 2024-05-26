@@ -16,6 +16,7 @@ public class Player : Character
     // VALUES
     public float CrouchHeight;                                  // Высота прыседания
     public float JumpForce;                                     // сила прыжка
+    public int LockOpeningTime;                                 // время взлома замков
 
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
