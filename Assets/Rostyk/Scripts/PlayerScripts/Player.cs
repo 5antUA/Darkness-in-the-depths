@@ -19,6 +19,7 @@ public class Player : Character
     public float JumpForce;                                     // сила прыжка
     public int LockOpeningTime;                                 // время взлома замков
 
+    [SerializeField] private bool NotPenetrate = false;
     private bool isSprint;                                      // если бежит
     private bool isCrouch;                                      // если медленно ходит
     private float defoltFOV;
