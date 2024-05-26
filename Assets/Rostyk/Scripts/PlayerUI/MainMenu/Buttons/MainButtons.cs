@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 // ¬≈ÿ¿“‹ Õ¿  ¿Õ¬¿— ¬ √À¿¬ÕŒÃ Ã≈Õﬁ
 public class MainButtons : MonoBehaviour
 {
-    SavedData.CharacterData InitializationData;
+    SavedData.CharacterData CharacterData;
     
     [SerializeField] private GameObject MainUI;
     [SerializeField] private GameObject SettingsUI;
@@ -13,8 +13,17 @@ public class MainButtons : MonoBehaviour
 
     private void Start()
     {
-        InitializationData = new SavedData.CharacterData();
-        InitializationData = InitializationData.Load();
+        CharacterData = new SavedData.CharacterData();
+        CharacterData = CharacterData.Load();
+    }
+
+    public void LoadVladScene()
+    {
+        SavedData.PlayerPositionData playerData = new SavedData.PlayerPositionData();
+
+        playerData.Save();
+
+        SceneManager.LoadScene("gym");
     }
 
     public void ContinueGame()
@@ -26,11 +35,11 @@ public class MainButtons : MonoBehaviour
     {
         SavedData.PlayerPositionData playerData = new SavedData.PlayerPositionData();
         SavedData.NotesData notesData = new SavedData.NotesData();
-        InitializationData.isContinueGame = true;
+        CharacterData.isContinueGame = true;
         
         playerData.Save();
         notesData.Save();
-        InitializationData.Save();
+        CharacterData.Save();
 
         SceneManager.LoadScene("RostykScene");
     }
