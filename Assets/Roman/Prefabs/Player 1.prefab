@@ -5650,7 +5650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSwitch: 0
-  isActiveAll: 0
+  pistolScript: {fileID: 158094295786177530}
 --- !u!1 &6689362665969325309
 GameObject:
   m_ObjectHideFlags: 0
@@ -7117,6 +7117,7 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: b2de9dfc58eff7d4880824ff2ba29112, type: 3}
   muzzleFlash: {fileID: 2759805502825683138}
   fireSound: {fileID: 8300000, guid: 0e4bea6852702874bab0b04a05b619e1, type: 3}
+  isReload: 0
 --- !u!95 &2925549747340936348
 Animator:
   serializedVersion: 5
@@ -7150,7 +7151,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
