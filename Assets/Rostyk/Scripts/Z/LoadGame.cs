@@ -116,6 +116,7 @@ public class LoadGame : MonoBehaviour
         PlayerProperties.WalkSpeed = CharacterData.Property.WalkSpeed;
         PlayerProperties.SprintSpeed = CharacterData.Property.SprintSpeed;
         PlayerProperties.CrouchSpeed = CharacterData.Property.CrouchSpeed;
+        PlayerProperties.LockOpeningTime = CharacterData.Property.LockOpeningTime;
     }
 
     private void SavePlayerProperties()
@@ -126,6 +127,7 @@ public class LoadGame : MonoBehaviour
         CharacterData.Property.WalkSpeed = PlayerProperties.WalkSpeed;
         CharacterData.Property.SprintSpeed = PlayerProperties.SprintSpeed;
         CharacterData.Property.CrouchSpeed = PlayerProperties.CrouchSpeed;
+        CharacterData.Property.LockOpeningTime = PlayerProperties.LockOpeningTime;
 
         CharacterData.Save();
     }
