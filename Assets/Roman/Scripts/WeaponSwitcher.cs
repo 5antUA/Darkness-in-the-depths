@@ -27,7 +27,6 @@ public class WeaponSwitcher : MonoBehaviour
         }
     }
 
-
     private void KeysWeaponSwitch()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

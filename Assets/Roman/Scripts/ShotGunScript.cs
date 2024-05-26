@@ -28,7 +28,7 @@ public class ShotGunScript : MonoBehaviour
                 Shoot();
                 counterOfBullets++;
 
-                if (Input.GetKeyDown(KeyCode.R) || counterOfBullets == 3 && reload)
+                if (counterOfBullets == 3 && reload)
                 {
                     reloadCoroutine = StartCoroutine(Reload());
                     Debug.Log("reload");
