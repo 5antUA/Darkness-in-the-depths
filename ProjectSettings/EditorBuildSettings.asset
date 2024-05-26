@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Final Build/Scenes/Main menu.unity
     guid: c1d65fbdb6819d54f95c5bc34ea903e8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Rostyk/Scenes/RostykScene.unity
     guid: a9f9a659738b40549b78034c2f8886b7
   - enabled: 0
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Final Build/Scenes/Bootstrap scene.unity
     guid: 132eea2d9eddbc647b4b5c275ceb7750
+  - enabled: 1
+    path: Assets/Vladislav/Prefabs/gym.unity
+    guid: 67f73c78ca558a04fb8d01450923ca57
   m_configObjects: {}

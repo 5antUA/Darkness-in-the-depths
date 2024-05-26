@@ -3,38 +3,45 @@ using UnityEngine;
 
 public class BossDamaggerControl : MobDamager
 {
-    public float corutineTime = 0.3f;
+    public float corutineTime =0.5f;
     private bool attacking = false;
+    private bool ispushing = false;
+    private Player enemy;
     private void Update()
     {
-        if (animator.GetBool("Attack") == true)
+        if (animator.GetBool("Attack"))
         {
             Hitting();
-            Debug.Log(monsterDamage);
-
         }
+        pushing();
     }
     private void Hitting()
     {
-        Player enemy = GetEnemy();
-
+        enemy = GetEnemy();
         // если попал во врага
-        if (enemy != null && attacking == false)
+        if (enemy != null && !attacking)
         {
-            EventManager.ShowDamageScreen();
-            attacking = true;
             enemy.TakeDamage(monsterDamage);
-            StartCoroutine(PushTime(enemy));
+            attacking = true;
+            StartCoroutine(PushTime());
+        }
+
+    }
+    private void pushing()
+    {
+        if (enemy != null && ispushing)
+        {
+            enemy.GetComponent<CharacterController>().Move(new Vector3(enemy.transform.position.x,
+          enemy.transform.position.y + 5, enemy.transform.position.z - 10) * Time.deltaTime);
         }
     }
-
-    private IEnumerator PushTime(Player enemy)
+    private IEnumerator PushTime()
     {
         yield return new WaitForSeconds(corutineTime);
-        enemy.GetComponent<CharacterController>().
-                Move(new Vector3(enemy.transform.localPosition.x-50 , enemy.transform.localPosition.y + 100, enemy.transform.localPosition.z-25) * Time.deltaTime);
-        Debug.Log("attacking-false");
-        
+        EventManager.ShowDamageScreen();
+        ispushing = true;
         attacking = false;
+        yield return new WaitForSeconds(1);
+        ispushing = false;
     }
 }
