@@ -20,7 +20,6 @@ public class MainButtons : MonoBehaviour
     public void LoadVladScene()
     {
         SavedData.PlayerPositionData playerData = new SavedData.PlayerPositionData();
-
         playerData.Save();
 
         SceneManager.LoadScene("gym");
