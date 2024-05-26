@@ -4,7 +4,7 @@ public class WeaponSwitcher : MonoBehaviour
 {
     private SavedData.WeaponData EnabledWeaponData;
     [SerializeField] private int weaponSwitch = 0;
-    public bool isActiveAll;
+    [SerializeField] private PistolScript pistolScript;
 
 
     void Start()
@@ -35,10 +35,10 @@ public class WeaponSwitcher : MonoBehaviour
             if (EnabledWeaponData.Weapons[0])
                 weaponSwitch = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && !pistolScript.isReload)
         {
             if (EnabledWeaponData.Weapons[1])
-               weaponSwitch = 1;
+                weaponSwitch = 1;
         }
     }
 

@@ -9,7 +9,7 @@ public class PistolScript : MonoBehaviour
     public GameObject bullet;
     public Camera mainCamera;
     public Transform spawnBullet;
-    private int counterOfBullets = 0;
+    private int counterOfBullets = 7;
     public GameObject Pistol;
 
     public float shootForce;
@@ -27,10 +27,15 @@ public class PistolScript : MonoBehaviour
     private AudioSource audio;
     public AudioClip fireSound;
 
+    private Animator anim;
+    [HideInInspector]public bool isReload = false;
+
 
     private void Start()
     {
         audio = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -42,35 +47,44 @@ public class PistolScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (coolDown)
+            if (coolDown && !isReload)
             {
                 Shoot();
 
-                Pistol.GetComponent<Animator>().SetTrigger("Fire");
+                anim.SetTrigger("Fire");
                 audio.PlayOneShot(fireSound);
 
                 muzzleFlash.Play();
 
-                counterOfBullets++;
-
-                if (counterOfBullets == 7 && reload)
-                {
-                    reloadCoroutine = StartCoroutine(Reload());
-                    Pistol.GetComponent<Animator>().SetTrigger("Reload");
-
-                    Invoke("SoundOfReload", 0.6f);
-
-                    Debug.Log("reload");
-                    counterOfBullets = 0;
-                    coolDown = false;
-                }
-                else
-                {
-                    coolDownCoroutine = StartCoroutine(Coolldown());
-                }
+                counterOfBullets--;
+                coolDownCoroutine = StartCoroutine(Coolldown());
             }
         }
-            
+        
+        if (counterOfBullets == 0)
+        {
+            reloadCoroutine = StartCoroutine(Reload());
+
+            anim.SetTrigger("Reload");
+
+            Invoke("SoundOfReload", 0.6f);
+
+            Debug.Log("reload");
+            counterOfBullets = 7;
+            coolDown = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            reloadCoroutine = StartCoroutine(Reload());
+
+            anim.SetTrigger("Reload");
+
+            SoundOfReload();
+
+            Debug.Log("reload");
+            counterOfBullets = 7;
+            coolDown = false;
+        }
     }
 
     private void Shoot()
@@ -107,9 +121,9 @@ public class PistolScript : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        reload = false;
+        isReload = true;
         yield return new WaitForSeconds(3f);
-        reload = true;
+        isReload = false;
         coolDown = true;
     }
 
