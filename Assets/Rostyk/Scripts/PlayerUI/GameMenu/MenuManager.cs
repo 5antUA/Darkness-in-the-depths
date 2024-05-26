@@ -10,7 +10,9 @@ public class MenuManager : MonoBehaviour
     private SavedData.InterfaceData InterfaceData;
 
     public GameObject MenuUI;                                   // Menu UI
+    public GameObject DeathMenu;
     public GameObject HealthBar;                                // HealthBar UI
+    private Player Player;
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
 
 
@@ -25,6 +27,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Player = GetComponentInParent<Player>();
         PlayerCamera = GetComponentInParent<PlayerRotation>();
 
         MenuUI.SetActive(false);

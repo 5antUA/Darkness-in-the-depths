@@ -1,5 +1,6 @@
 using UnityEngine;
 using RostykEnums;
+using UnityEngine.SceneManagement;
 
 
 // беьюрэ яйпхор мю аюгнбши назейр хцпнйю
@@ -53,6 +54,9 @@ public class Player : Character
         Crouch();
         ChangeFOV();
         SwitchLight();
+
+        if (this.IsDead)
+            SceneManager.LoadScene("DeathScreen");
     }
 
     private void FixedUpdate()
