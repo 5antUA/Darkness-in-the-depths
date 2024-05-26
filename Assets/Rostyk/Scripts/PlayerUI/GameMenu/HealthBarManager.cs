@@ -90,26 +90,28 @@ public class HealthBarManager : MonoBehaviour
 
     private void InitData()
     {
-        if (CharacterData.Character == RostykEnums.Characters.Valentin)
+        switch (CharacterData.Character)
         {
-            PlayerIcon.sprite = ValentinIcon;
-        }
-        else if (CharacterData.Character == RostykEnums.Characters.Kovalev)
-        {
-            PlayerIcon.sprite = KovalevIcon;
-        }
-        else if (CharacterData.Character == RostykEnums.Characters.Romario)
-        {
-            PlayerIcon.sprite = RomarioIcon;
-        }
-        else if (CharacterData.Character == RostykEnums.Characters.Panini)
-        {
-            UnityEngine.ColorUtility.TryParseHtmlString("#BEBEBE", out Color newBackgroundBarColor);
-            UnityEngine.ColorUtility.TryParseHtmlString("#676767", out Color newHealthBarColor);
+            case Characters.Valentin:
+                PlayerIcon.sprite = ValentinIcon;
+                break;
 
-            PlayerIcon.sprite = PaniniIcon;
-            HealthBarImage.color = newHealthBarColor;
-            BackgroundBarImage.color = newBackgroundBarColor;
+            case Characters.Kovalev:
+                PlayerIcon.sprite = KovalevIcon;
+                break;
+
+            case Characters.Romario:
+                PlayerIcon.sprite = RomarioIcon;
+                break;
+
+            case Characters.Panini:
+                UnityEngine.ColorUtility.TryParseHtmlString("#BEBEBE", out Color newBackgroundBarColor);
+                UnityEngine.ColorUtility.TryParseHtmlString("#676767", out Color newHealthBarColor);
+
+                PlayerIcon.sprite = PaniniIcon;
+                HealthBarImage.color = newHealthBarColor;
+                BackgroundBarImage.color = newBackgroundBarColor;
+                break;
         }
     }
 }
