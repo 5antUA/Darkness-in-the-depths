@@ -56,7 +56,7 @@ public class Player : Character
         ChangeFOV();
         SwitchLight();
 
-        if (this.IsDead)
+        if (this.IsDead && !NotPenetrate)
             SceneManager.LoadScene("DeathScreen");
     }
 
