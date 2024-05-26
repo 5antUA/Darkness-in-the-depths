@@ -14,11 +14,15 @@ namespace mobs
             distance = Vector3.Distance(mob.transform.position, player.transform.position);
             if (distance < attackDistanse && SpawnSimpleMob.MonsterCounter <= 3)
             {
+                if (!isattacking)
+                {
+                    isattacking = true;
+                    StartCoroutine(routine: AttackControll());
+                }
                 mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
-                StartCoroutine(routine: AttackControll());
-
             }
         }
+        
 
        
     }

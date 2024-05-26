@@ -9,6 +9,7 @@ namespace mobs
         public float attackDistanse = 10;
         protected GameObject mob;
         protected GameObject player;
+        protected bool isattacking = false;
         protected float distance;
         protected void Awake()
         {
@@ -30,6 +31,7 @@ namespace mobs
                 yield return new WaitForSeconds(CorutineTime);
             }
             mob.GetComponent<Animator>().SetBool("Attack", false);
+            isattacking = false;
         }
 
         private void Attack()
@@ -37,7 +39,11 @@ namespace mobs
             distance = Vector3.Distance(mob.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                StartCoroutine(routine: AttackControll());
+                if (!isattacking)
+                {
+                    isattacking = true;
+                    StartCoroutine(routine: AttackControll());
+                }
                 mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
             }
         }

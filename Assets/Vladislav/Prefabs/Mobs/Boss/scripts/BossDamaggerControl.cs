@@ -3,10 +3,19 @@ using UnityEngine;
 
 public class BossDamaggerControl : MobDamager
 {
-    public float corutineTime =0.5f;
+    public float corutineTime = 0.5f;
     private bool attacking = false;
     private bool ispushing = false;
     private Player enemy;
+    private Sounds sounds;
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        monster = GetComponent<Monster>();
+        monsterDamage = monster.Damage;
+        sounds = GetComponent<Sounds>();
+    }
+
     private void Update()
     {
         if (animator.GetBool("Attack"))
@@ -26,7 +35,7 @@ public class BossDamaggerControl : MobDamager
             StartCoroutine(PushTime());
         }
 
-    }
+    }                                                                               
     private void pushing()
     {
         if (enemy != null && ispushing)
@@ -38,6 +47,7 @@ public class BossDamaggerControl : MobDamager
     private IEnumerator PushTime()
     {
         yield return new WaitForSeconds(corutineTime);
+        sounds.PlaySound(sounds.sounds[4], 100, true);
         EventManager.ShowDamageScreen();
         ispushing = true;
         attacking = false;

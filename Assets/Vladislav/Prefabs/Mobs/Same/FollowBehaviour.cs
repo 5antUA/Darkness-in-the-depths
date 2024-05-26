@@ -36,6 +36,7 @@ namespace mobs
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            sounds.StopSound();
             agent.SetDestination(animator.transform.position);
         }
     }

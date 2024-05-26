@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterBoss : Monster
 {
+    public AudioSource SecondAudioSourse;
     private GameObject SpawnSinplemob;
     private void Update()
     {
@@ -19,9 +20,11 @@ public class MonsterBoss : Monster
     {
         if (IsDead && !deathchaker)
         {
+            SecondAudioSourse.Stop();
+            GetComponent<Sounds>().PlaySound(GetComponent<Sounds>().sounds[0],3);
             makephicik();
             Destroy(SpawnSinplemob);
-            
+            deathchaker = true;
         }
     }
 }

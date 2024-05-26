@@ -25,6 +25,7 @@ public class Monster : Character
 
     private void OnDestroy()
     {
+
         SpawnSimpleMob.MonsterCounter--;
     }
     private void OnMonsterDeath()

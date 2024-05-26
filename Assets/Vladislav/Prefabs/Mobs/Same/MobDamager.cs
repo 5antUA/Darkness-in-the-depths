@@ -9,7 +9,7 @@ public class MobDamager : MonoBehaviour
 
     [SerializeField] protected Transform _startShooter;            // точка рейкасту
     // Start is called before the first frame update
-    protected void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         monster = GetComponent<Monster>();
@@ -44,7 +44,7 @@ public class MobDamager : MonoBehaviour
     // Поиск врага лучем
     protected Player GetEnemy()
     {
-        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(5);
+        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(3);
 
         if (hit.collider != null)
         {

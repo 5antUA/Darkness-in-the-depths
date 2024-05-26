@@ -11,10 +11,13 @@ public class Sounds : MonoBehaviour
     {
         audioSrc.pitch = Random.Range(p1, p2);
         if (destroyed)
-            AudioSource.PlayClipAtPoint(clip, transform.position);
+            AudioSource.PlayClipAtPoint(clip, transform.position, volume);
         else
             audioSrc.PlayOneShot(clip, volume);
         
+    }
+    public void StopSound() {
+        audioSrc.Stop();
     }
 
     private void Update()
