@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Monster : Character
 {
     public Rigidbody[] ALLrigidbodys;
+    public AudioSource SecondAudioSourse;
     protected Animator animator;
     protected bool deathchaker = false;
 
@@ -26,14 +27,15 @@ public class Monster : Character
 
     private void OnDestroy()
     {
-
         SpawnSimpleMob.MonsterCounter--;
     }
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)
         {
+            SecondAudioSourse.Stop();
             makephicik();
+            GetComponent<Sounds>().PlaySound(GetComponent<Sounds>().sounds[2], 3,p1:0.8f,p2:1.3f);
             Destroy(gameObject, 5);
             deathchaker = true;
         }

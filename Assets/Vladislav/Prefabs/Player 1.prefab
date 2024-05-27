@@ -5709,7 +5709,7 @@ MonoBehaviour:
   CrouchHeight: 0.9
   JumpForce: 3
   LockOpeningTime: 0
-  isNotPenetation: 0
+  isNotPenetation: 1
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
 --- !u!114 &95988931871553184
@@ -7351,6 +7351,8 @@ MonoBehaviour:
   shootForce: 50
   spread: 1
   quantityOfBullets: 3
+  fireSoundShotGun: {fileID: 0}
+  muzzleFlash: {fileID: 0}
 --- !u!1001 &2633630983771669912
 PrefabInstance:
   m_ObjectHideFlags: 0

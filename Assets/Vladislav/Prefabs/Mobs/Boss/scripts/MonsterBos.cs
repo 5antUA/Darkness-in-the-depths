@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class MonsterBoss : Monster
 {
-    public AudioSource SecondAudioSourse;
     private GameObject SpawnSinplemob;
     private void Update()
     {
         if (SpawnSinplemob == null)
             SpawnSinplemob = GameObject.FindWithTag("SpawnSimpleMob");      //для знищення трігеру
         OnMonsterDeath();
-    }
-    private void OnDestroy()
-    {
-        SpawnSimpleMob.MonsterCounter--;
     }
     private void OnMonsterDeath()
     {

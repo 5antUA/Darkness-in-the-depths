@@ -30,18 +30,18 @@ public class BossDamaggerControl : MobDamager
         // если попал во врага
         if (enemy != null && !attacking)
         {
-            enemy.TakeDamage(monsterDamage);
             attacking = true;
             StartCoroutine(PushTime());
+            enemy.TakeDamage(monsterDamage);
         }
 
-    }                                                                               
+    }
     private void pushing()
     {
         if (enemy != null && ispushing)
         {
             enemy.GetComponent<CharacterController>().Move(new Vector3(enemy.transform.position.x,
-          enemy.transform.position.y + 5, enemy.transform.position.z - 10) * Time.deltaTime);
+          enemy.transform.position.y + 10, enemy.transform.position.z - 25) * Time.deltaTime);
         }
     }
     private IEnumerator PushTime()
@@ -51,7 +51,7 @@ public class BossDamaggerControl : MobDamager
         EventManager.ShowDamageScreen();
         ispushing = true;
         attacking = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         ispushing = false;
     }
 }
