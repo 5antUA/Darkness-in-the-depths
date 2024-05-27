@@ -40,6 +40,17 @@ public class MainButtons : MonoBehaviour
         MainUI.SetActive(false);
         SettingsUI.SetActive(true);
         DevelopersUI.SetActive(false);
+
+        float health;
+        bool isCreativeMode = true;
+
+        health = isCreativeMode ?
+            float.PositiveInfinity : GetFullHitpoints();
+    }
+
+    private int GetFullHitpoints()
+    {
+        return 100;
     }
 
     public void OpenDevInfo()
