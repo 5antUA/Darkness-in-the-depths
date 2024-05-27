@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,12 +10,18 @@ public class MenuManager : MonoBehaviour
     private SavedData.InputData InputData;
     private SavedData.InterfaceData InterfaceData;
 
+    [Space]
+    [Header("\t Our properties")]
     public GameObject MenuUI;                                   // Menu UI
-    public GameObject DeathMenu;
     public GameObject HealthBar;                                // HealthBar UI
-    private Player Player;
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
+    private Player Player;
 
+    [Space]
+    [Header("\t DeathScreen")]
+    [SerializeField] private Image BlackImage;
+    [SerializeField] private Image Background;
+    [SerializeField] private Image YouDeadImage;
 
     private void Awake()
     {
@@ -27,17 +34,19 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        Player = GetComponentInParent<Player>();
-        PlayerCamera = GetComponentInParent<PlayerRotation>();
+        Player = this.GetComponentInParent<Player>();
+        PlayerCamera = this.GetComponentInParent<PlayerRotation>();
 
         MenuUI.SetActive(false);
     }
 
     private void Update()
     {
+        if (Player.IsDead)
+            return;
+
         MenuControl();
     }
-
 
     // Контроль меню
     public void MenuControl()
@@ -56,7 +65,7 @@ public class MenuManager : MonoBehaviour
     public void OpenMenu()
     {
         MenuUI.SetActive(true);
-        HealthBar.SetActive(false);
+        //HealthBar.SetActive(false);
 
         PlayerCamera.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -67,7 +76,7 @@ public class MenuManager : MonoBehaviour
     public void CloseMenu()
     {
         MenuUI.SetActive(false);
-        HealthBar.SetActive(true);
+        //HealthBar.SetActive(true);
 
         PlayerCamera.enabled = true;
         Cursor.lockState = CursorLockMode.Confined;

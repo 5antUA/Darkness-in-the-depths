@@ -30,7 +30,7 @@ public class PlayerDamager : MonoBehaviour
 
     //private void Update()
     //{
-    //    if (Input.GetKeyDown(InputData.Shoot))
+    //    if (Input.GetKeyDown(InputData.ShootLogic))
     //    {
     //        Shooting();
     //    }

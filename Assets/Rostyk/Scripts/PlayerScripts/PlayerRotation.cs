@@ -8,19 +8,21 @@ public class PlayerRotation : MonoBehaviour
     private float rotationX;                                // ? ? ?
 
     [SerializeField] private Transform playerBody;          // трансформ базового объекта игрока
-    private Camera playerCamera;                            // камера игрока
-
+    private Player Player;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        playerCamera = this.GetComponent<Camera>();
+        Player = this.GetComponentInParent<Player>();
     }
 
     private void Update()
     {
+        if (Player.IsDead)
+            return;
+
         Rotate();
     }
 
