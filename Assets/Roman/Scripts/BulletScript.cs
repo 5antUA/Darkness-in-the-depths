@@ -25,9 +25,6 @@ public class BulletScript : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(20 * characterDamage);
-
-                if (enemy.IsDead)
-                    Destroy(collision.gameObject);
             }
         }
     }

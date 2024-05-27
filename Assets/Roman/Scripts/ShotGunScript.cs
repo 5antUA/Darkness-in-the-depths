@@ -15,31 +15,65 @@ public class ShotGunScript : MonoBehaviour
     public int quantityOfBullets;
     private bool coolDown = true;
     private Coroutine cooldownCoroutine;
-    private int counterOfBullets = 0;
+    private int counterOfBullets = 3;
     private bool reload = true;
     private Coroutine reloadCoroutine;
 
+    private Animator ShotGunAnimator;
+    private AudioSource audio;
+    public AudioClip fireSoundShotGun;
+    public ParticleSystem muzzleFlash;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();    
+        ShotGunAnimator = GetComponent<Animator>();
+    }
+
     void Update()
     {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            ShotGunAnimator.SetBool("SGisWalking", true);
+        else
+            ShotGunAnimator.SetBool("SGisWalking", false);
+
         if (Input.GetMouseButtonDown(0))
         {
             if (coolDown)
             {
                 Shoot();
-                counterOfBullets++;
+                ShotGunAnimator.SetTrigger("ShotGunFire");
+                audio.PlayOneShot(fireSoundShotGun);
+                muzzleFlash.Play();
 
-                if (counterOfBullets == 3 && reload)
-                {
-                    reloadCoroutine = StartCoroutine(Reload());
-                    Debug.Log("reload");
-                    counterOfBullets = 0;
-                    coolDown = false;
-                }
-                else
-                {
-                    cooldownCoroutine = StartCoroutine(Coolldown());
-                }
+                counterOfBullets--;
+                cooldownCoroutine = StartCoroutine(Coolldown());
             }
+        }
+        
+        if (counterOfBullets == 0 && reload)
+        {
+            reloadCoroutine = StartCoroutine(Reload());
+            ShotGunAnimator.SetTrigger("ShotGunReload");
+            Debug.Log("reload");
+            counterOfBullets = 3;
+            coolDown = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (cooldownCoroutine != null)
+        {
+            StopCoroutine(cooldownCoroutine);
+            coolDown = true;
+        }
+
+        if (reloadCoroutine != null)
+        {
+            StopCoroutine(reloadCoroutine);
+            reload = true;
         }
     }
 
@@ -88,20 +122,5 @@ public class ShotGunScript : MonoBehaviour
         yield return new WaitForSeconds(5f);
         reload = true;
         coolDown = true;
-    }
-
-    private void OnDisable()
-    {
-        if (cooldownCoroutine != null)
-        {
-            StopCoroutine(cooldownCoroutine);
-            coolDown = true;
-        }
-
-        if (reloadCoroutine != null)
-        {
-            StopCoroutine(reloadCoroutine);
-            reload = true;
-        }
     }
 }
