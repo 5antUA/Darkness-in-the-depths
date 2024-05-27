@@ -5709,6 +5709,7 @@ MonoBehaviour:
   CrouchHeight: 0.9
   JumpForce: 3
   LockOpeningTime: 0
+  isNotPenetation: 0
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
 --- !u!114 &95988931871553184
@@ -6508,8 +6509,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 8134789328192554517}
   MenuUI: {fileID: 5068044394997456047}
+  PistolScript: {fileID: 158094295786177530}
   PlayerInfoText: {fileID: 6464086841100792213}
   PlayerName: {fileID: 5304622739213358317}
+  PlayerAmmo: {fileID: 1154140232684551544}
   StrokeBarImage: {fileID: 3085497281209433564}
   BackgroundBarImage: {fileID: 5443649855995379944}
   HealthBarImage: {fileID: 749462455566819474}
@@ -6531,7 +6534,7 @@ GameObject:
   - component: {fileID: 1154140232684551544}
   - component: {fileID: 2872351100693312058}
   m_Layer: 0
-  m_Name: Ammo
+  m_Name: PlayerAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7108,16 +7111,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcefc3deb9fc7b64eb108aba02a55c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReload: 0
+  counterOfBullets: 7
+  MaxBullets: 7
+  shootForce: 20
+  spread: 0
   bullet: {fileID: 4112552800435661294, guid: bc2f3c39d933c17408ad9edb2630655e, type: 3}
   mainCamera: {fileID: 8148715249111008570}
   spawnBullet: {fileID: 6030823886346294720}
   Pistol: {fileID: 2008687569938367135}
-  shootForce: 20
-  spread: 0
-  reloadSound: {fileID: 8300000, guid: b2de9dfc58eff7d4880824ff2ba29112, type: 3}
+  reloadAudioClip: {fileID: 8300000, guid: b2de9dfc58eff7d4880824ff2ba29112, type: 3}
+  fireAudioClip: {fileID: 8300000, guid: 0e4bea6852702874bab0b04a05b619e1, type: 3}
   muzzleFlash: {fileID: 2759805502825683138}
-  fireSound: {fileID: 8300000, guid: 0e4bea6852702874bab0b04a05b619e1, type: 3}
-  isReload: 0
 --- !u!95 &2925549747340936348
 Animator:
   serializedVersion: 5
