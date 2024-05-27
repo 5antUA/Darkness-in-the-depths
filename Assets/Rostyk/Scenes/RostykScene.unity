@@ -620,14 +620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 446832429424537198, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6131142346144882449, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2106163639}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
 --- !u!1 &1119184281
 GameObject:
@@ -927,7 +923,7 @@ Transform:
   m_GameObject: {fileID: 1890663769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.4812, y: -124.677, z: 10.8929}
+  m_LocalPosition: {x: -32.4812, y: -125.2, z: 10.8929}
   m_LocalScale: {x: 2.8257747, y: 25.599403, z: 134.60503}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1065,30 +1061,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a679fcb6ff5fb947a5aa2fca0403a66, type: 3}
---- !u!1 &2106163634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6131142346144882449, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
-  m_PrefabInstance: {fileID: 1085764022}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2106163639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106163634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e11f5a06607c767468f99d5635c518ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxCharacterHealth: 0
-  Health: 100
-  Damage: 0
-  Armor: 0
-  WalkSpeed: 0
-  SprintSpeed: 0
-  CrouchSpeed: 0
 --- !u!1001 &4699822547475860098
 PrefabInstance:
   m_ObjectHideFlags: 0

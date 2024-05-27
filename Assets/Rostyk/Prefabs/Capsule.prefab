@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8139916374056495432}
   - component: {fileID: 5514858677943165456}
   - component: {fileID: 7182850131541583543}
-  - component: {fileID: 446832429424537198}
+  - component: {fileID: 6435698757389793447}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &446832429424537198
+--- !u!114 &6435698757389793447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,12 +117,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6131142346144882449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a71e4593b5377974f88fc99d4308145a, type: 3}
+  m_Script: {fileID: 11500000, guid: e11f5a06607c767468f99d5635c518ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxCharacterHealth: 0
+  Health: 100
+  Damage: 0
+  Armor: 0
   WalkSpeed: 0
   SprintSpeed: 0
   CrouchSpeed: 0
-  Health: 0
-  Damage: 0
-  Armor: 0
