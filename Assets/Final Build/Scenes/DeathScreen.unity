@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6df9edd9da2b4d4cac0850a6f1e1edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeScreen: {fileID: 2020292570}
   GameoverClip: {fileID: 8300000, guid: ded84712516157a409742d97ca36ea81, type: 3}
   EvilLaughtClip: {fileID: 8300000, guid: bd7534573de16574c881b74ff818a4c0, type: 3}
   ButtonClickClip: {fileID: 8300000, guid: c07d234b09ed6aa4a892488fd77333d4, type: 3}
@@ -593,7 +594,7 @@ AudioSource:
   m_GameObject: {fileID: 628812860}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6198857639404855721, guid: 896e124910db33c448b014843861d9cf, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1083,13 +1084,14 @@ GameObject:
   - component: {fileID: 2020292571}
   - component: {fileID: 2020292573}
   - component: {fileID: 2020292572}
+  - component: {fileID: 2020292574}
   m_Layer: 5
   m_Name: FadeScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2020292571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1106,7 +1108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 0.000030518}
+  m_AnchoredPosition: {x: -0.76001, y: 0.000061035}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2020292572
@@ -1129,8 +1131,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1147,6 +1149,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020292570}
   m_CullTransparentMesh: 1
+--- !u!114 &2020292574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020292570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cbe142b4b7f98409e45fb6fe270651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalAlpha: 1
+  time: 0.05
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

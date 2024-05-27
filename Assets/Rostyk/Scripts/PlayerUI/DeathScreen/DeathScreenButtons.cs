@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreenButtons : MonoBehaviour
 {
+    [SerializeField] private GameObject FadeScreen;
+
     [SerializeField] private AudioClip GameoverClip;
     [SerializeField] private AudioClip EvilLaughtClip;
     [SerializeField] private AudioClip ButtonClickClip;
@@ -17,12 +19,15 @@ public class DeathScreenButtons : MonoBehaviour
 
     public void NewGame()
     {
+        FadeScreen.SetActive(true);
         AudioSource.PlayOneShot(ButtonClickClip);
         StartCoroutine(NewGameCoroutine());
     }
 
     public void ToMainMenu()
     {
+        FadeScreen.SetActive(true);
+        
         AudioSource.PlayOneShot(ButtonClickClip);
         StartCoroutine(ToMainMenuCoroutine());
     }
