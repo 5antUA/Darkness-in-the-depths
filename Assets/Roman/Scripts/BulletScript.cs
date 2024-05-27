@@ -21,7 +21,7 @@ public class BulletScript : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Bullet"))
         {
-            Monster enemy = collision.gameObject.GetComponent<Monster>();
+            Monster enemy = collision.gameObject.GetComponentInParent<Monster>();
             if (enemy != null)
             {
                 enemy.TakeDamage(20 * characterDamage);
