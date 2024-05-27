@@ -1,8 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DeathScreenButtons : MonoBehaviour
 {
+    [SerializeField] private AudioClip GameoverClip;
+    [SerializeField] private AudioClip EvilLaughtClip;
+    [SerializeField] private AudioClip ButtonClickClip;
+    [SerializeField] private AudioSource AudioSource;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -11,16 +17,34 @@ public class DeathScreenButtons : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("RostykScene");
+        AudioSource.PlayOneShot(ButtonClickClip);
+        StartCoroutine(NewGameCoroutine());
     }
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene("Main menu");
+        AudioSource.PlayOneShot(ButtonClickClip);
+        StartCoroutine(ToMainMenuCoroutine());
     }
 
-    public void LoadPidarasScene()
+    private IEnumerator NewGameCoroutine()
     {
-        SceneManager.LoadScene("gym");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        AudioSource.PlayOneShot(EvilLaughtClip);
+        yield return new WaitForSeconds(3.5f);
+        SceneManager.LoadScene("RostykScene");
+    }
+
+    private IEnumerator ToMainMenuCoroutine()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        yield return new WaitForSeconds(1f);
+        AudioSource.PlayOneShot(GameoverClip);
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("Main menu");
     }
 }
