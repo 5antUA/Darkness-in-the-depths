@@ -11,6 +11,7 @@ public class MainButtons : MonoBehaviour
     [SerializeField] private GameObject SettingsUI;
     [SerializeField] private GameObject DevelopersUI;
 
+
     private void Start()
     {
         CharacterData = new SavedData.CharacterData();
@@ -40,17 +41,6 @@ public class MainButtons : MonoBehaviour
         MainUI.SetActive(false);
         SettingsUI.SetActive(true);
         DevelopersUI.SetActive(false);
-
-        float health;
-        bool isCreativeMode = true;
-
-        health = isCreativeMode ?
-            float.PositiveInfinity : GetFullHitpoints();
-    }
-
-    private int GetFullHitpoints()
-    {
-        return 100;
     }
 
     public void OpenDevInfo()

@@ -65,7 +65,6 @@ public class MenuManager : MonoBehaviour
     public void OpenMenu()
     {
         MenuUI.SetActive(true);
-        //HealthBar.SetActive(false);
 
         PlayerCamera.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -76,7 +75,6 @@ public class MenuManager : MonoBehaviour
     public void CloseMenu()
     {
         MenuUI.SetActive(false);
-        //HealthBar.SetActive(true);
 
         PlayerCamera.enabled = true;
         Cursor.lockState = CursorLockMode.Confined;
