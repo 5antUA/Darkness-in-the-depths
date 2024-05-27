@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,22 +16,11 @@ public class FadeMenuDeathScreen : MonoBehaviour
     private void Start()
     {
         FadedImage = this.GetComponent<Image>();
-        EventManager.ShowMenuDeathScreenEvent += RunFadeEffect;
 
         ImageColor = FadedImage.color;
-        FadedImage.color = SetAlpha(0f);
-        EventManager.ShowMenuDeathScreen();
-    }
-
-    private void RunFadeEffect()
-    {
         StartCoroutine(FadeInCoroutine());
     }
 
-    private void OnDisable()
-    {
-        EventManager.ShowMenuDeathScreenEvent -= RunFadeEffect;
-    }
 
     private IEnumerator FadeInCoroutine()
     {

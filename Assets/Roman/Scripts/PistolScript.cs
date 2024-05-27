@@ -6,25 +6,28 @@ public class PistolScript : Weapon
     private SavedData.InputData InputData;
 
     [Space]
-    [Header("\t PISTOL PROPERTIES")]
+    [Header("\t OTHER PROPERTIES")]
     public GameObject bullet;
     public Camera mainCamera;
     public Transform spawnBullet;
     public GameObject Pistol;
+    public Player Player;
 
     private bool coolDown;
     private Coroutine coolDownCoroutine;
-
     private Coroutine reloadCoroutine;
-    public AudioClip reloadAudioClip;
 
-    private AudioSource fireAudioSource;
+    public AudioClip reloadAudioClip;
     public AudioClip fireAudioClip;
+    private AudioSource fireAudioSource;
 
     public ParticleSystem muzzleFlash;
     private Animator PistolAnimator;
 
+    [SerializeField] private GameObject MenuUI;
 
+
+    #region Unity methods
     private void Start()
     {
         InputData = new SavedData.InputData();
@@ -40,9 +43,12 @@ public class PistolScript : Weapon
 
     void Update()
     {
-        PlayWalkAnimation();
+        if (Player.IsDead || MenuUI.activeInHierarchy)
+            return;
+
         Shoot();
         Reload();
+        PlayWalkAnimation();
     }
 
     private void OnDisable()
@@ -58,18 +64,10 @@ public class PistolScript : Weapon
             StopCoroutine(reloadCoroutine);
         }
     }
+    #endregion
 
 
     #region Shoot management
-    private void PlayWalkAnimation()
-    {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
-            Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-            PistolAnimator.SetBool("isWalk", true);
-        else
-            PistolAnimator.SetBool("isWalk", false);
-    }
-
     private void Shoot()
     {
         if (Input.GetKeyDown(InputData.Shoot))
@@ -110,6 +108,14 @@ public class PistolScript : Weapon
             Debug.Log("reload");
             coolDown = false;
         }
+    }
+
+    private void PlayWalkAnimation()
+    {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            PistolAnimator.SetBool("isWalk", true);
+        else
+            PistolAnimator.SetBool("isWalk", false);
     }
 
     private void SoundOfReload()

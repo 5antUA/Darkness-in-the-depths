@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SavedData;
 
 
 public class Weapon : MonoBehaviour

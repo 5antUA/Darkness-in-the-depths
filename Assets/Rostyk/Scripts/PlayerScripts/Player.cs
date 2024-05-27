@@ -29,6 +29,7 @@ public class Player : Character
     // COMPONENTS
     [SerializeField] private Camera PlayerCamera;               // Camera игрока
     [SerializeField] private Light PlayerLight;                 // Player flashlight
+    [SerializeField] private GameObject MenuUI;
     private CharacterController _controller;
     #endregion
 
@@ -50,18 +51,27 @@ public class Player : Character
 
     private void Update()
     {
-        Movement();
-        Jump();
-        Crouch();
-        ChangeFOV();
-        SwitchLight();
+        if (!MenuUI.activeInHierarchy)
+        {
+            Movement();
+            Jump();
+            Crouch();
+            ChangeFOV();
+            SwitchLight();
+        }
 
         if (this.IsDead && !isNotPenetation)
-            SceneManager.LoadScene("DeathScreen");
+        {
+            MenuUI.SetActive(false);
+            EventManager.OnPlayerDeath();
+        }
     }
 
     private void FixedUpdate()
     {
+        if (this.IsDead)
+            return;
+
         CalculateVelocity();
     }
     #endregion
