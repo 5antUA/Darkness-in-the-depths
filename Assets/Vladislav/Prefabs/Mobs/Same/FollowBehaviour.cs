@@ -6,13 +6,16 @@ namespace mobs
 {
     public class FollowBehaviour : StateMachineBehaviour
     {
+        public int ClipFollowNumber;
+
+        public float walck_speed = 3.5f;
+        public float attackDistanse = 4f;
+        
         private GameObject player;
         private NavMeshAgent agent;
 
         private Sounds sounds;
 
-        public float walck_speed = 3.5f;
-        public float attackDistanse = 4f;
         private void Awake()
         {
             player = GameObject.FindWithTag("Player");
@@ -30,7 +33,7 @@ namespace mobs
             agent.SetDestination(player.transform.position);
 
             if (!sounds.isplaying)
-                sounds.PlaySound(sounds.sounds[2],p1:0.9f,p2:1.1f,volume:3);
+                sounds.PlaySound(sounds.sounds[ClipFollowNumber],p1:0.9f,p2:1.1f,volume:3);
 
         }
 

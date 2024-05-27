@@ -2,40 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class attaksound : StateMachineBehaviour
+public class Attaksound : StateMachineBehaviour
 {
+    public int ClipNumber;
+    public int ClipVolume = 1;
     protected Sounds sounds;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        sounds= animator.GetComponent<Sounds>();
+        sounds = animator.GetComponent<Sounds>();
     }
-
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!sounds.isplaying)
-        {
-            sounds.PlaySound(sounds.sounds[3], 1, p1: 1, p2: 1);
-        }
-        
+        if (!sounds.isplaying) sounds.PlaySound(sounds.sounds[ClipNumber], ClipVolume, p1: 1, p2: 1);
     }
-
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

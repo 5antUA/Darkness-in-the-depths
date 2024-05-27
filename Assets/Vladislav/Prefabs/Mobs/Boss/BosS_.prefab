@@ -967,7 +967,6 @@ MonoBehaviour:
   WalkSpeed: 0
   SprintSpeed: 0
   CrouchSpeed: 0
-  animation: {fileID: 7473525915070111874}
   ALLrigidbodys:
   - {fileID: 3074463814850794347}
   - {fileID: 8489326890563815126}
@@ -1109,7 +1108,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: efbb6e3faa2fe694cb30775720a331aa, type: 3}
   - {fileID: 8300000, guid: 05b330dfb6eaee446a08e5f47cbb1ac9, type: 3}
   - {fileID: 8300000, guid: eb7a81844b90cd744b4d419643961a57, type: 3}
-  - {fileID: 8300000, guid: f027b5bf06a276542ab34245689ed163, type: 3}
   isplaying: 0
 --- !u!1 &5473589859356012820 stripped
 GameObject:
@@ -1612,11 +1610,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!95 &7473525915070111874 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 154ef0ee2806f994cba0578b9223f5fb, type: 3}
-  m_PrefabInstance: {fileID: 3953555263900785939}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8431578053009666139 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4332706925441422008, guid: 154ef0ee2806f994cba0578b9223f5fb, type: 3}

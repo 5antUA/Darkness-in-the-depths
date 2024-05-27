@@ -341,7 +341,6 @@ MonoBehaviour:
   WalkSpeed: 0
   SprintSpeed: 0
   CrouchSpeed: 0
-  animation: {fileID: 5887804797045408116}
   ALLrigidbodys:
   - {fileID: 929746387354514168}
   - {fileID: 8406337656013793985}
@@ -516,9 +515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: 2598244d73e9ffa478877e5fd235a08c, type: 3}
   - {fileID: 8300000, guid: fe2c73fb1ebab6245965baa35c2f124e, type: 3}
-  - {fileID: 8300000, guid: fe2c73fb1ebab6245965baa35c2f124e, type: 3}
+  - {fileID: 8300000, guid: 2b41989ecd3c0a043a5dc1fa72e0b238, type: 3}
   isplaying: 0
 --- !u!1 &370745401037282225
 GameObject:

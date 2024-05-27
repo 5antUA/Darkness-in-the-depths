@@ -42,6 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e02cee08893ce4fb005de321b1119a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClipFollowNumber: 2
   walck_speed: 4.5
   attackDistanse: 5
 --- !u!1107 &-8466174832020217977
@@ -314,6 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8695278a5e3454541a52994e0fe3c4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClipNumber: 3
+  ClipVolume: 1
 --- !u!114 &1746695434535211013
 MonoBehaviour:
   m_ObjectHideFlags: 1

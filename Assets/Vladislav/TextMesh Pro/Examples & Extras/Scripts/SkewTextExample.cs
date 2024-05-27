@@ -39,7 +39,7 @@ namespace TMPro.Examples
 
 
         /// <summary>
-        ///  Method to curve text along a Unity animation curve.
+        ///  Method to curve text along a Unity animator curve.
         /// </summary>
         /// <param name="textComponent"></param>
         /// <returns></returns>
@@ -120,7 +120,7 @@ namespace TMPro.Examples
                     vertices[vertexIndex + 3] += -bottomShear;
 
 
-                    // Compute the angle of rotation for each character based on the animation curve
+                    // Compute the angle of rotation for each character based on the animator curve
                     float x0 = (offsetToMidBaseline.x - boundsMinX) / (boundsMaxX - boundsMinX); // Properties's position relative to the bounds of the mesh.
                     float x1 = x0 + 0.0001f;
                     float y0 = VertexCurve.Evaluate(x0) * CurveScale;

@@ -6,9 +6,8 @@ public class MobDamager : MonoBehaviour
     protected Monster monster;        //щоб брати інфу про урон
 
     protected float monsterDamage;                                 // урон, расчитаный по формуле (ориг.Damage в Properties)
-
     [SerializeField] protected Transform _startShooter;            // точка рейкасту
-    // Start is called before the first frame update
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -16,14 +15,11 @@ public class MobDamager : MonoBehaviour
         monsterDamage = monster.Damage;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (animator.GetBool("Attack") == true)
         {
             Hitting();
-            Debug.Log(monsterDamage);
-
         }
     }
 
@@ -35,16 +31,13 @@ public class MobDamager : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(monsterDamage);
-            Debug.Log(monsterDamage);
-
-
         }
     }
 
     // Поиск врага лучем
     protected Player GetEnemy()
     {
-        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(3);
+        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(4);
 
         if (hit.collider != null)
         {

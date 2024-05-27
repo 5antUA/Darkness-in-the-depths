@@ -16,7 +16,7 @@ namespace TMPro.Examples
         private bool hasTextChanged;
 
         /// <summary>
-        /// Structure to hold pre-computed animation data.
+        /// Structure to hold pre-computed animator data.
         /// </summary>
         private struct VertexAnim
         {
@@ -112,7 +112,7 @@ namespace TMPro.Examples
                     if (!charInfo.isVisible)
                         continue;
 
-                    // Retrieve the pre-computed animation data for the given character.
+                    // Retrieve the pre-computed animator data for the given character.
                     VertexAnim vertAnim = vertexAnim[i];
 
                     // Get the index of the material used by the current character.

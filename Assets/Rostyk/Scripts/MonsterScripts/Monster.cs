@@ -6,12 +6,13 @@ using UnityEngine.AI;
 // Empty class
 public class Monster : Character
 {
-    public Animator animation;
     public Rigidbody[] ALLrigidbodys;
+    protected Animator animator;
     protected bool deathchaker = false;
 
     protected void Awake()
     {
+        animator = GetComponent<Animator> ();
         for (int i = 0; i < ALLrigidbodys.Length; i++)
         {
             ALLrigidbodys[i].isKinematic = true;
@@ -39,7 +40,7 @@ public class Monster : Character
     }
     protected void makephicik()
     {
-        animation.enabled = false;
+        animator.enabled = false;
         for (int i = 0; i < ALLrigidbodys.Length; i++)
         {
             ALLrigidbodys[i].isKinematic = false;
