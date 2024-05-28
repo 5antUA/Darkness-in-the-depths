@@ -13,7 +13,6 @@ public class MenuManager : MonoBehaviour
     [Space]
     [Header("\t Our properties")]
     public GameObject MenuUI;                                   // Menu UI
-    public GameObject HealthBar;                                // HealthBar UI
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
     private Player Player;
 
