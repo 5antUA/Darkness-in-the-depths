@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,7 @@ public class MainButtons : MonoBehaviour
     [SerializeField] private GameObject MainUI;
     [SerializeField] private GameObject SettingsUI;
     [SerializeField] private GameObject DevelopersUI;
-
+    [SerializeField] private GameObject BlackScreen;
 
     private void Start()
     {
@@ -20,19 +21,16 @@ public class MainButtons : MonoBehaviour
 
     public void ContinueGame()
     {
-        SceneManager.LoadScene("RostykScene");
+        BlackScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        StartCoroutine(LoadGame());
     }
 
-    public void NewGame()
+    private IEnumerator LoadGame()
     {
-        SavedData.PlayerPositionData playerData = new SavedData.PlayerPositionData();
-        SavedData.NotesData notesData = new SavedData.NotesData();
-        CharacterData.isContinueGame = true;
-        
-        playerData.Save();
-        notesData.Save();
-        CharacterData.Save();
-
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("RostykScene");
     }
 

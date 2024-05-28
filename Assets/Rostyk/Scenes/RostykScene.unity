@@ -241,8 +241,8 @@ MonoBehaviour:
   WalkSpeed: 0
   SprintSpeed: 0
   CrouchSpeed: 0
-  animation: {fileID: 0}
   ALLrigidbodys: []
+  SecondAudioSourse: {fileID: 0}
 --- !u!1 &700288107
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.201134
+      value: -47.16
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalPosition.y
@@ -829,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 124.239235
+      value: 120.38
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalRotation.w

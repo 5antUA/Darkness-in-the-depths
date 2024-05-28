@@ -8,7 +8,7 @@ public class CheckContinueButton : MonoBehaviour
     SavedData.CharacterData initializationData;
     private Button theButton;
 
-    private void Start()
+    private void Awake()
     {
         initializationData = new SavedData.CharacterData();
         initializationData = initializationData.Load();

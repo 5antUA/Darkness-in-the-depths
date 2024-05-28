@@ -1,16 +1,24 @@
 using SavedData;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CharacterButtons : MonoBehaviour
 {
-    private CharacterData InitializationData;
+    private CharacterData CharacterData;
+    private PlayerPositionData PlayerData;
+    private NotesData NotesData;
     private RostykEnums.Characters character;
+
+    [SerializeField] private GameObject BlackImage;
 
 
     void Start()
     {
-        InitializationData = new CharacterData();
+        CharacterData = new CharacterData();
+        NotesData = new NotesData();
+        PlayerData = new PlayerPositionData();
     }
 
 
@@ -37,11 +45,22 @@ public class CharacterButtons : MonoBehaviour
 
     public void ApplyCharacterButton()
     {
-        InitializationData.isContinueGame = false;
-        InitializationData.Character = character;
+        BlackImage.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-        InitializationData.Save();
+        StartCoroutine(LoadGame());
 
+        CharacterData.isContinueGame = false;
+        CharacterData.Character = character;
+        CharacterData.Save();
+        PlayerData.Save();
+        NotesData.Save();
+    }
+
+    private IEnumerator LoadGame()
+    {
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("RostykScene");
     }
 }

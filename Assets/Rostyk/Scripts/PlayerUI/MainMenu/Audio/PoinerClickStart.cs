@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class PoinerEnter : MonoBehaviour
+public class PoinerClickStart : MonoBehaviour
 {
     [SerializeField] private AudioSource _AudioSource;
     [SerializeField] private AudioClip _AudioClip;

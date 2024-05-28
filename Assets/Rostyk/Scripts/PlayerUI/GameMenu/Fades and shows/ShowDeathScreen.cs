@@ -50,4 +50,9 @@ public class ShowDeathScreen : MonoBehaviour
         imageColor.a = alpha;
         return imageColor;
     }
+
+    private void OnDisable()
+    {
+        EventManager.OnPlayerDeathEvent -= RunShowEffect;
+    }
 }

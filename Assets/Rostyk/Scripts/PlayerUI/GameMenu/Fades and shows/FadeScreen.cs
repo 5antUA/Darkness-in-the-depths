@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadeMenuDeathScreen : MonoBehaviour
+public class FadeScreen : MonoBehaviour
 {
     [Range(0, 1)]
     public float normalAlpha;
