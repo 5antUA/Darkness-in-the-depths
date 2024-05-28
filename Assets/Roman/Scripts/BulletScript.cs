@@ -14,7 +14,7 @@ public class BulletScript : MonoBehaviour
         characterData = characterData.Load();
         characterDamage = characterData.Property.Damage;
 
-        Destroy(gameObject, bulletLife);
+        //Destroy(gameObject, bulletLife);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,6 +26,7 @@ public class BulletScript : MonoBehaviour
             {
                 enemy.TakeDamage(20 * characterDamage);
             }
+            Destroy(gameObject);
         }
     }
 }

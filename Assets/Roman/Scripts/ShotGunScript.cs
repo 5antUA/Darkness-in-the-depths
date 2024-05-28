@@ -14,16 +14,20 @@ public class ShotGunScript : Weapon
     public Player Player;
 
     public AudioClip fireAudioClip;
+    public AudioClip reloadAudioClip;
     public ParticleSystem muzzleFlash;
 
     private bool isCooldown;
     private bool reload;
     private Animator ShotGunAnimator;
-    private AudioSource fireAudioSource;
+    private AudioSource AudioSource;
     private Coroutine cooldownCoroutine;
     private Coroutine reloadCoroutine;
     private List<GameObject> currentBullets;
     [SerializeField] private GameObject MenuUI;
+
+    private bool shootingWhileRun = false;// Роз'яснення для Ростіка: змінна фіксить баг, а саме: коли рухаєшся анімація стрільби не відіграється.
+                      // Якщо її не добавляти, анімація стрільби буде програватися після анімації бігу(з умовою, якщо будеш стріляти під час бігу). 
 
 
     #region Unity methods
@@ -32,12 +36,12 @@ public class ShotGunScript : Weapon
         InputData = new SavedData.InputData();
         InputData = InputData.Load();
 
-        fireAudioSource = GetComponent<AudioSource>();    
+        AudioSource = GetComponent<AudioSource>();
         ShotGunAnimator = GetComponent<Animator>();
 
         counterOfBullets = MaxBullets;
         isCooldown = true;
-        reload = true;
+        reload = false;
         currentBullets = new List<GameObject>();
     }
 
@@ -62,7 +66,6 @@ public class ShotGunScript : Weapon
         if (reloadCoroutine != null)
         {
             StopCoroutine(reloadCoroutine);
-            reload = true;
         }
     }
     #endregion
@@ -73,11 +76,14 @@ public class ShotGunScript : Weapon
     {
         if (Input.GetKeyDown(InputData.Shoot))
         {
-            if (isCooldown)
+            if (isCooldown && !reload)
             {
                 ShootLogic();
-                ShotGunAnimator.SetTrigger("ShotGunFire");
-                fireAudioSource.PlayOneShot(fireAudioClip);
+
+                if(!shootingWhileRun)
+                    ShotGunAnimator.SetTrigger("ShotGunFire");
+                
+                AudioSource.PlayOneShot(fireAudioClip);
                 muzzleFlash.Play();
 
                 counterOfBullets--;
@@ -88,12 +94,20 @@ public class ShotGunScript : Weapon
 
     private void Reload()
     {
-        if (counterOfBullets == 0 && reload)
+        if (counterOfBullets == 0 && !reload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
             ShotGunAnimator.SetTrigger("ShotGunReload");
+            Invoke("SoundOfReload", 0.6f);
             Debug.Log("reload");
-            counterOfBullets = 3;
+            isCooldown = false;
+        }
+        else if(Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !reload)
+        {
+            reloadCoroutine = StartCoroutine(ReloadCoroutine());
+            ShotGunAnimator.SetTrigger("ShotGunReload");
+            SoundOfReload();
+            Debug.Log("reload");
             isCooldown = false;
         }
     }
@@ -101,13 +115,23 @@ public class ShotGunScript : Weapon
     private void PlayWalkAnimation()
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+
             ShotGunAnimator.SetBool("SGisWalking", true);
+            shootingWhileRun = true;
+        }
         else
+        {
             ShotGunAnimator.SetBool("SGisWalking", false);
+            shootingWhileRun = false;
+        }
 
     }
 
-    private void SoundOfReload() { }
+    private void SoundOfReload()
+    {
+        AudioSource.PlayOneShot(reloadAudioClip);
+    }
 
     private void InstBullet(Vector3 dirWithSpread)
     {
@@ -129,9 +153,10 @@ public class ShotGunScript : Weapon
 
     private IEnumerator ReloadCoroutine()
     {
-        reload = false;
-        yield return new WaitForSeconds(5f);
         reload = true;
+        yield return new WaitForSeconds(5f);
+        counterOfBullets = MaxBullets; // counterOfBullets = 3
+        reload = false;
         isCooldown = true;
     }
     #endregion
