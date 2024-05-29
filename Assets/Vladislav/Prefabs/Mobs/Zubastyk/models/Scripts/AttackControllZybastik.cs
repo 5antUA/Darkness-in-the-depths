@@ -47,9 +47,9 @@ namespace mobs
                 speed.WalkSpeed = 0.2f;
                 speed.SprintSpeed = 0.4f;
                 camera.fieldOfView = 28;
+                EventManager.ShowDamageScreen();
                 if (!isattacking)
                 {
-                    EventManager.ShowDamageScreen();
                     isattacking = true;
                     StartCoroutine(routine: AttackControll());
                 }

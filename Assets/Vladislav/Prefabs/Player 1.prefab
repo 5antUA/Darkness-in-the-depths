@@ -23120,7 +23120,7 @@ Transform:
   m_GameObject: {fileID: 3130231402435782751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.522, z: -0.839}
+  m_LocalPosition: {x: -0, y: 0.522, z: -1.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25369,10 +25369,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a71f58961ea534c84009c890ceb719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalAlpha: 1
-  startTime: 0
-  betweenTime: 0.5
-  endTime: 0.5
+  normalAlpha: 0.5
+  startTime: 0.02
+  betweenTime: 0
+  endTime: 0.02
 --- !u!1 &5790044812184061412
 GameObject:
   m_ObjectHideFlags: 0
@@ -26001,7 +26001,7 @@ MonoBehaviour:
   CrouchHeight: 0.9
   JumpForce: 3
   LockOpeningTime: 0
-  isNotPenetation: 1
+  isNotPenetation: 0
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
   MenuUI: {fileID: 5068044394997456047}
