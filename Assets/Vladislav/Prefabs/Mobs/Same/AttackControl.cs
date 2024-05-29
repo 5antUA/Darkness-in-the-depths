@@ -11,7 +11,7 @@ namespace mobs
         protected GameObject player;
         protected bool isattacking = false;
         protected float distance;
-        protected void Awake()
+        public virtual void Awake()
         {
             mob = gameObject;
             player = GameObject.FindWithTag("Player");
@@ -19,7 +19,9 @@ namespace mobs
 
         private void Update()
         {
-            Attack();
+
+            if (player == null) player = GameObject.FindWithTag("Player");
+             Attack();
         }
 
         protected IEnumerator AttackControll()

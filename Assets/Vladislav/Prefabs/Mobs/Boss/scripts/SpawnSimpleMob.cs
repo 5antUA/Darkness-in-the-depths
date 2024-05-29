@@ -29,7 +29,7 @@ namespace mobs
         private void Update()
         {
             if (IsContinueCoroutine == false && MonsterCounter <= 3)
-                boss.GetComponent<Animator>().SetBool("Following", true);
+                boss.GetComponent<Animator>().SetBool("Following", true);///
         }
 
         private void OnTriggerEnter(Collider other)
@@ -40,7 +40,7 @@ namespace mobs
                 boss = bossPlase.getBoss();
                 IsContinueCoroutine = true;
                 print("player in trigger");
-                boss.GetComponent<Animator>().SetBool("Following", false);
+                boss.GetComponent<Animator>().SetBool("Following", false);///
                 StartCoroutine(routine: AnimationSpawnStart());
             }
         }
@@ -66,7 +66,7 @@ namespace mobs
                     boss.GetComponent<Animator>().SetTrigger("SpawnAtack");
                     yield return new WaitForSeconds(1f);
                     FireAktive();
-                    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip, volumeScale:4);
+                    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip, volumeScale:4);///
                     yield return new WaitForSeconds(1.5f);
                     print("SpawnAtack");
                     for (int i = 0; i < spawnpoints.Length; i++)

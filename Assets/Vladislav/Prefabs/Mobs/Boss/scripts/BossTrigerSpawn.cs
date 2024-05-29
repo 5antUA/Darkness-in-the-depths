@@ -27,7 +27,7 @@ namespace mobs
             if (other.gameObject.CompareTag("Player"))
             {
                 Spawnsimplemob.SetActive(true);
-                boss.GetComponent<Animator>().SetTrigger("introStart");
+                boss.GetComponent<Animator>().SetTrigger("introStart");///
                 sound.PlaySound(sound.sounds[0], volume:8,p1: 1.2f, p2: 1.3f);
                 Destroy(this.gameObject);
             }
