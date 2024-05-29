@@ -4,7 +4,10 @@ namespace mobs
 {
     public class BosSAttackControl : AttackControl
     {
-
+        public override void Awake()
+        {
+            base.Awake();
+        }
         private void Update()
         {
             if (player == null) player = GameObject.FindWithTag("Player"); 

@@ -12,8 +12,6 @@ namespace mobs
         public override void Awake()
         {
             mob = gameObject;
-            player = GameObject.FindWithTag("Player");
-            //speed = player.GetComponent<Player>();
         }
         private void Update()
         {
@@ -44,9 +42,9 @@ namespace mobs
             distance = Vector3.Distance(mob.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                speed.WalkSpeed = 0.2f;
-                speed.SprintSpeed = 0.4f;
-                camera.fieldOfView = 28;
+                speed.WalkSpeed = 0.1f;
+                speed.SprintSpeed = 0.1f;
+                camera.fieldOfView = 26;
                 EventManager.ShowDamageScreen();
                 if (!isattacking)
                 {
