@@ -22892,10 +22892,10 @@ MonoBehaviour:
   isReload: 0
   counterOfBullets: 3
   MaxBullets: 3
-  shootForce: 50
-  spread: 0.7
+  shootForce: 20
+  spread: 0
   BulletsPerShoot: 3
-  BulletPrefab: {fileID: 4112552800435661294, guid: bc2f3c39d933c17408ad9edb2630655e, type: 3}
+  BulletPrefab: {fileID: 4112552800435661294, guid: 2257d5b15aa1fd24ba01c942032bee6e, type: 3}
   mainCamera: {fileID: 8148715249111008570}
   spawnBullet: {fileID: 5790479836486109923}
   Player: {fileID: 1084217368650117011}
@@ -23120,7 +23120,7 @@ Transform:
   m_GameObject: {fileID: 3130231402435782751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.522, z: -1.69}
+  m_LocalPosition: {x: 0.14, y: 0.522, z: -1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

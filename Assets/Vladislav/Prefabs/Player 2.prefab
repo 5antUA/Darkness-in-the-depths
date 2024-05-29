@@ -22892,7 +22892,7 @@ MonoBehaviour:
   isReload: 0
   counterOfBullets: 3
   MaxBullets: 3
-  shootForce: 100
+  shootForce: 20
   spread: 0
   BulletsPerShoot: 3
   BulletPrefab: {fileID: 4112552800435661294, guid: 2257d5b15aa1fd24ba01c942032bee6e, type: 3}
@@ -23120,7 +23120,7 @@ Transform:
   m_GameObject: {fileID: 3130231402435782751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.522, z: 2.81}
+  m_LocalPosition: {x: 0.14, y: 0.522, z: -1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25371,8 +25371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalAlpha: 1
   startTime: 0
-  betweenTime: 0.02
-  endTime: 0.02
+  betweenTime: 0.5
+  endTime: 0.5
 --- !u!1 &5790044812184061412
 GameObject:
   m_ObjectHideFlags: 0
@@ -26001,7 +26001,7 @@ MonoBehaviour:
   CrouchHeight: 0.9
   JumpForce: 3
   LockOpeningTime: 0
-  isNotPenetation: 1
+  isNotPenetation: 0
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
   MenuUI: {fileID: 5068044394997456047}
