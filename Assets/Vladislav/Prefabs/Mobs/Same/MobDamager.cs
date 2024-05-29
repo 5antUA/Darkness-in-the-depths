@@ -4,7 +4,6 @@ public class MobDamager : MonoBehaviour
 {
     protected Animator animator;
     protected Monster monster;        //щоб брати інфу про урон
-
     protected float monsterDamage;                                 // урон, расчитаный по формуле (ориг.Damage в Properties)
     [SerializeField] protected Transform _startShooter;            // точка рейкасту
 

@@ -7,10 +7,12 @@ namespace mobs
 
         private void Update()
         {
+            if (player == null) player = GameObject.FindWithTag("Player"); 
                 Attack();
         }
         private void Attack()
         {
+
             distance = Vector3.Distance(mob.transform.position, player.transform.position);
             if (distance < attackDistanse && SpawnSimpleMob.MonsterCounter <= 3)
             {
