@@ -16,10 +16,13 @@ namespace mobs
         private bool IsContinueCoroutine = true;
 
         private GameObject boss;
+        private Animator animator;
         private ParticleSystem[] firePoints;
+        private AudioSource audioSource;
 
         private void Start()
         {
+            audioSource= GetComponent<AudioSource>();
             firePoints = new ParticleSystem[spawnpoints.Length];
             this.gameObject.SetActive(false);
             for (int i = 0; i < spawnpoints.Length; i++)
@@ -29,7 +32,7 @@ namespace mobs
         private void Update()
         {
             if (IsContinueCoroutine == false && MonsterCounter <= 3)
-                boss.GetComponent<Animator>().SetBool("Following", true);///
+                animator.SetBool("Following", true);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -38,9 +41,10 @@ namespace mobs
             if (other.gameObject.CompareTag("Player"))
             {
                 boss = bossPlase.getBoss();
+                animator = boss.GetComponent<Animator>();
                 IsContinueCoroutine = true;
                 print("player in trigger");
-                boss.GetComponent<Animator>().SetBool("Following", false);///
+                animator.SetBool("Following", false);
                 StartCoroutine(routine: AnimationSpawnStart());
             }
         }
@@ -66,7 +70,7 @@ namespace mobs
                     boss.GetComponent<Animator>().SetTrigger("SpawnAtack");
                     yield return new WaitForSeconds(1f);
                     FireAktive();
-                    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip, volumeScale:4);///
+                    audioSource.PlayOneShot(audioSource.clip, volumeScale:4);
                     yield return new WaitForSeconds(1.5f);
                     print("SpawnAtack");
                     for (int i = 0; i < spawnpoints.Length; i++)

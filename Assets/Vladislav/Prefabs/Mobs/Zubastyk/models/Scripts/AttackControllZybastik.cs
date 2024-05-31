@@ -4,11 +4,13 @@ namespace mobs
 {
     public class AttackControllZybastik : AttackControl
     {
-        private Player speed;
-        private Camera camera;
-        private float StandartWallkSpeed;
-        private float StandartSprintSpeed;
-        private float FieldOfViev;
+        protected Player speed;
+        protected Camera camera;
+        protected float StandartWallkSpeed;
+        protected float StandartSprintSpeed;
+        protected float FieldOfViev;
+        
+        
         public override void Awake()
         {
             mob = gameObject;
@@ -18,7 +20,7 @@ namespace mobs
             Init();
             Attack();
         }
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             speed.WalkSpeed = StandartWallkSpeed;
             speed.SprintSpeed = StandartSprintSpeed;

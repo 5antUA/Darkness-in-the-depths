@@ -4,14 +4,10 @@ namespace mobs
 {
     public class BosSAttackControl : AttackControl
     {
-        public override void Awake()
-        {
-            base.Awake();
-        }
         private void Update()
         {
-            if (player == null) player = GameObject.FindWithTag("Player"); 
-                Attack();
+            if (player == null) player = GameObject.FindWithTag("Player");
+            Attack();
         }
         private void Attack()
         {
@@ -26,9 +22,6 @@ namespace mobs
                 }
                 mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
             }
-        }
-        
-
-       
+        }   
     }
 }

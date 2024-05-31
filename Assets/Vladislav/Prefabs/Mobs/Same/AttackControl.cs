@@ -9,11 +9,13 @@ namespace mobs
         public float attackDistanse = 10;
         protected GameObject mob;
         protected GameObject player;
+        protected Animator animator;
         protected bool isattacking = false;
         protected float distance;
         public virtual void Awake()
         {
             mob = gameObject;
+            animator = GetComponent<Animator>();
             player = GameObject.FindWithTag("Player");
         }
 
@@ -21,18 +23,18 @@ namespace mobs
         {
 
             if (player == null) player = GameObject.FindWithTag("Player");
-             Attack();
+            Attack();
         }
 
-        protected IEnumerator AttackControll()
+        public virtual IEnumerator AttackControll()
         {
             yield return new WaitForSeconds(CorutineTime);
             while (distance < attackDistanse)
             {
-                mob.GetComponent<Animator>().SetBool("Attack", true);
+                animator.SetBool("Attack", true);
                 yield return new WaitForSeconds(CorutineTime);
             }
-            mob.GetComponent<Animator>().SetBool("Attack", false);
+            animator.SetBool("Attack", false);
             isattacking = false;
         }
 
