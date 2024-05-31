@@ -3,7 +3,22 @@ guid: ba39a04eb2e72f84489fc8f0de41f148
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: retro_computer_setup_Mat
+    second: {fileID: 2100000, guid: 50bc56c04703f9d48aff0be28ca854e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: b54f6361d77f74e45aeefaf50b70fba0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_204204204
+    second: {fileID: 2100000, guid: e52968246407dbb4da0e52ccdc4e765d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
