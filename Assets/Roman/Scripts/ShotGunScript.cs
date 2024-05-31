@@ -5,10 +5,11 @@ using UnityEngine;
 public class ShotGunScript : Weapon
 {
     private SavedData.InputData InputData;
+    private SavedData.CharacterData characterData;
     [Space]
     [Header("\t OTHER PROPERTIES")]
+    private float characterDamage;
     public int BulletsPerShoot;
-    public GameObject BulletPrefab;
     public Camera mainCamera;
     public Transform spawnBullet;
     public Player Player;
@@ -23,7 +24,6 @@ public class ShotGunScript : Weapon
     private AudioSource AudioSource;
     private Coroutine cooldownCoroutine;
     private Coroutine reloadCoroutine;
-    private List<GameObject> currentBullets;
     [SerializeField] private GameObject MenuUI;
 
     private bool shootingWhileRun = false;// Роз'яснення для Ростіка: змінна фіксить баг, а саме: коли рухаєшся анімація стрільби не відіграється.
@@ -36,13 +36,17 @@ public class ShotGunScript : Weapon
         InputData = new SavedData.InputData();
         InputData = InputData.Load();
 
+        characterData = new SavedData.CharacterData();
+        characterData = characterData.Load();
+        characterDamage = characterData.Property.Damage;
+
         AudioSource = GetComponent<AudioSource>();
         ShotGunAnimator = GetComponent<Animator>();
 
         counterOfBullets = MaxBullets;
+        _distance = 10f;
         isCooldown = true;
         reload = false;
-        currentBullets = new List<GameObject>();
     }
 
     void Update()
@@ -133,13 +137,6 @@ public class ShotGunScript : Weapon
         AudioSource.PlayOneShot(reloadAudioClip);
     }
 
-    private void InstBullet(Vector3 dirWithSpread)
-    {
-        GameObject currentBullet = Instantiate(BulletPrefab, spawnBullet.position, Quaternion.identity);
-        currentBullets.Add(currentBullet);
-        currentBullet.transform.forward = dirWithSpread.normalized;
-        currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
-    }
     #endregion
 
 
@@ -164,25 +161,16 @@ public class ShotGunScript : Weapon
 
     private void ShootLogic()
     {
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit))
-            targetPoint = hit.point;
-        else
-            targetPoint = ray.GetPoint(75);
-
-        Vector3 dirWithoutSpread = targetPoint - spawnBullet.position;
-
-        for (int i = 0; i < BulletsPerShoot; i++)
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _distance))
         {
-            float x = Random.Range(-spread, spread);
-            float y = Random.Range(-spread, spread);
-
-            Vector3 dirWithSpread = dirWithoutSpread + new Vector3(x, y, 0);
-
-            InstBullet(dirWithSpread);
+            Monster enemy = hit.collider.GetComponentInParent<Monster>();
+            if (enemy != null)
+            {
+                float distance = Vector3.Distance(mainCamera.transform.position, hit.transform.position);
+                enemy.TakeDamage((60 - (distance * 6)) * characterDamage);
+            }
         }
     }
 }

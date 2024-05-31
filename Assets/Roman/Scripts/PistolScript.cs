@@ -4,10 +4,11 @@ using UnityEngine;
 public class PistolScript : Weapon
 {
     private SavedData.InputData InputData;
+    private SavedData.CharacterData characterData;
 
     [Space]
     [Header("\t OTHER PROPERTIES")]
-    public GameObject bullet;
+    private float characterDamage;
     public Camera mainCamera;
     public Transform spawnBullet;
     public GameObject Pistol;
@@ -33,10 +34,15 @@ public class PistolScript : Weapon
         InputData = new SavedData.InputData();
         InputData = InputData.Load();
 
+        characterData = new SavedData.CharacterData();
+        characterData = characterData.Load();
+        characterDamage = characterData.Property.Damage;
+
         fireAudioSource = GetComponent<AudioSource>();
         PistolAnimator = GetComponent<Animator>();
 
         counterOfBullets = MaxBullets;
+        _distance = 100f;
         coolDown = true;
         isReload = false;
     }
@@ -146,26 +152,15 @@ public class PistolScript : Weapon
 
     private void ShootLogic()
     {
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit))
-            targetPoint = hit.point;
-        else
-            targetPoint = ray.GetPoint(75);
-
-        Vector3 dirWithoutSpread = targetPoint - spawnBullet.position;
-
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
-
-        Vector3 dirWithSpread = dirWithoutSpread + new Vector3(x, y, 0);
-
-        GameObject currentBullet = Instantiate(bullet, spawnBullet.position, Quaternion.identity);
-
-        currentBullet.transform.forward = dirWithSpread.normalized;
-
-        currentBullet.GetComponent<Rigidbody>().AddForce(dirWithSpread.normalized * shootForce, ForceMode.Impulse);
+        if(Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _distance))
+        {
+            Monster enemy = hit.collider.GetComponentInParent<Monster>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(20 * characterDamage);
+            }
+        }
     }
 }

@@ -9,8 +9,7 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public bool isReload;
     [HideInInspector] public int counterOfBullets;
     public int MaxBullets;
-    public float shootForce;
-    public float spread;
+    public float _distance;
 
     protected int MagazineCapacity;
     protected int TotalAmmo;

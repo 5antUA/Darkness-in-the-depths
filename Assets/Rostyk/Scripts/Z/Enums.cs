@@ -3,9 +3,9 @@
     // Перечисление режима оружия
     public enum WeaponMode
     {
-        Knife = 1,
-        Weapon = 2,
-        Grenade = 3,
+        Hummer = 0,
+        Pistol = 1,
+        Shotgun = 2,
     }
 
     // Перечисление оружий ближнего боя

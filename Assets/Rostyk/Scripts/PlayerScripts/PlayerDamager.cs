@@ -24,13 +24,13 @@ public class PlayerDamager : MonoBehaviour
         MyPlayer = this.GetComponent<Player>();
 
         PlayerDamage = MyPlayer.Damage;
-        WeaponMode = WeaponMode.Weapon;
+        WeaponMode = WeaponMode.Pistol;
         HitDistance = GetRayDistance();
     }
 
     //private void Update()
     //{
-    //    if (Input.GetKeyDown(InputData.ShootLogic))
+    //    if (Input.GetKeyDown(InputData.Shoot))
     //    {
     //        Shooting();
     //    }
@@ -82,7 +82,6 @@ public class PlayerDamager : MonoBehaviour
     private void WeaponController()
     {
         ChangeWeaponModeButton();
-        ChangeWeaponModeScroll();
 
         HitDistance = GetRayDistance();
     }
@@ -91,45 +90,28 @@ public class PlayerDamager : MonoBehaviour
     private void ChangeWeaponModeButton()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            WeaponMode = WeaponMode.Knife;
+            WeaponMode = WeaponMode.Hummer;
 
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            WeaponMode = WeaponMode.Weapon;
+            WeaponMode = WeaponMode.Pistol;
 
         else if (Input.GetKeyDown(KeyCode.Alpha3))
-            WeaponMode = WeaponMode.Grenade;
-    }
-
-    // Сменить режим оружия по скролу колесика мыши
-    private void ChangeWeaponModeScroll()
-    {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            WeaponMode++;
-
-            if ((int)WeaponMode == 4)
-                WeaponMode = WeaponMode.Knife;
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            WeaponMode--;
-
-            if ((int)WeaponMode == 0)
-                WeaponMode = WeaponMode.Grenade;
-        }
+            WeaponMode = WeaponMode.Shotgun;
     }
 
     // Получение дальности атаки в зависимости от режима оружия
     private float GetRayDistance()
     {
-        if (WeaponMode == WeaponMode.Knife)
+        if (WeaponMode == WeaponMode.Hummer)
             return 3f;
 
-        else if (WeaponMode == WeaponMode.Weapon)
+        else if (WeaponMode == WeaponMode.Pistol)
             return 100f;
-
-        else
-            return 0;
+        
+        else if (WeaponMode == WeaponMode.Shotgun)
+            return 16f;
+        
+        return 0;
     }
     #endregion
 }
