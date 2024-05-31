@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCharacterHealth: 0
-  Health: 100
+  Health: 10000
   Damage: 0
   Armor: 0
   WalkSpeed: 0
@@ -603,6 +603,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1819325561836643530, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.249355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819325561836643530, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.249355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819325561836643530, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.249355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819325561836643530, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -50.18
       objectReference: {fileID: 0}
@@ -818,7 +830,7 @@ PrefabInstance:
     - target: {fileID: 1626062014967000494, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: PlayerPrefab
       value: 
-      objectReference: {fileID: 6689362665969325309, guid: 53dbe97f10055f2449cc4ea8778d4895, type: 3}
+      objectReference: {fileID: 6689362665969325309, guid: b93f0973df5789847a3247e063d1a622, type: 3}
     - target: {fileID: 2630126070209897007, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_Name
       value: EntryPoint
@@ -976,6 +988,10 @@ PrefabInstance:
     - target: {fileID: 6131142346144882449, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
       propertyPath: m_Name
       value: Capsule (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435698757389793447, guid: 24d20b7c2cd3da34d8035a1bc487fec8, type: 3}
+      propertyPath: Health
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

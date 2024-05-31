@@ -18,8 +18,7 @@ public class WeaponSwitcher : MonoBehaviour
     void Update()
     {
         KeysWeaponSwitch();
-        EnabledWeaponData = EnabledWeaponData.Load();
-
+        
         int currentWeapon = weaponSwitch;
         if (currentWeapon == weaponSwitch)
         {
@@ -32,11 +31,13 @@ public class WeaponSwitcher : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            EnabledWeaponData = EnabledWeaponData.Load();
             if (EnabledWeaponData.Weapons[0])
                 weaponSwitch = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !pistolScript.isReload)
         {
+            EnabledWeaponData = EnabledWeaponData.Load();
             if (EnabledWeaponData.Weapons[1])
                 weaponSwitch = 1;
         }
