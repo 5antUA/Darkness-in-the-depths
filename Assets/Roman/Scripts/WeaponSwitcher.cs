@@ -19,7 +19,6 @@ public class WeaponSwitcher : MonoBehaviour
     {
         KeysWeaponSwitch();
         
-
         int currentWeapon = weaponSwitch;
         if (currentWeapon == weaponSwitch)
         {
