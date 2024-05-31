@@ -9,7 +9,8 @@ public class Monster : Character
     public Rigidbody[] ALLrigidbodys;
     public AudioSource SecondAudioSourse;
     protected Animator animator;
-    private MobDamager mobDamager;
+    protected Sounds sounds;
+    protected MobDamager mobDamager;
     protected bool deathchaker = false;
 
 
@@ -17,6 +18,7 @@ public class Monster : Character
     {
         animator = GetComponent<Animator> ();
         mobDamager = GetComponent<MobDamager>();
+        sounds = GetComponent<Sounds>();
         for (int i = 0; i < ALLrigidbodys.Length; i++)
         {
             ALLrigidbodys[i].isKinematic = true;
@@ -39,7 +41,7 @@ public class Monster : Character
             SecondAudioSourse.Stop();
             mobDamager.enabled = false;
             makephicik();
-            GetComponent<Sounds>().PlaySound(GetComponent<Sounds>().sounds[2], 3,p1:0.8f,p2:1.3f);///
+            sounds.PlaySound(sounds.sounds[2], 3,p1:0.8f,p2:1.3f);
             Destroy(gameObject, 5);
             deathchaker = true;
         }

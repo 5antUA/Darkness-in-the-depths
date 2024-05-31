@@ -4,23 +4,23 @@ namespace mobs
 {
     public class AttackControllZybastik : AttackControl
     {
-        private Player speed;
-        private Camera camera;
-        private float StandartWallkSpeed;
-        private float StandartSprintSpeed;
-        private float FieldOfViev;
+        protected Player speed;
+        protected Camera camera;
+        protected float StandartWallkSpeed;
+        protected float StandartSprintSpeed;
+        protected float FieldOfViev;
+        
+        
         public override void Awake()
         {
             mob = gameObject;
-            player = GameObject.FindWithTag("Player");
-            //speed = player.GetComponent<Player>();
         }
         private void Update()
         {
             Init();
             Attack();
         }
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             speed.WalkSpeed = StandartWallkSpeed;
             speed.SprintSpeed = StandartSprintSpeed;
@@ -44,9 +44,9 @@ namespace mobs
             distance = Vector3.Distance(mob.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                speed.WalkSpeed = 0.2f;
-                speed.SprintSpeed = 0.4f;
-                camera.fieldOfView = 28;
+                speed.WalkSpeed = 0.1f;
+                speed.SprintSpeed = 0.1f;
+                camera.fieldOfView = 26;
                 EventManager.ShowDamageScreen();
                 if (!isattacking)
                 {
