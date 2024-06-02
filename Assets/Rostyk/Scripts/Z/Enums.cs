@@ -8,29 +8,12 @@
         Shotgun = 2,
     }
 
-    // Перечисление оружий ближнего боя
-    public enum Knife
-    {
-        Hand = 0,
-        Hammer = 1,
-        Sword = 2,
-        Blades = 3
-    }
-
     // Перечисление оружий дальнего боя
     public enum Weapon
     {
         Gun = 0,
         DoubleGun = 1,
         Shotgun = 2
-    }
-
-    // Перечисление гранат
-    public enum Grenade
-    {
-        Grenade = 0,
-        Molotov = 1,
-        Flashbang = 2
     }
 
     // Перечисление вкладок меню
