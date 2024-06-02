@@ -25,6 +25,8 @@ public class ShotGunScript : Weapon
     private Coroutine reloadCoroutine;
     [SerializeField] private GameObject MenuUI;
 
+    public GameObject ShotgunHitEffect;
+
     private bool shootingWhileRun = false;// Роз'яснення для Ростіка: змінна фіксить баг, а саме: коли рухаєшся анімація стрільби не відіграється.
                       // Якщо її не добавляти, анімація стрільби буде програватися після анімації бігу(з умовою, якщо будеш стріляти під час бігу). 
 
@@ -173,6 +175,8 @@ public class ShotGunScript : Weapon
             {
                 float distance = Vector3.Distance(mainCamera.transform.position, hit.transform.position);
                 enemy.TakeDamage((60 - (distance * 6)) * characterDamage);
+                GameObject effect = Instantiate(ShotgunHitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(effect, 1f);
             }
         }
     }

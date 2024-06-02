@@ -41,13 +41,13 @@ public class WeaponSwitcher : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !(shotGunScript.isReload || hummerScript.coolDown))
         {
             EnabledWeaponData = EnabledWeaponData.Load();
-            if (EnabledWeaponData.Weapons[0])
+            if (EnabledWeaponData.Weapons[1])
                 weaponSwitch = 1;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && !(pistolScript.isReload || hummerScript.isReload))
         {
             EnabledWeaponData = EnabledWeaponData.Load();
-            if (EnabledWeaponData.Weapons[1])
+            if (EnabledWeaponData.Weapons[2])
                 weaponSwitch = 2;
         }
     }
