@@ -12,8 +12,6 @@ public class CharacterButtons : MonoBehaviour
     private RostykEnums.Characters character;
 
     [SerializeField] private GameObject BlackImage;
-    [SerializeField] private GameObject LoadingScreen;
-    [SerializeField] private Image Skull;
 
     void Start()
     {
@@ -62,13 +60,6 @@ public class CharacterButtons : MonoBehaviour
     private IEnumerator LoadGame()
     {
         yield return new WaitForSeconds(3f);
-
-        LoadingScreen.SetActive(true);
-        AsyncOperation LoadAsync = SceneManager.LoadSceneAsync("RostykScene");
-        while (!LoadAsync.isDone)
-        {
-            Skull.fillAmount = LoadAsync.progress;
-            yield return null;
-        }
+        SceneManager.LoadScene("LoadScene");
     }
 }

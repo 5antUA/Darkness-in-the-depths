@@ -17,6 +17,7 @@ public class LoadGame : MonoBehaviour
     [SerializeField] private GameObject PlayerPrefab;
     public List<GameObject> TriggerList;
 
+    private List<GameObject> CloneTriggerList;
     private GameObject PlayerClone;
     private Player PlayerProperties;
     private Vector3 DefaultPlayerPosition;
@@ -27,6 +28,7 @@ public class LoadGame : MonoBehaviour
     private void Start()
     {
         DefaultPlayerPosition = this.transform.position;
+        CloneTriggerList = new();
 
         // init player data
         InitData();
@@ -63,17 +65,17 @@ public class LoadGame : MonoBehaviour
             CharacterData.Save();
             PlayerPositionData.Save();
 
-            TriggerData = new SavedData.TriggerData(TriggerList);
+            TriggerData = new(TriggerList);
             TriggerData.Save(TriggerList);
         }
     }
 
     private void InitData()
     {
-        CharacterData = new SavedData.CharacterData();
-        PlayerPositionData = new SavedData.PlayerPositionData(DefaultPlayerPosition);
-        NotesData = new SavedData.NotesData();
-        TriggerData = new SavedData.TriggerData(TriggerList);
+        CharacterData = new();
+        PlayerPositionData = new(DefaultPlayerPosition);
+        NotesData = new();
+        TriggerData = new(TriggerList);
 
         CharacterData = CharacterData.Load();
         PlayerPositionData = PlayerPositionData.Load();
@@ -147,7 +149,7 @@ public class LoadGame : MonoBehaviour
     {
         for (int i = 0; i < TriggerList.Count; i++)
         {
-            if (TriggerList[i] == null)
+            if (CloneTriggerList[i] == null)
             {
                 TriggerData.IsDestroyedObject[i] = true;
             }
@@ -162,13 +164,13 @@ public class LoadGame : MonoBehaviour
         {
             if (!TriggerData.IsDestroyedObject[i])
             {
-                Instantiate(TriggerList[i]);
+                GameObject CloneTrigger = Instantiate(TriggerList[i]);
+                CloneTriggerList.Add(CloneTrigger);
+            }
+            else
+            {
+                CloneTriggerList.Add(null);
             }
         }
-    }
-
-    private void DestroyOriginalTriggers()
-    {
-
     }
 }
