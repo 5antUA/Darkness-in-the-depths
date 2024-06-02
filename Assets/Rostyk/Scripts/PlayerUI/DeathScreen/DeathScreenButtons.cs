@@ -39,7 +39,7 @@ public class DeathScreenButtons : MonoBehaviour
 
         AudioSource.PlayOneShot(EvilLaughtClip);
         yield return new WaitForSeconds(3.5f);
-        SceneManager.LoadScene("RostykScene");
+        SceneManager.LoadScene("LoadScene");
     }
 
     private IEnumerator ToMainMenuCoroutine()

@@ -11,8 +11,12 @@ public class HummerScript : Weapon
     [Space]
     [Header("\t OTHER PROPERTIES")]
     private float characterDamage;
+    public bool coolDown { get; private set; }
+    private Coroutine coolDownCoroutine;
     public Camera mainCamera;
     public Player Player;
+    private AudioSource AudioSource;
+    public AudioClip AttackAudioClip;
     [SerializeField] private GameObject MenuUI;
 
     private Animator hummerAnimator;
@@ -25,7 +29,11 @@ public class HummerScript : Weapon
         characterData = characterData.Load();
         characterDamage = characterData.Property.Damage;
 
+        coolDown = false;
+        isReload = false;
+
         hummerAnimator = GetComponent<Animator>();
+        AudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -37,7 +45,16 @@ public class HummerScript : Weapon
         PlayWalkAnimation();
     }
 
-    private void PlayWalkAnimation()
+    private void OnDisable()
+    {
+        if (coolDownCoroutine != null)
+        {
+            StopCoroutine(coolDownCoroutine);
+            coolDown = false;
+        }
+    }
+
+        private void PlayWalkAnimation()
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
@@ -51,12 +68,24 @@ public class HummerScript : Weapon
 
     }
 
+    private IEnumerator CooldownCoroutine()
+    {
+        coolDown = true;
+        yield return new WaitForSeconds(0.5f);
+        coolDown = false;
+    }
+
     private void Attack()
     {
         if (Input.GetKeyDown(InputData.Shoot))
         {
-            AttackLogic();
-            hummerAnimator.SetTrigger("isAttack");
+            if (!coolDown)
+            {
+                AttackLogic();
+                hummerAnimator.SetTrigger("isAttack");
+                AudioSource.PlayOneShot(AttackAudioClip);
+                coolDownCoroutine = StartCoroutine(CooldownCoroutine());
+            }
         }
     }
 
@@ -70,7 +99,6 @@ public class HummerScript : Weapon
             if (enemy != null)
             {
                 enemy.TakeDamage(30 * characterDamage);
-                Debug.Log("xixi xaxax");
             }
         }
     }

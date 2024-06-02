@@ -5,6 +5,8 @@ public class WeaponSwitcher : MonoBehaviour
     private SavedData.WeaponData EnabledWeaponData;
     [SerializeField] private int weaponSwitch = 0;
     [SerializeField] private PistolScript pistolScript;
+    [SerializeField] private ShotGunScript shotGunScript;
+    [SerializeField] private HummerScript hummerScript;
 
 
     void Start()
@@ -18,7 +20,7 @@ public class WeaponSwitcher : MonoBehaviour
     void Update()
     {
         KeysWeaponSwitch();
-        
+
         int currentWeapon = weaponSwitch;
         if (currentWeapon == weaponSwitch)
         {
@@ -29,17 +31,24 @@ public class WeaponSwitcher : MonoBehaviour
 
     private void KeysWeaponSwitch()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !(pistolScript.isReload || shotGunScript.isReload))
         {
             EnabledWeaponData = EnabledWeaponData.Load();
             if (EnabledWeaponData.Weapons[0])
                 weaponSwitch = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && !pistolScript.isReload)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && !(shotGunScript.isReload || hummerScript.coolDown))
         {
             EnabledWeaponData = EnabledWeaponData.Load();
             if (EnabledWeaponData.Weapons[1])
                 weaponSwitch = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && !(pistolScript.isReload || hummerScript.isReload))
+        {
+            EnabledWeaponData = EnabledWeaponData.Load();
+            if (EnabledWeaponData.Weapons[2])
+                weaponSwitch = 2;
         }
     }
 

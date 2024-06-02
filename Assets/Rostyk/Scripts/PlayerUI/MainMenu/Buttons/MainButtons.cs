@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 // ÂÅØÀÒÜ ÍÀ ÊÀÍÂÀÑ Â ÃËÀÂÍÎÌ ÌÅÍŞ
@@ -12,6 +13,7 @@ public class MainButtons : MonoBehaviour
     [SerializeField] private GameObject SettingsUI;
     [SerializeField] private GameObject DevelopersUI;
     [SerializeField] private GameObject BlackScreen;
+
 
     private void Start()
     {
@@ -31,8 +33,9 @@ public class MainButtons : MonoBehaviour
     private IEnumerator LoadGame()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("RostykScene");
+        SceneManager.LoadScene("LoadScene");
     }
+
 
     public void OpenSettings()
     {

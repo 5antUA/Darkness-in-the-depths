@@ -13,12 +13,11 @@ public class CharacterButtons : MonoBehaviour
 
     [SerializeField] private GameObject BlackImage;
 
-
     void Start()
     {
         CharacterData = new CharacterData();
-        NotesData = new NotesData();
         PlayerData = new PlayerPositionData();
+        NotesData = new NotesData();
     }
 
 
@@ -61,6 +60,6 @@ public class CharacterButtons : MonoBehaviour
     private IEnumerator LoadGame()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("RostykScene");
+        SceneManager.LoadScene("LoadScene");
     }
 }

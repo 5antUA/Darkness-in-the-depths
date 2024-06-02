@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using RostykEnums;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 
 // ВЕШАТЬ СКРИПТ НА ОБЪЕКТ EntryPoint
@@ -10,21 +12,23 @@ public class LoadGame : MonoBehaviour
     private SavedData.CharacterData CharacterData;
     private SavedData.PlayerPositionData PlayerPositionData;
     private SavedData.NotesData NotesData;
+    private SavedData.TriggerData TriggerData;
 
+    [SerializeField] private GameObject PlayerPrefab;
+    public List<GameObject> TriggerList;
+
+    private List<GameObject> CloneTriggerList;
     private GameObject PlayerClone;
     private Player PlayerProperties;
     private Vector3 DefaultPlayerPosition;
 
-    [SerializeField] private GameObject PlayerPrefab;
-    [SerializeField] private GameObject LoadingScreen;
 
 
-    // Асинхронный метод старт для загрузки данных на сцене
-    private IEnumerator Start()
+    // Метод старт для загрузки данных на сцене
+    private void Start()
     {
-        yield return new WaitForSeconds(1f);
-
         DefaultPlayerPosition = this.transform.position;
+        CloneTriggerList = new();
 
         // init player data
         InitData();
@@ -33,8 +37,7 @@ public class LoadGame : MonoBehaviour
         LoadPlayerPosition();
         DefineCharacter();
         LoadPlayerProperties();
-
-        LoadingScreen.SetActive(false);
+        LoadTriggerData();
     }
 
     private void Update()
@@ -43,6 +46,11 @@ public class LoadGame : MonoBehaviour
         {
             SavePlayerPosition();
             SavePlayerProperties();
+            SaveTriggerData();
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene("LoadScene");
         }
     }
 
@@ -56,18 +64,23 @@ public class LoadGame : MonoBehaviour
             CharacterData.isContinueGame = true;
             CharacterData.Save();
             PlayerPositionData.Save();
+
+            TriggerData = new(TriggerList);
+            TriggerData.Save(TriggerList);
         }
     }
 
     private void InitData()
     {
-        CharacterData = new SavedData.CharacterData();
-        PlayerPositionData = new SavedData.PlayerPositionData(DefaultPlayerPosition);
-        NotesData = new SavedData.NotesData();
+        CharacterData = new();
+        PlayerPositionData = new(DefaultPlayerPosition);
+        NotesData = new();
+        TriggerData = new(TriggerList);
 
         CharacterData = CharacterData.Load();
         PlayerPositionData = PlayerPositionData.Load();
         NotesData = NotesData.Load();
+        TriggerData = TriggerData.Load(TriggerList);
     }
 
     private void SavePlayerPosition()
@@ -130,5 +143,34 @@ public class LoadGame : MonoBehaviour
         CharacterData.Property.LockOpeningTime = PlayerProperties.LockOpeningTime;
 
         CharacterData.Save();
+    }
+
+    private void SaveTriggerData()
+    {
+        for (int i = 0; i < TriggerList.Count; i++)
+        {
+            if (CloneTriggerList[i] == null)
+            {
+                TriggerData.IsDestroyedObject[i] = true;
+            }
+        }
+
+        TriggerData.Save(TriggerList);
+    }
+
+    private void LoadTriggerData()
+    {
+        for (int i = 0; i < TriggerList.Count; i++)
+        {
+            if (!TriggerData.IsDestroyedObject[i])
+            {
+                GameObject CloneTrigger = Instantiate(TriggerList[i]);
+                CloneTriggerList.Add(CloneTrigger);
+            }
+            else
+            {
+                CloneTriggerList.Add(null);
+            }
+        }
     }
 }

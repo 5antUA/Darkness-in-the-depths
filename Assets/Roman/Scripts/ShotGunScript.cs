@@ -19,12 +19,13 @@ public class ShotGunScript : Weapon
     public ParticleSystem muzzleFlash;
 
     private bool isCooldown;
-    private bool reload;
     private Animator ShotGunAnimator;
     private AudioSource AudioSource;
     private Coroutine cooldownCoroutine;
     private Coroutine reloadCoroutine;
     [SerializeField] private GameObject MenuUI;
+
+    public GameObject ShotgunHitEffect;
 
     private bool shootingWhileRun = false;// Роз'яснення для Ростіка: змінна фіксить баг, а саме: коли рухаєшся анімація стрільби не відіграється.
                       // Якщо її не добавляти, анімація стрільби буде програватися після анімації бігу(з умовою, якщо будеш стріляти під час бігу). 
@@ -46,7 +47,7 @@ public class ShotGunScript : Weapon
         counterOfBullets = MaxBullets;
         _distance = 10f;
         isCooldown = true;
-        reload = false;
+        isReload = false;
     }
 
     void Update()
@@ -80,7 +81,7 @@ public class ShotGunScript : Weapon
     {
         if (Input.GetKeyDown(InputData.Shoot))
         {
-            if (isCooldown && !reload)
+            if (isCooldown && !isReload)
             {
                 ShootLogic();
 
@@ -98,19 +99,23 @@ public class ShotGunScript : Weapon
 
     private void Reload()
     {
-        if (counterOfBullets == 0 && !reload)
+        if (counterOfBullets == 0 && !isReload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
+
             ShotGunAnimator.SetTrigger("ShotGunReload");
             Invoke("SoundOfReload", 0.6f);
+
             Debug.Log("reload");
             isCooldown = false;
         }
-        else if(Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !reload)
+        else if(Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !isReload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
+
             ShotGunAnimator.SetTrigger("ShotGunReload");
             SoundOfReload();
+
             Debug.Log("reload");
             isCooldown = false;
         }
@@ -150,10 +155,10 @@ public class ShotGunScript : Weapon
 
     private IEnumerator ReloadCoroutine()
     {
-        reload = true;
+        isReload = true;
         yield return new WaitForSeconds(5f);
         counterOfBullets = MaxBullets; // counterOfBullets = 3
-        reload = false;
+        isReload = false;
         isCooldown = true;
     }
     #endregion
@@ -170,6 +175,8 @@ public class ShotGunScript : Weapon
             {
                 float distance = Vector3.Distance(mainCamera.transform.position, hit.transform.position);
                 enemy.TakeDamage((60 - (distance * 6)) * characterDamage);
+                GameObject effect = Instantiate(ShotgunHitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(effect, 1f);
             }
         }
     }
