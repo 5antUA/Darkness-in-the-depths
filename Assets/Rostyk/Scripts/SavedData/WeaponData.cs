@@ -11,7 +11,7 @@ namespace SavedData
 
         public WeaponData()
         {
-            Weapons = new bool[2];
+            Weapons = new bool[3];
             Weapons[0] = true;
         }
 

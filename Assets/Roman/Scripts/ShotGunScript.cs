@@ -19,7 +19,6 @@ public class ShotGunScript : Weapon
     public ParticleSystem muzzleFlash;
 
     private bool isCooldown;
-    private bool reload;
     private Animator ShotGunAnimator;
     private AudioSource AudioSource;
     private Coroutine cooldownCoroutine;
@@ -46,7 +45,7 @@ public class ShotGunScript : Weapon
         counterOfBullets = MaxBullets;
         _distance = 10f;
         isCooldown = true;
-        reload = false;
+        isReload = false;
     }
 
     void Update()
@@ -80,7 +79,7 @@ public class ShotGunScript : Weapon
     {
         if (Input.GetKeyDown(InputData.Shoot))
         {
-            if (isCooldown && !reload)
+            if (isCooldown && !isReload)
             {
                 ShootLogic();
 
@@ -98,19 +97,23 @@ public class ShotGunScript : Weapon
 
     private void Reload()
     {
-        if (counterOfBullets == 0 && !reload)
+        if (counterOfBullets == 0 && !isReload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
+
             ShotGunAnimator.SetTrigger("ShotGunReload");
             Invoke("SoundOfReload", 0.6f);
+
             Debug.Log("reload");
             isCooldown = false;
         }
-        else if(Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !reload)
+        else if(Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !isReload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
+
             ShotGunAnimator.SetTrigger("ShotGunReload");
             SoundOfReload();
+
             Debug.Log("reload");
             isCooldown = false;
         }
@@ -150,10 +153,10 @@ public class ShotGunScript : Weapon
 
     private IEnumerator ReloadCoroutine()
     {
-        reload = true;
+        isReload = true;
         yield return new WaitForSeconds(5f);
         counterOfBullets = MaxBullets; // counterOfBullets = 3
-        reload = false;
+        isReload = false;
         isCooldown = true;
     }
     #endregion
