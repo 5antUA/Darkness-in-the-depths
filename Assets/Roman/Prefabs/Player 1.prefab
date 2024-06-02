@@ -12940,6 +12940,7 @@ MonoBehaviour:
   reloadAudioClip: {fileID: 8300000, guid: b2de9dfc58eff7d4880824ff2ba29112, type: 3}
   fireAudioClip: {fileID: 8300000, guid: 0e4bea6852702874bab0b04a05b619e1, type: 3}
   muzzleFlash: {fileID: 2759805502825683138}
+  PistolHitEffect: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
   MenuUI: {fileID: 5068044394997456047}
 --- !u!95 &2925549747340936348
 Animator:
@@ -24073,6 +24074,7 @@ MonoBehaviour:
   reloadAudioClip: {fileID: 8300000, guid: c152d55ebc0a3fd42b89318a7db161f1, type: 3}
   muzzleFlash: {fileID: 926309722897353354}
   MenuUI: {fileID: 5068044394997456047}
+  ShotgunHitEffect: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
 --- !u!95 &1143845673668471902
 Animator:
   serializedVersion: 5
