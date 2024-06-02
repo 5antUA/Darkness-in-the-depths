@@ -6,17 +6,26 @@ namespace mobs
     public class TiranAttackControl : AttackControllZybastik
     {
         private Monster monster;
+        private ParticleSystem particleSystem;
 
         public override void Awake()
         {
             mob = gameObject;
             monster = GetComponent<Monster>();
             animator = GetComponent<Animator>();
+            particleSystem = GetComponentInChildren<ParticleSystem>();
         }
         private void Update()
         {
             Init();
             Attack();
+        }
+        private void OnDestroy()
+        {
+            particleSystem.Play();
+            speed.WalkSpeed = StandartWallkSpeed;
+            speed.SprintSpeed = StandartSprintSpeed;
+            camera.fieldOfView = FieldOfViev;
         }
         private void Init()
         {
@@ -37,28 +46,28 @@ namespace mobs
             {
                 speed.WalkSpeed = 0.1f;
                 speed.SprintSpeed = 0.1f;
-                camera.fieldOfView = 40;
-                //player.transform.LookAt(new Vector3(mob.transform.position.x, mob.transform.position.y+5, mob.transform.position.z));
+                camera.fieldOfView = 37;                     
+                player.transform.LookAt(new Vector3(mob.transform.position.x, player.transform.position.y, mob.transform.position.z));
                 if (!isattacking)
                 {
                     isattacking = true;
                     StartCoroutine(routine: AttackControll());
                 }
-                mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
             }
+        }
+        public void Push() {
+            player.GetComponent<CharacterController>().Move(new Vector3(player.transform.position.x,
+             player.transform.position.y, player.transform.position.z - 100) * Time.deltaTime);
         }
         public override IEnumerator AttackControll()
         {
             animator.SetBool("Attack", true);
             yield return new WaitForSeconds(CorutineTime);
-            Push();
             EventManager.ShowDamageScreen();
-            yield return new WaitForSeconds(1);
+            Push();
+            yield return new WaitForSeconds(CorutineTime);
             monster.TakeDamage(9999999f);
         }
-        public void Push() {
-            player.GetComponent<CharacterController>().Move(new Vector3(player.transform.position.x,
-             player.transform.position.y + 30, player.transform.position.z - 100) * Time.deltaTime);
-        }
+
     }
 }

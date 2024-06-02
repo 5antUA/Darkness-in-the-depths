@@ -14,13 +14,15 @@ namespace mobs
         public override void Awake()
         {
             mob = gameObject;
+            animator = GetComponent<Animator>();
+            player = GameObject.FindWithTag("Player");
         }
         private void Update()
         {
             Init();
             Attack();
         }
-        protected void OnDestroy()
+        private void OnDestroy()
         {
             speed.WalkSpeed = StandartWallkSpeed;
             speed.SprintSpeed = StandartSprintSpeed;
