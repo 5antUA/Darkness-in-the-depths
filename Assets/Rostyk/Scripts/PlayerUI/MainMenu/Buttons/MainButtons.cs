@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 // ¬≈ÿ¿“‹ Õ¿  ¿Õ¬¿— ¬ √À¿¬ÕŒÃ Ã≈Õﬁ
@@ -12,6 +13,9 @@ public class MainButtons : MonoBehaviour
     [SerializeField] private GameObject SettingsUI;
     [SerializeField] private GameObject DevelopersUI;
     [SerializeField] private GameObject BlackScreen;
+
+    [SerializeField] private GameObject LoadingScreen;
+    [SerializeField] private Image Skull;
 
     private void Start()
     {
@@ -31,8 +35,16 @@ public class MainButtons : MonoBehaviour
     private IEnumerator LoadGame()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("RostykScene");
+
+        LoadingScreen.SetActive(true);
+        AsyncOperation LoadAsync = SceneManager.LoadSceneAsync("RostykScene");
+        while (!LoadAsync.isDone)
+        {
+            Skull.fillAmount = LoadAsync.progress;
+            yield return null;
+        }
     }
+
 
     public void OpenSettings()
     {

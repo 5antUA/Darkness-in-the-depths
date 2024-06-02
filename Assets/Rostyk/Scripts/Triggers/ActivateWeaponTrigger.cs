@@ -19,7 +19,6 @@ public class ActivateWeaponTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("SOSI");
             data.Weapons[WeaponNumber] = true;
             data.Save();
 
