@@ -4,9 +4,7 @@ using SavedData;
 
 public class Weapon : MonoBehaviour
 {
-    [Space]
-    [Header("\t ABSTRACT PROPERTIES")]
-    [HideInInspector] public bool isReload;
+    public bool isReload { get; protected set; }
     [HideInInspector] public int counterOfBullets;
     public int MaxBullets;
     public float _distance;
