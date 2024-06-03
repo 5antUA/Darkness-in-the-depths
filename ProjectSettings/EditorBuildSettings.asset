@@ -6,24 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Final Build/Scenes/Bootstrap scene.unity
+    guid: 132eea2d9eddbc647b4b5c275ceb7750
+  - enabled: 1
     path: Assets/Final Build/Scenes/Main menu.unity
     guid: c1d65fbdb6819d54f95c5bc34ea903e8
   - enabled: 1
     path: Assets/Rostyk/Scenes/RostykScene.unity
     guid: a9f9a659738b40549b78034c2f8886b7
-  - enabled: 0
-    path: Assets/Final Build/Scenes/Gameplay scene.unity
-    guid: 34cd54e45db3b9f479d6bfdaa8abfd54
-  - enabled: 0
-    path: Assets/Final Build/Scenes/Bootstrap scene.unity
-    guid: 132eea2d9eddbc647b4b5c275ceb7750
-  - enabled: 1
-    path: Assets/Vladislav/Scenes/gym.unity
-    guid: 67f73c78ca558a04fb8d01450923ca57
   - enabled: 1
     path: Assets/Final Build/Scenes/DeathScreen.unity
     guid: 5d7ca68535edf9946b7d38cd37910eb4
   - enabled: 1
     path: Assets/Final Build/Scenes/LoadScene.unity
     guid: ac76fad6389005546bc7f5331e64c7e8
+  - enabled: 0
+    path: Assets/Vladislav/Scenes/gym.unity
+    guid: 67f73c78ca558a04fb8d01450923ca57
+  - enabled: 0
+    path: Assets/Final Build/Scenes/Gameplay scene.unity
+    guid: 34cd54e45db3b9f479d6bfdaa8abfd54
   m_configObjects: {}
