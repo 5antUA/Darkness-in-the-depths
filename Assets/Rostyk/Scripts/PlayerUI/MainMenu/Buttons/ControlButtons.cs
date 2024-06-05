@@ -111,12 +111,36 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для скрытия UI (метод нажатия кнопки)
+    // Смена кнопки перезарядки (метод нажатия кнопки)
     public void ChangeReload()
     {
         void _func()
         {
             InputData.Reload = currentKey;
+            InputData.Save();
+        }
+
+        StartCoroutine(ReadInput(_func));
+    }
+
+    // Смена кнопки сохранения (метод нажатия кнопки)
+    public void ChangeSaveGame()
+    {
+        void _func()
+        {
+            InputData.SaveGame = currentKey;
+            InputData.Save();
+        }
+
+        StartCoroutine(ReadInput(_func));
+    }
+
+    // Смена кнопки загрузки (метод нажатия кнопки)
+    public void ChangeLoadGame()
+    {
+        void _func()
+        {
+            InputData.LoadGame = currentKey;
             InputData.Save();
         }
 
@@ -169,6 +193,8 @@ public class ControlButtons : MonoBehaviour
         buttons[5].text = InputData.Shoot.ToString();
         buttons[6].text = InputData.Interact.ToString();
         buttons[7].text = InputData.Reload.ToString();
+        buttons[8].text = InputData.SaveGame.ToString();
+        buttons[9].text = InputData.LoadGame.ToString();
     }
     #endregion
 }

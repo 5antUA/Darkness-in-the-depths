@@ -8,7 +8,7 @@ public class VideoIntroScript : MonoBehaviour
     public int WaitTime;
     
 
-    void Start()
+    void Awake()
     {
         StartCoroutine(WaitForLevel());
     }
