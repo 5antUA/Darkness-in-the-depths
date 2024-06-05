@@ -1,14 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 public class MobDamager : MonoBehaviour
 {
+    protected Player enemy;
     protected Animator animator;
     protected Monster monster;        //щоб брати інфу про урон
-    protected float monsterDamage;                                 // урон, расчитаный по формуле (ориг.Damage в Properties)
-    [SerializeField] protected Transform _startShooter;            // точка рейкасту
+    protected float monsterDamage;    // урон, расчитаный по формуле (ориг.Damage в Properties)
+    private bool isdamage = false;
+    public float takeDamageCorutine = 0.02f;
+
+
 
     private void Start()
     {
+        enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         animator = GetComponent<Animator>();
         monster = GetComponent<Monster>();
         monsterDamage = monster.Damage;
@@ -16,35 +22,18 @@ public class MobDamager : MonoBehaviour
 
     private void Update()
     {
-        if (animator.GetBool("Attack") == true)
+        if (animator.GetBool("Attack") == true && !isdamage)
         {
-            Hitting();
+            StartCoroutine(TakeDamage());
+            isdamage = true;
+
         }
     }
 
-    private void Hitting()
+    private IEnumerator TakeDamage()
     {
-        Player enemy = GetEnemy();
-         
-        // если попал во врага
-        if (enemy != null)
-        {
-            enemy.TakeDamage(monsterDamage);
-        }
-    }
-
-    // Поиск врага лучем
-    protected Player GetEnemy()
-    {
-        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(7);
-
-        if (hit.collider != null)
-        {
-            return hit.collider.GetComponent<Player>();
-        }
-        else
-        {
-            return null;
-        }
+        yield return new WaitForSeconds(takeDamageCorutine);
+        enemy.TakeDamage(monsterDamage);
+        isdamage = false;
     }
 }

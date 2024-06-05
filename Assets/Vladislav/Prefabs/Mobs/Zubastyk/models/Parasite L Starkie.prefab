@@ -227,15 +227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19f0582e14c31fc428932357c98b5ad4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.91
+      value: 11.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19f0582e14c31fc428932357c98b5ad4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.227299
+      value: 15.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19f0582e14c31fc428932357c98b5ad4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.52
+      value: 15.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19f0582e14c31fc428932357c98b5ad4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -303,7 +303,7 @@ PrefabInstance:
       addedObject: {fileID: 9014463926713684161}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19f0582e14c31fc428932357c98b5ad4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8903552206338341275}
+      addedObject: {fileID: 2623444368924739174}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19f0582e14c31fc428932357c98b5ad4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3612702963426900265}
@@ -548,7 +548,7 @@ MonoBehaviour:
   - {fileID: 5134304589202859600}
   - {fileID: 3659816268021643806}
   SecondAudioSourse: {fileID: 7816960680582696190}
---- !u!114 &8903552206338341275
+--- !u!114 &2623444368924739174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -557,11 +557,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1344701910499830629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8081f5dd923499c468871d34a5258c39, type: 3}
+  m_Script: {fileID: 11500000, guid: 08328e9157b652f4c9393364d41b7715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CorutineTime: 0.05
   attackDistanse: 3
+  CorutineTime: 0.05
+  ModifikatePlayerSpeed: 0.1
+  ModifikatePlayerFieldOfViev: 28
 --- !u!114 &3612702963426900265
 MonoBehaviour:
   m_ObjectHideFlags: 0

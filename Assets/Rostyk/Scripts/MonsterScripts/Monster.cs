@@ -29,11 +29,6 @@ public class Monster : Character
     {
         OnMonsterDeath();
     }
-
-    private void OnDestroy()
-    {
-        SpawnSimpleMob.MonsterCounter--;
-    }
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)
@@ -55,7 +50,7 @@ public class Monster : Character
             ALLrigidbodys[i].mass = 1;
         }
         Destroy(GetComponent<NavMeshAgent>());
-        Destroy(gameObject.GetComponent<AttackControl>());
+        Destroy(GetComponent<AttackControl>());
 
     }
 }

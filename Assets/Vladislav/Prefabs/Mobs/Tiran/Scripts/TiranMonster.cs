@@ -3,17 +3,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TiranMonster:Monster
+public class TiranMonster : Monster
 {
-    public int LifeTime=180;
-    private void Update()
-    {
-        if (animator.GetBool("Attack")==true) StopCoroutine("lifeTime");
-        OnMonsterDeath();
-    }
+    public int LifeTime = 180;
     private void Start()
     {
         StartCoroutine(lifeTime());
+    }
+    private void Update()
+    {
+        if (animator.GetBool("Attack") == true) StopCoroutine("lifeTime");
+        OnMonsterDeath();
     }
     private void OnMonsterDeath()
     {
@@ -24,7 +24,7 @@ public class TiranMonster:Monster
             Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<AttackControl>());
             sounds.PlaySound(sounds.sounds[2], 3, p1: 0.8f, p2: 1.3f);
-            Destroy(gameObject,1);
+            Destroy(gameObject, 1);
             deathchaker = true;
         }
     }
@@ -35,5 +35,3 @@ public class TiranMonster:Monster
         TakeDamage(9999999f);
     }
 }
-
-

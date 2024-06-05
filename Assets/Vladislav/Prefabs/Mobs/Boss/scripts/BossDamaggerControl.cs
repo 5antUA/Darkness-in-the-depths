@@ -6,8 +6,8 @@ public class BossDamaggerControl : MobDamager
     public float corutineTime = 0.5f;
     private bool attacking = false;
     private bool ispushing = false;
-    private Player enemy;
     private Sounds sounds;
+    [SerializeField] protected Transform _startShooter;            // точка рейкасту
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -53,5 +53,18 @@ public class BossDamaggerControl : MobDamager
         attacking = false;
         yield return new WaitForSeconds(2);
         ispushing = false;
+    }
+    protected Player GetEnemy()
+    {
+        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(7);
+
+        if (hit.collider != null)
+        {
+            return hit.collider.GetComponent<Player>();
+        }
+        else
+        {
+            return null;
+        }
     }
 }

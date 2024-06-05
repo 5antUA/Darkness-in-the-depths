@@ -5,88 +5,76 @@ namespace mobs
 {
     public class BlockAttackControl : MonoBehaviour
     {
-        public float attackDistanse = 10;
-        public float CorutineTime = 1;
-        protected GameObject mob;
+        public float attackDistanse = 4;
+        public float CorutineTime = 0.05f;
+
         protected GameObject player;
         protected Animator animator;
+        protected Monster monster;
         protected Player speed;
         protected Camera camera;
+        protected CharacterController characterController;
 
         protected bool isattacking = false;
         protected float distance;
         protected float StandartWallkSpeed;
-        protected float StandartSitkSpeed;
+        protected float StandartCrouchSpeed;
         protected float StandartSprintSpeed;
         protected float FieldOfViev;
         [Header("\t PLAYER MODIFIKATION(IF NEED)")]
-        public float ModifikatePlayerSpeed=0;
-        public float ModifikatePlayerFieldOfViev=0;
+        public float ModifikatePlayerSpeed = 0;
+        public float ModifikatePlayerFieldOfViev = 0;
 
-        public virtual void Awake()
+        private void Start()
         {
-            mob = gameObject;
+            PlayerDataInit();
+            monster = GetComponent<Monster>();
             animator = GetComponent<Animator>();
-
         }
+
         private void Update()
         {
-            Init();
             Attack();
         }
-        private void OnDestroy()
+
+        protected void PlayerDataInit()
         {
-            speed.WalkSpeed = StandartWallkSpeed;
-            speed.CrouchSpeed = StandartSitkSpeed;
-            speed.SprintSpeed = StandartSprintSpeed;
-            camera.fieldOfView = FieldOfViev;
+            player = GameObject.FindWithTag("Player");
+            speed = player.GetComponent<Player>();
+            camera = player.GetComponentInChildren<Camera>();
+            characterController = player.GetComponent<CharacterController>();
+
+            StandartWallkSpeed = speed.WalkSpeed;
+            StandartCrouchSpeed = speed.CrouchSpeed;
+            StandartSprintSpeed = speed.SprintSpeed;
+            FieldOfViev = camera.fieldOfView;
+
+            if (ModifikatePlayerSpeed == 0) ModifikatePlayerSpeed = speed.WalkSpeed;
+            if (ModifikatePlayerFieldOfViev == 0) ModifikatePlayerFieldOfViev = camera.fieldOfView;
         }
-        private void Init()
-        {
-            if (player == null)
-            {
-                player = GameObject.FindWithTag("Player");
-                speed = player.GetComponent<Player>();
-                camera = player.GetComponentInChildren<Camera>();
-                StandartWallkSpeed = speed.WalkSpeed;
-                StandartSitkSpeed = speed.CrouchSpeed;
-                StandartSprintSpeed = speed.SprintSpeed;
-                FieldOfViev = camera.fieldOfView;
-                if (ModifikatePlayerSpeed == 0)
-                {
-                    ModifikatePlayerSpeed = speed.WalkSpeed;
-                }
-                if (ModifikatePlayerFieldOfViev == 0)
-                {
-                    ModifikatePlayerFieldOfViev = camera.fieldOfView;
-                }
-            }
-        }
+
         private void Attack()
         {
-            distance = Vector3.Distance(mob.transform.position, player.transform.position);
+            distance = Vector3.Distance(this.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                speed.WalkSpeed = ModifikatePlayerSpeed;
-                speed.CrouchSpeed = ModifikatePlayerSpeed;
-                speed.SprintSpeed = ModifikatePlayerSpeed;
+                if (characterController.isGrounded) PlayerModificationStart();
+
                 EventManager.ShowDamageScreen();
-                camera.fieldOfView = ModifikatePlayerFieldOfViev;
                 if (!isattacking)
                 {
                     isattacking = true;
                     StartCoroutine(routine: AttackControll());
                 }
-                mob.transform.LookAt(new Vector3(player.transform.position.x, mob.transform.position.y, player.transform.position.z));
+
+                this.transform.LookAt(new Vector3(player.transform.position.x,
+                    this.transform.position.y, player.transform.position.z));
+
             }
-            else 
-            {
-                speed.WalkSpeed = StandartWallkSpeed;
-                speed.CrouchSpeed = StandartSitkSpeed;
-                speed.SprintSpeed = StandartSprintSpeed;
-                camera.fieldOfView = FieldOfViev;
-            }
+            else PlayerModificationStop();
+            if (monster.IsDead) PlayerModificationStop();
         }
+
         public virtual IEnumerator AttackControll()
         {
             yield return new WaitForSeconds(CorutineTime);
@@ -97,6 +85,22 @@ namespace mobs
             }
             animator.SetBool("Attack", false);
             isattacking = false;
+        }
+
+        public void PlayerModificationStart()
+        {
+            speed.WalkSpeed = ModifikatePlayerSpeed;
+            speed.CrouchSpeed = ModifikatePlayerSpeed;
+            speed.SprintSpeed = ModifikatePlayerSpeed;
+            camera.fieldOfView = ModifikatePlayerFieldOfViev;
+        }
+
+        public void PlayerModificationStop()
+        {
+            speed.WalkSpeed = StandartWallkSpeed;
+            speed.CrouchSpeed = StandartCrouchSpeed;
+            speed.SprintSpeed = StandartSprintSpeed;
+            camera.fieldOfView = FieldOfViev;
         }
     }
 }

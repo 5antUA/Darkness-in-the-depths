@@ -234,13 +234,13 @@ GameObject:
   - component: {fileID: 7515113647566303965}
   - component: {fileID: 5887804797045408116}
   - component: {fileID: 7988285854339205927}
-  - component: {fileID: -7712291793598720588}
+  - component: {fileID: 6971767621023644064}
   - component: {fileID: 2506141444777398158}
   - component: {fileID: 5359606850765432153}
   - component: {fileID: 7638648589083020774}
   - component: {fileID: 1209982188956823789}
   m_Layer: 7
-  m_Name: SK_Water_monster_3
+  m_Name: SK_Water_monster_3_FOR_TRIGGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-7712291793598720588
+--- !u!114 &6971767621023644064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 237687038828005751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a71e4593b5377974f88fc99d4308145a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b8a6630470d0e74eb8deaf87fc49306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCharacterHealth: 0
@@ -340,9 +340,9 @@ MonoBehaviour:
   - {fileID: 3114776123852150205}
   - {fileID: 7966346887627425797}
   - {fileID: 7486432520129537996}
+  - {fileID: 750855920525667521}
   - {fileID: 1498864717332900252}
   - {fileID: 5927302623494513347}
-  - {fileID: 750855920525667521}
   SecondAudioSourse: {fileID: 8918429245584095993}
 --- !u!114 &2506141444777398158
 MonoBehaviour:

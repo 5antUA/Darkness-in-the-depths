@@ -43,7 +43,7 @@ namespace mobs
                 boss = bossPlase.getBoss();
                 animator = boss.GetComponent<Animator>();
                 IsContinueCoroutine = true;
-                print("player in trigger");
+                print("enemy in trigger");
                 animator.SetBool("Following", false);
                 StartCoroutine(routine: AnimationSpawnStart());
             }

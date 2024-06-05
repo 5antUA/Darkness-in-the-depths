@@ -1854,7 +1854,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7123384, z: 0, w: 0.7018362}
   m_LocalPosition: {x: 24.878, y: 15.2273, z: 36.046}
-  m_LocalScale: {x: 1.05, y: 0.9032532, z: 0.9563857}
+  m_LocalScale: {x: 1.15, y: 0.9892773, z: 1.04747}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 546129573594224276}
@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxCharacterHealth: 0
   Health: 9999999
-  Damage: 0.19
+  Damage: 20
   Armor: 0
   WalkSpeed: 0
   SprintSpeed: 0
@@ -1939,8 +1939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2fa2034ab19b141b381e907a8ae2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDistanse: 4
   CorutineTime: 3
-  attackDistanse: 3
+  ModifikatePlayerSpeed: 0
+  ModifikatePlayerFieldOfViev: 0
 --- !u!114 &2253206816821373699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,7 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7756d19f44dca04b971deea99a92de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startShooter: {fileID: 8506744884534641241}
+  takeDamageCorutine: 3
 --- !u!114 &2289927122119531984
 MonoBehaviour:
   m_ObjectHideFlags: 0

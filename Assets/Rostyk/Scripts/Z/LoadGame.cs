@@ -30,7 +30,7 @@ public class LoadGame : MonoBehaviour
         DefaultPlayerPosition = this.transform.position;
         CloneTriggerList = new();
 
-        // init player data
+        // init enemy data
         InitData();
         InNewGame();
 
