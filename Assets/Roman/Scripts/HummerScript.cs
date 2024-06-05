@@ -98,7 +98,14 @@ public class HummerScript : Weapon
             Monster enemy = hit.collider.GetComponentInParent<Monster>();
             if (enemy != null)
             {
-                enemy.TakeDamage(30 * characterDamage);
+                if (!Player._controller.isGrounded)
+                {
+                    enemy.TakeDamage(30 * 2 * characterDamage);
+                }
+                else
+                {
+                    enemy.TakeDamage(30 * characterDamage);
+                }
             }
         }
     }

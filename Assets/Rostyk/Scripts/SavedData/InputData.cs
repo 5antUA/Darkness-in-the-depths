@@ -29,7 +29,7 @@ namespace SavedData
             Inventory = KeyCode.Tab;
             SwitchLight = KeyCode.F;
             Shoot = KeyCode.Mouse0;
-            Interact = KeyCode.E;
+            Interact = KeyCode.Mouse1;
             Reload = KeyCode.R;
             SaveGame = KeyCode.F1;
             LoadGame = KeyCode.F2;

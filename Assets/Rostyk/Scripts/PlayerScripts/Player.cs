@@ -30,7 +30,7 @@ public class Player : Character
     [SerializeField] private Camera PlayerCamera;               // Camera игрока
     [SerializeField] private Light PlayerLight;                 // Player flashlight
     [SerializeField] private GameObject MenuUI;
-    private CharacterController _controller;
+    public CharacterController _controller;
     #endregion
 
 
