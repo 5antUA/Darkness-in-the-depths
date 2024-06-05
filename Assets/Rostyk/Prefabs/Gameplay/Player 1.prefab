@@ -23974,7 +23974,7 @@ GameObject:
   - component: {fileID: 2584446908382883175}
   - component: {fileID: 1473265662297875138}
   - component: {fileID: 3717404942686443016}
-  - component: {fileID: 3110223961143536647}
+  - component: {fileID: 106558549781281992}
   - component: {fileID: 1143845673668471902}
   - component: {fileID: 1217281213757915242}
   m_Layer: 7
@@ -24051,7 +24051,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3110223961143536647
+--- !u!114 &106558549781281992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24060,21 +24060,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2924556248302286813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4698c06c94d67be4f99f55ec3fc81564, type: 3}
+  m_Script: {fileID: 11500000, guid: 22066a0a84c751d46a43affbca2427a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterOfBullets: 3
-  MaxBullets: 3
+  counterOfBullets: 0
+  MaxBullets: 0
   _distance: 0
-  BulletsPerShoot: 3
-  mainCamera: {fileID: 8148715249111008570}
-  spawnBullet: {fileID: 5790479836486109923}
-  Player: {fileID: 1084217368650117011}
-  fireAudioClip: {fileID: 8300000, guid: 5e1ffe0cce5e29d4ab646b5ecd7c8f3f, type: 3}
-  reloadAudioClip: {fileID: 8300000, guid: c152d55ebc0a3fd42b89318a7db161f1, type: 3}
-  muzzleFlash: {fileID: 926309722897353354}
-  MenuUI: {fileID: 5068044394997456047}
-  ShotgunHitEffect: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
+  BulletsPerShoot: 0
+  mainCamera: {fileID: 0}
+  spawnBullet: {fileID: 0}
+  Player: {fileID: 0}
+  fireAudioClip: {fileID: 0}
+  reloadAudioClip: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  MenuUI: {fileID: 0}
+  ShotgunHitEffect: {fileID: 0}
 --- !u!95 &1143845673668471902
 Animator:
   serializedVersion: 5
@@ -28388,7 +28388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSwitch: 0
   pistolScript: {fileID: 158094295786177530}
-  shotGunScript: {fileID: 3110223961143536647}
+  shotGunScript: {fileID: 0}
   hummerScript: {fileID: 1494171026330442518}
 --- !u!1 &6689362665969325309
 GameObject:

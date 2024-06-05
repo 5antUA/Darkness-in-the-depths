@@ -14,6 +14,8 @@ public class MainButtons : MonoBehaviour
     [SerializeField] private GameObject DevelopersUI;
     [SerializeField] private GameObject BlackScreen;
 
+    [SerializeField] private GameObject ConfirmExitScreen;
+
 
     private void Start()
     {
@@ -53,6 +55,16 @@ public class MainButtons : MonoBehaviour
 
     public void QuitApplication()
     {
+        ConfirmExitScreen.SetActive(true);
+    }
+
+    public void QuitApplicationYes()
+    {
         Application.Quit();
+    }
+
+    public void QuitApplicationNo()
+    {
+        ConfirmExitScreen.SetActive(false);
     }
 }

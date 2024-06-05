@@ -13,6 +13,7 @@ public class LoadGame : MonoBehaviour
     private SavedData.PlayerPositionData PlayerPositionData;
     private SavedData.NotesData NotesData;
     private SavedData.TriggerData TriggerData;
+    private SavedData.InputData InputData;
 
     [SerializeField] private GameObject PlayerPrefab;
     public List<GameObject> TriggerList;
@@ -42,13 +43,13 @@ public class LoadGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(InputData.SaveGame))
         {
             SavePlayerPosition();
             SavePlayerProperties();
             SaveTriggerData();
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(InputData.LoadGame))
         {
             SceneManager.LoadScene("LoadScene");
         }
@@ -76,11 +77,13 @@ public class LoadGame : MonoBehaviour
         PlayerPositionData = new(DefaultPlayerPosition);
         NotesData = new();
         TriggerData = new(TriggerList);
+        InputData = new();
 
         CharacterData = CharacterData.Load();
         PlayerPositionData = PlayerPositionData.Load();
         NotesData = NotesData.Load();
         TriggerData = TriggerData.Load(TriggerList);
+        InputData = InputData.Load();
     }
 
     private void SavePlayerPosition()
