@@ -46,13 +46,6 @@ public class MainButtons : MonoBehaviour
         DevelopersUI.SetActive(false);
     }
 
-    public void OpenDevInfo()
-    {
-        MainUI.SetActive(false);
-        SettingsUI.SetActive(false);
-        DevelopersUI.SetActive(true);
-    }
-
     public void QuitApplication()
     {
         ConfirmExitScreen.SetActive(true);
