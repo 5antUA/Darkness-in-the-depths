@@ -43,18 +43,26 @@ public class LoadGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(InputData.SaveGame))
+        if (!PlayerProperties.IsDead)
+        {
+            SaveOrLoadGame();
+        }
+    }
+
+
+    private void SaveOrLoadGame()
+    {
+        if (Input.GetKeyDown(InputData.SaveGame) && !PlayerProperties.IsDead)
         {
             SavePlayerPosition();
             SavePlayerProperties();
             SaveTriggerData();
         }
-        else if (Input.GetKeyDown(InputData.LoadGame))
+        else if (Input.GetKeyDown(InputData.LoadGame) && !PlayerProperties.IsDead)
         {
             SceneManager.LoadScene("LoadScene");
         }
     }
-
 
     private void InNewGame()
     {
