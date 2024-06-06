@@ -12,8 +12,8 @@ public class MainButtons : MonoBehaviour
     [SerializeField] private GameObject MainUI;
     [SerializeField] private GameObject SettingsUI;
     [SerializeField] private GameObject DevelopersUI;
-    [SerializeField] private GameObject BlackScreen;
 
+    [SerializeField] private GameObject BlackScreen;
     [SerializeField] private GameObject ConfirmExitScreen;
 
 

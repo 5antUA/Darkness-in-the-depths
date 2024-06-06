@@ -3,8 +3,19 @@ using UnityEngine.UI;
 
 public class LoadingScreenSetText : MonoBehaviour
 {
-    private string[] discriptions =
+    private void Start()
     {
+        this.GetComponent<Text>().text = discriptions[GetRandomIndex()];
+    }
+
+    private int GetRandomIndex()
+    {
+        return Random.Range(0, discriptions.Length);
+    }
+
+
+    private string[] discriptions =
+{
         "У стрибку шкода від молотка подвоюється!",
 
 
@@ -41,15 +52,4 @@ public class LoadingScreenSetText : MonoBehaviour
 
         "Бібліотека повна таємниць… та Поганок.",
     };
-
-
-    private void Start()
-    {
-        this.GetComponent<Text>().text = discriptions[GetRandomIndex()];
-    }
-
-    private int GetRandomIndex()
-    {
-        return Random.Range(0, discriptions.Length);
-    }
 }
