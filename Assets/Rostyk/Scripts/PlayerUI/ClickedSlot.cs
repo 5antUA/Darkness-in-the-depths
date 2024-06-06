@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ClickedSlot : MonoBehaviour
 {
-    public ItemScriptableObject Item { get; set; }
+    public InventorySlot Item { get; set; }
 
 
     public void SetSlotItem(GameObject obj)
     {
-        Item = obj.GetComponent<InventorySlot>().item;
+        Item = obj.GetComponent<InventorySlot>();
     }
 }

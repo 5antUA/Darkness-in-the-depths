@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ClickIconSetDescription : MonoBehaviour
 {
     public string description;
-    private TMP_Text textToShow;
+    public TMP_Text textToShow;
     public Sprite iconGO;
 
 
@@ -26,7 +26,7 @@ public class ClickIconSetDescription : MonoBehaviour
         else
         {
             textToShow = this.GetComponent<TMP_Text>();
-            textToShow.text = "";
+            textToShow.text = "Пустий слот";
         }
 
 
@@ -47,7 +47,12 @@ public class ClickIconSetDescription : MonoBehaviour
             this.GetComponent<Image>().color = new Color(1, 1, 1, 0);
 
         }
-       
+      
 
+    }
+    public void onClickSetIconBackground(Sprite _BackIcon)
+    {
+        this.GetComponent<Image>().sprite = _BackIcon;
+        this.GetComponent<Image>().color = new Color(1, 1, 1, 1);
     }
 }
