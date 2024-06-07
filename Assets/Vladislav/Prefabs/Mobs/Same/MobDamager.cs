@@ -1,11 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class MobDamager : MonoBehaviour
 {
+    protected Player enemy;
     protected Animator animator;
     protected Monster monster;        //щоб брати інфу про урон
-    protected float monsterDamage;                                 // урон, расчитаный по формуле (ориг.Damage в Properties)
-    [SerializeField] protected Transform _startShooter;            // точка рейкасту
+    protected float monsterDamage;    // урон, расчитаный по формуле (ориг.Damage в Properties)
+    [HideInInspector] public bool isdamage = false;
+    public float takeDamageCorutine = 0.02f;
+    [SerializeField] protected Transform _startShooter;
+
+
 
     private void Start()
     {
@@ -16,27 +22,38 @@ public class MobDamager : MonoBehaviour
 
     private void Update()
     {
-        if (animator.GetBool("Attack") == true)
-        {
-            Hitting();
-        }
+        Hitting();
     }
 
     private void Hitting()
     {
-        Player enemy = GetEnemy();
-         
-        // если попал во врага
-        if (enemy != null)
+        if (animator.GetBool("Attack") == true && !isdamage)
         {
-            enemy.TakeDamage(monsterDamage);
+            enemy = GetEnemy();
+            if (enemy == null) return;
+            else if (enemy.CompareTag("Player"))
+            {
+                isdamage = true;
+                StartCoroutine(TakeDamage());
+            }
         }
     }
 
-    // Поиск врага лучем
+    private IEnumerator TakeDamage()
+    {
+        yield return new WaitForSeconds(takeDamageCorutine);
+        enemy = GetEnemy();
+        if (enemy != null)
+        {
+            EventManager.ShowDamageScreen();
+            enemy.TakeDamage(monsterDamage);
+        }
+        isdamage = false;
+    }
+
     protected Player GetEnemy()
     {
-        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(7);
+        RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(5);
 
         if (hit.collider != null)
         {

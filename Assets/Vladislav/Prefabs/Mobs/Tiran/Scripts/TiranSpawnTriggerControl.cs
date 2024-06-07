@@ -4,7 +4,7 @@ using UnityEngine;
 public class TiranSpawnTriggerControl : MonoBehaviour
 {
     public GameObject prefabs;
-    public int SpawnDelay=2;
+    public float SpawnDelay=2;
     private Transform spawnTransform;
     private ParticleSystem particleSystem;
     private AudioSource audioSource;
