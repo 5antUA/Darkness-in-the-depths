@@ -12,6 +12,7 @@ namespace mobs
         {
             monster = GetComponent<Monster>();
             animator = GetComponent<Animator>();
+            mobDamager = GetComponent<MobDamager>();
             particleSystem = GetComponentInChildren<ParticleSystem>();
             PlayerDataInit();
         }
@@ -25,19 +26,20 @@ namespace mobs
             distance = Vector3.Distance(this.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                if (characterController.isGrounded)
-                {
-                    speed.WalkSpeed = 0.01f;
-                    speed.SprintSpeed = 0.01f;
-                    speed.CrouchSpeed = 0.01f;
-                    camera.fieldOfView = 40;
-                }
-                player.transform.LookAt(new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z));
-                if (!isattacking)
-                {
-                    isattacking = true;
-                    StartCoroutine(routine: AttackControll());
-                }
+                    if (characterController.isGrounded)
+                    {
+                        speed.WalkSpeed = 0.01f;
+                        speed.SprintSpeed = 0.01f;
+                        speed.CrouchSpeed = 0.01f;
+                        camera.fieldOfView = 40;
+                    }
+                    player.transform.LookAt(new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z));
+                    if (!isattacking)
+                    {
+                        isattacking = true;
+                        StartCoroutine(routine: AttackControll());
+                    }
+                    this.transform.LookAt(new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z));
             }
             else PlayerModificationStop();
             if (monster.IsDead)

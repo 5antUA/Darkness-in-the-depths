@@ -10,7 +10,6 @@ namespace mobs
         }
         private void Attack()
         {
-
             distance = Vector3.Distance(this.transform.position, player.transform.position);
             if (distance < attackDistanse && SpawnSimpleMob.MonsterCounter <= 3)
             {

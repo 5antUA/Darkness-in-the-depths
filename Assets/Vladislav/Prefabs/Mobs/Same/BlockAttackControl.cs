@@ -10,6 +10,7 @@ namespace mobs
 
         protected GameObject player;
         protected Animator animator;
+        protected MobDamager mobDamager;
         protected Monster monster;
         protected Player speed;
         protected Camera camera;
@@ -30,6 +31,7 @@ namespace mobs
             PlayerDataInit();
             monster = GetComponent<Monster>();
             animator = GetComponent<Animator>();
+            mobDamager = GetComponent<MobDamager>();
         }
 
         private void Update()
@@ -58,9 +60,8 @@ namespace mobs
             distance = Vector3.Distance(this.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                if (characterController.isGrounded) PlayerModificationStart();
+                if (characterController.isGrounded && mobDamager.isdamage) PlayerModificationStart();
 
-                EventManager.ShowDamageScreen();
                 if (!isattacking)
                 {
                     isattacking = true;

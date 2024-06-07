@@ -22,10 +22,10 @@ public class TiranMonster : Monster
             SecondAudioSourse.Stop();
             mobDamager.enabled = false;
             Destroy(GetComponent<NavMeshAgent>());
-            Destroy(GetComponent<AttackControl>());
             sounds.PlaySound(sounds.sounds[2], 3, p1: 0.8f, p2: 1.3f);
-            Destroy(gameObject, 1);
             deathchaker = true;
+            Destroy(gameObject, 1);
+            Destroy(GetComponent<BlockAttackControl>(),5);
         }
     }
 

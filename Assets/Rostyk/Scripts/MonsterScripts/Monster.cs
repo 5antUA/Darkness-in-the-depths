@@ -10,6 +10,7 @@ public class Monster : Character
     public AudioSource SecondAudioSourse;
     protected Animator animator;
     protected Sounds sounds;
+    protected BlockAttackControl blockAttackControl;
     protected MobDamager mobDamager;
     protected bool deathchaker = false;
 
@@ -18,6 +19,7 @@ public class Monster : Character
     {
         animator = GetComponent<Animator> ();
         mobDamager = GetComponent<MobDamager>();
+        blockAttackControl = GetComponent<BlockAttackControl>();
         sounds = GetComponent<Sounds>();
         for (int i = 0; i < ALLrigidbodys.Length; i++)
         {
@@ -37,8 +39,9 @@ public class Monster : Character
             mobDamager.enabled = false;
             makephicik();
             sounds.PlaySound(sounds.sounds[2], 3,p1:0.8f,p2:1.3f);
-            Destroy(gameObject, 5);
+            Destroy(gameObject, 60);
             deathchaker = true;
+            blockAttackControl.PlayerModificationStop();
         }
     }
     protected void makephicik()
@@ -49,8 +52,8 @@ public class Monster : Character
             ALLrigidbodys[i].isKinematic = false;
             ALLrigidbodys[i].mass = 1;
         }
+        Destroy(GetComponent<BlockAttackControl>());
         Destroy(GetComponent<NavMeshAgent>());
-        Destroy(GetComponent<AttackControl>());
 
     }
 }
