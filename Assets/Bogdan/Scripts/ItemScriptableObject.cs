@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 public enum ItemType { 
-    Weapon = 0,
-    Heal = 1,
-    Key = 2
+    Weapon,
+    Heal,
+    Key
 } 
 public class ItemScriptableObject : ScriptableObject
 {
@@ -16,6 +16,7 @@ public class ItemScriptableObject : ScriptableObject
     public string itemDescriptoin;
     public Sprite icon;
     public string id;
+    public float healAmount;
 
 
 }
