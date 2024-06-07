@@ -6,7 +6,6 @@ public class BossDamaggerControl : MobDamager
     public float corutineTime = 0.5f;
     private bool attacking = false;
     private bool ispushing = false;
-    private Player enemy;
     private Sounds sounds;
     private void Start()
     {

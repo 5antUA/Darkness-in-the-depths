@@ -16,6 +16,8 @@ public class MonsterBoss : Monster
         if (IsDead && !deathchaker)
         {
             SecondAudioSourse.Stop();
+            mobDamager.enabled = false;
+            Destroy(GetComponent<BosSAttackControl>());
             sounds.PlaySound(sounds.sounds[0],3);
             makephicik();
             Destroy(SpawnSinplemob);
