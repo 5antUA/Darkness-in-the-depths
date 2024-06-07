@@ -14,6 +14,7 @@ public class DropItem : MonoBehaviour
     public Player character;
     public Button buttonDrop;
     public Button buttonUse;
+    private bool isHeal = false;
     private void Start()
     {
         //ПОСТАВЬТЕ ТЭГ "PLAYER" НА ОБЪЕКТЕ ПЕРСОНАЖА!
@@ -54,18 +55,30 @@ public class DropItem : MonoBehaviour
     public void OnUseHeal()
     {
         
-        if((character.Health + oldSlot.item.healAmount) > character.MaxCharacterHealth)
+        if(oldSlot.item != null && oldSlot.item.itemType == ItemType.Heal)
         {
-            character.Health = character.MaxCharacterHealth;
+            Debug.Log(oldSlot.item.itemType);
+            if ((character.Health + oldSlot.item.healAmount) > character.MaxCharacterHealth)
+            {
+                character.Health = character.MaxCharacterHealth;
+            }
+            else
+            {
+                character.Health += oldSlot.item.healAmount;
+            }
+
+            // убираем значения InventorySlot
+            NullifySlotData();
+
         }
-        else
-        {
-            character.Health += oldSlot.item.healAmount;
-        }
+        //if (isHeal)
+        //{
+        //    return;
+        //}
+
+
         
 
-        // убираем значения InventorySlot
-        NullifySlotData();
 
 
 
