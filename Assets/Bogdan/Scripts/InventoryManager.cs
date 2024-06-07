@@ -9,12 +9,15 @@ public class InventoryManager : MonoBehaviour
     private SavedData.InputData takeItem;
     public Transform inventoryPanel;
     public List<InventorySlot> slots = new List<InventorySlot>();
+    public List<ItemScriptableObject> scriptableObjects = new List<ItemScriptableObject>();
+    private string[] id = new string[12];
     private Camera mainCamera;
     public GameObject MenuUi;
     public float reachDistance = 3f;
     // Start is called before the first frame update
     void Start()
     {
+        id[3] = "0";
         takeItem = new();
         takeItem = takeItem.Load();
         mainCamera = Camera.main;
@@ -23,6 +26,14 @@ public class InventoryManager : MonoBehaviour
             if(inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null) 
             {
                 slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
+            }
+        }
+        for(int i = 0;i < inventoryPanel.childCount; i++)
+        {
+            if (id[i] != null)
+            {
+                int index = int.Parse(id[i]);
+                AddItem(scriptableObjects[index]);
             }
         }
         

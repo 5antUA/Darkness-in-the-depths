@@ -16,6 +16,7 @@ public class LoadSceneScript : MonoBehaviour
 
     public IEnumerator Start()
     {
+        yield return new WaitForSeconds(2f);
         LoadingScreen.SetActive(true);
         AsyncOperation LoadAsync = SceneManager.LoadSceneAsync("RostykScene");
         while (!LoadAsync.isDone)

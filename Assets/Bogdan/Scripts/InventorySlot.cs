@@ -12,9 +12,11 @@ public class InventorySlot : MonoBehaviour
     public GameObject iconGO;
 
 
+
     private void Awake()
     {
         iconGO = transform.GetChild(0).gameObject;
+
 
     }
     public void SetIcon(Sprite icon)
@@ -22,4 +24,7 @@ public class InventorySlot : MonoBehaviour
         iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         iconGO.GetComponent<Image>().sprite = icon;
     }
+
+   
+    
 }

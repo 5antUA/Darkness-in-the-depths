@@ -17,6 +17,9 @@ namespace SavedData
         public KeyCode Shoot;               // клавиша стрельбы
         public KeyCode Interact;            // клавиша взаимодействия
         public KeyCode Reload;              // клавиша перезарядки
+        public KeyCode SaveGame;            // клавиша для сохранения игры
+        public KeyCode LoadGame;            // клавиша для загрузки игры
+
 
         public InputData()
         {
@@ -28,6 +31,8 @@ namespace SavedData
             Shoot = KeyCode.Mouse0;
             Interact = KeyCode.Mouse1;
             Reload = KeyCode.R;
+            SaveGame = KeyCode.F1;
+            LoadGame = KeyCode.F2;
         }
 
 

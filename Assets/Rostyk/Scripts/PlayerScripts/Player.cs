@@ -30,7 +30,7 @@ public class Player : Character
     [SerializeField] private Camera PlayerCamera;               // Camera игрока
     [SerializeField] private Light PlayerLight;                 // Player flashlight
     [SerializeField] private GameObject MenuUI;
-    private CharacterController _controller;
+    public CharacterController _controller;
     #endregion
 
 
@@ -131,7 +131,7 @@ public class Player : Character
     {
         if (_controller.isGrounded)
         {
-            _velocity.y = Input.GetKeyDown(InputData.Jump) ? JumpForce : -0.1f;
+            _velocity.y = Input.GetKey(InputData.Jump) ? JumpForce : -0.1f;
         }
         else if (!_controller.isGrounded)
         {
