@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1510075770515037537}
   - component: {fileID: 7660175079293072518}
   - component: {fileID: 3083948306123014175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   distance: 2
-  cam: {fileID: 0}
+  isLocked: 0
 --- !u!1 &3062867345636933868
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 3006883933731695374}
   - component: {fileID: 102938881171264068}
   - component: {fileID: 3479044442674509520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
