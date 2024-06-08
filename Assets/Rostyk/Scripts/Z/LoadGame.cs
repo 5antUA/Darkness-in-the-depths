@@ -1,25 +1,27 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using RostykEnums;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using SavedData;
 
 
 // ¬≈ÿ¿“‹ — –»œ“ Õ¿ Œ¡⁄≈ “ EntryPoint
 public class LoadGame : MonoBehaviour
 {
-    private SavedData.CharacterData CharacterData;
-    private SavedData.PlayerPositionData PlayerPositionData;
-    private SavedData.NotesData NotesData;
-    private SavedData.TriggerData TriggerData;
-    private SavedData.InputData InputData;
+    private CharacterData CharacterData;
+    private PlayerPositionData PlayerPositionData;
+    private NotesData NotesData;
+    private TriggerData TriggerData;
+    private InputData InputData;
+    private InterfaceData InterfaceData;
 
     [SerializeField] private GameObject PlayerPrefab;
     public List<GameObject> TriggerList;
-
     private List<GameObject> CloneTriggerList;
-    private GameObject PlayerClone;
+
+    private GameObject PlayerCloneObject;
+    private Camera PlayerCamera;
+    private PlayerRotation PlayerRotation;
     private Player PlayerProperties;
     private Vector3 DefaultPlayerPosition;
 
@@ -86,12 +88,14 @@ public class LoadGame : MonoBehaviour
         NotesData = new();
         TriggerData = new(TriggerList);
         InputData = new();
+        InterfaceData = new();
 
         CharacterData = CharacterData.Load();
         PlayerPositionData = PlayerPositionData.Load();
         NotesData = NotesData.Load();
         TriggerData = TriggerData.Load(TriggerList);
         InputData = InputData.Load();
+        InterfaceData = InterfaceData.Load();
     }
 
     private void SavePlayerPosition()
@@ -107,8 +111,17 @@ public class LoadGame : MonoBehaviour
 
     private void LoadPlayerPosition()
     {
-        PlayerClone = Instantiate(PlayerPrefab, PlayerPositionData.position, PlayerPositionData.rotation);
-        PlayerProperties = PlayerClone.GetComponent<Player>();
+        PlayerCloneObject = Instantiate(PlayerPrefab, PlayerPositionData.position, PlayerPositionData.rotation);
+
+        PlayerProperties = PlayerCloneObject.GetComponent<Player>();
+        PlayerCamera = PlayerCloneObject.GetComponentInChildren<Camera>();
+        PlayerRotation = PlayerCloneObject.GetComponentInChildren<PlayerRotation>();
+
+        PlayerCamera.farClipPlane = InterfaceData.PlayerFar;
+        PlayerRotation._sensitive =
+            InterfaceData.isNegativeSensitivity ?
+            -InterfaceData.CameraSensitivity :
+            InterfaceData.CameraSensitivity;
     }
 
     private void DefineCharacter()

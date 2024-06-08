@@ -12,6 +12,7 @@ namespace SavedData
         public Vector3 position;
         public Quaternion rotation;
 
+
         public PlayerPositionData(Vector3 DefaultPos = new())
         {
             position = DefaultPos;
