@@ -27,9 +27,7 @@ public class ShotGunScript : Weapon
 
     public GameObject ShotgunHitEffect;
 
-    private bool shootingWhileRun = false;// Роз'яснення для Ростіка: змінна фіксить баг, а саме: коли рухаєшся анімація стрільби не відіграється.
-                      // Якщо її не добавляти, анімація стрільби буде програватися після анімації бігу(з умовою, якщо будеш стріляти під час бігу). 
-
+    private bool shootingWhileRun = false;
 
     #region Unity methods
     private void Start()
