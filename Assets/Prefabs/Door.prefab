@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1510075770515037537}
   - component: {fileID: 7660175079293072518}
   - component: {fileID: 3083948306123014175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   distance: 2
-  cam: {fileID: 0}
+  isLocked: 0
 --- !u!1 &3062867345636933868
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2434948983511390806}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,9 +118,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3062867345636933868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.119, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0379, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 511137497767432430}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 3006883933731695374}
   - component: {fileID: 102938881171264068}
   - component: {fileID: 3479044442674509520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
