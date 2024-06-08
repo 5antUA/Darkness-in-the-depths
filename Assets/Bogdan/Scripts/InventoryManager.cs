@@ -6,20 +6,22 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private SavedData.InputData takeItem;
+    private SavedData.InputData InputData;
+    private string[] id = new string[12];
+
     public Transform inventoryPanel;
     public List<InventorySlot> slots = new List<InventorySlot>();
     public List<ItemScriptableObject> scriptableObjects = new List<ItemScriptableObject>();
-    private string[] id = new string[12];
     private Camera mainCamera;
     public GameObject MenuUi;
     public float reachDistance = 3f;
-    // Start is called before the first frame update
+
+
     void Start()
     {
-        id[3] = "0";
-        takeItem = new();
-        takeItem = takeItem.Load();
+        InputData = new();
+        InputData = InputData.Load();
+
         mainCamera = Camera.main;
         var centerPoint = new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 0);
         for (int i = 0; i < inventoryPanel.childCount; i++) 
@@ -29,18 +31,10 @@ public class InventoryManager : MonoBehaviour
                 slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
             }
         }
-        for(int i = 0;i < inventoryPanel.childCount; i++)
-        {
-            if (id[i] != null)
-            {
-                int index = int.Parse(id[i]);
-                AddItem(scriptableObjects[index]);
-            }
-        }
-        
+
+        LoadInventory();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -48,10 +42,8 @@ public class InventoryManager : MonoBehaviour
         Ray rayTake = mainCamera.ScreenPointToRay(centerPoint);
         RaycastHit hit;
 
-        if (Input.GetKeyDown(takeItem.Interact) && !MenuUi.activeInHierarchy)
+        if (Input.GetKeyDown(InputData.Interact) && !MenuUi.activeInHierarchy)
         {
-
-
             if (Physics.Raycast(rayTake, out hit, reachDistance))
             {
                 Debug.Log("dsaasd");
@@ -63,14 +55,13 @@ public class InventoryManager : MonoBehaviour
                     Destroy(hit.collider.gameObject);
                     Debug.DrawLine(rayTake.origin, hit.point, Color.red);
                 }
-
             }
         }
-        
     }
+
+
     private void AddItem(ItemScriptableObject _item)
     {
-
         foreach (InventorySlot slot in slots)
         {
             if(slot.isEmpty == true)
@@ -79,6 +70,19 @@ public class InventoryManager : MonoBehaviour
                 slot.isEmpty = false;
                 slot.SetIcon(_item.icon);
                 break;
+            }
+        }
+    }
+
+    private void LoadInventory()
+    {
+        id[3] = "0";
+        for (int i = 0; i < inventoryPanel.childCount; i++)
+        {
+            if (id[i] != null)
+            {
+                int index = int.Parse(id[i]);
+                AddItem(scriptableObjects[index]);
             }
         }
     }

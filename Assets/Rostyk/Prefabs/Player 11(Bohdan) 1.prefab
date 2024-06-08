@@ -28328,11 +28328,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1393419413075388320}
   - component: {fileID: 5315081188817371667}
+  - component: {fileID: 8396104020715167075}
   - component: {fileID: 4971895465677811285}
   - component: {fileID: 8302787342823266313}
   - component: {fileID: 359093634269509512}
   - component: {fileID: 5176074972071461728}
-  - component: {fileID: 8396104020715167075}
   m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -28378,6 +28378,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuUI: {fileID: 5068044394997456047}
+--- !u!114 &8396104020715167075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375024756968656829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5b93fcfea02c94bac4e9fa2c1b7b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 262283334998965839}
+  slots: []
+  scriptableObjects:
+  - {fileID: 11400000, guid: 7e0c3ab4083d7db4ea39638ded36ef27, type: 2}
+  - {fileID: 11400000, guid: 395a02e612544c741b2818dfa4bfac10, type: 2}
+  MenuUi: {fileID: 5068044394997456047}
+  reachDistance: 4
 --- !u!114 &4971895465677811285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28472,24 +28491,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8396104020715167075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5375024756968656829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5b93fcfea02c94bac4e9fa2c1b7b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 262283334998965839}
-  slots: []
-  scriptableObjects:
-  - {fileID: 11400000, guid: d0e6bce2d282bd94f85716a9c8ae362b, type: 2}
-  MenuUi: {fileID: 5068044394997456047}
-  reachDistance: 4
 --- !u!1 &5452605700820845407
 GameObject:
   m_ObjectHideFlags: 0
