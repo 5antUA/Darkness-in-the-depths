@@ -54,9 +54,9 @@ public class Player : Character
         if (!MenuUI.activeInHierarchy)
         {
             Movement();
-            Jump();
             Crouch();
             ChangeFOV();
+            Jump();
             SwitchLight();
         }
 

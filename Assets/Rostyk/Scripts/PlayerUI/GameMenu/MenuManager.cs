@@ -16,12 +16,6 @@ public class MenuManager : MonoBehaviour
     private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
     private Player Player;
 
-    [Space]
-    [Header("\t DeathScreen")]
-    [SerializeField] private Image BlackImage;
-    [SerializeField] private Image Background;
-    [SerializeField] private Image YouDeadImage;
-
     private void Awake()
     {
         InputData = new SavedData.InputData();
