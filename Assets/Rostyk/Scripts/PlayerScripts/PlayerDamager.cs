@@ -21,97 +21,53 @@ public class PlayerDamager : MonoBehaviour
         InputData = new SavedData.InputData();
         InputData = InputData.Load();
 
+        HitDistance = 2f;
         MyPlayer = this.GetComponent<Player>();
 
         PlayerDamage = MyPlayer.Damage;
         WeaponMode = WeaponMode.Pistol;
-        HitDistance = GetRayDistance();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(InputData.Shoot))
-    //    {
-    //        Shooting();
-    //    }
-
-    //    WeaponController();
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(InputData.Interact))
+        {
+            Interact();
+        }
+    }
 
     #region Shooting
 
-    //// Логика стрельбы во врага
-    private void Shooting()
+    //// Логика взаемодействия во врага
+    private void Interact()
     {
-        Monster enemy = GetEnemy();
-
-        // если попал во врага
-        if (enemy != null)
+        SimpleDoor door = GetObject();
+        if (door != null)
         {
-            enemy.TakeDamage(PlayerDamage);
-            Debug.Log(PlayerDamage);
-
-
+            if(door.isOpen)
+                door.CloseDoor();
+            else if(!door.isOpen)
+                door.OpenDoor();
         }
         // если не попал во врага
         else
         {
-            // Debug.Log("EBLAN, YOU MISSED!");
         }
     }
 
     // Поиск врага лучем
-    private Monster GetEnemy()
+    private SimpleDoor GetObject()
     {
         RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(HitDistance);
 
         if (hit.collider != null)
         {
-            return hit.collider.GetComponentInParent<Monster>();
+            return hit.collider.GetComponentInChildren<SimpleDoor>();
         }
         else
         {
             return null;
         }
-    }
-    #endregion
-
-
-    #region Weapon controller
-    // Weapon controller
-    private void WeaponController()
-    {
-        ChangeWeaponModeButton();
-
-        HitDistance = GetRayDistance();
-    }
-
-    // Сменить режим оружия по нажатию кнопки
-    private void ChangeWeaponModeButton()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            WeaponMode = WeaponMode.Hummer;
-
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-            WeaponMode = WeaponMode.Pistol;
-
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-            WeaponMode = WeaponMode.Shotgun;
-    }
-
-    // Получение дальности атаки в зависимости от режима оружия
-    private float GetRayDistance()
-    {
-        if (WeaponMode == WeaponMode.Hummer)
-            return 3f;
-
-        else if (WeaponMode == WeaponMode.Pistol)
-            return 100f;
-        
-        else if (WeaponMode == WeaponMode.Shotgun)
-            return 16f;
-        
-        return 0;
     }
     #endregion
 }
