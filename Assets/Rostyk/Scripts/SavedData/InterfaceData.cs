@@ -9,10 +9,16 @@ namespace SavedData
         private const string KEY = "InterfaceData";
 
         public bool isLightTheme;
+        public bool isNegativeSensitivity;
+        public float CameraSensitivity;
+        public float PlayerFar;
 
         public InterfaceData()
         {
             isLightTheme = false;
+            isNegativeSensitivity = false;
+            CameraSensitivity = 5;
+            PlayerFar = 100;
         }
 
 

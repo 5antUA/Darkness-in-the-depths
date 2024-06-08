@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Heal Item" , menuName ="Invenroty/Items/New Heal item")]
 public class HealItem :ItemScriptableObject
 {
-    public float healAmount;
+    
 
     private void Start()
     {

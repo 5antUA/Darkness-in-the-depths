@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
         takeItem = new();
         takeItem = takeItem.Load();
         mainCamera = Camera.main;
+        var centerPoint = new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 0);
         for (int i = 0; i < inventoryPanel.childCount; i++) 
         {
             if(inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null) 
@@ -42,7 +43,9 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray rayTake = mainCamera.ScreenPointToRay(Input.mousePosition);
+        
+        var centerPoint = new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 0);
+        Ray rayTake = mainCamera.ScreenPointToRay(centerPoint);
         RaycastHit hit;
 
         if (Input.GetKeyDown(takeItem.Interact) && !MenuUi.activeInHierarchy)

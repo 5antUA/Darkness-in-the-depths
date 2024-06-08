@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,11 +9,12 @@ using UnityEngine.UI;
 public class ClickIconSetDescription : MonoBehaviour
 {
     public string description;
-    private TMP_Text textToShow;
+    public TMP_Text textToShow;
     public Sprite iconGO;
 
 
 
+   
     public void OnClickSetText(GameObject SlotGO)
     {
 
@@ -26,7 +28,7 @@ public class ClickIconSetDescription : MonoBehaviour
         else
         {
             textToShow = this.GetComponent<TMP_Text>();
-            textToShow.text = "";
+            textToShow.text = "Пустий слот";
         }
 
 
@@ -47,7 +49,21 @@ public class ClickIconSetDescription : MonoBehaviour
             this.GetComponent<Image>().color = new Color(1, 1, 1, 0);
 
         }
-       
+      
 
+    }
+    public void onClickSetIconBackground(Sprite _BackIcon)
+    {
+        if (this.gameObject.GetComponent<Image>().sprite == null)
+        {
+            this.gameObject.GetComponent<Image>().sprite = _BackIcon;
+            this.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        }       
+       
+    }
+    public void setNoneBackground()
+    {
+        this.gameObject.GetComponent<Image>().sprite = null;
+        this.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
     }
 }

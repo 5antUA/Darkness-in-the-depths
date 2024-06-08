@@ -11678,7 +11678,7 @@ GameObject:
   - component: {fileID: 8574031940920940903}
   - component: {fileID: 4233609693647390357}
   m_Layer: 0
-  m_Name: runnerButton
+  m_Name: toxinButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11843,7 +11843,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0411\u0456\u0433\u0443\u043D"
+  m_Text: "\u0422\u043E\u043A\u0441\u0438\u043D"
 --- !u!1 &1228252839375385997
 GameObject:
   m_ObjectHideFlags: 0
@@ -12594,7 +12594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0411\u0456\u0433\u0443\u043D"
+  m_Text: Toxin
 --- !u!1 &1648483641207766669
 GameObject:
   m_ObjectHideFlags: 0
@@ -12830,7 +12830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3748183901698379685}
   m_Layer: 0
-  m_Name: Runner
+  m_Name: Toxin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13059,7 +13059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5185859195062967983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24303,7 +24303,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0435\u0432\u0456\u0434\u043E\u043C\u0438\u0439"
+  m_Text: Anton
 --- !u!1 &2776912263939113660
 GameObject:
   m_ObjectHideFlags: 0
@@ -26177,7 +26177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8043013051381828411}
   m_Layer: 0
-  m_Name: unknown
+  m_Name: Anton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26290,7 +26290,7 @@ GameObject:
   - component: {fileID: 8322122329537738517}
   - component: {fileID: 8045413373823390376}
   m_Layer: 0
-  m_Name: unknownButton
+  m_Name: antonButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26455,7 +26455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0435\u0432\u0456\u0434\u043E\u043C\u0438\u0439"
+  m_Text: "\u0410\u043D\u0442\u043E\u043D"
 --- !u!1 &3718109791647481687
 GameObject:
   m_ObjectHideFlags: 0
