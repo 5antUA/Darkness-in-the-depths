@@ -4,7 +4,7 @@ using UnityEngine;
 // ВЕШАТЬ СКРИП НА КАМЕРУ ИГРОКА
 public class PlayerRotation : MonoBehaviour
 {
-    public float _sensitive = 80.0f;                        // to normal - 5.0f in inspector
+    public float _sensitive = 5;                            // to normal - 5.0f in inspector
     private float rotationX;                                // ? ? ?
 
     [SerializeField] private Transform playerBody;          // трансформ базового объекта игрока

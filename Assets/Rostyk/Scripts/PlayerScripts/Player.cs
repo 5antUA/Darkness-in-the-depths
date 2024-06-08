@@ -27,7 +27,7 @@ public class Player : Character
     private Vector3 _velocity;                                  // направление игрока
 
     // COMPONENTS
-    [SerializeField] private Camera PlayerCamera;               // Camera игрока
+    public Camera PlayerCamera;                                 // Camera игрока
     [SerializeField] private Light PlayerLight;                 // Player flashlight
     [SerializeField] private GameObject MenuUI;
     public CharacterController _controller;
