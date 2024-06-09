@@ -30105,7 +30105,7 @@ MonoBehaviour:
   SprintSpeed: 7
   CrouchSpeed: 2
   CrouchHeight: 0.9
-  JumpForce: 3
+  JumpForce: 2
   LockOpeningTime: 0
   isNotPenetation: 0
   PlayerCamera: {fileID: 8148715249111008570}
@@ -30149,7 +30149,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.6
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
