@@ -16,12 +16,16 @@ public class ShowDeathScreen : MonoBehaviour
     private Color BackgroundImageColor;
     private Color YouDeadImageColor;
 
+    private AudioSource audioSource;
+    public AudioClip DeathSound;
+
 
     private void Start()
     {
         BlackImageColor = BlackImage.color;
         BackgroundImageColor = BackgroundImage.color;
         YouDeadImageColor = YouDeadImage.color;
+        audioSource = GetComponent<AudioSource>();  
 
         EventManager.OnPlayerDeathEvent += RunShowEffect;
     }
@@ -29,7 +33,13 @@ public class ShowDeathScreen : MonoBehaviour
     private void RunShowEffect()
     {
         EventManager.OnPlayerDeathEvent -= RunShowEffect;
+        SoundOfDeath();
         StartCoroutine(FadeInCoroutine());
+    }
+
+    private void SoundOfDeath()
+    {
+        audioSource.PlayOneShot(DeathSound);
     }
 
     private IEnumerator FadeInCoroutine()
