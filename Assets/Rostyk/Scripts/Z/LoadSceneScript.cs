@@ -18,7 +18,7 @@ public class LoadSceneScript : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         LoadingScreen.SetActive(true);
-        AsyncOperation LoadAsync = SceneManager.LoadSceneAsync("RostykScene");
+        AsyncOperation LoadAsync = SceneManager.LoadSceneAsync("FinalGayplay");
         while (!LoadAsync.isDone)
         {
             Skull.fillAmount = LoadAsync.progress;

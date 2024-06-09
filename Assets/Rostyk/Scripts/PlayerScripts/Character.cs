@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 
-// ОБЩИЙ КЛАСС
-// НЕ ВЕШАТЬ СКРИПТ НА ОБЪЕКТЫ
+// Загальний клас для всіх живих створінь
+// Не вішати скріпт на GameObject
 [System.Serializable]
 public class Character : MonoBehaviour
 {
@@ -11,20 +10,20 @@ public class Character : MonoBehaviour
     [Space]
 
     [HideInInspector]
-    public float MaxCharacterHealth;                           // максимальное количество здоровья персонажа  
-    public float Health;                                       // количество здоровья
-    public float Damage;                                       // количество урона
-    public float Armor;                                        // количество брони
+    public float MaxCharacterHealth;                           // максимальна кількість здоров'я
+    public float Health;                                       // кількість здоров'я
+    public float Damage;                                       // кількість шкоди
+    public float Armor;                                        // кількість броні
     
-    public float WalkSpeed;                                    // скорость ходьбы
-    public float SprintSpeed;                                  // скорость бега
-    public float CrouchSpeed;                                  // скорость медленной ходьбы
+    public float WalkSpeed;                                    // скорость ходьби
+    public float SprintSpeed;                                  // скорость бігу
+    public float CrouchSpeed;                                  // скорость повільної ходьби
 
 
-    public bool IsDead => Health <= 0;                         // если умер
+    public bool IsDead => Health <= 0;                         // якщо помер...
 
 
-    // Функция для получения урона
+    // Функція для отримання шкоди
     public void TakeDamage(float damage)
     {
         this.Health -= damage;
