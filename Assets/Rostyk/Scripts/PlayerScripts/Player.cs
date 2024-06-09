@@ -3,7 +3,7 @@ using RostykEnums;
 using UnityEngine.SceneManagement;
 
 
-// ВЕШАТЬ СКРИПТ НА БАЗОВЫЙ ОБЪЕКТ ИГРОКА
+// Вішати скріпт на базовий об'єкт ігрока
 public class Player : Character
 {
     [Header("\t PLAYER SPECIAL")]
@@ -11,38 +11,38 @@ public class Player : Character
 
 
     #region Player properties
-    // STORAGE SERVICES
+    // Контейнери з даними
     private SavedData.InputData InputData;
 
-    // VALUES
-    public float CrouchHeight;                                  // Высота прыседания
-    public float JumpForce;                                     // сила прыжка
-    public int LockOpeningTime;                                 // время взлома замков
+    // Важливі числові значення
+    public float CrouchHeight;                                  // Висота присідання
+    public float JumpForce;                                     // сила прижка
+    public int LockOpeningTime;                                 // час взлому замка
     public bool isNotPenetation = false;
 
-    private bool isSprint;                                      // если бежит
-    private bool isCrouch;                                      // если медленно ходит
+    private bool isSprint;                                      // якщо біжить...
+    private bool isCrouch;                                      // якщо повільно ходить...
     private float defoltFOV;
-    private float _gravity = -9.81f;                            // ускорение свободного падения g
-    private Vector3 _velocity;                                  // направление игрока
+    private float _gravity = -9.81f;                            // прискорення вільного падіння g
+    private Vector3 _velocity;                                  // вектор направлення гравця
 
-    // COMPONENTS
-    public Camera PlayerCamera;                                 // Camera игрока
-    [SerializeField] private Light PlayerLight;                 // Player flashlight
-    [SerializeField] private GameObject MenuUI;
-    public CharacterController _controller;
+    // Компоненти
+    public Camera PlayerCamera;                                 // Camera (головна камера гравця)
+    [SerializeField] private Light PlayerLight;                 // Light (фонарик)
+    [SerializeField] private GameObject MenuUI;                 // GameObject меню гравця
+    public CharacterController _controller;                     // CharacterController
 
-    private AudioSource AudioSource;
-    public AudioClip SprintSound;
-    public AudioClip WalkingSound;
-    public AudioClip CrouchSound;
-
+    private AudioSource AudioSource;                            // AudioSource для програвання звуків
+    public AudioClip SprintSound;                               // AudioClip бігу
+    public AudioClip WalkingSound;                              // AudioClip ходьби
+    public AudioClip CrouchSound;                               // AudioClip повільної ходьби
     #endregion
 
 
     #region Management
     private void Awake()
     {
+        // загрузка ігрових даних
         InputData = new SavedData.InputData();
         InputData = InputData.Load();
     }
