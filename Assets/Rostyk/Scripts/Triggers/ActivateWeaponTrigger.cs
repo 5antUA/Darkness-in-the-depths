@@ -5,7 +5,7 @@ public class ActivateWeaponTrigger : MonoBehaviour
 {
     SavedData.WeaponData data;
 
-    [Range(0, 2)]
+    [Range(1, 2)]
     public int WeaponNumber;
 
 
