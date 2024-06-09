@@ -31,6 +31,12 @@ public class Player : Character
     [SerializeField] private Light PlayerLight;                 // Player flashlight
     [SerializeField] private GameObject MenuUI;
     public CharacterController _controller;
+
+    private AudioSource AudioSource;
+    public AudioClip SprintSound;
+    public AudioClip WalkingSound;
+    public AudioClip CrouchSound;
+
     #endregion
 
 
@@ -47,6 +53,7 @@ public class Player : Character
         isCrouch = false;
         PlayerLight.enabled = false;
         defoltFOV = PlayerCamera.fieldOfView;
+        AudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -54,6 +61,7 @@ public class Player : Character
         if (!MenuUI.activeInHierarchy)
         {
             Movement();
+            SoundOfWalk();
             Crouch();
             ChangeFOV();
             Jump();
@@ -109,6 +117,25 @@ public class Player : Character
         Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
             new Vector3(_direction.x, 0, _direction.z);
         _velocity = new Vector3(move.x, _velocity.y, move.z);
+    }
+
+    private void SoundOfWalk()
+    {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && _controller.isGrounded)
+        {
+            if (isSprint && !AudioSource.isPlaying)
+            {
+                AudioSource.PlayOneShot(SprintSound);
+            }
+            else if (isCrouch && !AudioSource.isPlaying)
+            {
+                AudioSource.PlayOneShot(CrouchSound);
+            }
+            else if (!AudioSource.isPlaying)
+            {
+                AudioSource.PlayOneShot(WalkingSound);
+            }
+        }
     }
 
     // Логика приседания
