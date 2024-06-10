@@ -11,9 +11,9 @@
     // Перечисление оружий дальнего боя
     public enum Weapon
     {
-        Gun = 0,
-        DoubleGun = 1,
-        Shotgun = 2
+        Hammer = 0,
+        Gun = 1,
+        ShotGun = 2,
     }
 
     // Перечисление вкладок меню

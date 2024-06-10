@@ -19,7 +19,6 @@ public class HealthBarManager : MonoBehaviour
     [Space]
     public GameObject MenuUI;                                  // MenuUI
     private Player MyPlayer;                                   // скрипт this.Player
-    [SerializeField] private PistolScript PistolScript;
 
     [Header("\t Initialition data")]
     [Space]
@@ -69,9 +68,6 @@ public class HealthBarManager : MonoBehaviour
 
         PlayerInfoText.text =
             $"Health : {healthInfo}\n";
-
-        PlayerAmmo.text =
-            $"{PistolScript.counterOfBullets} / ∞";
     }
 
     private void DefinePlayerName()

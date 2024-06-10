@@ -30,12 +30,13 @@ public class Player : Character
     public Camera PlayerCamera;                                 // Camera (головна камера гравц€)
     [SerializeField] private Light PlayerLight;                 // Light (фонарик)
     [SerializeField] private GameObject MenuUI;                 // GameObject меню гравц€
-    public CharacterController _controller;                     // CharacterController
 
     private AudioSource AudioSource;                            // AudioSource дл€ програванн€ звук≥в
     public AudioClip SprintSound;                               // AudioClip б≥гу
     public AudioClip WalkingSound;                              // AudioClip ходьби
     public AudioClip CrouchSound;                               // AudioClip пов≥льноњ ходьби
+
+    public CharacterController _controller { get; set; }        // CharacterController
     #endregion
 
 

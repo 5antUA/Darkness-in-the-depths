@@ -50,9 +50,9 @@ namespace SavedData
             MaxCharacterHealth = 75,
             Health = 75,
             Damage = 0.7f,
-            WalkSpeed = 5,
-            SprintSpeed = 7,
-            CrouchSpeed = 4,
+            WalkSpeed = 4,
+            SprintSpeed = 4,
+            CrouchSpeed = 3,
             LockOpeningTime = 3
         };
 
@@ -62,9 +62,9 @@ namespace SavedData
             MaxCharacterHealth = 100,
             Health = 100,
             Damage = 1,
-            WalkSpeed = 4,
-            SprintSpeed = 5,
-            CrouchSpeed = 3,
+            WalkSpeed = 3,
+            SprintSpeed = 4,
+            CrouchSpeed = 2,
             LockOpeningTime = 3
         };
 
@@ -74,9 +74,9 @@ namespace SavedData
             MaxCharacterHealth = 150,
             Health = 150,
             Damage = 1.5f,
-            WalkSpeed = 3,
-            SprintSpeed = 4,
-            CrouchSpeed = 2,
+            WalkSpeed = 2,
+            SprintSpeed = 3,
+            CrouchSpeed = 1,
             LockOpeningTime = 3
         };
 
@@ -86,9 +86,9 @@ namespace SavedData
             MaxCharacterHealth = 75,
             Health = 75,
             Damage = 0.7f,
-            WalkSpeed = 3,
-            SprintSpeed = 4,
-            CrouchSpeed = 2,
+            WalkSpeed = 2,
+            SprintSpeed = 3,
+            CrouchSpeed = 1,
             LockOpeningTime = 1
         };
         #endregion

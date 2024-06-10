@@ -5,7 +5,7 @@ using SavedData;
 public class Weapon : MonoBehaviour
 {
     public bool isReload { get; protected set; }
-    [HideInInspector] public int counterOfBullets;
+    public int counterOfBullets { get; set; }
     public int MaxBullets;
     public float _distance;
 
