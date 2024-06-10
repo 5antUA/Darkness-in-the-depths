@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 237687038828005751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.99709624, z: -0, w: -0.076152004}
-  m_LocalPosition: {x: 30.29, y: 15.242, z: 45.916}
+  m_LocalPosition: {x: 30.29, y: 15.21, z: 45.92}
   m_LocalScale: {x: 0.8189094, y: 0.71903634, z: 0.7860057}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxCharacterHealth: 0
   Health: 5
-  Damage: 1
+  Damage: 2
   Armor: 0
   WalkSpeed: 0
   SprintSpeed: 0
@@ -4660,8 +4660,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2736143, y: 0.4937341, z: 0.8837781}
-  m_Center: {x: 0.21281861, y: -0.0658067, z: 0.2506359}
+  m_Size: {x: 0, y: 0.09546841, z: 0.270926}
+  m_Center: {x: 0.07668611, y: -0.03486561, z: -0.05456935}
 --- !u!1 &7522226224252857632
 GameObject:
   m_ObjectHideFlags: 0
