@@ -161,9 +161,6 @@ public class LoadGame : MonoBehaviour
         CharacterData.Property.MaxCharacterHealth = PlayerProperties.MaxCharacterHealth;
         CharacterData.Property.Health = PlayerProperties.Health;
         CharacterData.Property.Damage = PlayerProperties.Damage;
-        CharacterData.Property.WalkSpeed = PlayerProperties.WalkSpeed;
-        CharacterData.Property.SprintSpeed = PlayerProperties.SprintSpeed;
-        CharacterData.Property.CrouchSpeed = PlayerProperties.CrouchSpeed;
         CharacterData.Property.LockOpeningTime = PlayerProperties.LockOpeningTime;
 
         CharacterData.Save();
