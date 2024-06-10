@@ -49,7 +49,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6619520536453312363
 Transform:
@@ -220,7 +220,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5086055885448162287
 Transform:
@@ -297,7 +297,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3288211053081529718
 Transform:
@@ -404,7 +404,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3963486718907940518
 Transform:
@@ -935,6 +935,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5086055885448162287}
     m_Modifications:
+    - target: {fileID: 1515448422288840275, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3732261782468891880, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -958,6 +962,10 @@ PrefabInstance:
     - target: {fileID: 8031176796793323849, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
       propertyPath: m_Name
       value: PogankaSimpleSpawn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031176796793323849, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8645764697921330817, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1032,6 +1040,10 @@ PrefabInstance:
     - target: {fileID: 4209669367943490714, guid: 6121fe7d9f4ce694ba29857b824ba837, type: 3}
       propertyPath: m_Name
       value: TankSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209669367943490714, guid: 6121fe7d9f4ce694ba29857b824ba837, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6110576548501890459, guid: 6121fe7d9f4ce694ba29857b824ba837, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1678,6 +1690,10 @@ PrefabInstance:
     - target: {fileID: 5726363537656063040, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
       propertyPath: m_Name
       value: NoteTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726363537656063040, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6261713656347927260, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
       propertyPath: m_Size.x
@@ -3010,6 +3026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 2816575548802343552, guid: 2a679fcb6ff5fb947a5aa2fca0403a66, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3075,6 +3095,10 @@ PrefabInstance:
     - target: {fileID: 5726363537656063040, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
       propertyPath: m_Name
       value: NoteTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726363537656063040, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4415,6 +4439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NoteTrigger (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5726363537656063040, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6261713656347927260, guid: e529ab47f6c50a7449ef3509f0c4c063, type: 3}
       propertyPath: m_Size.x
       value: 3.5846176
@@ -4527,6 +4555,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5086055885448162287}
     m_Modifications:
+    - target: {fileID: 1515448422288840275, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3732261782468891880, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
       propertyPath: m_Size.y
       value: 1.8298502
@@ -4566,6 +4598,10 @@ PrefabInstance:
     - target: {fileID: 8031176796793323849, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
       propertyPath: m_Name
       value: PogankaSimpleSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031176796793323849, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8645764697921330817, guid: 5d7ced29a5c145546a259c73c9eda59a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5574,6 +5610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tiran Spawn
       objectReference: {fileID: 0}
+    - target: {fileID: 4209669367943490714, guid: 51a74ac670149354f8d2b175c7caaafb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6110576548501890459, guid: 51a74ac670149354f8d2b175c7caaafb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62.700478
@@ -5841,6 +5881,10 @@ PrefabInstance:
     - target: {fileID: 2630126070209897007, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_Name
       value: EntryPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630126070209897007, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5256394087528466686, guid: 2f8a6ca70fe5175468ea564e38b77248, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6456,6 +6500,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5086055885448162287}
     m_Modifications:
+    - target: {fileID: 1515448422288840275, guid: d40f8cf7b3911844fb608e718b744c27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3732261782468891880, guid: d40f8cf7b3911844fb608e718b744c27, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -6471,6 +6519,10 @@ PrefabInstance:
     - target: {fileID: 8031176796793323849, guid: d40f8cf7b3911844fb608e718b744c27, type: 3}
       propertyPath: m_Name
       value: TankSimpleSpavn 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031176796793323849, guid: d40f8cf7b3911844fb608e718b744c27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8645764697921330817, guid: d40f8cf7b3911844fb608e718b744c27, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6710,6 +6762,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 639384250168001094, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 695936488767413102, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614492864966229656, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717014326524236985, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976029095604272247, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624294594288691395, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4971760035301515961, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
       propertyPath: SpawnDelay
       value: 0.01
@@ -6718,6 +6794,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArraySwapner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5193033209601591097, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835851226825235768, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8015431330001878850, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
       propertyPath: m_Size.y
       value: 3.7958498
@@ -6725,6 +6809,10 @@ PrefabInstance:
     - target: {fileID: 8015431330001878850, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
       propertyPath: m_Center.y
       value: 1.3979249
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222985803016156777, guid: 11a2b3bdd30ccaf4bbbcd19d9464e88b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7154,6 +7242,10 @@ PrefabInstance:
     - target: {fileID: 4209669367943490714, guid: 63b3aba1f56ede5498f45c90b6f5f650, type: 3}
       propertyPath: m_Name
       value: 'PogankaSpawn '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209669367943490714, guid: 63b3aba1f56ede5498f45c90b6f5f650, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6110576548501890459, guid: 63b3aba1f56ede5498f45c90b6f5f650, type: 3}
       propertyPath: m_LocalPosition.x
