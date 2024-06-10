@@ -71,7 +71,7 @@ namespace SavedData
         // Сильный, но медленный
         public Properties RomarioProperty = new Properties()
         {
-            MaxCharacterHealth = 150,
+            MaxCharacterHealth = 125,
             Health = 150,
             Damage = 1.5f,
             WalkSpeed = 2,

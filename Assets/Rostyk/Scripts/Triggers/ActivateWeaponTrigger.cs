@@ -12,13 +12,13 @@ public class ActivateWeaponTrigger : MonoBehaviour
     private void Start()
     {
         data = new SavedData.WeaponData();
-        data = data.Load();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            data = data.Load();
             data.Weapons[WeaponNumber] = true;
             data.Save();
 
