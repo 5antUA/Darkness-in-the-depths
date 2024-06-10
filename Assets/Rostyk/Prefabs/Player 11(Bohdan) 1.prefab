@@ -12347,7 +12347,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -13332,7 +13332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcefc3deb9fc7b64eb108aba02a55c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterOfBullets: 7
   MaxBullets: 7
   _distance: 100
   mainCamera: {fileID: 8148715249111008570}
@@ -24962,7 +24961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22066a0a84c751d46a43affbca2427a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterOfBullets: 0
   MaxBullets: 3
   _distance: 10
   BulletsPerShoot: 0
@@ -29061,7 +29059,7 @@ Transform:
   m_GameObject: {fileID: 5866353798078331061}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.018019553, z: 0, w: 0.99983764}
-  m_LocalPosition: {x: 0, y: -0.3139999, z: 0.8639988}
+  m_LocalPosition: {x: 0.028, y: 0.008, z: 0.225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29078,14 +29076,14 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5
-  m_Range: 29.437075
-  m_SpotAngle: 100
+  m_Color: {r: 1, g: 0.9921875, b: 0.75, a: 1}
+  m_Intensity: 0.8
+  m_Range: 239.46574
+  m_SpotAngle: 57.981026
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -29110,8 +29108,8 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
+  m_Cookie: {fileID: 2800000, guid: 2c9da6885996c5f498128a5ef153f058, type: 3}
+  m_DrawHalo: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -30105,13 +30103,12 @@ MonoBehaviour:
   SprintSpeed: 7
   CrouchSpeed: 2
   CrouchHeight: 0.9
-  JumpForce: 3
+  JumpForce: 2
   LockOpeningTime: 0
   isNotPenetation: 0
   PlayerCamera: {fileID: 8148715249111008570}
   PlayerLight: {fileID: 8795674127749820835}
   MenuUI: {fileID: 5068044394997456047}
-  _controller: {fileID: 0}
   SprintSound: {fileID: 8300000, guid: fdb0046d62956a74781ac726394956b8, type: 3}
   WalkingSound: {fileID: 8300000, guid: b052e400ebf23da42bb99e16f2a10a75, type: 3}
   CrouchSound: {fileID: 8300000, guid: 027485657fc07ff4b8db59823a0bcdbe, type: 3}
@@ -30149,7 +30146,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.6
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -31682,7 +31679,6 @@ RectTransform:
   - {fileID: 7692408605765441764}
   - {fileID: 8392378398475398493}
   - {fileID: 6732020041585525884}
-  - {fileID: 4859919033043515250}
   m_Father: {fileID: 1393419413075388320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -31704,10 +31700,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 8134789328192554517}
   MenuUI: {fileID: 5068044394997456047}
-  PistolScript: {fileID: 158094295786177530}
   PlayerInfoText: {fileID: 6464086841100792213}
   PlayerName: {fileID: 5304622739213358317}
-  PlayerAmmo: {fileID: 1154140232684551544}
+  PlayerAmmo: {fileID: 0}
   StrokeBarImage: {fileID: 3085497281209433564}
   BackgroundBarImage: {fileID: 5443649855995379944}
   HealthBarImage: {fileID: 749462455566819474}
@@ -31716,101 +31711,6 @@ MonoBehaviour:
   ValentinIcon: {fileID: 21300000, guid: 01320c7feb9933c4fbc7d3e1d4391939, type: 3}
   RomarioIcon: {fileID: 21300000, guid: 817fb5300f17cb14b8f7a6968e0458b9, type: 3}
   PaniniIcon: {fileID: 21300000, guid: fd5601e5ca75f8245adc87d1e8f9c9bb, type: 3}
---- !u!1 &8216394384960443278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4859919033043515250}
-  - component: {fileID: 5767190663939300470}
-  - component: {fileID: 1154140232684551544}
-  - component: {fileID: 2872351100693312058}
-  m_Layer: 0
-  m_Name: PlayerAmmo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4859919033043515250
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216394384960443278}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.9037895, y: 0.89259195, z: 1.2607864}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3177928617589276298}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -401.8, y: 252.1}
-  m_SizeDelta: {x: 356.3, y: 45.386}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5767190663939300470
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216394384960443278}
-  m_CullTransparentMesh: 1
---- !u!114 &1154140232684551544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216394384960443278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d1d2ecdb31deac4b9c4061cdcbd4419, type: 3}
-    m_FontSize: 36
-    m_FontStyle: 3
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 73
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 0.8
-  m_Text: "30 / \u221E"
---- !u!114 &2872351100693312058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216394384960443278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.54509807}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1 &8238499001988583622
 GameObject:
   m_ObjectHideFlags: 0
@@ -36144,7 +36044,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3484919b6ac5c7f40b5c5941156d33a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterOfBullets: 0
   MaxBullets: 0
   _distance: 2
   mainCamera: {fileID: 8148715249111008570}
