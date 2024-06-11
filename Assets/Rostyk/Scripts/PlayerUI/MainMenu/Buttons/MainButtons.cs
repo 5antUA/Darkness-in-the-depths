@@ -1,20 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 
-// ВЕШАТЬ НА КАНВАС В ГЛАВНОМ МЕНЮ
+// Вішати на канвас в головному меню
 public class MainButtons : MonoBehaviour
 {
-    SavedData.CharacterData CharacterData;
-    
-    [SerializeField] private GameObject MainUI;
-    [SerializeField] private GameObject SettingsUI;
-    [SerializeField] private GameObject DevelopersUI;
+    [SerializeField] private GameObject MainUI;                 // весь ігровий об'єкт MainUI
+    [SerializeField] private GameObject SettingsUI;             // весь ігровий об'єкт SettingsUI
+    [SerializeField] private GameObject DevelopersUI;           // весь ігровий об'єкт DevelopersUI
+    [SerializeField] private GameObject BlackScreen;            // напівпрозорий чорний екран
+    [SerializeField] private GameObject ConfirmExitScreen;      // UI елемент (підтвердження дії)
 
-    [SerializeField] private GameObject BlackScreen;
-    [SerializeField] private GameObject ConfirmExitScreen;
+    private SavedData.CharacterData CharacterData;              // ігрові дані про персонажа
 
 
     private void Start()
@@ -23,6 +21,8 @@ public class MainButtons : MonoBehaviour
         CharacterData = CharacterData.Load();
     }
 
+
+    // кнопка для продовження гри
     public void ContinueGame()
     {
         BlackScreen.SetActive(true);
@@ -32,13 +32,7 @@ public class MainButtons : MonoBehaviour
         StartCoroutine(LoadGame());
     }
 
-    private IEnumerator LoadGame()
-    {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("LoadScene");
-    }
-
-
+    // кнопка для відкриття меню налаштувань
     public void OpenSettings()
     {
         MainUI.SetActive(false);
@@ -46,18 +40,28 @@ public class MainButtons : MonoBehaviour
         DevelopersUI.SetActive(false);
     }
 
+    // кнопка для виклику вікна підтвердження виходу з гри
     public void QuitApplication()
     {
         ConfirmExitScreen.SetActive(true);
     }
 
+    // кнопка "Так" в підтвердженні
     public void QuitApplicationYes()
     {
         Application.Quit();
     }
 
+    // кнопка "Ні" в підтвердженні
     public void QuitApplicationNo()
     {
         ConfirmExitScreen.SetActive(false);
+    }
+
+    // асинхронна функція для запуску екрану загрузки
+    private IEnumerator LoadGame()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("LoadScene");
     }
 }

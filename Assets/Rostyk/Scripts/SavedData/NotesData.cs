@@ -2,26 +2,27 @@
 
 namespace SavedData
 {
-    // Класс для хранения Buttons
+    // серіалізуємий клас, який зберігає дані про записки
     [System.Serializable]
     public class NotesData
     {
-        private const string KEY = "NotesData";
+        private const string KEY = "NotesData";         // ключ зберігання
 
-        public bool[] isActivated = new bool[8];
+        public bool[] isActivated = new bool[8];        // дані про отримані записки
 
+        // конструктор по замовчуванню
         public NotesData()
         {
             isActivated = new bool[8];
         }
 
-
-        #region Management
+        // функція для збереження даних в файл по ключу
         public void Save()
         {
             StorageService.Save(KEY, this);
         }
 
+        // функція для завантаження ігрових даних по ключу
         public NotesData Load()
         {
             try
@@ -35,10 +36,10 @@ namespace SavedData
                 return this;
             }
         }
-        #endregion
 
 
         #region Notes
+        // сбірник записок
         public readonly string[] Notes =
         {
             "Після минулої сесії я був змушений звернутися до психолога. " +
@@ -83,13 +84,13 @@ namespace SavedData
                 "помру, не прийдеться писати дипломну...",
         };
 
-
+        // остання записка
         public readonly string NoteEndgame =
                 "Кров. Усюди кров. Це був я. Весь цей час, це був я. Я вбивця. " +
                 "Що я накоїв... Це були не мостри. Не монстри - люди... Але зброя... " +
                 "Вона дерев'яна...";
 
-
+        // збірник назв записок
         public readonly string[] Titles =
         {
             "8:35 День x, місяць y",

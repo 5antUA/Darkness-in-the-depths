@@ -6,20 +6,14 @@ using UnityEngine;
 [System.Serializable]
 public class Character : MonoBehaviour
 {
-    [Header("\t CHARACTER PROPERTIES")]
-    [Space]
-
-    [HideInInspector]
-    public float MaxCharacterHealth;                           // максимальна кількість здоров'я
     public float Health;                                       // кількість здоров'я
     public float Damage;                                       // кількість шкоди
     public float Armor;                                        // кількість броні
-    
     public float WalkSpeed;                                    // скорость ходьби
     public float SprintSpeed;                                  // скорость бігу
     public float CrouchSpeed;                                  // скорость повільної ходьби
 
-
+    public float MaxCharacterHealth { get; set; }              // максимальна кількість здоров'я
     public bool IsDead => Health <= 0;                         // якщо помер...
 
 

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class FadeScreen : MonoBehaviour
+// клас, який реалізує затузання екрану в головному меню
+public class FadeMainMenuScreen : MonoBehaviour
 {
     [Range(0, 1)]
     public float normalAlpha;
@@ -20,6 +21,7 @@ public class FadeScreen : MonoBehaviour
         _imageColor = _fadedImage.color;
         StartCoroutine(FadeInCoroutine());
     }
+
 
     // асинхронна функція, яка керує процесом затухання UI об'єкту
     private IEnumerator FadeInCoroutine()

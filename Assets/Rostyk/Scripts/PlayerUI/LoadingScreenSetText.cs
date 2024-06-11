@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// клас, який встановлює підказки на екрані загрузки
 public class LoadingScreenSetText : MonoBehaviour
 {
     private void Start()
@@ -14,6 +16,7 @@ public class LoadingScreenSetText : MonoBehaviour
     }
 
 
+    // список підказок
     private string[] discriptions =
 {
         "У стрибку шкода від молотка подвоюється!",

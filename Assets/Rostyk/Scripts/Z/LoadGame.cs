@@ -118,7 +118,7 @@ public class LoadGame : MonoBehaviour
         PlayerRotation = PlayerCloneObject.GetComponentInChildren<PlayerRotation>();
 
         PlayerCamera.farClipPlane = InterfaceData.PlayerFar;
-        PlayerRotation._sensitive =
+        PlayerRotation.Sensitive =
             InterfaceData.isNegativeSensitivity ?
             -InterfaceData.CameraSensitivity :
             InterfaceData.CameraSensitivity;
@@ -153,7 +153,6 @@ public class LoadGame : MonoBehaviour
         PlayerProperties.WalkSpeed = CharacterData.Property.WalkSpeed;
         PlayerProperties.SprintSpeed = CharacterData.Property.SprintSpeed;
         PlayerProperties.CrouchSpeed = CharacterData.Property.CrouchSpeed;
-        PlayerProperties.LockOpeningTime = CharacterData.Property.LockOpeningTime;
     }
 
     private void SavePlayerProperties()
@@ -161,7 +160,6 @@ public class LoadGame : MonoBehaviour
         CharacterData.Property.MaxCharacterHealth = PlayerProperties.MaxCharacterHealth;
         CharacterData.Property.Health = PlayerProperties.Health;
         CharacterData.Property.Damage = PlayerProperties.Damage;
-        CharacterData.Property.LockOpeningTime = PlayerProperties.LockOpeningTime;
 
         CharacterData.Save();
     }

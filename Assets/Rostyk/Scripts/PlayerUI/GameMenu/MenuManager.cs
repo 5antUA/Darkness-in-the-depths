@@ -1,79 +1,74 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 
-// ВЕШАТЬ СКРИП НА ОБЪЕКТ PlayerUI
+// Вішати на об'єкт PlayerUI
 public class MenuManager : MonoBehaviour
 {
-    private SavedData.InputData InputData;
-    private SavedData.InterfaceData InterfaceData;
+    public GameObject MenuUI;                                   // весь ігровий об'єкт MenuUI
 
-    [Space]
-    [Header("\t Our properties")]
-    public GameObject MenuUI;                                   // Menu UI
-    private PlayerRotation PlayerCamera;                        // скрипт this.PlayerRotation
-    private Player Player;
+    private Player _player;                                     // скрипт _player
+    private PlayerRotation PlayerCamera;                        // скрипт PlayerRotation
+    private SavedData.InputData _inputData;                     // ігрові дані про клавіші
+    private SavedData.InterfaceData _interfaceData;             // дані про ігровий інтерфейс
+
 
     private void Awake()
     {
-        InputData = new SavedData.InputData();
-        InterfaceData = new SavedData.InterfaceData();
-
-        InputData = InputData.Load();
-        InterfaceData = InterfaceData.Load();
+        _inputData = new SavedData.InputData();
+        _interfaceData = new SavedData.InterfaceData();
+        _inputData = _inputData.Load();
+        _interfaceData = _interfaceData.Load();
     }
 
     private void Start()
     {
-        Player = this.GetComponentInParent<Player>();
+        _player = this.GetComponentInParent<Player>();
         PlayerCamera = this.GetComponentInParent<PlayerRotation>();
-
         MenuUI.SetActive(false);
     }
 
     private void Update()
     {
-        if (Player.IsDead)
+        if (_player.IsDead)
             return;
 
         MenuControl();
     }
 
+
     // Контроль меню
     public void MenuControl()
     {
-        if (Input.GetKeyDown(InputData.Inventory) && !MenuUI.activeInHierarchy)
+        if (Input.GetKeyDown(_inputData.Inventory) && !MenuUI.activeInHierarchy)
         {
             OpenMenu();
         }
-        else if (Input.GetKeyDown(InputData.Inventory) && MenuUI.activeInHierarchy)
+        else if (Input.GetKeyDown(_inputData.Inventory) && MenuUI.activeInHierarchy)
         {
             CloseMenu();
         }
     }
 
-    // Открыть меню
+    // відкрити меню (зробити активним ігровий об'єкт MenuUI)
     public void OpenMenu()
     {
         MenuUI.SetActive(true);
-
         PlayerCamera.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
 
-    // Закрыть меню
+    // закрити меню (зробити неактивним ігровий об'єкт MenuUI)
     public void CloseMenu()
     {
         MenuUI.SetActive(false);
-
         PlayerCamera.enabled = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
 
+    // кнопка повернення в головне меню
     public void ToMainMenuButton()
     {
         SceneManager.LoadScene("Main menu");

@@ -1,20 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class CheckContinueButton : MonoBehaviour
 {
-    SavedData.CharacterData initializationData;
-    private Button theButton;
+    private Button _thisButton;                                 // кнопка, яку потрібно перевірити на неактивність
+    private SavedData.CharacterData _characterData;             // ігрові дані про 
 
     private void Awake()
     {
-        initializationData = new SavedData.CharacterData();
-        initializationData = initializationData.Load();
+        _thisButton = this.GetComponent<Button>();
+        _characterData = new SavedData.CharacterData();
+        _characterData = _characterData.Load();
 
-        theButton = this.GetComponent<Button>();
-        if (initializationData.isContinueGame)
-            theButton.interactable = true;
+        if (_characterData.isContinueGame)
+            _thisButton.interactable = true;
     }
 }

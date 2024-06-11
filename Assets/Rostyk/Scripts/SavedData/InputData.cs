@@ -3,24 +3,24 @@ using UnityEngine;
 
 namespace SavedData
 {
-    // Класс для хранения KeyCodes
+    // серіалізуємий клас, який зберігає дані про клавіші
     [System.Serializable]
     public class InputData
     {
-        private const string KEY = "InputData";
+        private const string KEY = "InputData";         // ключ зберігання
 
-        public KeyCode Crouch;              // клавиша приседания
-        public KeyCode Run;                 // клавиша бега
-        public KeyCode Jump;                // клавиша прыжка
-        public KeyCode Inventory;           // клавиша инвентаря
-        public KeyCode SwitchLight;         // клавиша фонарика
-        public KeyCode Shoot;               // клавиша стрельбы
-        public KeyCode Interact;            // клавиша взаимодействия
-        public KeyCode Reload;              // клавиша перезарядки
-        public KeyCode SaveGame;            // клавиша для сохранения игры
-        public KeyCode LoadGame;            // клавиша для загрузки игры
+        public KeyCode Crouch;                          // клавіша присідання
+        public KeyCode Run;                             // клавіша бігу
+        public KeyCode Jump;                            // клавіша стрибків
+        public KeyCode Inventory;                       // клавіша інвентаря
+        public KeyCode SwitchLight;                     // клавіша фонарика
+        public KeyCode Shoot;                           // клавіша атаки
+        public KeyCode Interact;                        // клавіша взаємодії
+        public KeyCode Reload;                          // клавіша перезарядки
+        public KeyCode SaveGame;                        // клавіша для збереження гри
+        public KeyCode LoadGame;                        // клавіша для завантаження гри
 
-
+        // конструктор по замовчуванню
         public InputData()
         {
             Crouch = KeyCode.LeftShift;
@@ -35,13 +35,13 @@ namespace SavedData
             LoadGame = KeyCode.F2;
         }
 
-
-        #region Management
+        // функція для збереження даних в файл по ключу
         public void Save()
         {
             StorageService.Save(KEY, this);
         }
 
+        // функція для завантаження ігрових даних по ключу
         public InputData Load()
         {
             try
@@ -55,6 +55,5 @@ namespace SavedData
                 return this;
             }
         }
-        #endregion
     }
 }
