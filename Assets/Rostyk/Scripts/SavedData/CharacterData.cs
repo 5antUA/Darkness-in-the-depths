@@ -4,29 +4,30 @@ using System.IO;
 
 namespace SavedData
 {
-    // Класс для хранения характеристик игрока
+    // серіалізуємий клас, який зберігає дані про персонажа
     [System.Serializable]
     public class CharacterData
     {
-        private const string KEY = "CharacterData";
+        private const string KEY = "CharacterData";         // ключ зберігання
 
-        public bool isContinueGame;
-        public Characters Character;
-        public Properties Property;
+        public bool isContinueGame;                         // якщо гра продовжується...
+        public Characters Character;                        // персонаж
+        public Properties Property;                         // характеристики персонажа
 
+        // конструктор по замовчуванню
         public CharacterData()
         {
             isContinueGame = false;
             Property = null;
         }
 
-
-        #region Management
+        // функція для збереження даних в файл по ключу
         public void Save()
         {
             StorageService.Save(KEY, this);
         }
 
+        // функція для завантаження ігрових даних по ключу
         public CharacterData Load()
         {
             try
@@ -40,11 +41,10 @@ namespace SavedData
                 return this;
             }
         }
-        #endregion
 
 
         #region Characters
-        // Слабый, но быстрый
+        // Слабкий, але швидкий
         public Properties KovalevProperty = new Properties()
         {
             MaxCharacterHealth = 75,
@@ -55,7 +55,7 @@ namespace SavedData
             CrouchSpeed = 3,
         };
 
-        // Золотая средина
+        // Золотая середина
         public Properties ValentinProperty = new Properties()
         {
             MaxCharacterHealth = 100,
@@ -66,7 +66,7 @@ namespace SavedData
             CrouchSpeed = 2,
         };
 
-        // Сильный, но медленный
+        // Сильний, але повільний
         public Properties RomarioProperty = new Properties()
         {
             MaxCharacterHealth = 125,
@@ -77,7 +77,7 @@ namespace SavedData
             CrouchSpeed = 1,
         };
 
-        // Сборник всех слабых сторон
+        // Слабкий, але розумний
         public Properties PaniniProperty = new Properties()
         {
             MaxCharacterHealth = 75,
@@ -90,6 +90,7 @@ namespace SavedData
         #endregion
     }
 
+    // серіалізуємий клас, який представляє із себе дані гравця
     [System.Serializable]
     public class Properties
     {
