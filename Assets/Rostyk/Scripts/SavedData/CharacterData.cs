@@ -53,7 +53,6 @@ namespace SavedData
             WalkSpeed = 4,
             SprintSpeed = 4,
             CrouchSpeed = 3,
-            LockOpeningTime = 3
         };
 
         // Золотая средина
@@ -65,7 +64,6 @@ namespace SavedData
             WalkSpeed = 3,
             SprintSpeed = 4,
             CrouchSpeed = 2,
-            LockOpeningTime = 3
         };
 
         // Сильный, но медленный
@@ -77,7 +75,6 @@ namespace SavedData
             WalkSpeed = 2,
             SprintSpeed = 3,
             CrouchSpeed = 1,
-            LockOpeningTime = 3
         };
 
         // Сборник всех слабых сторон
@@ -89,7 +86,6 @@ namespace SavedData
             WalkSpeed = 2,
             SprintSpeed = 3,
             CrouchSpeed = 1,
-            LockOpeningTime = 1
         };
         #endregion
     }
@@ -105,7 +101,5 @@ namespace SavedData
         public float WalkSpeed;
         public float SprintSpeed;
         public float CrouchSpeed;
-
-        public int LockOpeningTime;
     }
 }

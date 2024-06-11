@@ -1,16 +1,14 @@
 using UnityEngine;
 
-
-// ВЕШАТЬ СКРИПТ НА ТОЧКУ НАЧАЛА ЛУЧА (ОБЪЕКТ ИГРОКА ShooterRay)
+// Вішати скрипт на точку початку променя (ОБЪЕКТ ИГРОКА ShooterRay)
 public class ThrowRay : MonoBehaviour
 {
-    // Бросок луча и возвращение информации об объекте, которого пересек луч
+    // Викид променя та повернення інформації про перетнутий об'єкт
     public RaycastHit GetHit(float distance)
     {
         Ray ray = new Ray(transform.position, transform.forward);
         Physics.Raycast(ray, out RaycastHit hit, distance);
         Debug.DrawRay(transform.position, transform.forward, Color.red);
-
         return hit;
     }
 }

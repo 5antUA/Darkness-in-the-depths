@@ -6,11 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class Character : MonoBehaviour
 {
-    [Header("\t CHARACTER PROPERTIES")]
-    [Space]
-
-    [HideInInspector]
-    public float MaxCharacterHealth;                           // максимальна кількість здоров'я
+    public float MaxCharacterHealth { get; set; }              // максимальна кількість здоров'я
     public float Health;                                       // кількість здоров'я
     public float Damage;                                       // кількість шкоди
     public float Armor;                                        // кількість броні

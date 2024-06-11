@@ -147,7 +147,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // —брос данных InputData (метод нажати€ кнопки)
+    // —брос данных _inputData (метод нажати€ кнопки)
     public void ResetSettings()
     {
         InputData = new InputData();

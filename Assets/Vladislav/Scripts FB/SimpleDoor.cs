@@ -14,13 +14,13 @@ public class SimpleDoor : MonoBehaviour
         isOpen = false;
     }
 
-    public void OpenDoor()
+    public void Open()
     {
         anim.SetBool("isOpen", true);
         isOpen = true;
     }
 
-    public void CloseDoor()
+    public void Close()
     {
         isOpen = false;
         anim.SetBool("isOpen", false);
