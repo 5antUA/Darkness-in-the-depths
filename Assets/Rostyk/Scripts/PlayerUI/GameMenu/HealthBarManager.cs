@@ -21,9 +21,9 @@ public class HealthBarManager : MonoBehaviour
     public GameObject HealthBar;                            // весь ігровий об'єкт HealthBar
     public GameObject MenuUI;                               // весь ігровий об'єкт MenuUI
 
+    private Player _player;                                 // скрипт _player
     private SavedData.CharacterData _characterData;         // ігрові дані про персонажа
     private SavedData.InputData _inputData;                 // ігрові дані про клавіші
-    private Player MyPlayer;                                // скрипт Player
 
 
     private void Awake()
@@ -35,7 +35,7 @@ public class HealthBarManager : MonoBehaviour
     }
     private void Start()
     {
-        MyPlayer = GetComponentInParent<Player>();
+        _player = GetComponentInParent<Player>();
         InitHealthBarCustomization();
         DefinePlayerName();
     }
@@ -50,10 +50,10 @@ public class HealthBarManager : MonoBehaviour
     // Оновлення даних на HealthBar
     private void UpdatePlayerInfo()
     {
-        int healthInfo = (int)MyPlayer.Health;
-        HealthBarImage.fillAmount = MyPlayer.Health / MyPlayer.MaxCharacterHealth;
+        int healthInfo = (int)_player.Health;
+        HealthBarImage.fillAmount = _player.Health / _player.MaxCharacterHealth;
 
-        if (MyPlayer.IsDead)
+        if (_player.IsDead)
             healthInfo = 0;
 
         PlayerInfoText.text =

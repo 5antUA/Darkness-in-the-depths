@@ -16,7 +16,7 @@ public class Secret : MonoBehaviour
         }
     }
 
-    // Подсчет касаний... но для чего?
+    // підрахунок кліків... але для чого?
     public void OnTouch()
     {
         TouchCount++;

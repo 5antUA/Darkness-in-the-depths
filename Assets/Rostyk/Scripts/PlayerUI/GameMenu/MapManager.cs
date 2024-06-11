@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     [SerializeField] private Transform Floors;      // масив UI елементів
-    private int floor = 2;                          // поверх по замовчуванню (3й, відлік з нуля)
+    private int _floor = 2;                         // поверх по замовчуванню (3й, відлік з нуля)
 
     private void Start()
     {
@@ -27,22 +27,22 @@ public class MapManager : MonoBehaviour
     // кнопка зміни поверху (своп направо)
     public void ChangeFloorRight()
     {
-        if (floor == Floors.childCount - 1)
+        if (_floor == Floors.childCount - 1)
             return;
 
-        Floors.GetChild(floor).gameObject.SetActive(false);
-        floor++;
-        Floors.GetChild(floor).gameObject.SetActive(true);
+        Floors.GetChild(_floor).gameObject.SetActive(false);
+        _floor++;
+        Floors.GetChild(_floor).gameObject.SetActive(true);
     }
 
     // кнопка зміни поверху (своп наліво)
     public void ChangeFloorLeft()
     {
-        if (floor == 0)
+        if (_floor == 0)
             return;
 
-        Floors.GetChild(floor).gameObject.SetActive(false);
-        floor--;
-        Floors.GetChild(floor).gameObject.SetActive(true);
+        Floors.GetChild(_floor).gameObject.SetActive(false);
+        _floor--;
+        Floors.GetChild(_floor).gameObject.SetActive(true);
     }
 }

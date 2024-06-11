@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject MenuUI;                                   // весь ігровий об'єкт MenuUI
 
-    private Player Player;                                      // скрипт Player
+    private Player _player;                                     // скрипт _player
     private PlayerRotation PlayerCamera;                        // скрипт PlayerRotation
     private SavedData.InputData _inputData;                     // ігрові дані про клавіші
     private SavedData.InterfaceData _interfaceData;             // дані про ігровий інтерфейс
@@ -23,14 +23,14 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        Player = this.GetComponentInParent<Player>();
+        _player = this.GetComponentInParent<Player>();
         PlayerCamera = this.GetComponentInParent<PlayerRotation>();
         MenuUI.SetActive(false);
     }
 
     private void Update()
     {
-        if (Player.IsDead)
+        if (_player.IsDead)
             return;
 
         MenuControl();

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// 
 public class SecretPointerEnter : MonoBehaviour
 {
     public void Enter()

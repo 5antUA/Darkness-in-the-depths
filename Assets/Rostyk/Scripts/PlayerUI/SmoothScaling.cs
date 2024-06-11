@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
+
+// клас, який плавно масштабує об'єкти
 public class SmoothScaling : MonoBehaviour
 {
-    public Vector3 StartScale;
-    public Vector3 EndScale;
-    public float ScalingTime;
+    public Vector3 StartScale;          // початковий масштаб
+    public Vector3 EndScale;            // кінцевий масштаб
+    public float ScalingTime;           // час для масштабування
 
-    private Transform _transform;
+    private Transform _transform;       // трансформ масштабованого об'єкту
 
 
     private void Awake()
@@ -27,6 +29,7 @@ public class SmoothScaling : MonoBehaviour
     }
 
 
+    // асинхронна функція, яка масштабує об'єкт
     private IEnumerator ResizeCoroutine(float time, Vector3 target)
     {
         float Timer = 0;

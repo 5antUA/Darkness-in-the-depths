@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// клас, який реалізує програвання звуку при натисканні кнопки
 public class PointerClick : MonoBehaviour
 {
-    [SerializeField] private AudioSource _AudioSource;
-    [SerializeField] private AudioClip _AudioClip;
-    [SerializeField] private Button Button;
+    [SerializeField] private AudioSource _AudioSource;      // AudioSource для програвання звуку
+    [SerializeField] private AudioClip _AudioClip;          // AudioClip звуку
+    [SerializeField] private Button Button;                 // кнопка, яка перевіряється на активність
 
+
+    // функція для програвання звуку
     public void AudioPlay()
     {
-        if (!Button.interactable)
-            return;
-
-        _AudioSource.PlayOneShot(_AudioClip);
+        if (Button.interactable)
+            _AudioSource.PlayOneShot(_AudioClip);
     }
 }
