@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+// клас, який реалізую екран загрузки
 public class LoadSceneScript : MonoBehaviour
 {
-    [SerializeField] private GameObject LoadingScreen;
-    [SerializeField] private Image Skull;
+    [SerializeField] private GameObject LoadingScreen;      // весь об'єкт екрану загрузки
+    [SerializeField] private Image Skull;                   // картинка загрузки
 
+
+    // асинхронний метод старт, який асинхронно завантажує ігрову сцену
     public IEnumerator Start()
     {
         yield return new WaitForSeconds(2f);
