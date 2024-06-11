@@ -13,20 +13,16 @@ public class ShotGunScript : Weapon
     public Camera mainCamera;
     public Transform spawnBullet;
     public Player Player;
-
     public AudioClip fireAudioClip;
     public AudioClip reloadAudioClip;
     public ParticleSystem muzzleFlash;
-
     private bool isCooldown;
     private Animator ShotGunAnimator;
     private AudioSource AudioSource;
     private Coroutine cooldownCoroutine;
     private Coroutine reloadCoroutine;
     [SerializeField] private GameObject MenuUI;
-
     public GameObject ShotgunHitEffect;
-
     private bool shootingWhileRun = false;
 
     #region Unity methods
@@ -34,14 +30,11 @@ public class ShotGunScript : Weapon
     {
         InputData = new SavedData.InputData();
         InputData = InputData.Load();
-
         characterData = new SavedData.CharacterData();
         characterData = characterData.Load();
         characterDamage = characterData.Property.Damage;
-
         AudioSource = GetComponent<AudioSource>();
         ShotGunAnimator = GetComponent<Animator>();
-
         counterOfBullets = MaxBullets;
         _distance = 10f;
         isCooldown = true;
@@ -82,13 +75,11 @@ public class ShotGunScript : Weapon
             if (isCooldown && !isReload)
             {
                 ShootLogic();
-
                 if(!shootingWhileRun)
                     ShotGunAnimator.SetTrigger("ShotGunFire");
-                
+             
                 AudioSource.PlayOneShot(fireAudioClip);
                 muzzleFlash.Play();
-
                 counterOfBullets--;
                 cooldownCoroutine = StartCoroutine(CooldownCoroutine());
             }
@@ -100,20 +91,16 @@ public class ShotGunScript : Weapon
         if (counterOfBullets == 0 && !isReload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
-
             ShotGunAnimator.SetTrigger("ShotGunReload");
             Invoke("SoundOfReload", 0.6f);
-
             Debug.Log("reload");
             isCooldown = false;
         }
         else if(Input.GetKeyDown(InputData.Reload) && counterOfBullets < MaxBullets && !isReload)
         {
             reloadCoroutine = StartCoroutine(ReloadCoroutine());
-
             ShotGunAnimator.SetTrigger("ShotGunReload");
             SoundOfReload();
-
             Debug.Log("reload");
             isCooldown = false;
         }
@@ -123,7 +110,6 @@ public class ShotGunScript : Weapon
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-
             ShotGunAnimator.SetBool("SGisWalking", true);
             shootingWhileRun = true;
         }
@@ -142,7 +128,6 @@ public class ShotGunScript : Weapon
 
     #endregion
 
-
     #region Coroutines
     private IEnumerator CooldownCoroutine()
     {
@@ -160,7 +145,6 @@ public class ShotGunScript : Weapon
         isCooldown = true;
     }
     #endregion
-
 
     private void ShootLogic()
     {

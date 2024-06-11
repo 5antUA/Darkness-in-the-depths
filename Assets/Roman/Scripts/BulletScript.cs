@@ -13,8 +13,6 @@ public class BulletScript : MonoBehaviour
         characterData = new SavedData.CharacterData();
         characterData = characterData.Load();
         characterDamage = characterData.Property.Damage;
-
-        //Destroy(gameObject, bulletLife);
     }
 
     private void OnCollisionEnter(Collision collision)

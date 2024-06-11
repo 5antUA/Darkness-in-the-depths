@@ -96,6 +96,7 @@ public class HummerScript : Weapon
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _distance))
         {
             Monster enemy = hit.collider.GetComponentInParent<Monster>();
+           
             if (enemy != null)
             {
                 if (!Player.Controller.isGrounded)
