@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxCharacterHealth: 0
   Health: 5
-  Damage: 2
+  Damage: 4.5
   Armor: 0
   WalkSpeed: 0
   SprintSpeed: 0
@@ -5626,7 +5626,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9993bf39bdb16414da111d866c09b6a6, type: 2}
+  - {fileID: 2100000, guid: 2e83d2ca037c7d943b2356107ffeff3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -24,9 +24,9 @@ namespace mobs
         {
             audioSource= GetComponent<AudioSource>();
             firePoints = new ParticleSystem[spawnpoints.Length];
-            this.gameObject.SetActive(false);
             for (int i = 0; i < spawnpoints.Length; i++)
                 firePoints[i] = spawnpoints[i].GetChild(0).gameObject.GetComponent<ParticleSystem>();
+            this.gameObject.SetActive(false);
         }
 
         private void Update()
