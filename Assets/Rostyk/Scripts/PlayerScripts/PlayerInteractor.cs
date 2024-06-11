@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 // Вішати скріпт на базовий об'єкт гравця
 public class PlayerInteractor : MonoBehaviour
 {

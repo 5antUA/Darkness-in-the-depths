@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 // ¬≥шати скр≥пт на базовий об'Їкт гравц€
 public class Player : Character
 {

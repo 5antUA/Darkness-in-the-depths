@@ -2,24 +2,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-// ВЕШАТЬ СКРИП НА ОБЪЕКТ TabsUI/TabNotesUI/Buttons
+// Вішати на об'єкт TabsUI/TabNotesUI/Buttons
 public class NotesManager : MonoBehaviour
 {
-    private SavedData.NotesData NotesData;
+    [SerializeField] private Transform Texts;           // масив всіх текстових полів для записок
+    [SerializeField] private Transform Buttons;         // масив всіх кнопок іх вкладки NotesUI
+    [SerializeField] private GameObject MenuUI;         // весь ігровий об'єкт MenuUI
 
-    [SerializeField] private Transform Texts;
-    [SerializeField] private Transform Buttons;
-    [SerializeField] private GameObject MenuUI;
-
-    private Text[] Titles;
-    private Text[] Notes;
+    private Text[] _titles;                             // масив записок
+    private Text[] _notes;                              // масив назв записок
+    private SavedData.NotesData _notesData;             // ігрові дані про записки
 
 
     private void Start()
     {
-        NotesData = new SavedData.NotesData();
-        NotesData = NotesData.Load();
-
+        _notesData = new SavedData.NotesData();
+        _notesData = _notesData.Load();
         InitializeTexts();
         UpdateDataUI(true);
     }
@@ -33,31 +31,33 @@ public class NotesManager : MonoBehaviour
     }
 
 
+    // Ініціалізуємо масиви та кнопки
     private void InitializeTexts()
     {
-        Titles = new Text[Texts.childCount];
-        Notes = new Text[Buttons.childCount];
+        _titles = new Text[Texts.childCount];
+        _notes = new Text[Buttons.childCount];
 
         for (int i = 0; i < Texts.childCount; i++)
         {
-            Titles[i] = Texts.GetChild(i).GetComponent<Text>();
-            Notes[i] = Buttons.GetChild(i).GetComponent<Text>();
+            _titles[i] = Texts.GetChild(i).GetComponent<Text>();
+            _notes[i] = Buttons.GetChild(i).GetComponent<Text>();
         }
     }
 
+    // метод оновлення даних про записки
     private void UpdateDataUI(bool disableTexts = false)
     {
-        NotesData = NotesData.Load();
+        _notesData = _notesData.Load();
+
         for (int i = 0; i < Buttons.childCount; i++)
         {
-            Titles[i].text =
-                NotesData.isActivated[i] ?
-                NotesData.Notes[i] :
+            _titles[i].text =
+                _notesData.isActivated[i] ?
+                _notesData.Notes[i] :
                 "? ? ?";
-
-            Notes[i].text =
-                NotesData.isActivated[i] ?
-                NotesData.Titles[i] :
+            _notes[i].text =
+                _notesData.isActivated[i] ?
+                _notesData.Titles[i] :
                 "? ? ?";
 
             if (disableTexts)

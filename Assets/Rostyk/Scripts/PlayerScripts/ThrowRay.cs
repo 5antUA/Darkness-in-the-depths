@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 // Вішати скрипт на точку початку променя (ОБЪЕКТ ИГРОКА ShooterRay)
 public class ThrowRay : MonoBehaviour
 {

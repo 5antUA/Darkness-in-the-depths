@@ -1,37 +1,39 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class LoadInterfaceData : MonoBehaviour
 {
-    private SavedData.InterfaceData InterfaceData;
+    private SavedData.InterfaceData _interfaceData;         // дані про ігровий інтерфейс
 
-    [SerializeField] private Texture[] MenuThemes;
-    [SerializeField] private RawImage MenuTheme;
-    [SerializeField] private RawImage[] Buttons;
+    [SerializeField] private Texture[] MenuThemes;          // масив тем ігрового меню (біла та темна)
+    [SerializeField] private RawImage MenuTheme;            // ігрова тема меню на даний момент
+    [SerializeField] private RawImage[] Buttons;            // масив іконок кнопок
     [Space]
-    [SerializeField] private Texture[] TabsThemes;
+    [SerializeField] private Texture[] TabsThemes;          // масив тем кнопок ігрового меню (біла та темна)
     [SerializeField] private RawImage[] TextingTabs;
-    [SerializeField] private Texture[] ButtonsSprites;
+    [SerializeField] private Texture[] ButtonsSprites;      // масив іконок кнопок на даний момент
+
 
     private void Start()
     {
-        InterfaceData = new SavedData.InterfaceData();
-        InterfaceData = InterfaceData.Load();
-
+        _interfaceData = new SavedData.InterfaceData();
+        _interfaceData = _interfaceData.Load();
         LoadMenuThemes();
     }
 
+    // метод, який визначає тему ігрового меню на запуску гри
     private void LoadMenuThemes()
     {
         MenuTheme.texture =
-            InterfaceData.isLightTheme ?
+            _interfaceData.isLightTheme ?
             MenuThemes[0] :
             MenuThemes[1];
 
         for (int i = 0; i < Buttons.Length; i++)
         {
             Buttons[i].texture =
-                InterfaceData.isLightTheme ?
+                _interfaceData.isLightTheme ?
                 ButtonsSprites[0] :
                 ButtonsSprites[1];
         }
@@ -39,7 +41,7 @@ public class LoadInterfaceData : MonoBehaviour
         for (int i = 0; i < TextingTabs.Length; i++)
         {
             TextingTabs[i].texture =
-                InterfaceData.isLightTheme ?
+                _interfaceData.isLightTheme ?
                 TabsThemes[0] :
                 TabsThemes[1];
         }
