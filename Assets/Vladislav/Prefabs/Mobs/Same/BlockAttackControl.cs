@@ -22,7 +22,9 @@ namespace mobs
         protected float StandartCrouchSpeed;
         protected float StandartSprintSpeed;
         protected float FieldOfViev;
+
         [Header("\t PLAYER MODIFIKATION(IF NEED)")]
+
         public float ModifikatePlayerSpeed = 0;
         public float ModifikatePlayerFieldOfViev = 0;
 

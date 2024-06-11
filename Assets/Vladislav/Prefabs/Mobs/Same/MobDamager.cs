@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class MobDamager : MonoBehaviour
 {
+    public float takeDamageCorutine = 0.02f;
+
+    [SerializeField] protected Transform _startShooter;
     protected Player enemy;
     protected Animator animator;
-    protected Monster monster;        //щоб брати інфу про урон
-    protected float monsterDamage;    // урон, расчитаный по формуле (ориг.Damage в Properties)
+    protected Monster monster;        //щоб брати інформацію про урон
+
     [HideInInspector] public bool isdamage = false;
-    public float takeDamageCorutine = 0.02f;
-    [SerializeField] protected Transform _startShooter;
-
-
+    protected float monsterDamage; 
 
     private void Start()
     {

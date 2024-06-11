@@ -48,11 +48,13 @@ namespace mobs
                 particleSystem.Play();
             }
         }
+
         public void Push()
         {
             player.GetComponent<CharacterController>().Move(new Vector3(player.transform.position.x,
              player.transform.position.y, player.transform.position.z - 100) * Time.deltaTime);
         }
+
         public override IEnumerator AttackControll()
         {
             animator.SetBool("Attack", true);
@@ -62,6 +64,5 @@ namespace mobs
             yield return new WaitForSeconds(CorutineTime);
             monster.TakeDamage(9999999f);
         }
-
     }
 }

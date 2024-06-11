@@ -13,6 +13,7 @@ public class WattermobMonster : Monster
     {
         SpawnSimpleMob.MonsterCounter--;
     }
+
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)
@@ -26,5 +27,3 @@ public class WattermobMonster : Monster
         }
     }
 }
-
-

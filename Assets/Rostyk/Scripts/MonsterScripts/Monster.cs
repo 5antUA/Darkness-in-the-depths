@@ -2,8 +2,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
-// Empty class
 public class Monster : Character
 {
     public Rigidbody[] ALLrigidbodys;
@@ -12,8 +10,8 @@ public class Monster : Character
     protected Sounds sounds;
     protected BlockAttackControl blockAttackControl;
     protected MobDamager mobDamager;
-    protected bool deathchaker = false;
 
+    protected bool deathchaker = false;
 
     protected void Awake()
     {
@@ -31,6 +29,7 @@ public class Monster : Character
     {
         OnMonsterDeath();
     }
+
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)
@@ -44,6 +43,7 @@ public class Monster : Character
             blockAttackControl.PlayerModificationStop();
         }
     }
+
     protected void makephicik()
     {
         animator.enabled = false;
@@ -54,8 +54,5 @@ public class Monster : Character
         }
         Destroy(GetComponent<BlockAttackControl>());
         Destroy(GetComponent<NavMeshAgent>());
-
     }
 }
-
-

@@ -5,12 +5,14 @@ using UnityEngine;
 public class MonsterBoss : Monster
 {
     private GameObject SpawnSinplemob;
+
     private void Update()
     {
         if (SpawnSinplemob == null)
             SpawnSinplemob = GameObject.FindWithTag("SpawnSimpleMob");      //для знищення трігеру
         OnMonsterDeath();
     }
+
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)
@@ -25,4 +27,3 @@ public class MonsterBoss : Monster
         }
     }
 }
-
