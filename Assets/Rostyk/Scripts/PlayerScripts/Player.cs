@@ -30,14 +30,12 @@ public class Player : Character
 
 
     #region MONOBEHAVIOUR
-    // метод Awake, який запускається перед методом Start (перед стартом гри)
     private void Awake()
     {
         _inputData = new SavedData.InputData();
         _inputData = _inputData.Load();
     }
 
-    // метод Start, який запускається на початку гри
     private void Start()
     {
         _audioSource = this.GetComponent<AudioSource>();
@@ -48,7 +46,6 @@ public class Player : Character
         PlayerLight.enabled = false;
     }
 
-    // метод Update, який виконується кожен кадр поки об'єкт активний
     private void Update()
     {
         if (!MenuUI.activeInHierarchy)
@@ -68,7 +65,6 @@ public class Player : Character
         }
     }
 
-    // метод FixedUpdate, який виконується кожні 0.02 сек та поки об'єкт активний
     private void FixedUpdate()
     {
         if (this.IsDead)
