@@ -4,11 +4,12 @@ using UnityEngine;
 namespace mobs
 {
     public class BlockAttackControl : MonoBehaviour
-    {
-        public float attackDistanse = 4;
-        public float CorutineTime = 0.05f;
+    { 
+        public float attackDistanse = 4;        //дистанція для атаки
+        public float CorutineTime = 0.05f;      //час до початку атаки
 
-        protected GameObject player;
+        //данні для взаємодії
+        protected GameObject player;            
         protected Animator animator;
         protected MobDamager mobDamager;
         protected Monster monster;
@@ -16,18 +17,21 @@ namespace mobs
         protected Camera camera;
         protected CharacterController characterController;
 
-        protected bool isattacking = false;
-        protected float distance;
+        protected bool isattacking = false;     //флажок стану атаки
+
+        protected float distance;               //дистанція для вирахування
+        //властивості плеєра(для модифікації)
         protected float StandartWallkSpeed;
         protected float StandartCrouchSpeed;
         protected float StandartSprintSpeed;
         protected float FieldOfViev;
 
         [Header("\t PLAYER MODIFIKATION(IF NEED)")]
-
+        //модифікаційні данні(залежать від монстра)
         public float ModifikatePlayerSpeed = 0;
         public float ModifikatePlayerFieldOfViev = 0;
 
+        //ініціялізація данних
         private void Start()
         {
             PlayerDataInit();
@@ -41,6 +45,7 @@ namespace mobs
             Attack();
         }
 
+        //ініціалізація данних плеєра
         protected void PlayerDataInit()
         {
             player = GameObject.FindWithTag("Player");
@@ -48,23 +53,26 @@ namespace mobs
             camera = player.GetComponentInChildren<Camera>();
             characterController = player.GetComponent<CharacterController>();
 
+            //ініціялізація поточних властивостей плеєра
             StandartWallkSpeed = speed.WalkSpeed;
             StandartCrouchSpeed = speed.CrouchSpeed;
             StandartSprintSpeed = speed.SprintSpeed;
             FieldOfViev = camera.fieldOfView;
-
+            
+            //у випадку якщо модивікації не застосовуються
             if (ModifikatePlayerSpeed == 0) ModifikatePlayerSpeed = speed.WalkSpeed;
             if (ModifikatePlayerFieldOfViev == 0) ModifikatePlayerFieldOfViev = camera.fieldOfView;
         }
 
+        //логіка атаки
         private void Attack()
         {
-            distance = Vector3.Distance(this.transform.position, player.transform.position);
+            distance = Vector3.Distance(this.transform.position, player.transform.position);//розрахування дистанції
             if (distance < attackDistanse)
             {
-                if (characterController.isGrounded && mobDamager.isdamage) PlayerModificationStart();
+                if (characterController.isGrounded && mobDamager.isdamage) PlayerModificationStart();//початок модифікацій
 
-                if (!isattacking)
+                if (!isattacking)//початок атаки
                 {
                     isattacking = true;
                     StartCoroutine(routine: AttackControll());
@@ -78,6 +86,7 @@ namespace mobs
             if (monster.IsDead) PlayerModificationStop();
         }
 
+        //контроллер атаки
         public virtual IEnumerator AttackControll()
         {
             yield return new WaitForSeconds(CorutineTime);
@@ -90,6 +99,7 @@ namespace mobs
             isattacking = false;
         }
 
+        //функція початку модифікацій
         public void PlayerModificationStart()
         {
             speed.WalkSpeed = ModifikatePlayerSpeed;
@@ -98,6 +108,7 @@ namespace mobs
             camera.fieldOfView = ModifikatePlayerFieldOfViev;
         }
 
+        //функція початку закінчення
         public void PlayerModificationStop()
         {
             speed.WalkSpeed = StandartWallkSpeed;

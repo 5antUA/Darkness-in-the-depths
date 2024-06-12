@@ -3,16 +3,17 @@ using UnityEngine;
 
 public class MobDamager : MonoBehaviour
 {
-    public float takeDamageCorutine = 0.02f;
+    public float takeDamageCorutine = 0.02f;                     // для віднімання хп разом з анімацією
 
-    [SerializeField] protected Transform _startShooter;
+    [SerializeField] protected Transform _startShooter;         
     protected Player enemy;
     protected Animator animator;
-    protected Monster monster;        //щоб брати інформацію про урон
+    protected Monster monster;                                  //щоб брати інформацію про урон
 
-    [HideInInspector] public bool isdamage = false;
-    protected float monsterDamage; 
+    [HideInInspector] public bool isdamage = false;             //флажок для уникнення зациклювання
+    protected float monsterDamage;                              //сила монстра
 
+    //ініціалізація
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,11 +26,12 @@ public class MobDamager : MonoBehaviour
         Hitting();
     }
 
+    //логіка нанесення урону
     private void Hitting()
     {
-        if (animator.GetBool("Attack") == true && !isdamage)
+        if (animator.GetBool("Attack") == true && !isdamage) //перевірка на стан
         {
-            enemy = GetEnemy();
+            enemy = GetEnemy();                                
             if (enemy == null) return;
             else if (enemy.CompareTag("Player"))
             {
@@ -39,6 +41,7 @@ public class MobDamager : MonoBehaviour
         }
     }
 
+    //корутина для нанесення урону по анімації
     private IEnumerator TakeDamage()
     {
         yield return new WaitForSeconds(takeDamageCorutine);
@@ -51,6 +54,7 @@ public class MobDamager : MonoBehaviour
         isdamage = false;
     }
 
+    //локіка пошуку плеєра для нанесення урону (за допомогою рейкасту)
     protected Player GetEnemy()
     {
         RaycastHit hit = GetComponentInChildren<ThrowRay>().GetHit(5);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterBoss : Monster
 {
-    private GameObject SpawnSinplemob;
+    private GameObject SpawnSinplemob;  //поле трігеру спавну простих монстрів
 
     private void Update()
     {
@@ -13,6 +13,7 @@ public class MonsterBoss : Monster
         OnMonsterDeath();
     }
 
+    //змінений менеджер зниження для боса
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)

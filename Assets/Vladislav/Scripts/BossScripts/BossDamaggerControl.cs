@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class BossDamaggerControl : MobDamager
 {
-    public float corutineTime = 0.5f;
-    private Sounds sounds;
-    private bool attacking = false;
+    public float corutineTime = 0.5f;        //час для нанесення урону разом з анімацією
+
+    private Sounds sounds;                   //для відтворення звуків
+    //прапосці для уникання зациклювань
+    private bool attacking = false;           
     private bool ispushing = false;
+
+    //ініціалізація об'єктів
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -24,6 +28,7 @@ public class BossDamaggerControl : MobDamager
         pushing();
     }
 
+    //логіка нанесення урону
     private void Hitting()
     {
         enemy = GetEnemy();
@@ -34,6 +39,8 @@ public class BossDamaggerControl : MobDamager
             enemy.TakeDamage(monsterDamage);
         }
     }
+
+    //метод для підкидання гравця
     private void pushing()
     {
         if (enemy != null && ispushing)
@@ -43,6 +50,7 @@ public class BossDamaggerControl : MobDamager
         }
     }
 
+    //менеджер атаки
     private IEnumerator PushTime()
     {
         yield return new WaitForSeconds(corutineTime);

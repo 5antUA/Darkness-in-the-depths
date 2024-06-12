@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class Monster : Character
 {
+    //данні для взаємодії
     public Rigidbody[] ALLrigidbodys;
     public AudioSource SecondAudioSourse;
     protected Animator animator;
@@ -11,8 +12,9 @@ public class Monster : Character
     protected BlockAttackControl blockAttackControl;
     protected MobDamager mobDamager;
 
-    protected bool deathchaker = false;
+    protected bool deathchaker = false; //флажок смерті монстра (для уникання зациклювання)
 
+    //ініціалізація
     protected void Awake()
     {
         animator = GetComponent<Animator> ();
@@ -30,6 +32,7 @@ public class Monster : Character
         OnMonsterDeath();
     }
 
+    //менеджер смерті монста
     private void OnMonsterDeath()
     {
         if (IsDead && !deathchaker)
@@ -44,6 +47,7 @@ public class Monster : Character
         }
     }
 
+    //функція яка заставляє монстра падати у мипадку смерті
     protected void makephicik()
     {
         animator.enabled = false;

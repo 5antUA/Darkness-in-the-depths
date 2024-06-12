@@ -8,11 +8,11 @@ namespace mobs
         {
             Attack();
         }
-
+        //логіка атаки боса
         private void Attack()
         {
             distance = Vector3.Distance(this.transform.position, player.transform.position);
-            if (distance < attackDistanse && SpawnSimpleMob.MonsterCounter <= 3)
+            if (distance < attackDistanse && SpawnSimpleMob.MonsterCounter <= 3)//доданий лічильник малих мобів
             {
                 if (!isattacking)
                 {
