@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickedSlot : MonoBehaviour //клас для збереження предметів у інвентарі
+public class ClickedSlot : MonoBehaviour //клас для запам'ятовування предметів,на які натиснено, у інвентарі
 {
     public InventorySlot Item { get; set; }
 
