@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//НУЖНО ВЫБРАТЬ ОБЪЕКТ ЭТОГО КЛАССА В СКРИПТЕ ITEM,КОТОРЫЙ ПРЕДВАРИТЕЛЬНО ВИСИТ НА ПРЕФАБЕ ХИЛА НА СЦЕНЕ
-[CreateAssetMenu(fileName = "Heal Item" , menuName ="Invenroty/Items/New Heal item")]
-public class HealItem :ItemScriptableObject
+
+[CreateAssetMenu(fileName = "Heal Item" , menuName ="Invenroty/Items/New Heal item")] //створення ассет меню для зручності
+public class HealItem :ItemScriptableObject //клас для для розпізновання предметів-аптечок
 {
-    
 
     private void Start()
     {

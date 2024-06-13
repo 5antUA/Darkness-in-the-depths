@@ -6,39 +6,35 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private SavedData.InputData InputData;
-    private string[] id = new string[12];
-
-    public Transform inventoryPanel;
-    public List<InventorySlot> slots = new List<InventorySlot>();
-    public List<ItemScriptableObject> scriptableObjects = new List<ItemScriptableObject>();
-    private Camera mainCamera;
-    public GameObject MenuUi;
-    public float reachDistance = 3f;
+    private SavedData.InputData InputData; //поле для отримання клавіши взаємодії
+    private string[] id = new string[12]; //масив для збереження id предметів
+    public Transform inventoryPanel; //батьківський об'єкт слотів
+    public List<InventorySlot> slots = new List<InventorySlot>(); //список для запису предметів
+    public List<ItemScriptableObject> scriptableObjects = new List<ItemScriptableObject>(); //список для реалізаціїї збережень
+    private Camera mainCamera; 
+    public GameObject MenuUi; //інтерфейс меню
+    public float reachDistance = 3f; //дистанція викиду променя
 
 
     void Start()
     {
         InputData = new();
         InputData = InputData.Load();
-
         mainCamera = Camera.main;
-        var centerPoint = new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 0);
-        for (int i = 0; i < inventoryPanel.childCount; i++) 
+        
+        for (int i = 0; i < inventoryPanel.childCount; i++)  //ініціалізуємо слоти
         {
             if(inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null) 
             {
                 slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
             }
         }
-
         LoadInventory();
     }
 
     void Update()
     {
-        
-        var centerPoint = new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 0);
+        var centerPoint = new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 0);//центральна точка екрану
         Ray rayTake = mainCamera.ScreenPointToRay(centerPoint);
         RaycastHit hit;
 
@@ -46,21 +42,17 @@ public class InventoryManager : MonoBehaviour
         {
             if (Physics.Raycast(rayTake, out hit, reachDistance))
             {
-                Debug.Log("dsaasd");
-                Debug.Log(hit.collider);
-                if (hit.collider.gameObject.GetComponent<Item>() != null)
+                if (hit.collider.gameObject.GetComponent<Item>() != null) //якщо луч отримав компонент типу Item - додаємо об'єкт в інвентар
                 {
-                    Debug.Log(hit.collider.gameObject.GetComponent<Item>());
                     AddItem(hit.collider.gameObject.GetComponent<Item>().item);
-                    Destroy(hit.collider.gameObject);
-                    Debug.DrawLine(rayTake.origin, hit.point, Color.red);
+                    Destroy(hit.collider.gameObject); //видалення об'єкту на сцені
                 }
             }
         }
     }
 
 
-    private void AddItem(ItemScriptableObject _item)
+    private void AddItem(ItemScriptableObject _item) //метод що реалізує додаваня предмету до інвентарю
     {
         foreach (InventorySlot slot in slots)
         {
@@ -74,7 +66,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void LoadInventory()
+    private void LoadInventory() //метод що реалізує збереження предметів у інвентарі
     {
         id[3] = "0";
         for (int i = 0; i < inventoryPanel.childCount; i++)

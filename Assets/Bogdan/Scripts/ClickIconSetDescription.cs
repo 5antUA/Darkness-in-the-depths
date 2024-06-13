@@ -8,18 +8,13 @@ using UnityEngine.UI;
 
 public class ClickIconSetDescription : MonoBehaviour
 {
-    public string description;
-    public TMP_Text textToShow;
-    public Sprite iconGO;
+    public string description; //поле яке приймає опис предмета зазначений в ItemScriptableObject
+    public TMP_Text textToShow; //поле яке приймає текст опису предмету в інвентарі, для подальшого змінення
+    public Sprite iconGO; //поле яке приймає зображення опису предмету, для подальшого змінення
 
-
-
-   
-    public void OnClickSetText(GameObject SlotGO)
+    public void OnClickSetText(GameObject SlotGO) // метод що встановлює опис предмета, при натисканні на слот
     {
-
-        
-       if (SlotGO.GetComponent<InventorySlot>().item != null)
+       if (SlotGO.GetComponent<InventorySlot>().item != null) 
         {
             textToShow = this.GetComponent<TMP_Text>();
             description = SlotGO.GetComponent<InventorySlot>().item.itemDescriptoin;
@@ -30,11 +25,9 @@ public class ClickIconSetDescription : MonoBehaviour
             textToShow = this.GetComponent<TMP_Text>();
             textToShow.text = "Пустий слот";
         }
-
-
     }
     
-    public void OnClickSetImage(GameObject _IconGO)
+    public void OnClickSetImage(GameObject _IconGO) //метод що встановлює описову іконку предмета збільшеного розміру, при натисканні на слот
     {
         if (_IconGO.GetComponent<Image>().sprite != null)
         {
@@ -47,12 +40,10 @@ public class ClickIconSetDescription : MonoBehaviour
         {
             this.GetComponent<Image>().sprite = null;
             this.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-
         }
-      
-
     }
-    public void onClickSetIconBackground(Sprite _BackIcon)
+
+    public void onClickSetIconBackground(Sprite _BackIcon) //метод що встановлює обведення слота при натисканні
     {
         if (this.gameObject.GetComponent<Image>().sprite == null)
         {
@@ -61,7 +52,8 @@ public class ClickIconSetDescription : MonoBehaviour
         }       
        
     }
-    public void setNoneBackground()
+
+    public void setNoneBackground() //метод що анулює обведення слота при натисканні
     {
         this.gameObject.GetComponent<Image>().sprite = null;
         this.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);

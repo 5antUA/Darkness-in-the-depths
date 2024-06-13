@@ -19,37 +19,21 @@ public class DropItem : MonoBehaviour
     }
     private void Update()
     {
-        // Находим скрипт InventorySlot в слоте в иерархии
+        // Знаходимо скрипт InventorySlot в слоті в ієрархії
         oldSlot = this.GetComponent<ClickedSlot>().Item;
-        
-
-
-
-
-
     }
 
-
-    public void OnClickDropItem()
+    public void OnClickDropItem() //метод,що дозволяє викидувати предмети з інвентаря
     {
-        if (oldSlot == null)
-            return;
-
         if (oldSlot.isEmpty)
             return;
-
-            
-        // Выброс объектов из инвентаря - Спавним префаб обекта перед персонажем
+        // викидування об'ектів з інвентаря - створюємо префаб об'єкта перед персонажем
         Instantiate(oldSlot.item.itemPrefab, player.position + Vector3.up + player.forward, Quaternion.identity);
-
-        // убираем значения InventorySlot
+        // анулюємо значенення в InventorySlot
         NullifySlotData();
-        
-
-        
     }
 
-    public void OnUseHeal()
+    public void OnUseHeal() //метод,що дозволяє використовувати аптечки беспосередньо з інвентаря
     {
         if (oldSlot == null)
             return;
@@ -65,18 +49,14 @@ public class DropItem : MonoBehaviour
             {
                 character.Health += oldSlot.item.healAmount;
             }
-
-            // убираем значения InventorySlot
+            // анулюємо значенення в InventorySlot
             NullifySlotData();
-
         }
-
-
     }
 
     void NullifySlotData()
     {
-        // убираем значения InventorySlot
+        // анулюємо значенення в InventorySlot
         oldSlot.item = null;
         oldSlot.isEmpty = true;
         oldSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0);
@@ -84,10 +64,9 @@ public class DropItem : MonoBehaviour
         textToShow.text = "Пустий слот";
         iconGO.sprite = null;
         iconGO.color = new Color(1, 1, 1, 0);
-
     }
 
-    public void onClickActiveButton(InventorySlot SlotGO)
+    public void onClickActiveButton(InventorySlot SlotGO) //метод що активує кнопки,якщо слот не пустий
     {
         if (SlotGO.item != null && SlotGO.item.itemType == ItemType.Heal )
         {
