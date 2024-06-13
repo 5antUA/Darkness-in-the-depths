@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class CharacterButtons : MonoBehaviour
 {
-    private CharacterData CharacterData;
-    private PlayerPositionData PlayerData;
-    private NotesData NotesData;
-    private RostykEnums.Characters character;
-    private string CharacterName;
+    [SerializeField] private GameObject BlackImage;              // напівпрозорий чорний екран
+    [SerializeField] private GameObject ConfirmScreenUI;         // UI елемент (підтвердження дії)
 
-    [SerializeField] private GameObject BlackImage;
-    [SerializeField] private GameObject ConfirmScreenUI;
+    private string CharacterName;                                // ім'я персонажа
+    private CharacterData CharacterData;                         // ігрові дані про персонажа
+    private PlayerPositionData PlayerData;                       // ігрові дані про гравця
+    private NotesData NotesData;                                 // ігрові дані про записки
+    private RostykEnums.Characters character;                    // обраний персонаж
+
 
     void Start()
     {
@@ -23,30 +25,35 @@ public class CharacterButtons : MonoBehaviour
     }
 
 
+    // кнопка вибору персонажа Валентин
     public void SetCharacterValentinButton()
     {
         character = RostykEnums.Characters.Valentin;
         CharacterName = "Валентин";
     }
 
+    // кнопка вибору персонажа Владіслейв
     public void SetCharacterKovalButton()
     {
         character = RostykEnums.Characters.Kovalev;
         CharacterName = "Владіслейв";
     }
 
+    // кнопка вибору персонажа Ромаріо Десантес
     public void SetCharacterRomarioButton()
     {
         character = RostykEnums.Characters.Romario;
         CharacterName = "Ромаріо Десантес";
     }
 
+    // кнопка вибору персонажа Містер Бігуді
     public void SetCharacterPaniniButton()
     {
         character = RostykEnums.Characters.Panini;
         CharacterName = "Містер Бігуді";
     }
 
+    // кнопка вибору персонажа
     public void ApplyCharacterButton()
     {
         ConfirmScreenUI.SetActive(true);
@@ -54,15 +61,14 @@ public class CharacterButtons : MonoBehaviour
             $"Ви дійсно хочете обрати персонажа {CharacterName}?";
     }
 
+    // кнопка "Так" в підтвердженні вибору персонажа
     public void ApplyCharacterButtonYes()
     {
         ConfirmScreenUI.SetActive(false);
         BlackImage.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
         StartCoroutine(LoadGame());
-
         CharacterData.isContinueGame = false;
         CharacterData.Character = character;
         CharacterData.Save();
@@ -70,11 +76,13 @@ public class CharacterButtons : MonoBehaviour
         NotesData.Save();
     }
 
+    // кнопка "Ні" в підтвердженні вибору персонажа
     public void ApplyCharacterButtonNo()
     {
         ConfirmScreenUI.SetActive(false);
     }
 
+    // асинхронна функція запуску екрана загрузки
     private IEnumerator LoadGame()
     {
         yield return new WaitForSeconds(3f);

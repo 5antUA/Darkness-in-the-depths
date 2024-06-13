@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5099470199480944930}
   m_Layer: 0
   m_Name: TriggerMobsSpawner 1
-  m_TagString: Untagged
+  m_TagString: SpawnSimpleMob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293601371524369240}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 33.02, y: 17.49, z: 47.25}
   m_LocalScale: {x: 16.285, y: 3.9647, z: 17.135162}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorutineTime: 4
   bossPlase: {fileID: 0}
-  mobs: {fileID: 237687038828005751, guid: 8ff0f28dc1955144dad3216c1a133b1f, type: 3}
+  mobs: {fileID: 237687038828005751, guid: 24bdd65c83d292d4abf0da854ad1d53e, type: 3}
   spawnpoints:
   - {fileID: 467356344067369297}
   - {fileID: 6068013228357488900}

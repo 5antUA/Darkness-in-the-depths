@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -12.561
       objectReference: {fileID: 0}
+    - target: {fileID: 3103283877742750325, guid: 154ef0ee2806f994cba0578b9223f5fb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87b6852b62ac3d0499d901b9248c5760, type: 2}
     - target: {fileID: 5866666021909216657, guid: 154ef0ee2806f994cba0578b9223f5fb, type: 3}
       propertyPath: m_Controller
       value: 
@@ -946,8 +950,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21eef393c038f141955c5150b1d3df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CorutineTime: 0.6
   attackDistanse: 6
+  CorutineTime: 0.6
+  ModifikatePlayerSpeed: 0
+  ModifikatePlayerFieldOfViev: 0
 --- !u!114 &4778954435569420657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,8 +967,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCharacterHealth: 0
-  Health: 25
-  Damage: 5
+  Health: 1500
+  Damage: 7
   Armor: 0
   WalkSpeed: 0
   SprintSpeed: 0
@@ -992,6 +998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aef9d82323c3324d87c0e8eff5bd6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isdamage: 0
+  takeDamageCorutine: 0.02
   _startShooter: {fileID: 2923332627275708321}
   corutineTime: 0.5
 --- !u!82 &5045626835773980706

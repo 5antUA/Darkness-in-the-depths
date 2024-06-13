@@ -1,25 +1,27 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using RostykEnums;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using SavedData;
 
 
 // ¬≈ÿ¿“‹ — –»œ“ Õ¿ Œ¡⁄≈ “ EntryPoint
 public class LoadGame : MonoBehaviour
 {
-    private SavedData.CharacterData CharacterData;
-    private SavedData.PlayerPositionData PlayerPositionData;
-    private SavedData.NotesData NotesData;
-    private SavedData.TriggerData TriggerData;
-    private SavedData.InputData InputData;
+    private CharacterData CharacterData;
+    private PlayerPositionData PlayerPositionData;
+    private NotesData NotesData;
+    private TriggerData TriggerData;
+    private InputData InputData;
+    private InterfaceData InterfaceData;
 
     [SerializeField] private GameObject PlayerPrefab;
     public List<GameObject> TriggerList;
-
     private List<GameObject> CloneTriggerList;
-    private GameObject PlayerClone;
+
+    private GameObject PlayerCloneObject;
+    private Camera PlayerCamera;
+    private PlayerRotation PlayerRotation;
     private Player PlayerProperties;
     private Vector3 DefaultPlayerPosition;
 
@@ -31,7 +33,7 @@ public class LoadGame : MonoBehaviour
         DefaultPlayerPosition = this.transform.position;
         CloneTriggerList = new();
 
-        // init player data
+        // init enemy data
         InitData();
         InNewGame();
 
@@ -86,12 +88,14 @@ public class LoadGame : MonoBehaviour
         NotesData = new();
         TriggerData = new(TriggerList);
         InputData = new();
+        InterfaceData = new();
 
         CharacterData = CharacterData.Load();
         PlayerPositionData = PlayerPositionData.Load();
         NotesData = NotesData.Load();
         TriggerData = TriggerData.Load(TriggerList);
         InputData = InputData.Load();
+        InterfaceData = InterfaceData.Load();
     }
 
     private void SavePlayerPosition()
@@ -107,8 +111,17 @@ public class LoadGame : MonoBehaviour
 
     private void LoadPlayerPosition()
     {
-        PlayerClone = Instantiate(PlayerPrefab, PlayerPositionData.position, PlayerPositionData.rotation);
-        PlayerProperties = PlayerClone.GetComponent<Player>();
+        PlayerCloneObject = Instantiate(PlayerPrefab, PlayerPositionData.position, PlayerPositionData.rotation);
+
+        PlayerProperties = PlayerCloneObject.GetComponent<Player>();
+        PlayerCamera = PlayerCloneObject.GetComponentInChildren<Camera>();
+        PlayerRotation = PlayerCloneObject.GetComponentInChildren<PlayerRotation>();
+
+        PlayerCamera.farClipPlane = InterfaceData.PlayerFar;
+        PlayerRotation.Sensitive =
+            InterfaceData.isNegativeSensitivity ?
+            -InterfaceData.CameraSensitivity :
+            InterfaceData.CameraSensitivity;
     }
 
     private void DefineCharacter()
@@ -140,7 +153,6 @@ public class LoadGame : MonoBehaviour
         PlayerProperties.WalkSpeed = CharacterData.Property.WalkSpeed;
         PlayerProperties.SprintSpeed = CharacterData.Property.SprintSpeed;
         PlayerProperties.CrouchSpeed = CharacterData.Property.CrouchSpeed;
-        PlayerProperties.LockOpeningTime = CharacterData.Property.LockOpeningTime;
     }
 
     private void SavePlayerProperties()
@@ -148,10 +160,6 @@ public class LoadGame : MonoBehaviour
         CharacterData.Property.MaxCharacterHealth = PlayerProperties.MaxCharacterHealth;
         CharacterData.Property.Health = PlayerProperties.Health;
         CharacterData.Property.Damage = PlayerProperties.Damage;
-        CharacterData.Property.WalkSpeed = PlayerProperties.WalkSpeed;
-        CharacterData.Property.SprintSpeed = PlayerProperties.SprintSpeed;
-        CharacterData.Property.CrouchSpeed = PlayerProperties.CrouchSpeed;
-        CharacterData.Property.LockOpeningTime = PlayerProperties.LockOpeningTime;
 
         CharacterData.Save();
     }

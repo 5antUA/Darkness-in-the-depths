@@ -3,28 +3,29 @@ using UnityEngine;
 
 namespace SavedData
 {
-    // Класс для хранения transform игрока
+    // серіалізуємий клас, який зберігає дані про позицію та кут повороту гравця
     [System.Serializable]
     public class PlayerPositionData
     {
-        private const string KEY = "PlayerPositionData";
+        private const string KEY = "PlayerPositionData";    // ключ зберігання
 
-        public Vector3 position;
-        public Quaternion rotation;
+        public Vector3 position;                            // дані про позицію гравця в просторі
+        public Quaternion rotation;                         // дані про кут повороту гравця
 
+        // конструктор по замовчуванню
         public PlayerPositionData(Vector3 DefaultPos = new())
         {
             position = DefaultPos;
             rotation = Quaternion.identity;
         }
 
-
-        #region Management
+        // функція для збереження даних в файл по ключу
         public void Save()
         {
             StorageService.Save(KEY, this);
         }
 
+        // функція для завантаження ігрових даних по ключу
         public PlayerPositionData Load()
         {
             try
@@ -38,6 +39,5 @@ namespace SavedData
                 return this;
             }
         }
-        #endregion
     }
 }

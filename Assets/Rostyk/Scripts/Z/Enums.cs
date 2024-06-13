@@ -1,6 +1,5 @@
 ﻿namespace RostykEnums
 {
-    // Перечисление режима оружия
     public enum WeaponMode
     {
         Hummer = 0,
@@ -8,15 +7,13 @@
         Shotgun = 2,
     }
 
-    // Перечисление оружий дальнего боя
     public enum Weapon
     {
-        Gun = 0,
-        DoubleGun = 1,
-        Shotgun = 2
+        Hammer = 0,
+        Gun = 1,
+        ShotGun = 2,
     }
 
-    // Перечисление вкладок меню
     public enum TabMenu
     {
         Inventory = 0,
@@ -25,7 +22,6 @@
         Settings = 3,
     }
 
-    // Перечисление игровых персонажей
     public enum Characters
     {
         Kovalev = 0,

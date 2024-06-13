@@ -3,62 +3,58 @@ using UnityEngine;
 
 namespace mobs
 {
-    public class TiranAttackControl : AttackControllZybastik
+    public class TiranAttackControl : BlockAttackControl
     {
-        private Monster monster;
+
         private ParticleSystem particleSystem;
 
-        public override void Awake()
+        private void Start()
         {
-            mob = gameObject;
             monster = GetComponent<Monster>();
             animator = GetComponent<Animator>();
+            mobDamager = GetComponent<MobDamager>();
             particleSystem = GetComponentInChildren<ParticleSystem>();
+            PlayerDataInit();
         }
         private void Update()
         {
-            Init();
             Attack();
         }
-        private void OnDestroy()
-        {
-            particleSystem.Play();
-            speed.WalkSpeed = StandartWallkSpeed;
-            speed.SprintSpeed = StandartSprintSpeed;
-            camera.fieldOfView = FieldOfViev;
-        }
-        private void Init()
-        {
-            if (player == null)
-            {
-                player = GameObject.FindWithTag("Player");
-                speed = player.GetComponent<Player>();
-                camera = player.GetComponentInChildren<Camera>();
-                StandartWallkSpeed = speed.WalkSpeed;
-                StandartSprintSpeed = speed.SprintSpeed;
-                FieldOfViev = camera.fieldOfView;
-            }
-        }
+
         private void Attack()
         {
-            distance = Vector3.Distance(mob.transform.position, player.transform.position);
+            distance = Vector3.Distance(this.transform.position, player.transform.position);
             if (distance < attackDistanse)
             {
-                speed.WalkSpeed = 0.1f;
-                speed.SprintSpeed = 0.1f;
-                camera.fieldOfView = 37;                     
-                player.transform.LookAt(new Vector3(mob.transform.position.x, player.transform.position.y, mob.transform.position.z));
-                if (!isattacking)
-                {
-                    isattacking = true;
-                    StartCoroutine(routine: AttackControll());
-                }
+                    if (characterController.isGrounded)
+                    {
+                        speed.WalkSpeed = 0.01f;
+                        speed.SprintSpeed = 0.01f;
+                        speed.CrouchSpeed = 0.01f;
+                        camera.fieldOfView = 40;
+                    }
+                    player.transform.LookAt(new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z));
+                    if (!isattacking)
+                    {
+                        isattacking = true;
+                        StartCoroutine(routine: AttackControll());
+                    }
+                    this.transform.LookAt(new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z));
+            }
+            else PlayerModificationStop();
+            if (monster.IsDead)
+            {
+                PlayerModificationStop();
+                particleSystem.Play();
             }
         }
-        public void Push() {
+
+        public void Push()
+        {
             player.GetComponent<CharacterController>().Move(new Vector3(player.transform.position.x,
              player.transform.position.y, player.transform.position.z - 100) * Time.deltaTime);
         }
+
         public override IEnumerator AttackControll()
         {
             animator.SetBool("Attack", true);
@@ -68,6 +64,5 @@ namespace mobs
             yield return new WaitForSeconds(CorutineTime);
             monster.TakeDamage(9999999f);
         }
-
     }
 }

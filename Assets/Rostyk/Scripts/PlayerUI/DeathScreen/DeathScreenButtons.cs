@@ -2,10 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class DeathScreenButtons : MonoBehaviour
 {
     [SerializeField] private GameObject FadeScreen;
-
     [SerializeField] private AudioClip GameoverClip;
     [SerializeField] private AudioClip EvilLaughtClip;
     [SerializeField] private AudioClip ButtonClickClip;
@@ -17,6 +17,7 @@ public class DeathScreenButtons : MonoBehaviour
         Cursor.visible = true;
     }
 
+    // кнопка нової гри
     public void NewGame()
     {
         FadeScreen.SetActive(true);
@@ -24,6 +25,7 @@ public class DeathScreenButtons : MonoBehaviour
         StartCoroutine(NewGameCoroutine());
     }
 
+    // кнопка повернення на головне меню
     public void ToMainMenu()
     {
         FadeScreen.SetActive(true);
@@ -32,6 +34,7 @@ public class DeathScreenButtons : MonoBehaviour
         StartCoroutine(ToMainMenuCoroutine());
     }
 
+    // асинхронна функція запуску сцени загрузки
     private IEnumerator NewGameCoroutine()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -42,6 +45,7 @@ public class DeathScreenButtons : MonoBehaviour
         SceneManager.LoadScene("LoadScene");
     }
 
+    // асинхронна функція запуску головного меню
     private IEnumerator ToMainMenuCoroutine()
     {
         Cursor.lockState = CursorLockMode.Locked;

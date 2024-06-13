@@ -159,7 +159,6 @@ public class PistolScript : Weapon
         if(Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, _distance))
         {
             Monster enemy = hit.collider.GetComponentInParent<Monster>();
-
             if (enemy != null)
             {
                 enemy.TakeDamage(20 * characterDamage);

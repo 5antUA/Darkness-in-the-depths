@@ -5,11 +5,16 @@ namespace mobs
     public class BossTrigerControl : MonoBehaviour
     {
         public GameObject bossPrefab;
-        public GameObject Spawnsimplemob;
+        private GameObject Spawnsimplemob;
         public Transform spawnpoint;
         private GameObject boss;
         private Sounds sound;
         private Animator animator;
+
+        private void Awake()
+        {
+                Spawnsimplemob = GameObject.FindGameObjectWithTag("SpawnSimpleMob");
+        }
 
         private void OnTriggerEnter(Collider other)
         {

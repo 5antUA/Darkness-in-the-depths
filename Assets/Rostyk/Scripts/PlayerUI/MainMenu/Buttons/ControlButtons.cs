@@ -1,25 +1,23 @@
-using SavedData;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-// ВЕШАТЬ НА TabsUI/ControlUI
+// Вішати на об'єкт TabsUI/ControlUI
 public class ControlButtons : MonoBehaviour
 {
-    // STORAGE SERVICES
-    protected InputData InputData;
+    [SerializeField] private Text[] buttons;                                  // масив всіх кнопок
 
-    // OTHER
-    [SerializeField] private Text[] buttons;
-    protected readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));      // Масив всех KeyCode
-    protected delegate void LocalFunction();                                  // общий делегат
-    protected KeyCode currentKey;                                             // шаблонная кнопка
+    protected readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));      // масив всіх KeyCode
+    protected delegate void LocalFunction();                                  // загальний делегат
+    protected KeyCode currentKey;                                             // шаблонна кнопка
+    protected SavedData.InputData InputData;                                  // ігрові дані про клавіші
+
 
     private void Start()
     {
-        InputData = new InputData();
+        InputData = new();
         InputData = InputData.Load();
 
         InitButtonsInfo();
@@ -27,7 +25,7 @@ public class ControlButtons : MonoBehaviour
 
 
     #region Buttons
-    // Смена кнопки для приседания (метод нажатия кнопки)
+    // кнопка для зміни клавіші присідання
     public void ChangeCrouch()
     {
         void _func()
@@ -39,7 +37,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для бега (метод нажатия кнопки)
+    // кнопка для зміни клавіші бігу
     public void ChangeRun()
     {
         void _func()
@@ -51,7 +49,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для прыжков (метод нажатия кнопки)
+    // кнопка для зміни клавіші стрибків
     public void ChangeJump()
     {
         void _func()
@@ -63,7 +61,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для открытия инвентаря (метод нажатия кнопки)
+    // кнопка для зміни клавіші інвентаря
     public void ChangeInventory()
     {
         void _func()
@@ -75,7 +73,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для фонарика (метод нажатия кнопки)
+    // кнопка для зміни клавіші фонарика
     public void ChangeSwitch()
     {
         void _func()
@@ -87,7 +85,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки для стрельбы (метод нажатия кнопки)
+    // кнопка для зміни клавіші стрільби
     public void ChangeShoot()
     {
         void _func()
@@ -99,7 +97,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки взаимодействия (метод нажатия кнопки)
+    // кнопка для зміни клавіші взаємодії
     public void ChangeInteract()
     {
         void _func()
@@ -111,7 +109,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки перезарядки (метод нажатия кнопки)
+    // кнопка для зміни клавіші перезарядки
     public void ChangeReload()
     {
         void _func()
@@ -123,7 +121,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки сохранения (метод нажатия кнопки)
+    // кнопка для зміни клавіші збереження гри
     public void ChangeSaveGame()
     {
         void _func()
@@ -135,7 +133,7 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Смена кнопки загрузки (метод нажатия кнопки)
+    // кнопка для зміни клавіші завантаження гри
     public void ChangeLoadGame()
     {
         void _func()
@@ -147,10 +145,11 @@ public class ControlButtons : MonoBehaviour
         StartCoroutine(ReadInput(_func));
     }
 
-    // Сброс данных InputData (метод нажатия кнопки)
+    // кнопка для скидування налаштувань
     public void ResetSettings()
     {
-        InputData = new InputData();
+
+        InputData = new();
         InputData.Save();
 
         InitButtonsInfo();
@@ -159,7 +158,7 @@ public class ControlButtons : MonoBehaviour
 
 
     #region Services
-    // Корутина. Работает, пока не нажмется кнопка в меню настроек управления
+    // асинхронна функція для зміни клавіші
     protected IEnumerator ReadInput(LocalFunction function)
     {
         while (true)
@@ -183,6 +182,7 @@ public class ControlButtons : MonoBehaviour
         }
     }
 
+    // ініціалізація текстів кнопок
     private void InitButtonsInfo()
     {
         buttons[0].text = InputData.Crouch.ToString();

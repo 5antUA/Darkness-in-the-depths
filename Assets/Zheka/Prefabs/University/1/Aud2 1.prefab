@@ -76,9 +76,6 @@ PrefabInstance:
       addedObject: {fileID: 5965010289926130345}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a337cdf577bf904d9b55b0b6ac493d7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6045166803606540204}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a337cdf577bf904d9b55b0b6ac493d7, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 978247600592138651}
   m_SourcePrefab: {fileID: 100100000, guid: 9a337cdf577bf904d9b55b0b6ac493d7, type: 3}
 --- !u!1 &2502506031711060919 stripped
@@ -136,26 +133,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6045166803606540204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502506031711060919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fb3eb29eeebd04d87475bbfb984a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  createMultiMaterialMesh: 1
-  combineInactiveChildren: 1
-  deactivateCombinedChildren: 1
-  deactivateCombinedChildrenMeshRenderers: 0
-  generateUVMap: 1
-  destroyCombinedChildren: 0
-  folderPath: Prefabs/CombinedMeshes
-  meshFiltersToSkip: []
 --- !u!64 &978247600592138651
 MeshCollider:
   m_ObjectHideFlags: 0

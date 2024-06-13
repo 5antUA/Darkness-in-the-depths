@@ -1,52 +1,49 @@
 using UnityEngine;
-using RostykEnums;
-using UnityEngine.SceneManagement;
 
 
-// ¬≈Ўј“№ — –»ѕ“ Ќј Ѕј«ќ¬џ… ќЅЏ≈ “ »√–ќ ј
+// ¬≥шати скр≥пт на базовий об'Їкт гравц€
 public class Player : Character
 {
-    [Header("\t PLAYER SPECIAL")]
-    [Space]
-
-
     #region Player properties
-    // STORAGE SERVICES
-    private SavedData.InputData InputData;
+    [SerializeField] private Light PlayerLight;                 // Light (фонарик)
+    [SerializeField] private GameObject MenuUI;                 // GameObject меню гравц€
 
-    // VALUES
-    public float CrouchHeight;                                  // ¬ысота прыседани€
-    public float JumpForce;                                     // сила прыжка
-    public int LockOpeningTime;                                 // врем€ взлома замков
-    public bool isNotPenetation = false;
+    public float CrouchHeight;                                  // ¬исота прис≥данн€
+    public float JumpForce;                                     // сила прижка
+    public Camera PlayerCamera;                                 // Camera (головна камера гравц€)
+    public AudioClip SprintSound;                               // AudioClip б≥гу
+    public AudioClip WalkingSound;                              // AudioClip ходьби
+    public AudioClip CrouchSound;                               // AudioClip пов≥льноњ ходьби
 
-    private bool isSprint;                                      // если бежит
-    private bool isCrouch;                                      // если медленно ходит
-    private float defoltFOV;
-    private float _gravity = -9.81f;                            // ускорение свободного падени€ g
-    private Vector3 _velocity;                                  // направление игрока
+    public CharacterController Controller => _controller;       // властив≥сть CharacterController
 
-    // COMPONENTS
-    [SerializeField] private Camera PlayerCamera;               // Camera игрока
-    [SerializeField] private Light PlayerLight;                 // Player flashlight
-    [SerializeField] private GameObject MenuUI;
-    public CharacterController _controller;
+    private bool _isSprint;                                     // €кщо б≥жить...
+    private bool _isCrouch;                                     // €кщо пов≥льно ходить...
+    private float _defaultFOV;                                  // поле зору гравц€ по замовчуванню
+    private float _defaultControllerHeight;                     // висота гравц€ по замовчуванню
+    private float _gravity = -9.81f;                            // прискоренн€ в≥льного пад≥нн€ g
+    private Vector3 _velocity;                                  // вектор направленн€ гравц€
+    private CharacterController _controller;                    // приватний CharacterController
+    private AudioSource _audioSource;                           // _audioSource дл€ програванн€ звук≥в
+    private SavedData.InputData _inputData;                     // дан≥ про клав≥ш≥
     #endregion
 
 
-    #region Management
+    #region MONOBEHAVIOUR
     private void Awake()
     {
-        InputData = new SavedData.InputData();
-        InputData = InputData.Load();
+        _inputData = new SavedData.InputData();
+        _inputData = _inputData.Load();
     }
 
     private void Start()
     {
+        _audioSource = this.GetComponent<AudioSource>();
         _controller = this.GetComponent<CharacterController>();
-        isCrouch = false;
+        _isCrouch = false;
+        _defaultFOV = PlayerCamera.fieldOfView;
+        _defaultControllerHeight = _controller.height;
         PlayerLight.enabled = false;
-        defoltFOV = PlayerCamera.fieldOfView;
     }
 
     private void Update()
@@ -54,13 +51,14 @@ public class Player : Character
         if (!MenuUI.activeInHierarchy)
         {
             Movement();
-            Jump();
+            SoundOfWalk();
             Crouch();
-            ChangeFOV();
-            SwitchLight();
+            ChangeFieldOfView();
+            Jump();
+            SwitchFlashlightMode();
         }
 
-        if (this.IsDead && !isNotPenetation)
+        if (this.IsDead)
         {
             MenuUI.SetActive(false);
             EventManager.OnPlayerDeath();
@@ -78,60 +76,81 @@ public class Player : Character
 
 
     #region Player behaviour
-    // ѕередвижение игрока
+    // ѕерем≥щенн€ гравц€ за направленн€м
     private void Movement()
     {
         _controller.Move(_velocity * Time.deltaTime * WalkSpeed);
     }
 
-    // Ћогика физического движени€ персонажа
+    // ќбчисленн€ вектору направленн€ гравц€ та його швидкост≥
     private void CalculateVelocity()
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         Vector3 _direction = new Vector3(moveX, 0, moveZ);
 
-        if (Input.GetKey(InputData.Run) && Input.GetAxis("Vertical") > 0 && !isCrouch)
+        if (Input.GetKey(_inputData.Run) && Input.GetAxis("Vertical") > 0 && !_isCrouch)
         {
             _direction *= SprintSpeed;
-            isSprint = true;
+            _isSprint = true;
         }
-        else if (Input.GetKey(InputData.Crouch))
+        else if (Input.GetKey(_inputData.Crouch))
         {
             _direction *= CrouchSpeed;
-            isSprint = false;
+            _isSprint = false;
         }
         else
         {
             _direction *= WalkSpeed;
-            isSprint = false;
+            _isSprint = false;
         }
+
         Vector3 move = Quaternion.Euler(0, PlayerCamera.transform.eulerAngles.y, 0) *
             new Vector3(_direction.x, 0, _direction.z);
         _velocity = new Vector3(move.x, _velocity.y, move.z);
     }
 
-    // Ћогика приседани€
-    private void Crouch()
+    // ѕрограванн€ звук≥в ходьби
+    private void SoundOfWalk()
     {
-        if (Input.GetKey(InputData.Crouch))
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && Controller.isGrounded)
         {
-            _controller.height = Mathf.Lerp(_controller.height, CrouchHeight, 6f * Time.deltaTime);
-            isCrouch = true;
-        }
-        else
-        {
-            _controller.height = 1.6f;
-            isCrouch = false;
+            if (_isSprint && !_audioSource.isPlaying)
+            {
+                _audioSource.PlayOneShot(SprintSound);
+            }
+            else if (_isCrouch && !_audioSource.isPlaying)
+            {
+                _audioSource.PlayOneShot(CrouchSound);
+            }
+            else if (!_audioSource.isPlaying)
+            {
+                _audioSource.PlayOneShot(WalkingSound);
+            }
         }
     }
 
-    // Ћогика прыжков персонажа
+    // Ћог≥ка прис≥данн€ гравц€
+    private void Crouch()
+    {
+        if (Input.GetKey(_inputData.Crouch))
+        {
+            _controller.height = Mathf.Lerp(_controller.height, CrouchHeight, 6f * Time.deltaTime);
+            _isCrouch = true;
+        }
+        else
+        {
+            _controller.height = _defaultControllerHeight;
+            _isCrouch = false;
+        }
+    }
+
+    // Ћог≥ка стрибк≥в персонажа
     private void Jump()
     {
         if (_controller.isGrounded)
         {
-            _velocity.y = Input.GetKey(InputData.Jump) ? JumpForce : -0.1f;
+            _velocity.y = Input.GetKey(_inputData.Jump) ? JumpForce : -0.1f;
         }
         else if (!_controller.isGrounded)
         {
@@ -139,32 +158,29 @@ public class Player : Character
         }
     }
 
-    // —мена пол€ зрени€
-    private void ChangeFOV()
+    // «м≥на пол€ зору гравц€
+    private void ChangeFieldOfView()
     {
-        if (isSprint)
+        if (_isSprint)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV + 25, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, _defaultFOV + 25, 5f * Time.deltaTime);
         }
-        else if (isCrouch)
+        else if (_isCrouch)
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV - 15, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, _defaultFOV - 15, 5f * Time.deltaTime);
         }
         else
         {
-            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, defoltFOV, 5f * Time.deltaTime);
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, _defaultFOV, 5f * Time.deltaTime);
         }
     }
-    // ¬ключение или выключение фонарика
-    private void SwitchLight()
+
+    // ѕереключенн€ режиму фонарика
+    private void SwitchFlashlightMode()
     {
-        if (Input.GetKeyDown(InputData.SwitchLight) && PlayerLight.enabled == false)
+        if (Input.GetKeyDown(_inputData.SwitchLight))
         {
-            PlayerLight.enabled = true;
-        }
-        else if (Input.GetKeyDown(InputData.SwitchLight) && PlayerLight.enabled == true)
-        {
-            PlayerLight.enabled = false;
+            PlayerLight.enabled = PlayerLight.enabled ? false : true;
         }
     }
     #endregion

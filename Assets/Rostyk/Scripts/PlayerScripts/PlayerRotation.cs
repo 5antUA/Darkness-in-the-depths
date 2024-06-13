@@ -1,42 +1,43 @@
 using UnityEngine;
 
 
-// ВЕШАТЬ СКРИП НА КАМЕРУ ИГРОКА
+// Вішати скріпт на камеру гравця
 public class PlayerRotation : MonoBehaviour
 {
-    public float _sensitive = 80.0f;                        // to normal - 5.0f in inspector
-    private float rotationX;                                // ? ? ?
+    [SerializeField] private Transform playerBody;          // Трансформ базового об'єкта гравця
 
-    [SerializeField] private Transform playerBody;          // трансформ базового объекта игрока
-    private Player Player;
+    public float Sensitive = 5;                             // Чутливість миші
 
+    private float rotationX;                                // Поворот по X
+    private Player Player;                                  // Скрипт гравця
+
+
+    #region MONOBEHAVIOUR
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        Player = this.GetComponentInParent<Player>();
+        Cursor.lockState = CursorLockMode.Locked;           // Блокування курсора в центрі екрану
+        Cursor.visible = false;                             // Приховування курсора
+        Player = this.GetComponentInParent<Player>();       // Отримання посилання на скрипт гравця
     }
 
     private void Update()
     {
-        if (Player.IsDead)
+        if (Player.IsDead)                                  // Перевірка, чи гравець живий
             return;
 
-        Rotate();
+        Rotate();                                           // Виклик функції повороту
     }
+    #endregion
 
 
-    // Функция для вращения камеры
+    // Функція для повороту камери та гравця
     private void Rotate()
     {
-        float rotX = Input.GetAxis("Mouse X") * _sensitive;
-        float rotY = Input.GetAxis("Mouse Y") * _sensitive;
-
-        rotationX -= rotY;
-        rotationX = Mathf.Clamp(rotationX, -80f, 80f);
-
-        transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
-        playerBody.Rotate(Vector3.up * rotX);
+        float rotX = Input.GetAxis("Mouse X") * Sensitive;  // Обчислення повороту по осі X
+        float rotY = Input.GetAxis("Mouse Y") * Sensitive;  // Обчислення повороту по осі Y
+        rotationX -= rotY;                                  // Зміна значення повороту по осі X
+        rotationX = Mathf.Clamp(rotationX, -80f, 80f);      // Обмеження повороту по осі X
+        transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f); // Обертання камери
+        playerBody.Rotate(Vector3.up * rotX);               // Обертання тіла гравця по осі Y
     }
 }

@@ -12,13 +12,13 @@ public class ActivateNoteTrigger : MonoBehaviour
     private void Start()
     {
         data = new SavedData.NotesData();
-        data = data.Load();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            data = data.Load();
             EventManager.ShowNoteNotification();
             data.isActivated[NoteNumber] = true;
             data.Save();
