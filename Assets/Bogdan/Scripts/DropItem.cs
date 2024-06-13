@@ -71,15 +71,6 @@ public class DropItem : MonoBehaviour
             NullifySlotData();
 
         }
-        //if (isHeal)
-        //{
-        //    return;
-        //}
-
-
-        
-
-
 
 
     }
